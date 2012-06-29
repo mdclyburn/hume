@@ -33,12 +33,6 @@ namespace hm
 		recalc();
 	}
 
-	void Sprite::draw(SDL_Surface* surface)
-	{
-		SDL_BlitSurface(this->image, this->getSpriteClip(), surface, this->getPosition());
-		return;
-	}
-
 	void Sprite::selectSprite(int x, int y)
 	{
 		spriteNumber.x = x;

@@ -13,7 +13,6 @@ namespace hm
 		Sprite(std::string filename); // Constructor with image loading.
 		Sprite(std::string filename, int spriteWidth, int spriteHeight); // Image loading constructor with set sprite dimensions.
 
-		void draw(SDL_Surface* surface); // Draws the current sprite to a passed-in surface.
 		void selectSprite(int x, int y); // Sets the current sprite based on position on sheet. Starts at (0, 0).
 		SDL_Rect* getCurrentSprite(); // Returns SDL_Rect spriteNumber.
 		void nextSprite(); // Advances to the next sprite.
