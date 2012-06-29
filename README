@@ -4,3 +4,5 @@ Hume Game Library
 Project is a library of commonly used objects for purely 2D
 games. It is built using C++ and SDL (Simple DirectMedia Layer) for
 low level access to hardware and cross-platform compatibility.
+
+This repository is accessible with SSH or HTTPS.
