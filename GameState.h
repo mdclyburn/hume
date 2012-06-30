@@ -17,7 +17,6 @@ namespace hm
 			virtual void processInput() = 0; // Handles user input.
 			virtual void update() = 0; // Updates the state's internals.
 			virtual void display() = 0; // Displays what's happening onscreen.
-			virtual void loop() = 0; // The main loop of the state.
 			virtual void cleanup() = 0; // Gets the state ready for dismissal.
 	};
 };
