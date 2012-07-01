@@ -1,6 +1,8 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <iostream>
+
 namespace hm
 {
 	class GameState // Abstract class
@@ -12,7 +14,10 @@ namespace hm
 
 			virtual void pause() = 0; // Suspends the current activity in the state.
 			virtual void resume() = 0; // Starts the state back up.
-		private:
+
+		protected:
+		bool initted; // Whether it has been initialized.
+		bool clean; // Whether cleanup() has been run.
 			virtual bool init() = 0; // Handles initialization.
 			virtual void processInput() = 0; // Handles user input.
 			virtual void update() = 0; // Updates the state's internals.
