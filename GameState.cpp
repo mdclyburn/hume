@@ -7,14 +7,15 @@ namespace hm
 		// Nothing to do here...
 	}
 
-	GameState::GameState(Window* window)
-	{
-		this->window = window;
-	}
-
 	void GameState::setWindow(Window* window)
 	{
 		this->window = window;
+		return;
+	}
+
+	void GameState::checkEvents(SDL_Event e)
+	{
+		std::cout << "WARNING: Parent class checkEvents(SDL_Event e) used." << std::endl;
 		return;
 	}
 };

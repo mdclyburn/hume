@@ -1,4 +1,5 @@
 #include "GameState.h"
+#include "Window.h"
 #include <vector>
 
 namespace hm
@@ -7,6 +8,7 @@ namespace hm
 	{
 		public:
 			StateManager(); // Basic constructor.
+			StateManager(Window* window); // Constructor sets window to use.
 
 			void startState(); // Starts the state on the top of the stack.
 			void stopState(); // Stops the state on the top of the stack.
@@ -20,5 +22,8 @@ namespace hm
 			void replaceState(GameState& gs); // Switches out a state.
 		private:
 			std::vector<GameState*> stack; // Stack of states currently in use.
+			Window* window; // The game's window.
+
+			void setStateWindow(Window* window); // Gives the pushed state the window address.
 	};
 };
