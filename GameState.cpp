@@ -6,4 +6,15 @@ namespace hm
 	{
 		// Nothing to do here...
 	}
+
+	GameState::GameState(Window* window)
+	{
+		this->window = window;
+	}
+
+	void GameState::setWindow(Window* window)
+	{
+		this->window = window;
+		return;
+	}
 };
