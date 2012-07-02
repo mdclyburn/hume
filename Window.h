@@ -17,6 +17,7 @@ namespace hm
 
 		void draw(Image& i); // Draws image to screen.
 		void draw(Sprite& s); // Draws sprite to screen.
+		void draw(Text& t); // Draws text to screen.
 
 		void clear(); // Blacks out the screen.
 		Uint32 getClearColor(); // Gets the currently used clear color.
