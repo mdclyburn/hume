@@ -4,7 +4,14 @@ namespace hm
 {
 	StateManager::StateManager()
 	{
-		// Nothing to do here.
+		// Null our window pointer.
+		window = NULL;
+	}
+
+	StateManager::StateManager(Window* window)
+	{
+		// Set our window.
+		this->window = window;
 	}
 
 	void StateManager::startState()
@@ -51,6 +58,7 @@ namespace hm
 		// Send the pause command to the current state.
 		pauseState();
 		stack.push_back(&gs);
+		setStateWindow();
 		return;
 	}
 
@@ -75,6 +83,12 @@ namespace hm
 			pushState(gs);
 		}
 
+		return;
+	}
+
+	void StateManager::setStateWindow()
+	{
+		stack.back()->setWindow(window);
 		return;
 	}
 };
