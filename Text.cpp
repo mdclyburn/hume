@@ -75,6 +75,7 @@ namespace hm
 		color.r = r;
 		color.g = g;
 		color.b = b;
+		updateSurface();
 		
 		return;
 	}
