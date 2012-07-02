@@ -1,6 +1,10 @@
-Hume Game Library
+Hume Multimedia Library
 ----------------------
 
-Project is a library of commonly used objects for purely 2D
-games. It is built using C++ and SDL (Simple DirectMedia Layer) for
-low level access to hardware and cross-platform compatibility.
+Project aim is to create a complete library of
+commonly used objects such as images, sound and
+text strings. Uses Simple DirectMedia Layer for
+low-level hardware access and cross-platform
+compatibility.
+
+Email me at clyburnm@me.com or mardev2013@gmail.com
