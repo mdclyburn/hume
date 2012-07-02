@@ -7,6 +7,5 @@ namespace hm
 		sdltext = NULL;
 		font = NULL;
 		size = 12;
-		text = "";
 	}
 };
