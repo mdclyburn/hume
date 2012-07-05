@@ -4,7 +4,6 @@
 #include <SDL/SDL.h>
 #include "Image.h"
 #include "Sprite.h"
-#include "Text.h"
 #include <string>
 
 namespace hm

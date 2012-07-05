@@ -58,6 +58,7 @@ namespace hm
 		// Send the pause command to the current state.
 		pauseState();
 		stack.push_back(&gs);
+        stack.back()->init(); // Initialize the new state.
         stack.back()->setWindow(window);
 		return;
 	}
