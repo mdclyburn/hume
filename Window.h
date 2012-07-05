@@ -1,9 +1,10 @@
 #ifndef Window_H
 #define Window_H
 
-#include <SDL\SDL.h>
+#include <SDL/SDL.h>
 #include "Image.h"
 #include "Sprite.h"
+#include "Text.h"
 #include <string>
 
 namespace hm
@@ -14,6 +15,8 @@ namespace hm
 		Window(); // Default constructor sets dimensions to 640x480x32
 		Window(int w, int h, int bpp = 32); // Constructor with custom dimensions.
 		Window(std::string title, int w, int h, int bpp = 32); // Constructor with custom dimensions and title.
+
+        bool getStatus(); // Returns true if the window isn't null. False otherwise.
 
 		void draw(Image& i); // Draws image to screen.
 		void draw(Sprite& s); // Draws sprite to screen.

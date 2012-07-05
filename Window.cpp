@@ -23,6 +23,11 @@ namespace hm
 		resetClearColor();
 	}
 
+    bool Window::getStatus()
+    {
+        return (screen != null);
+    }
+
 	void Window::draw(Image& i)
 	{
 		SDL_BlitSurface(i.getImage(), NULL, screen, i.getPosition());
