@@ -1,18 +1,30 @@
 #!/bin/sh
 
-# Build the Hume library.
+# Builds the Hume library.
+
+# Get rid of previous files
+if test -f libhume.a
+then
+	echo "Found old archive. Deleting..."
+	rm libhume.a
+fi
 
 echo "Generating object files..."
 g++ -c *.cpp
 echo "Object files generated."
 
 echo "Creating library..."
-ar rvs libhume.a *.o
-echo "Finished."
+ar rvs libhume.a *.o > /dev/null
 
-echo "Moving up one level..."
-mv libhume.a ../
-echo "Moved libhume.a."
+# Check for it.
+if test -f libhume.a
+then
+	echo "Library created."
+else
+	echo "Library wasn't generated. Something went wrong."
+fi
 
-echo "Build finished."
+# Cleanup
+rm *.o
+
 exit 0
