@@ -17,7 +17,7 @@ namespace hm
 	void StateManager::startState()
 	{
 		if(!stack.empty())
-			stack.back()->run();
+			stack.back()->init();
 		return;
 	}
 
@@ -58,7 +58,7 @@ namespace hm
 		// Send the pause command to the current state.
 		pauseState();
 		stack.push_back(&gs);
-		setStateWindow();
+        stack.back()->setWindow(window);
 		return;
 	}
 
@@ -84,11 +84,5 @@ namespace hm
 		}
 
 		return;
-	}
-
-	void StateManager::setStateWindow()
-	{
-		stack.back()->setWindow(window);
-		return;
-	}
-};
+    }
+}

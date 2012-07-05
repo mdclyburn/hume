@@ -65,12 +65,12 @@ namespace hm
 		return size;
 	}
 	
-	SDL_Surface* getSurface()
+    SDL_Surface* Text::getSurface()
 	{
 		return sdltext;
 	}
 	
-	void setColor(int r, int g, int b)
+    void Text::setColor(int r, int g, int b)
 	{
 		color.r = r;
 		color.g = g;
@@ -80,12 +80,12 @@ namespace hm
 		return;
 	}
 	
-	SDL_Color getColor()
+    SDL_Color Text::getColor()
 	{
 		return color;
 	}
 	
-	void setPosition(int x, int y)
+    void Text::setPosition(int x, int y)
 	{
 		position.x = x;
 		position.y = y;
@@ -93,7 +93,7 @@ namespace hm
 		return;
 	}
 	
-	SDL_Rect* getPosition()
+    SDL_Rect* Text::getPosition()
 	{
 		return &position;
 	}
@@ -106,3 +106,4 @@ namespace hm
 		sdltext = TTF_RenderText_Solid(font, text.c_str(), color);
 		return;
 	}
+}

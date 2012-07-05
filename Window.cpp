@@ -25,7 +25,7 @@ namespace hm
 
     bool Window::getStatus()
     {
-        return (screen != null);
+        return (screen != NULL);
     }
 
 	void Window::draw(Image& i)

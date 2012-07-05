@@ -23,7 +23,5 @@ namespace hm
 		private:
 			std::vector<GameState*> stack; // Stack of states currently in use.
 			Window* window; // The game's window.
-
-			void setStateWindow(Window* window); // Gives the pushed state the window address.
 	};
 };
