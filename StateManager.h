@@ -20,6 +20,7 @@ namespace hm
 			void pushState(GameState& gs); // Adds a state to the stack.
 			void popState(); // Pops a state from the stack.
 			void replaceState(GameState& gs); // Switches out a state.
+			void popAll(); // Removes all states. Takes care of cleanup.
 		private:
 			std::vector<GameState*> stack; // Stack of states currently in use.
 			Window* window; // The game's window.

@@ -29,7 +29,7 @@ namespace hm
 		position.x = 0; // Default position.
 		position.y = 0;
 		selectSprite(0, 0); // Default sprite.
-		setSpriteSize(spriteWidth + 1, spriteHeight + 1); // Set sprite size.
+		setSpriteSize(spriteWidth, spriteHeight); // Set exact sprite size.
 		recalc();
 	}
 

@@ -84,5 +84,16 @@ namespace hm
 		}
 
 		return;
-    }
+    	}
+
+	void StateManager::popAll()
+	{
+		while(!stack.empty())
+		{
+			stack.back()->cleanup();
+			stack.pop_back();
+		}
+		
+		return;
+	}
 }

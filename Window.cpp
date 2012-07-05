@@ -42,12 +42,6 @@ namespace hm
 		return;
 	}
 	
-	void Window::draw(Text& t)
-	{
-		SDL_BlitSurface(t.getSurface(), NULL, screen, t.getPosition());
-		needRefresh = true;
-	}
-
 	void Window::clear()
 	{
 		SDL_FillRect(screen, NULL, clearColor);
