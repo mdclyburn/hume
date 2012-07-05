@@ -32,7 +32,7 @@ namespace hm
 			SDL_Rect* getPosition(); //Returns the SDL_Rect containing the position.
 			
 		private:
-			static TTF_Font* font; // The font of the text.
+            TTF_Font* font; // The font of the text.
 			SDL_Surface* sdltext; // The SDL_Surface text.
 			SDL_Color color; // Color to make the text.
 			SDL_Rect position; // Position of the text.
