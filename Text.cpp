@@ -78,9 +78,7 @@ namespace hm
 
 		// Output.
 		std::cout << "Font: " << font << std::endl;
-		std::cout << "Text: " << text.c_str() << std::endl;
-		std::cout << "FGColor: " << font->getFgColor().r << ", " << font->getFgColor().g << ", " << font->getFgColor().b << std::endl;
-		std::cout << "BGColor: " << font->getBgColor().r << ", " << font->getBgColor().g << ", " << font->getBgColor().b << std::endl;
+        std::cout << "Text: " << text.c_str() << std::endl;
 
 		if(font->getRenderMode() == SOLID)
 		{
