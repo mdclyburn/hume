@@ -23,6 +23,7 @@ namespace hm
 		~Font(); // Closes font, cleanup.
 
 		TTF_Font* getFont(); // Returns the TTF_Font object.
+		void openFont(std::string filename, int size = 16);
 
 		void resetStyle(); // Sets all styles to false.
 		void makeBold(bool bold); // Makes the font bold.
@@ -31,10 +32,10 @@ namespace hm
 		void makeStrikethrough(bool strikethrough); // Strike through the font.
 		int getStyle(); // Gets the style of the font.
 
-		void setFgColor(int r, int g, int b); // Sets the foreground color.
-		SDL_Color* getFgColor(); // Returns the foreground color.
-		void setBgColor(int r, int g, int b); // Sets the background color.
-		SDL_Color* getBgColor(); // Returns the background color.
+		void setFgColor(Uint8 r, Uint8 g, Uint8 b); // Sets the foreground color.
+		SDL_Color getFgColor(); // Returns the foreground color.
+		void setBgColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color.
+		SDL_Color getBgColor(); // Returns the background color.
 
 		void setRenderMode(RenderMode rm); // Sets the mode it should render in.
 		int getRenderMode(); // Returns the renderMode variable.

@@ -60,26 +60,45 @@ namespace hm
 
 	void Text::updateSurface()
 	{
-		// First check if the font is null.
+		// See if TTF_WasInit().
+		if(TTF_WasInit() == 0)
+		{
+			std::cout << "SDL_ttf was not initialized. Cannot update surface." << std::endl;
+			return;
+		}
+		else
+			std::cout << "SDL_ttf was initialized. Continuing..." << std::endl;
+
+		// Check if the font is null.
 		if(font == NULL)
 		{
 			std::cout << "Cannot update surface. Font is nulled." << std::endl;
 			return;
 		}
-		std::cout << "Updating surface..." << std::endl;
+
+		// Output.
+		std::cout << "Font: " << font << std::endl;
+		std::cout << "Text: " << text.c_str() << std::endl;
+		std::cout << "FGColor: " << font->getFgColor().r << ", " << font->getFgColor().g << ", " << font->getFgColor().b << std::endl;
+		std::cout << "BGColor: " << font->getBgColor().r << ", " << font->getBgColor().g << ", " << font->getBgColor().b << std::endl;
+
 		if(font->getRenderMode() == SOLID)
 		{
-			sdltext = TTF_RenderText_Solid(font->getFont(), text.c_str(), *font->getFgColor());
-			std::cout << "Text is solid." << std::endl;
+			std::cout << "Rendering text solid..." << std::endl;
+			sdltext = TTF_RenderText_Solid(font->getFont(), text.c_str(), font->getFgColor());
 		}
 		if(font->getRenderMode() == SHADED)
 		{
-			sdltext = TTF_RenderText_Shaded(font->getFont(), text.c_str(), *font->getFgColor(), *font->getBgColor());
+			std::cout << "Rendering text shaded..." << std::endl;
+			sdltext = TTF_RenderText_Shaded(font->getFont(), text.c_str(), font->getFgColor(), font->getBgColor());
 		}
 		if(font->getRenderMode() == BLENDED)
 		{
-			sdltext = TTF_RenderText_Blended(font->getFont(), text.c_str(), *font->getFgColor());
+			std::cout << "Rendering text blended..." << std::endl;
+			sdltext = TTF_RenderText_Blended(font->getFont(), text.c_str(), font->getFgColor());
 		}
+
+		std::cout << "Surface is located at " << sdltext << "." << std::endl;
 
 		return;
 	}

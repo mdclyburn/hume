@@ -3,6 +3,7 @@
 # Builds the Hume library.
 
 # Get rid of previous files
+echo "===== BUILDING HUME LIBRARY ====="
 if test -f libhume.a
 then
 	echo "Found old archive. Deleting..."

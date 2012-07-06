@@ -7,13 +7,18 @@ namespace hm
 		font = NULL;
 		resetStyle();
 		renderMode = SOLID;
+		setFgColor(255, 255, 255);
+		setBgColor(255, 255, 255);
 	}
 
 	Font::Font(std::string filename, int size)
     {
-        font = TTF_OpenFont(filename.c_str(), size);
-        resetStyle();
+		font = NULL;
+		openFont(filename, size);
+		resetStyle();
         renderMode = SOLID;
+		setFgColor(255, 255, 255);
+		setBgColor(255, 255, 255);
 	}
 
 	Font::~Font()
@@ -27,6 +32,25 @@ namespace hm
 		return font;
 	}
 
+	void Font::openFont(std::string filename, int size)
+	{
+		std::cout << "Opening " << filename << "..." << std::endl;
+		if(font != NULL)
+		{
+			std::cout << "Previous font found. Closing..." << std::endl;
+			TTF_CloseFont(font);
+		}
+
+		font = TTF_OpenFont(filename.c_str(), size);
+		if(font == NULL)
+			std::cout << "There was an error loading the font file " << filename << "..." << std::endl;
+		else
+			std::cout << filename << " was successfully opened." << std::endl;
+		renderMode = SOLID;
+		resetStyle();
+		return;
+	}
+
 	void Font::resetStyle()
 	{
 		bold = false;
@@ -35,6 +59,7 @@ namespace hm
 		strikethrough = false;
         style = TTF_STYLE_NORMAL; // Resets the style.
 		setStyle();
+		std::cout << "Style reset to " << style << "." << std::endl;
 
 		return;
 	}
@@ -72,7 +97,7 @@ namespace hm
 		return style;
 	}
 
-	void Font::setFgColor(int r, int g, int b)
+	void Font::setFgColor(Uint8 r, Uint8 g, Uint8 b)
 	{
 		fgColor.r = r;
 		fgColor.g = g;
@@ -81,12 +106,12 @@ namespace hm
 		return;
 	}
 
-	SDL_Color* Font::getFgColor()
+	SDL_Color Font::getFgColor()
 	{
-		return &fgColor;
+		return fgColor;
 	}
 
-	void Font::setBgColor(int r, int g, int b)
+	void Font::setBgColor(Uint8 r, Uint8 g, Uint8 b)
 	{
 		bgColor.r = r;
 		bgColor.g = g;
@@ -95,9 +120,9 @@ namespace hm
 		return;
 	}
 
-	SDL_Color* Font::getBgColor()
+	SDL_Color Font::getBgColor()
 	{
-		return &bgColor;
+		return bgColor;
 	}
 
 	void Font::setRenderMode(RenderMode rm)
@@ -118,7 +143,7 @@ namespace hm
             return;
         }
 
-        TTF_SetFontStyle(font, TTF_STYLE_NORMAL);
+		TTF_SetFontStyle(font, style);
 		return;
 	}
 }
