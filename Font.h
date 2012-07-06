@@ -21,6 +21,8 @@ namespace hm
 		Font(std::string filename, int size = 16); // Loads file with default size being 16pt.
 		~Font(); // Closes font, cleanup.
 
+		TTF_Font* getFont(); // Returns the TTF_Font object.
+
 		void resetStyle(); // Sets all styles to false.
 		void makeBold(bool bold); // Makes the font bold.
 		void makeItalics(bool italic); // Italic fonts.
@@ -28,11 +30,19 @@ namespace hm
 		void makeStrikethrough(bool strikethrough); // Strike through the font.
 		int getStyle(); // Gets the style of the font.
 
+		void setFgColor(int r, int g, int b); // Sets the foreground color.
+		SDL_Color* getFgColor(); // Returns the foreground color.
+		void setBgColor(int r, int g, int b); // Sets the background color.
+		SDL_Color* getBgColor(); // Returns the background color.
+
 		void setRenderMode(RenderMode rm); // Sets the mode it should render in.
 		int getRenderMode(); // Returns the renderMode variable.
 
 	private:
 		TTF_Font* font; // The font.
+
+		SDL_Color fgColor; // The foreground (main) color to render the font.
+		SDL_Color bgColor; // The background color
 
 		// Font styles.
 		int style;

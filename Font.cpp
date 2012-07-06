@@ -20,6 +20,11 @@ namespace hm
 		font = NULL;
 	}
 
+	TTF_Font* Font::getFont()
+	{
+		return font;
+	}
+
 	void Font::resetStyle()
 	{
 		bold = false;
@@ -62,6 +67,34 @@ namespace hm
 	int Font::getStyle()
 	{
 		return style;
+	}
+
+	void Font::setFgColor(int r, int g, int b)
+	{
+		fgColor.r = r;
+		fgColor.g = g;
+		fgColor.b = b;
+
+		return;
+	}
+
+	SDL_Color* Font::getFgColor()
+	{
+		return &fgColor;
+	}
+
+	void Font::setBgColor(int r, int g, int b)
+	{
+		bgColor.r = r;
+		bgColor.g = g;
+		bgColor.b = b;
+
+		return;
+	}
+
+	SDL_Color* Font::getBgColor()
+	{
+		return &bgColor;
 	}
 
 	void Font::setRenderMode(RenderMode rm)

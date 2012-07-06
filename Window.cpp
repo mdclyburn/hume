@@ -41,6 +41,13 @@ namespace hm
 		needRefresh = true; // Needs to be flipped.
 		return;
 	}
+
+	void Window::draw(Text &t)
+	{
+		SDL_BlitSurface(t.getSurface(), NULL, screen, t.getPosition());
+		needRefresh = true;
+		return;
+	}
 	
 	void Window::clear()
 	{
