@@ -3,21 +3,17 @@
 namespace hm
 {
 	Font::Font()
-	{
+    {
 		font = NULL;
 		resetStyle();
 		renderMode = SOLID;
 	}
 
 	Font::Font(std::string filename, int size)
-	{
-		std::cout << "Constructing font." << std::endl;
-		font = TTF_OpenFont(filename.c_str(), size);
-		std::cout << "Opened font..." << std::endl;
-		resetStyle();
-		std::cout << "Reset style..." << std::endl;
-		renderMode = SOLID;
-		std::cout << "Set rendering mode to SOLID" << std::endl;
+    {
+        font = TTF_OpenFont(filename.c_str(), size);
+        resetStyle();
+        renderMode = SOLID;
 	}
 
 	Font::~Font()
@@ -37,6 +33,7 @@ namespace hm
 		italic = false;
 		underline = false;
 		strikethrough = false;
+        style = TTF_STYLE_NORMAL; // Resets the style.
 		setStyle();
 
 		return;
@@ -104,8 +101,7 @@ namespace hm
 	}
 
 	void Font::setRenderMode(RenderMode rm)
-	{
-		std::cout << "Render mode set to " << rm << std::endl;
+    {
 		renderMode = rm;
 	}
 
@@ -116,7 +112,13 @@ namespace hm
 
 	void Font::setStyle()
 	{
-		TTF_SetFontStyle(font, style);
+        if(font == NULL)
+        {
+            std::cout << "No font is loaded. Unable to set style." << std::endl;
+            return;
+        }
+
+        TTF_SetFontStyle(font, TTF_STYLE_NORMAL);
 		return;
 	}
 }
