@@ -20,6 +20,11 @@ namespace hm
 		void setText(std::string text); // Sets the text.
 		std::string getText(); // Returns the current string.
 
+        void setfColor(Uint8 r, Uint8 g, Uint8 b); // Sets the foreground color.
+        SDL_Color getfColor(); // Gets the foreground color.
+        void setbColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color.
+        SDL_Color getbColor(); // Gets the background color.
+
 		void setPosition(int x, int y); // Sets the position to draw the string.
 		SDL_Rect* getPosition(); // Returns the position in an SDL_Rect.
 
@@ -27,6 +32,9 @@ namespace hm
 		Font* font; // The font that should be used to draw the text.
 		std::string text; // The text in std::string form.
 		SDL_Surface* sdltext; // The SDL_Surface to hold the text.
+
+        SDL_Color fcolor; // The foreground color of the text.
+        SDL_Color bcolor; // The background color of the text.
 
 		SDL_Rect position; // Holds the position of the text.
 

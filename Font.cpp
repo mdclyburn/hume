@@ -6,9 +6,7 @@ namespace hm
     {
 		font = NULL;
 		resetStyle();
-		renderMode = SOLID;
-		setFgColor(255, 255, 255);
-		setBgColor(255, 255, 255);
+        renderMode = SOLID;
 	}
 
 	Font::Font(std::string filename, int size)
@@ -17,8 +15,6 @@ namespace hm
 		openFont(filename, size);
 		resetStyle();
         renderMode = SOLID;
-		setFgColor(255, 255, 255);
-		setBgColor(255, 255, 255);
 	}
 
 	Font::~Font()
@@ -95,34 +91,6 @@ namespace hm
 	int Font::getStyle()
 	{
 		return style;
-	}
-
-	void Font::setFgColor(Uint8 r, Uint8 g, Uint8 b)
-	{
-		fgColor.r = r;
-		fgColor.g = g;
-		fgColor.b = b;
-
-		return;
-	}
-
-	SDL_Color Font::getFgColor()
-	{
-		return fgColor;
-	}
-
-	void Font::setBgColor(Uint8 r, Uint8 g, Uint8 b)
-	{
-		bgColor.r = r;
-		bgColor.g = g;
-		bgColor.b = b;
-
-		return;
-	}
-
-	SDL_Color Font::getBgColor()
-	{
-		return bgColor;
 	}
 
 	void Font::setRenderMode(RenderMode rm)

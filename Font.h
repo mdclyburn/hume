@@ -32,19 +32,11 @@ namespace hm
 		void makeStrikethrough(bool strikethrough); // Strike through the font.
 		int getStyle(); // Gets the style of the font.
 
-		void setFgColor(Uint8 r, Uint8 g, Uint8 b); // Sets the foreground color.
-		SDL_Color getFgColor(); // Returns the foreground color.
-		void setBgColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color.
-		SDL_Color getBgColor(); // Returns the background color.
-
 		void setRenderMode(RenderMode rm); // Sets the mode it should render in.
 		int getRenderMode(); // Returns the renderMode variable.
 
 	private:
-		TTF_Font* font; // The font.
-
-		SDL_Color fgColor; // The foreground (main) color to render the font.
-		SDL_Color bgColor; // The background color
+        TTF_Font* font; // The font.
 
 		// Font styles.
 		int style;
