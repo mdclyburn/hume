@@ -6,12 +6,18 @@ namespace hm
 	{
 		font = NULL;
 		resetStyle();
+		renderMode = SOLID;
 	}
 
 	Font::Font(std::string filename, int size)
 	{
+		std::cout << "Constructing font." << std::endl;
 		font = TTF_OpenFont(filename.c_str(), size);
+		std::cout << "Opened font..." << std::endl;
 		resetStyle();
+		std::cout << "Reset style..." << std::endl;
+		renderMode = SOLID;
+		std::cout << "Set rendering mode to SOLID" << std::endl;
 	}
 
 	Font::~Font()
@@ -99,6 +105,7 @@ namespace hm
 
 	void Font::setRenderMode(RenderMode rm)
 	{
+		std::cout << "Render mode set to " << rm << std::endl;
 		renderMode = rm;
 	}
 

@@ -58,7 +58,11 @@ namespace hm
 		// Send the pause command to the current state.
 		pauseState();
 		stack.push_back(&gs);
-        stack.back()->init(); // Initialize the new state.
+		bool result = stack.back()->init(); // Initialize the new state.
+		if(result == false)
+			std::cout << "Something went wrong with initialization..." << std::endl;
+		if(result == true)
+			std::cout << "Intialization of the state was successful!" << std::endl;
         stack.back()->setWindow(window);
 		return;
 	}

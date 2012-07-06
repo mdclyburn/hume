@@ -16,6 +16,7 @@ namespace hm
 		this->font = font;
 		sdltext = NULL;
 		text = "Hume Library";
+		std::cout << "constructor invoked and calling updateSurface()" << std::endl;
 		updateSurface();
 	}
 
@@ -65,13 +66,20 @@ namespace hm
 			std::cout << "Cannot update surface. Font is nulled." << std::endl;
 			return;
 		}
-
+		std::cout << "Updating surface..." << std::endl;
 		if(font->getRenderMode() == SOLID)
+		{
 			sdltext = TTF_RenderText_Solid(font->getFont(), text.c_str(), *font->getFgColor());
+			std::cout << "Text is solid." << std::endl;
+		}
 		if(font->getRenderMode() == SHADED)
+		{
 			sdltext = TTF_RenderText_Shaded(font->getFont(), text.c_str(), *font->getFgColor(), *font->getBgColor());
+		}
 		if(font->getRenderMode() == BLENDED)
+		{
 			sdltext = TTF_RenderText_Blended(font->getFont(), text.c_str(), *font->getFgColor());
+		}
 
 		return;
 	}
