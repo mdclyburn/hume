@@ -8,6 +8,13 @@
 
 namespace hm
 {
+    enum RenderMode
+    {
+        SOLID,
+        SHADED,
+        BLENDED
+    };
+
 	class Font
 	{
 	public:
@@ -18,8 +25,12 @@ namespace hm
 		void loadFont(std::string file, int ptsize = 16); // Loads a font after closing a present one.
 		TTF_Font* getFont(); // Get the font object.
 
+        void setRenderMode(RenderMode rm); // Set the mode to render text in.
+        RenderMode getRenderMode(); // Get the mode to render text in.
+
 	private:
 		TTF_Font* font; // The font object.
+        RenderMode rm; // The mode to render the font in.
 	};
 }
 

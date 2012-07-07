@@ -20,6 +20,7 @@ namespace hm
 		std::string getText(); // Gets the text.
 
 		void setColor(Uint8 r, Uint8 g, Uint8 b); // Sets the color of the text.
+        void setbgColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color of the shaded text.
 
 		void setPosition(int x, int y); // Sets the x and y coordinates.
 		SDL_Rect* getPosition(); // Returns the position.
@@ -29,7 +30,8 @@ namespace hm
 		SDL_Surface* sdltext;
 
 		SDL_Color color; // Color of the text. Default is black.
-		SDL_Rect position; // The position of the text.
+        SDL_Color bgcolor; // Background color for SHADED rendering.
+        SDL_Rect position; // The position of the text.
 	};
 }
 
