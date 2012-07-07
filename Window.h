@@ -6,6 +6,7 @@
 #include "Sprite.h"
 #include "Text.h"
 #include <string>
+#include <iostream>
 
 namespace hm
 {
