@@ -19,6 +19,12 @@ namespace hm
         setPosition(0, 0);
 	}
 
+    Text::~Text()
+    {
+        std::cout << "Freeing sdltext surface..." << std::endl;
+        SDL_FreeSurface(sdltext);
+    }
+
 	SDL_Surface* Text::getSurface()
 	{
 		return sdltext;
@@ -35,25 +41,17 @@ namespace hm
 		{
 			std::cout << "Can't set text. Font is NULL." << std::endl;
 			return;
-		}
-
-        // Changes depending on the rendering mode.
-        switch(font.getRenderMode())
-        {
-        case SOLID:
-            std::cout << "Rendering solid text..." << std::endl;
-            sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), color);
-            break;
-        case SHADED:
-            sdltext = TTF_RenderText_Shaded(font.getFont(), text.c_str(), color, bgcolor);
-            break;
-        case BLENDED:
-            sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), color);
-            break;
-        default:
-            std::cout << "Text not rendered." << std::endl;
-            break;
         }
+
+        RenderMode rm = font.getRenderMode();
+        if(rm == SOLID)
+            sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), color);
+        if(rm == SHADED)
+            sdltext = TTF_RenderText_Shaded(font.getFont(), text.c_str(), color, bgcolor);
+        if(rm == BLENDED)
+            sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), color);
+        else
+            std::cout << "Text not rendered..." << std::endl;
 
 		return;
 	}

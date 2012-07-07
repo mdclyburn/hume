@@ -13,6 +13,7 @@ namespace hm
 	public:
 		Text(); // Basic ctor with default text.
 		Text(std::string text, Font& font);
+        ~Text();
 
 		SDL_Surface* getSurface(); // Gets the SDL_Surface pointer.
 

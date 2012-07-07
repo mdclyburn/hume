@@ -14,7 +14,7 @@ namespace hm
         font = NULL; // Safety first.
         loadFont(file, ptsize);
         rm = SOLID;
-	}
+    }
 
     Font::~Font()
     {
