@@ -17,8 +17,11 @@ namespace hm
 
     Text::~Text()
     {
-        std::cout << "Freeing sdltext surface..." << std::endl;
-        SDL_FreeSurface(sdltext);
+        if(sdltext != NULL)
+        {
+            SDL_FreeSurface(sdltext);
+            sdltext = NULL;
+        }
     }
 
 	SDL_Surface* Text::getSurface()
