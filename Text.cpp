@@ -4,18 +4,14 @@ namespace hm
 {
 	Text::Text()
 	{
-		text = "Hume Library";
-		setColor(0, 0, 0);
-        setbgColor(0, 0, 0);
+        text = "Hume Library";
         setPosition(0, 0);
 	}
 
 	Text::Text(std::string text, Font& font)
 	{
 		this->text = text;
-		setText(text, font);
-		setColor(0, 0, 0);
-        setColor(0, 0, 0);
+        setText(text, font);
         setPosition(0, 0);
 	}
 
@@ -45,13 +41,12 @@ namespace hm
 
         RenderMode rm = font.getRenderMode();
         if(rm == SOLID)
-            sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), color);
+            sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), font.getColor());
         if(rm == SHADED)
-            sdltext = TTF_RenderText_Shaded(font.getFont(), text.c_str(), color, bgcolor);
+            sdltext = TTF_RenderText_Shaded(font.getFont(), text.c_str(), font.getColor(), font.getbColor());
         if(rm == BLENDED)
-            sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), color);
-        else
-            std::cout << "Text not rendered..." << std::endl;
+            sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), font.getColor());
+        optimize();
 
 		return;
 	}
@@ -59,38 +54,26 @@ namespace hm
 	std::string Text::getText()
 	{
 		return text;
-	}
+    }
 
-	void Text::setColor(Uint8 r, Uint8 g, Uint8 b)
-	{
-		color.r = r;
-		color.g = g;
-		color.b = b;
-		return;
-	}
-
-    void Text::setbgColor(Uint8 r, Uint8 g, Uint8 b)
+    void Text::setPosition(int x, int y)
     {
-        bgcolor.r = r;
-        bgcolor.g = g;
-        bgcolor.b = b;
+        position.x = x;
+        position.y = y;
         return;
     }
 
-	void Text::setPosition(int x, int y)
-	{
-		position.x = x;
-		position.y = y;
-		return;
-	}
-
 	SDL_Rect* Text::getPosition()
-	{
-        std::cout << "INFORMATION" << std::endl;
-        std::cout << "Surface: " << sdltext << std::endl;
-        std::cout << "Text: " << text << std::endl;
-        std::cout << "Position: " << position.x << ", " << position.y << std::endl;
-
+    {
 		return &position;
 	}
+
+    void Text::optimize()
+    {
+        SDL_Surface* unoptimizedText = sdltext;
+        sdltext = SDL_DisplayFormat(unoptimizedText);
+        SDL_FreeSurface(unoptimizedText);
+
+        return;
+    }
 }

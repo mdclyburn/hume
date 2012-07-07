@@ -25,11 +25,18 @@ namespace hm
 		void loadFont(std::string file, int ptsize = 16); // Loads a font after closing a present one.
 		TTF_Font* getFont(); // Get the font object.
 
+        void setColor(Uint8 r, Uint8 g, Uint8 b); // Set the color.
+        SDL_Color getColor(); // Get the current color.
+        void setbColor(Uint8 r, Uint8 g, Uint8 b); // Set the bcolor.
+        SDL_Color getbColor(); // Get the bcolor.
+
         void setRenderMode(RenderMode rm); // Set the mode to render text in.
         RenderMode getRenderMode(); // Get the mode to render text in.
 
 	private:
 		TTF_Font* font; // The font object.
+        SDL_Color color; // The color of the font.
+        SDL_Color bcolor; // The bg color of the font (shaded).
         RenderMode rm; // The mode to render the font in.
 	};
 }
