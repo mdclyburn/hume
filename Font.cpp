@@ -3,115 +3,36 @@
 namespace hm
 {
 	Font::Font()
-    {
-		font = NULL;
-		resetStyle();
-        renderMode = SOLID;
-	}
-
-	Font::Font(std::string filename, int size)
-    {
-		font = NULL;
-		openFont(filename, size);
-		resetStyle();
-        renderMode = SOLID;
-	}
-
-	Font::~Font()
 	{
-		TTF_CloseFont(font);
-		font = NULL;
+		font = NULL; // Safety first.
+	}
+
+	Font::Font(std::string file, int ptsize)
+	{
+		loadFont(file, ptsize);
+	}
+
+	void Font::loadFont(std::string file, int ptsize)
+	{
+		// Unload a previous font.
+		if(font != NULL)
+		{
+			TTF_CloseFont(font); // Close the font file.
+			font = NULL;
+		}
+
+		// Open the font.
+		font = TTF_OpenFont(file.c_str(), ptsize);
+		// Check it.
+		if(font == NULL)
+			std::cout << "Error, font not loaded." << std::endl;
+		return;
 	}
 
 	TTF_Font* Font::getFont()
 	{
-		return font;
-	}
-
-	void Font::openFont(std::string filename, int size)
-	{
-		std::cout << "Opening " << filename << "..." << std::endl;
-		if(font != NULL)
-		{
-			std::cout << "Previous font found. Closing..." << std::endl;
-			TTF_CloseFont(font);
-		}
-
-		font = TTF_OpenFont(filename.c_str(), size);
 		if(font == NULL)
-			std::cout << "There was an error loading the font file " << filename << "..." << std::endl;
-		else
-			std::cout << filename << " was successfully opened." << std::endl;
-		renderMode = SOLID;
-		resetStyle();
-		return;
-	}
-
-	void Font::resetStyle()
-	{
-		bold = false;
-		italic = false;
-		underline = false;
-		strikethrough = false;
-        style = TTF_STYLE_NORMAL; // Resets the style.
-		setStyle();
-		std::cout << "Style reset to " << style << "." << std::endl;
-
-		return;
-	}
-
-	void Font::makeBold(bool bold)
-	{
-		this->bold = bold;
-		setStyle();
-		return;
-	}
-
-	void Font::makeItalics(bool italic)
-	{
-		this->italic = italic;
-		setStyle();
-		return;
-	}
-
-	void Font::makeUnderline(bool underline)
-	{
-		this->underline = underline;
-		setStyle();
-		return;
-	}
-
-	void Font::makeStrikethrough(bool strikethrough)
-	{
-		this->strikethrough = strikethrough;
-		setStyle();
-		return;
-	}
-
-	int Font::getStyle()
-	{
-		return style;
-	}
-
-	void Font::setRenderMode(RenderMode rm)
-    {
-		renderMode = rm;
-	}
-
-	int Font::getRenderMode()
-	{
-		return renderMode;
-	}
-
-	void Font::setStyle()
-	{
-        if(font == NULL)
-        {
-            std::cout << "No font is loaded. Unable to set style." << std::endl;
-            return;
-        }
-
-		TTF_SetFontStyle(font, style);
-		return;
+			std::cout << "WARNING: Font is NULLed." << std::endl;
+		return font;
 	}
 }

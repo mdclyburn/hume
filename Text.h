@@ -11,34 +11,25 @@ namespace hm
 	class Text
 	{
 	public:
-		Text(); // Basic ctor.
-		Text(Font* font); // Loads font.
-		Text(std::string text, Font* font); // Loads font and sets string.
+		Text(); // Basic ctor with default text.
+		Text(std::string text, Font& font);
 
-		SDL_Surface* getSurface(); // Returns the surface.
+		SDL_Surface* getSurface(); // Gets the SDL_Surface pointer.
 
-		void setText(std::string text); // Sets the text.
-		std::string getText(); // Returns the current string.
+		void setText(std::string text, Font& font); // Sets the text and surface.
+		std::string getText(); // Gets the text.
 
-        void setfColor(Uint8 r, Uint8 g, Uint8 b); // Sets the foreground color.
-        SDL_Color getfColor(); // Gets the foreground color.
-        void setbColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color.
-        SDL_Color getbColor(); // Gets the background color.
+		void setColor(Uint8 r, Uint8 g, Uint8 b); // Sets the color of the text.
 
-		void setPosition(int x, int y); // Sets the position to draw the string.
-		SDL_Rect* getPosition(); // Returns the position in an SDL_Rect.
+		void setPosition(int x, int y); // Sets the x and y coordinates.
+		SDL_Rect* getPosition(); // Returns the position.
 
 	private:
-		Font* font; // The font that should be used to draw the text.
-		std::string text; // The text in std::string form.
-		SDL_Surface* sdltext; // The SDL_Surface to hold the text.
+		std::string text;
+		SDL_Surface* sdltext;
 
-        SDL_Color fcolor; // The foreground color of the text.
-        SDL_Color bcolor; // The background color of the text.
-
-		SDL_Rect position; // Holds the position of the text.
-
-		void updateSurface(); // Updates the SDL_Surface to match the std::string.
+		SDL_Color color; // Color of the text. Default is black.
+		SDL_Rect position; // The position of the text.
 	};
 }
 
