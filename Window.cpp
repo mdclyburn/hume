@@ -44,8 +44,9 @@ namespace hm
 
 	void Window::draw(Text &t)
     {
-        SDL_BlitSurface(t.getSurface(), NULL, screen, t.getPosition());
+		SDL_BlitSurface(t.getSurface(), NULL, screen, t.getPosition());
 		needRefresh = true;
+
 		return;
 	}
 	

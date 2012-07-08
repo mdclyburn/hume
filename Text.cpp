@@ -31,8 +31,6 @@ namespace hm
 
 	void Text::setText(std::string text, Font& font)
 	{
-        std::cout << "Font: " << font.getFont() << std::endl;
-        std::cout << "RM: " << font.getRenderMode() << std::endl;
 		this->text = text;
 
 		// Check for font.
@@ -42,13 +40,13 @@ namespace hm
 			return;
         }
 
-        RenderMode rm = font.getRenderMode();
+		RenderMode rm = font.getRenderMode();
         if(rm == SOLID)
             sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), font.getColor());
         if(rm == SHADED)
             sdltext = TTF_RenderText_Shaded(font.getFont(), text.c_str(), font.getColor(), font.getbColor());
         if(rm == BLENDED)
-            sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), font.getColor());
+			sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), font.getColor());
         optimize();
 
 		return;
