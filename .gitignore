@@ -4,3 +4,5 @@ chassis/
 *autosave
 *vcxproj*
 *.txt
+Debug/
+debug/
