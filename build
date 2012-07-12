@@ -26,6 +26,6 @@ else
 fi
 
 # Cleanup
-rm *.o
+rm *.o 3> /dev/null
 
 exit 0
