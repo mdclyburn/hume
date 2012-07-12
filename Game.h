@@ -3,6 +3,7 @@
 
 #include "Window.h"
 #include "StateManager.h"
+#include <string>
 
 namespace hm
 {
@@ -10,6 +11,8 @@ namespace hm
 	{
 	public:
 		Game(); // Basic ctor.
+		Game(std::string title); // Constructs window with title.
+		Game(std::string title, int width, int height, int bpp = 32); // Constructs with title and dimensions.
 		~Game(); // Basic dtor.
 
 		virtual void run() = 0; // Starts the game.
