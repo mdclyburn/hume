@@ -11,6 +11,7 @@ namespace hm
 	Text::Text(std::string text, Font& font)
 	{
 		this->text = text;
+        sdltext = NULL;
         setText(text, font);
         setPosition(0, 0);
 	}
@@ -25,7 +26,7 @@ namespace hm
     }
 
 	SDL_Surface* Text::getSurface()
-	{
+    {
 		return sdltext;
 	}
 
