@@ -5,6 +5,7 @@ namespace hm
 	Text::Text()
 	{
         text = "Hume Library";
+        sdltext = NULL;
         setPosition(0, 0);
 	}
 
