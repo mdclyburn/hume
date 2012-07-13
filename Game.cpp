@@ -26,4 +26,17 @@ namespace hm
 		delete manager;
 		delete window;
 	}
+
+    void Game::loop()
+    {
+        while(running)
+        {
+            processInput();
+            update();
+            display();
+        }
+
+        // Clean up afterwards.
+        cleanup();
+    }
 }
