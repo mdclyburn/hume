@@ -39,6 +39,11 @@ namespace hm
 		TTF_Quit();
     }
 
+	static int Font::getFontsOpen()
+	{
+		return fontsOpen;
+	}
+
 	void Font::loadFont(std::string file, int ptsize)
 	{
 		// Unload a previous font.
