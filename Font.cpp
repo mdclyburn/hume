@@ -1,5 +1,8 @@
 #include "Font.h"
 
+// Static member variable.
+int hm::Font::fontsOpen = 0;
+
 namespace hm
 {
 	Font::Font()
