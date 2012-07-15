@@ -39,7 +39,7 @@ namespace hm
 		TTF_Quit();
     }
 
-	static int Font::getFontsOpen()
+	int Font::getFontsOpen()
 	{
 		return fontsOpen;
 	}
