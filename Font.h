@@ -22,6 +22,8 @@ namespace hm
 		Font(std::string file, int ptsize = 16); // Ctor with file loading and size setting.
 		~Font();
 
+		static int getFontsOpen(); // Returns the amount of open fonts.
+
 		void loadFont(std::string file, int ptsize = 16); // Loads a font after closing a present one.
 		TTF_Font* getFont(); // Get the font object.
 
@@ -34,6 +36,7 @@ namespace hm
         RenderMode getRenderMode(); // Get the mode to render text in.
 
 	private:
+		static int fontsOpen; // The amount of opened fonts.
 		TTF_Font* font; // The font object.
         SDL_Color color; // The color of the font.
         SDL_Color bcolor; // The bg color of the font (shaded).

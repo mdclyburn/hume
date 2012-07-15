@@ -4,6 +4,9 @@ namespace hm
 {
 	Font::Font()
 	{
+		// Make sure SDL_ttf is active.
+		if(TTF_WasInit == 0)
+			TTF_Init();
 		font = NULL; // Safety first.
         setColor(0, 0, 0);
         setbColor(0, 0, 0);
@@ -12,6 +15,9 @@ namespace hm
 
 	Font::Font(std::string file, int ptsize)
 	{
+		// Make sure SDL_ttf is active
+		if(TTF_WasInit == 0)
+			TTF_Init();
         std::cout << "Constructing a font..." << std::endl;
         font = NULL; // Safety first.
         loadFont(file, ptsize);
@@ -23,10 +29,14 @@ namespace hm
     Font::~Font()
     {
         if(font != NULL)
-        {
-            TTF_CloseFont(font);
-            font = NULL;
+		{
+			TTF_CloseFont(font);
+			font = NULL;
+			fontsOpen--;
         }
+
+		// If that was the last font open, quit SDL_ttf for now.
+		TTF_Quit();
     }
 
 	void Font::loadFont(std::string file, int ptsize)
@@ -38,6 +48,7 @@ namespace hm
             std::cout << "Closing previous font..." << std::endl;
 			TTF_CloseFont(font); // Close the font file.
 			font = NULL;
+			fontsOpen--;
 		}
 
 		// Open the font.
@@ -47,6 +58,8 @@ namespace hm
         std::cout << "Check opened font..." << std::endl;
 		if(font == NULL)
 			std::cout << "Error, font not loaded." << std::endl;
+		else
+			fontsOpen++; // Add to the amount of fonts open.
 		return;
 	}
 
