@@ -5,7 +5,6 @@ namespace hm
 	Window::Window()
 	{
 		screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
-
 		resetClearColor();
 	}
 
@@ -30,6 +29,7 @@ namespace hm
 
 	void Window::draw(Image& i)
 	{
+		clear();
 		SDL_BlitSurface(i.getImage(), NULL, screen, i.getPosition());
 		needRefresh = true; // Needs to be flipped.
 		return;
@@ -37,6 +37,7 @@ namespace hm
 
 	void Window::draw(Sprite& s)
 	{
+		clear();
 		SDL_BlitSurface(s.getImage(), s.getSpriteClip(), screen, s.getPosition());
 		needRefresh = true; // Needs to be flipped.
 		return;
@@ -44,6 +45,7 @@ namespace hm
 
 	void Window::draw(Text &t)
     {
+		clear();
 		SDL_BlitSurface(t.getSurface(), NULL, screen, t.getPosition());
 		needRefresh = true;
 
@@ -52,7 +54,9 @@ namespace hm
 	
 	void Window::clear()
 	{
-		SDL_FillRect(screen, NULL, clearColor);
+		// Don't clear the window if there are changes pending.
+		if(!needRefresh)
+			SDL_FillRect(screen, NULL, clearColor);
 		return;
 	}
 
@@ -75,7 +79,8 @@ namespace hm
 
 	void Window::resetClearColor()
 	{
-		clearColor = SDL_MapRGB(screen->format, 0xFF, 0x00, 0xFF);
+		// Sets the clearColor to black.
+		clearColor = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
 		return;
 	}
 
