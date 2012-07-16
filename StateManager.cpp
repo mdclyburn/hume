@@ -60,9 +60,7 @@ namespace hm
 		stack.push_back(&gs);
 		bool result = stack.back()->init(); // Initialize the new state.
 		if(result == false)
-			std::cout << "Something went wrong with initialization..." << std::endl;
-		if(result == true)
-			std::cout << "Intialization of the state was successful!" << std::endl;
+			std::cout << "Something's up with the initialization..." << std::endl;
         stack.back()->setWindow(window);
 		return;
 	}
