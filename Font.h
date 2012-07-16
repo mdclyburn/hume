@@ -25,6 +25,7 @@ namespace hm
 		static int getFontsOpen(); // Returns the amount of open fonts.
 
 		void loadFont(std::string file, int ptsize = 16); // Loads a font after closing a present one.
+		void closeFont(); // Closes a currently loaded font.
 		TTF_Font* getFont(); // Get the font object.
 
         void setColor(Uint8 r, Uint8 g, Uint8 b); // Set the color.

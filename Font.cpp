@@ -7,9 +7,9 @@ namespace hm
 {
 	Font::Font()
 	{
-		// Make sure SDL_ttf is active.
+		// Check the status of SDL_ttf
 		if(TTF_WasInit == 0)
-			TTF_Init();
+			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
 		font = NULL; // Safety first.
         setColor(0, 0, 0);
         setbColor(0, 0, 0);
@@ -18,10 +18,9 @@ namespace hm
 
 	Font::Font(std::string file, int ptsize)
 	{
-		// Make sure SDL_ttf is active
+		// Check the status of SDL_ttf
 		if(TTF_WasInit == 0)
-			TTF_Init();
-        std::cout << "Constructing a font..." << std::endl;
+			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
         font = NULL; // Safety first.
         loadFont(file, ptsize);
         setColor(0, 0, 0);
@@ -37,9 +36,6 @@ namespace hm
 			font = NULL;
 			fontsOpen--;
         }
-
-		// If that was the last font open, quit SDL_ttf for now.
-		TTF_Quit();
     }
 
 	int Font::getFontsOpen()
@@ -50,20 +46,11 @@ namespace hm
 	void Font::loadFont(std::string file, int ptsize)
 	{
 		// Unload a previous font.
-        std::cout << "Checking for a previously loaded font..." << std::endl;
-		if(font != NULL)
-		{
-            std::cout << "Closing previous font..." << std::endl;
-			TTF_CloseFont(font); // Close the font file.
-			font = NULL;
-			fontsOpen--;
-		}
+		closeFont();
 
 		// Open the font.
-        std::cout << "Opening font..." << std::endl;
 		font = TTF_OpenFont(file.c_str(), ptsize);
 		// Check it.
-        std::cout << "Check opened font..." << std::endl;
 		if(font == NULL)
 			std::cout << "Error, font not loaded." << std::endl;
 		else
@@ -71,10 +58,22 @@ namespace hm
 		return;
 	}
 
+	void Font::closeFont()
+	{
+		if(font != NULL)
+		{
+			TTF_CloseFont(font);
+			font = NULL;
+			fontsOpen--;
+		}
+
+		return;
+	}
+
 	TTF_Font* Font::getFont()
 	{
 		if(font == NULL)
-			std::cout << "WARNING: Font is NULLed." << std::endl;
+			std::cout << "WARNING: Font is NULL." << std::endl;
 		return font;
 	}
 
