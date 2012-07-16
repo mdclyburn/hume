@@ -8,12 +8,23 @@
 
 namespace hm
 {
+	/* Defines the three rendering modes available
+	   to users: solid, shaded and blended. Solid
+	   is the simplest and fastest, shaded takes two colors,
+	   a text color and a background color and takes longer
+	   than solid, but less time than blended. And blended
+	   takes the longest to render out of the three. */
+
     enum RenderMode
     {
         SOLID,
         SHADED,
         BLENDED
     };
+
+	/* Font class defines the basic functionality of a font
+	   such as loading, coloring and rendering mode. Used in
+	   conjunction with the Text class to render text. */
 
 	class Font
 	{
