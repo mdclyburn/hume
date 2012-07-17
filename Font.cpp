@@ -10,6 +10,7 @@ namespace hm
 		// Check the status of SDL_ttf
 		if(TTF_WasInit == 0)
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
+		file = "";
 		font = NULL; // Safety first.
         setColor(0, 0, 0);
         setbColor(0, 0, 0);
@@ -21,6 +22,7 @@ namespace hm
 		// Check the status of SDL_ttf
 		if(TTF_WasInit == 0)
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
+		this->file = file;
         font = NULL; // Safety first.
         loadFont(file, ptsize);
         setColor(0, 0, 0);
@@ -45,6 +47,9 @@ namespace hm
 
 	void Font::loadFont(std::string file, int ptsize)
 	{
+		// Set our new font file string.
+		this->file = file;
+
 		// Unload a previous font.
 		closeFont();
 
@@ -52,7 +57,7 @@ namespace hm
 		font = TTF_OpenFont(file.c_str(), ptsize);
 		// Check it.
 		if(font == NULL)
-			std::cout << "Error, font not loaded." << std::endl;
+			std::cout << "Could not load " << file << std::endl;
 		else
 			fontsOpen++; // Add to the amount of fonts open.
 		return;
@@ -102,6 +107,12 @@ namespace hm
     {
         return bcolor;
     }
+
+	void Font::setSize(int size)
+	{
+		loadFont(file, size);
+		return;
+	}
 
     void Font::setRenderMode(RenderMode rm)
     {

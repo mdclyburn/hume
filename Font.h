@@ -44,11 +44,14 @@ namespace hm
         void setbColor(Uint8 r, Uint8 g, Uint8 b); // Set the bcolor.
         SDL_Color getbColor(); // Get the bcolor.
 
+		void setSize(int size); // Resizes the font.
+
         void setRenderMode(RenderMode rm); // Set the mode to render text in.
         RenderMode getRenderMode(); // Get the mode to render text in.
 
 	private:
 		static int fontsOpen; // The amount of opened fonts.
+		std::string file; // Where the last font opened is located.
 		TTF_Font* font; // The font object.
         SDL_Color color; // The color of the font.
         SDL_Color bcolor; // The bg color of the font (shaded).

@@ -21,13 +21,15 @@ namespace hm
 		virtual void run() = 0; // Starts the game.
 
 		// +++++ FRAME RATE FUNCTIONS +++++
-		void setFrameRateCap(bool b); // Whether to cap frame rate or not
-		bool getFrameRateCap(); // Gets the frame rate cap bool.
+		void setCapFrameRate(bool b); // Whether to cap frame rate or not
+		bool frameRateIsCapped(); // Gets the frame rate cap bool.
 		void setFrameRate(int i); // Set the frame rate.
 		float getMaxFrameTime(); // Gets the highest possible frame time.
 		float getCappedFrameTime(); // Gets the capped frame time.
 		float getMaxFrameRate(); // Gets the highest possible frame rate.
 		float getCappedFrameRate(); // Gets the capped frame rate.
+		float getFrameRate(); // Gets the frame rate, whether it's capped or uncapped.
+		// ++++++++++++++++++++++++++++++++
 
 	protected:
         bool running; // Whether the game is running or not.

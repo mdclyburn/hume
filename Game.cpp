@@ -29,13 +29,13 @@ namespace hm
 		window = NULL;
 	}
 
-	void Game::setFrameRateCap(bool b)
+	void Game::setCapFrameRate(bool b)
 	{
 		capFrameRate = b;
 		return;
 	}
 
-	bool Game::getFrameRateCap()
+	bool Game::frameRateIsCapped()
 	{
 		return capFrameRate;
 	}
@@ -58,12 +58,22 @@ namespace hm
 
 	float Game::getMaxFrameRate()
 	{
+		// Frame Rate = 1000ms / Time Spent per Frame
 		return 1000 / maxFrameTime;
 	}
 
 	float Game::getCappedFrameRate()
 	{
+		// Frame Rate = 1000ms / Time Spent per Frame
 		return 1000 / cappedFrameTime;
+	}
+
+	float Game::getFrameRate()
+	{
+		if(frameRateIsCapped())
+			return 1000 / cappedFrameTime;
+		else
+			return 1000 / maxFrameTime;
 	}
 
     void Game::loop()
@@ -76,9 +86,9 @@ namespace hm
             display();
 
 			// Record the faster time.
-			//frameTimer.pause();
+			frameTimer.pause();
 			maxFrameTime = (float)(maxFrameTime * .95 + frameTimer.getTime() * .05);
-			//frameTimer.unpause();
+			frameTimer.unpause();
 
 			// Record the capped time.
 			if(capFrameRate && frameTimer.getTime() < 1000 / framerate)
