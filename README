@@ -1,10 +1,10 @@
-Hume Multimedia Library
+Hume Game Library
 ----------------------
 
-Project aim is to create a complete library of
-commonly used objects such as images, sound and
-text strings. Uses Simple DirectMedia Layer for
-low-level hardware access and cross-platform
-compatibility.
+The Hume Game Library is a collection of commonly used classes seen in 
+game programming. It provides a means of lessening the time spent on 
+programming in order speed up the creation of great 2D games. It is 
+written in C++ for performance using Simple DirectMedia Layer (SDL) for 
+cross-platform compatibility.
 
 Email me at clyburnm@me.com or mardev2013@gmail.com
