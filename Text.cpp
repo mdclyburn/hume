@@ -73,6 +73,8 @@ namespace hm
 
     void Text::optimize()
     {
+		if(sdltext == NULL)
+			return;
         SDL_Surface* unoptimizedText = sdltext;
         sdltext = SDL_DisplayFormat(unoptimizedText);
         SDL_FreeSurface(unoptimizedText);

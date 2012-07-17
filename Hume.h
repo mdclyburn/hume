@@ -7,6 +7,7 @@
 #include "Sprite.h"
 #include "StateManager.h"
 #include "Text.h"
+#include "Timer.h"
 #include "Window.h"
 
 #endif

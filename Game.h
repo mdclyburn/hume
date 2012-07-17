@@ -1,9 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <SDL/SDL.h>
 #include "Window.h"
 #include "StateManager.h"
+#include "Timer.h"
 #include <string>
+#include <iostream>
 
 namespace hm
 {
@@ -17,8 +20,26 @@ namespace hm
 
 		virtual void run() = 0; // Starts the game.
 
+		// +++++ FRAME RATE FUNCTIONS +++++
+		void setFrameRateCap(bool b); // Whether to cap frame rate or not
+		bool getFrameRateCap(); // Gets the frame rate cap bool.
+		void setFrameRate(int i); // Set the frame rate.
+		float getMaxFrameTime(); // Gets the highest possible frame time.
+		float getCappedFrameTime(); // Gets the capped frame time.
+		float getMaxFrameRate(); // Gets the highest possible frame rate.
+		float getCappedFrameRate(); // Gets the capped frame rate.
+
 	protected:
         bool running; // Whether the game is running or not.
+
+		SDL_Event e; // SDL's event structure.
+
+		bool capFrameRate; // Whether to cap the game's frame rate.
+		int framerate; // Frames to show in a second.
+		Timer frameTimer; // Timer to handle frame rates.
+		float maxFrameTime; // The average highest frame time capable.
+		float cappedFrameTime; // The average frame time performed at.
+
 		Window* window; // The game window.
 		StateManager* manager; // Maintains the states.
 
