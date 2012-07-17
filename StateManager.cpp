@@ -14,6 +14,11 @@ namespace hm
 		this->window = window;
 	}
 
+	StateManager::~StateManager()
+	{
+
+	}
+
 	void StateManager::startState()
 	{
 		if(!stack.empty())

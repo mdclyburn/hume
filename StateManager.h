@@ -9,6 +9,7 @@ namespace hm
 		public:
 			StateManager(); // Basic constructor.
 			StateManager(Window* window); // Constructor sets window to use.
+			~StateManager(); // Destructor
 
 			void startState(); // Starts the state on the top of the stack.
 			void stopState(); // Stops the state on the top of the stack.

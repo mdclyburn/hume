@@ -16,6 +16,7 @@ namespace hm
 		Window(); // Default constructor sets dimensions to 640x480x32
 		Window(int w, int h, int bpp = 32); // Constructor with custom dimensions.
 		Window(std::string title, int w, int h, int bpp = 32); // Constructor with custom dimensions and title.
+		~Window(); // Destructor
 
         bool getStatus(); // Returns true if the window isn't null. False otherwise.
 

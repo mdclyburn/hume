@@ -22,6 +22,11 @@ namespace hm
 		resetClearColor();
 	}
 
+	Window::~Window()
+	{
+		// Nothing to do here.
+	}
+
     bool Window::getStatus()
     {
         return (screen != NULL);

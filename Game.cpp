@@ -24,7 +24,9 @@ namespace hm
 	Game::~Game()
 	{
 		delete manager;
+		manager = NULL;
 		delete window;
+		window = NULL;
 	}
 
 	void Game::setFrameRateCap(bool b)
