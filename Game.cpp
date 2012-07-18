@@ -94,7 +94,7 @@ namespace hm
 			if(capFrameRate && frameTimer.getTime() < 1000 / framerate)
 			{
 				SDL_Delay((Uint32)(1000 / framerate - frameTimer.getTime()));
-				cappedFrameTime = (float)((cappedFrameTime * .95 + frameTimer.getTime() * .05));
+				cappedFrameTime = (float)((cappedFrameTime * .995 + frameTimer.getTime() * .005));
 			}
         }
 
