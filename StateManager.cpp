@@ -72,6 +72,9 @@ namespace hm
 
 	void StateManager::popState()
 	{
+		// Clean up.
+		stack.back()->cleanup();
+
 		// Take it off the stack.
 		stack.pop_back();
 		resumeState();

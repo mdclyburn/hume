@@ -32,12 +32,7 @@ namespace hm
 
     Font::~Font()
     {
-        if(font != NULL)
-		{
-			TTF_CloseFont(font);
-			font = NULL;
-			fontsOpen--;
-        }
+        closeFont();
     }
 
 	int Font::getFontsOpen()

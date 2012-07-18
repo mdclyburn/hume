@@ -2,17 +2,13 @@
 
 namespace hm
 {
-	Text::Text()
+	Text::Text() : text("Hume Library"), sdltext(NULL)
 	{
-        text = "Hume Library";
-        sdltext = NULL;
         setPosition(0, 0);
 	}
 
-	Text::Text(std::string text, Font& font)
+	Text::Text(std::string text, Font& font) : text(text), sdltext(NULL)
 	{
-		this->text = text;
-        sdltext = NULL;
         setText(text, font);
         setPosition(0, 0);
 	}
