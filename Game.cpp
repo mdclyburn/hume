@@ -87,7 +87,7 @@ namespace hm
 
 			// Record the faster time.
 			frameTimer.pause();
-			maxFrameTime = (float)(maxFrameTime * .95 + frameTimer.getTime() * .05);
+			maxFrameTime = (float)(maxFrameTime * .995 + frameTimer.getTime() * .005);
 			frameTimer.unpause();
 
 			// Record the capped time.

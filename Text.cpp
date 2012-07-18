@@ -38,6 +38,9 @@ namespace hm
 			return;
         }
 
+		// Free the previous surface.
+		SDL_FreeSurface(sdltext);
+
 		RenderMode rm = font.getRenderMode();
         if(rm == SOLID)
             sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), font.getColor());
