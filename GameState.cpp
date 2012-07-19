@@ -13,4 +13,16 @@ namespace hm
 		this->window = window;
 		return;
     }
-};
+
+	void GameState::setManager(StateManager* manager)
+	{
+		this->manager = manager;
+		return;
+	}
+
+	void GameState::setNext(GameState* next)
+	{
+		this->next = next;
+		return;
+	}
+}

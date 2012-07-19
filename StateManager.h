@@ -1,9 +1,13 @@
+#ifndef STATEMANAGER_H
+#define STATEMANAGER_H
+
 #include "GameState.h"
 #include "Window.h"
 #include <vector>
 
 namespace hm
 {
+	class GameState;
 	class StateManager // Handles the switching of states.
 	{
 		public:
@@ -27,3 +31,5 @@ namespace hm
 			Window* window; // The game's window.
 	};
 };
+
+#endif

@@ -62,9 +62,11 @@ namespace hm
 	{
 		// Send the pause command to the current state.
 		pauseState();
+
+		//Set up the next state.
 		stack.push_back(&gs);
         stack.back()->setWindow(window);
-		// Initialize the new state.
+		stack.back()->setManager(this);
 		if(!stack.back()->init())
 			std::cout << "Something's up with the initialization..." << std::endl;
 		return;
@@ -101,6 +103,12 @@ namespace hm
 	{
 		while(!stack.empty())
 		{
+			if(stack.back() == NULL)
+			{
+				stack.pop_back();
+				continue;
+			}
+
 			stack.back()->cleanup();
 			stack.pop_back();
 		}
