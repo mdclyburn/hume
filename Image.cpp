@@ -19,6 +19,9 @@ namespace hm
 
 	void Image::loadImage(std::string filename)
 	{
+		// Unload a previous image.
+		deleteImage();
+
 		image = IMG_Load(filename.c_str());
 		
 		// Check if it was loaded.
