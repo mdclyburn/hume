@@ -10,6 +10,8 @@
 
 namespace hm
 {
+	class StateManager;
+
 	class Game // Defines the basic structure of a typical game.
 	{
 	public:
@@ -30,6 +32,8 @@ namespace hm
 		float getCappedFrameRate(); // Gets the capped frame rate.
 		float getFrameRate(); // Gets the frame rate, whether it's capped or uncapped.
 		// ++++++++++++++++++++++++++++++++
+
+		StateManager* getStateManager(); // Returns pointer to the StateManager object 'manager'.
 
 	protected:
         bool running; // Whether the game is running or not.

@@ -6,19 +6,19 @@ namespace hm
 	{
 		// Set up our members.
 		window = new Window("No Title", 640, 480);
-		manager = new StateManager(window);
+		manager = new StateManager(this, window);
 	}
 
 	Game::Game(std::string title) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0)
 	{
 		window = new Window(title, 640, 480);
-		manager = new StateManager(window);
+		manager = new StateManager(this, window);
 	}
 
 	Game::Game(std::string title, int width, int height, int bpp) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0)
 	{
 		window = new Window(title, width, height, bpp);
-		manager = new StateManager(window);
+		manager = new StateManager(this, window);
 	}
 
 	Game::~Game()
@@ -74,6 +74,11 @@ namespace hm
 			return 1000 / cappedFrameTime;
 		else
 			return 1000 / maxFrameTime;
+	}
+
+	StateManager* Game::getStateManager()
+	{
+		return manager;
 	}
 
     void Game::loop()

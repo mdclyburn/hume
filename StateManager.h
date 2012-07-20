@@ -1,18 +1,21 @@
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
+#include "Game.h"
 #include "GameState.h"
 #include "Window.h"
 #include <vector>
 
 namespace hm
 {
+	class Game;
 	class GameState;
+
 	class StateManager // Handles the switching of states.
 	{
 		public:
 			StateManager(); // Basic constructor.
-			StateManager(Window* window); // Constructor sets window to use.
+			StateManager(Game* game, Window* window); // Constructor sets window to use.
 			~StateManager(); // Destructor
 
 			void startState(); // Starts the state on the top of the stack.
@@ -28,6 +31,7 @@ namespace hm
 			void popAll(); // Removes all states. Takes care of cleanup.
 		private:
 			std::vector<GameState*> stack; // Stack of states currently in use.
+			Game* game; // The game whose states the StateManager manages.
 			Window* window; // The game's window.
 	};
 };

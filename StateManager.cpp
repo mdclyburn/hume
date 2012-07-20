@@ -4,19 +4,22 @@ namespace hm
 {
 	StateManager::StateManager()
 	{
-		// Null our window pointer.
+		// Null our pointers.
+		game = NULL;
 		window = NULL;
 	}
 
-	StateManager::StateManager(Window* window)
+	StateManager::StateManager(Game* game, Window* window)
 	{
-		// Set our window.
+		// Set our game and window.
+		this->game = game;
 		this->window = window;
 	}
 
 	StateManager::~StateManager()
 	{
-
+		game = NULL;
+		window = NULL;
 	}
 
 	void StateManager::startState()
@@ -65,8 +68,8 @@ namespace hm
 
 		//Set up the next state.
 		stack.push_back(&gs);
+		stack.back()->setGame(game);
         stack.back()->setWindow(window);
-		stack.back()->setManager(this);
 		if(!stack.back()->init())
 			std::cout << "Something's up with the initialization..." << std::endl;
 		return;

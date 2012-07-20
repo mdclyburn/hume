@@ -8,21 +8,15 @@ namespace hm
         clean = false;
 	}
 
+	void GameState::setGame(Game* game)
+	{
+		this->game = game;
+		return;
+	}
+
 	void GameState::setWindow(Window* window)
 	{
 		this->window = window;
 		return;
     }
-
-	void GameState::setManager(StateManager* manager)
-	{
-		this->manager = manager;
-		return;
-	}
-
-	void GameState::setNext(GameState* next)
-	{
-		this->next = next;
-		return;
-	}
 }
