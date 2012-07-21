@@ -4,10 +4,6 @@ namespace hm
 {
 	Sprite::Sprite()
 	{
-		image = NULL; // Safety.
-
-		position.x = 0; // Default position.
-		position.y = 0;
 		selectSprite(0, 0); // Default sprite.
 		setSpriteSize(0, 0); // Default sprite size.
 	}
@@ -16,8 +12,6 @@ namespace hm
 	{
 		loadImage(filename);
 
-		position.x = 0; // Default position.
-		position.y = 0;
 		selectSprite(0, 0); // Default sprite.
 		setSpriteSize(0, 0); // Default sprite size.
 	}
@@ -26,8 +20,6 @@ namespace hm
 	{
 		loadImage(filename);
 
-		position.x = 0; // Default position.
-		position.y = 0;
 		selectSprite(0, 0); // Default sprite.
 		setSpriteSize(spriteWidth, spriteHeight); // Set exact sprite size.
 		recalc();

@@ -1,6 +1,7 @@
 #ifndef TEXT_H
 #define TEXT_H
 
+#include "Blittable.h"
 #include <SDL/SDL.h>
 #include "Font.h"
 #include <string>
@@ -8,7 +9,7 @@
 
 namespace hm
 {
-	class Text
+	class Text : public Blittable
     {
 	public:
 		Text(); // Basic ctor with default text.
@@ -23,17 +24,8 @@ namespace hm
 		void setPosition(int x, int y); // Sets the x and y coordinates.
         SDL_Rect* getPosition(); // Returns the position.
 
-		void setAlpha(int alpha); // Set the alpha value.
-		int getAlpha(); // Return alpha value.
-
 	private:
-		int alpha; // The alpha value of the text.
-		std::string text;
-		SDL_Surface* sdltext;
-
-        SDL_Rect position; // The position of the text.
-
-        void optimize(); // Optimize the sdltext.
+		std::string text; // The text the surface contains.
 	};
 }
 

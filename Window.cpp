@@ -32,28 +32,20 @@ namespace hm
         return (screen != NULL);
     }
 
-	void Window::draw(Image& i)
+	void Window::draw(Blittable& b)
 	{
 		clear();
-		SDL_BlitSurface(i.getImage(), NULL, screen, i.getPosition());
-		needRefresh = true; // Needs to be flipped.
+		SDL_BlitSurface(b.getSurface(), NULL, screen, b.getPosition());
+		needRefresh = true;
 		return;
 	}
 
 	void Window::draw(Sprite& s)
 	{
+		// Drawing for sprites is specially handled.
 		clear();
-		SDL_BlitSurface(s.getImage(), s.getSpriteClip(), screen, s.getPosition());
+		SDL_BlitSurface(s.getSurface(), s.getSpriteClip(), screen, s.getPosition());
 		needRefresh = true; // Needs to be flipped.
-		return;
-	}
-
-	void Window::draw(Text &t)
-    {
-		clear();
-		SDL_BlitSurface(t.getSurface(), NULL, screen, t.getPosition());
-		needRefresh = true;
-
 		return;
 	}
 	

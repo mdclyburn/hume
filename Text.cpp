@@ -2,29 +2,24 @@
 
 namespace hm
 {
-	Text::Text() : text("Hume Library"), sdltext(NULL), alpha(255)
+	Text::Text() : text("Hume Library")
 	{
-        setPosition(0, 0);
+        
 	}
 
-	Text::Text(std::string text, Font& font) : text(text), sdltext(NULL), alpha(255)
+	Text::Text(std::string text, Font& font) : text(text)
 	{
         setText(text, font);
-        setPosition(0, 0);
 	}
 
     Text::~Text()
     {
-        if(sdltext != NULL)
-        {
-            SDL_FreeSurface(sdltext);
-            sdltext = NULL;
-        }
+        
     }
 
 	SDL_Surface* Text::getSurface()
     {
-		return sdltext;
+		return surface;
 	}
 
 	void Text::setText(std::string text, Font& font)
@@ -39,15 +34,15 @@ namespace hm
         }
 
 		// Free the previous surface.
-		SDL_FreeSurface(sdltext);
+		SDL_FreeSurface(surface);
 
 		RenderMode rm = font.getRenderMode();
         if(rm == SOLID)
-            sdltext = TTF_RenderText_Solid(font.getFont(), text.c_str(), font.getColor());
+            surface = TTF_RenderText_Solid(font.getFont(), text.c_str(), font.getColor());
         if(rm == SHADED)
-            sdltext = TTF_RenderText_Shaded(font.getFont(), text.c_str(), font.getColor(), font.getbColor());
+            surface = TTF_RenderText_Shaded(font.getFont(), text.c_str(), font.getColor(), font.getbColor());
         if(rm == BLENDED)
-			sdltext = TTF_RenderText_Blended(font.getFont(), text.c_str(), font.getColor());
+			surface = TTF_RenderText_Blended(font.getFont(), text.c_str(), font.getColor());
         optimize();
 
 		return;
@@ -69,33 +64,4 @@ namespace hm
     {
 		return &position;
 	}
-
-	void Text::setAlpha(int alpha)
-	{
-		if(alpha > 255)
-			alpha = 255;
-		if(alpha < 0)
-			alpha = 0;
-		else
-			this->alpha = alpha;
-		SDL_SetAlpha(sdltext, SDL_SRCALPHA, alpha);
-
-		return;
-	}
-
-	int Text::getAlpha()
-	{
-		return alpha;
-	}
-
-    void Text::optimize()
-    {
-		if(sdltext == NULL)
-			return;
-        SDL_Surface* unoptimizedText = sdltext;
-        sdltext = SDL_DisplayFormat(unoptimizedText);
-        SDL_FreeSurface(unoptimizedText);
-
-        return;
-    }
 }
