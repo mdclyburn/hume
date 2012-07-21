@@ -6,6 +6,13 @@
 
 namespace hm
 {
+	enum ALPHA
+	{
+		TRANSPARENT = 0,
+		TRANSLUCENT = 127,
+		OPAQUE = 255
+	};
+
 	class Blittable
 	{
 	public:
