@@ -23,7 +23,11 @@ namespace hm
 		void setPosition(int x, int y); // Sets the x and y coordinates.
         SDL_Rect* getPosition(); // Returns the position.
 
+		void setAlpha(int alpha); // Set the alpha value.
+		int getAlpha(); // Return alpha value.
+
 	private:
+		int alpha; // The alpha value of the text.
 		std::string text;
 		SDL_Surface* sdltext;
 

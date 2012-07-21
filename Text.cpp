@@ -2,12 +2,12 @@
 
 namespace hm
 {
-	Text::Text() : text("Hume Library"), sdltext(NULL)
+	Text::Text() : text("Hume Library"), sdltext(NULL), alpha(255)
 	{
         setPosition(0, 0);
 	}
 
-	Text::Text(std::string text, Font& font) : text(text), sdltext(NULL)
+	Text::Text(std::string text, Font& font) : text(text), sdltext(NULL), alpha(255)
 	{
         setText(text, font);
         setPosition(0, 0);
@@ -68,6 +68,24 @@ namespace hm
 	SDL_Rect* Text::getPosition()
     {
 		return &position;
+	}
+
+	void Text::setAlpha(int alpha)
+	{
+		if(alpha > 255)
+			alpha = 255;
+		if(alpha < 0)
+			alpha = 0;
+		else
+			this->alpha = alpha;
+		SDL_SetAlpha(sdltext, SDL_SRCALPHA, alpha);
+
+		return;
+	}
+
+	int Text::getAlpha()
+	{
+		return alpha;
 	}
 
     void Text::optimize()
