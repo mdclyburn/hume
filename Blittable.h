@@ -29,11 +29,11 @@ namespace hm
 		void setx(int x); // Sets the x position of the Blittable.
 		void sety(int y); // Sets the y position of the Blittable.
 
-		void setAlpha(Uint8 alpha); // Sets the alpha value.
-		Uint8 getAlpha(); // Returns the alpha value of the Blittable.
+		void setAlpha(int alphaValue); // Sets the alpha value.
+		int getAlpha(); // Returns the alpha value of the Blittable.
 
 	protected:
-		Uint8 alpha;
+		int alpha;
 		SDL_Surface* surface;
 		SDL_Rect position;
 

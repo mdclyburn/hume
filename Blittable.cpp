@@ -61,20 +61,19 @@ namespace hm
 		return;
 	}
 
-	void Blittable::setAlpha(Uint8 alpha)
+	void Blittable::setAlpha(int alphaValue)
 	{
-		if(alpha > 255)
-			alpha = 255;
-		if(alpha < 0)
-			alpha = 0;
-		else
-			this->alpha = alpha;
+		if(alphaValue > 255)
+			alphaValue = 255;
+		else if(alphaValue < 0)
+			alphaValue = 0;
+		alpha = alphaValue;
 		SDL_SetAlpha(surface, SDL_SRCALPHA, alpha);
 
 		return;
 	}
 
-	Uint8 Blittable::getAlpha()
+	int Blittable::getAlpha()
 	{
 		return alpha;
 	}

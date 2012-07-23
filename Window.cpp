@@ -101,4 +101,18 @@ namespace hm
 
 		return;
 	}
+
+	// Centers the given Blittable on the X-Axis in the given window.
+	void centerx(Blittable& b, Window& w)
+	{
+		b.getPosition()->x = w.screen->w / 2 - b.getSurface()->w / 2;
+		return;
+	}
+
+	// Centers the given Blittable on the Y-Axis in the given window.
+	void centery(Blittable& b, Window& w)
+	{
+		b.getPosition()->y = w.screen->h / 2 - b.getSurface()->h / 2;
+		return;
+	}
 }
