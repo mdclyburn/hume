@@ -33,6 +33,8 @@ namespace hm
 		bool needRefresh; // If the window needs to refresh.
 		Uint32 clearColor; // The color to clear the window with.
 		SDL_Surface* screen; // The actual surface we flip.
+
+		friend void center(Blittable& b, Window& w);
 	};
 };
 

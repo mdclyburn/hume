@@ -92,4 +92,13 @@ namespace hm
 
 		return;
 	}
+
+	// Centers the given Blittable in the given Window.
+	void center(Blittable& b, Window& w)
+	{
+		b.getPosition()->x = w.screen->w / 2 - b.getSurface()->w / 2;
+		b.getPosition()->y = w.screen->h / 2 - b.getSurface()->h / 2;
+
+		return;
+	}
 }
