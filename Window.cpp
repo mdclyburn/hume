@@ -34,6 +34,9 @@ namespace hm
 
 	void Window::draw(Blittable& b)
 	{
+		// Don't draw if transparent. Waste of resources.
+		if(b.getAlpha() == TRANSPARENT)
+			return;
 		clear();
 		SDL_BlitSurface(b.getSurface(), NULL, screen, b.getPosition());
 		needRefresh = true;
@@ -43,6 +46,9 @@ namespace hm
 	void Window::draw(Sprite& s)
 	{
 		// Drawing for sprites is specially handled.
+		// Don't draw if transparent. Wast of resources.
+		if(s.getAlpha() == TRANSPARENT)
+			return;
 		clear();
 		SDL_BlitSurface(s.getSurface(), s.getSpriteClip(), screen, s.getPosition());
 		needRefresh = true; // Needs to be flipped.
