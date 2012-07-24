@@ -2,13 +2,26 @@
 
 namespace hm
 {
-	Text::Text() : text("Hume Library")
+	Text::Text() : text("Hume Library"), font(NULL)
 	{
-        
+		// Set color without calling setColor functions.
+        color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		bcolor.r = 0;
+		bcolor.g = 0;
+		bcolor.b = 0;
 	}
 
-	Text::Text(std::string text, Font& font) : text(text)
+	Text::Text(std::string text, Font* font) : text(text), font(font)
 	{
+		color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		bcolor.r = 255;
+		bcolor.g = 255;
+		bcolor.b = 255;
+
         setText(text, font);
 	}
 
@@ -22,12 +35,20 @@ namespace hm
 		return surface;
 	}
 
-	void Text::setText(std::string text, Font& font)
+	void Text::setFont(Font* font)
+	{
+		this->font = font;
+		setText(text, font);
+		return;
+	}
+
+	void Text::setText(std::string text, Font* font)
 	{
 		this->text = text;
+		this->font = font;
 
 		// Check for font.
-		if(font.getFont() == NULL)
+		if(font->getFont() == NULL)
 		{
 			std::cout << "Can't set text. Font is NULL." << std::endl;
 			return;
@@ -36,13 +57,13 @@ namespace hm
 		// Free the previous surface.
 		SDL_FreeSurface(surface);
 
-		RenderMode rm = font.getRenderMode();
+		RenderMode rm = font->getRenderMode();
         if(rm == SOLID)
-            surface = TTF_RenderText_Solid(font.getFont(), text.c_str(), font.getColor());
+            surface = TTF_RenderText_Solid(font->getFont(), text.c_str(), color);
         if(rm == SHADED)
-            surface = TTF_RenderText_Shaded(font.getFont(), text.c_str(), font.getColor(), font.getbColor());
+            surface = TTF_RenderText_Shaded(font->getFont(), text.c_str(), color, bcolor);
         if(rm == BLENDED)
-			surface = TTF_RenderText_Blended(font.getFont(), text.c_str(), font.getColor());
+			surface = TTF_RenderText_Blended(font->getFont(), text.c_str(), color);
         optimize();
 
 		return;
@@ -53,15 +74,33 @@ namespace hm
 		return text;
     }
 
-    void Text::setPosition(int x, int y)
-    {
-        position.x = x;
-        position.y = y;
-        return;
-    }
+	void Text::setColor(Uint8 r, Uint8 g, Uint8 b)
+	{
+		color.r = r;
+		color.g = g;
+		color.b = b;
+		setText(text, font);
 
-	SDL_Rect* Text::getPosition()
-    {
-		return &position;
+		return;
+	}
+
+	void Text::setbColor(Uint8 r, Uint8 g, Uint8 b)
+	{
+		bcolor.r = r;
+		bcolor.g = g;
+		bcolor.b = b;
+		setText(text, font);
+
+		return;
+	}
+
+	SDL_Color Text::getColor()
+	{
+		return color;
+	}
+
+	SDL_Color Text::getbColor()
+	{
+		return bcolor;
 	}
 }

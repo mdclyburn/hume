@@ -12,8 +12,6 @@ namespace hm
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
 		file = "";
 		font = NULL; // Safety first.
-        setColor(0, 0, 0);
-        setbColor(0, 0, 0);
         rm = SOLID;
 	}
 
@@ -25,8 +23,6 @@ namespace hm
 		this->file = file;
         font = NULL; // Safety first.
         loadFont(file, ptsize);
-        setColor(0, 0, 0);
-        setbColor(0, 0, 0);
         rm = SOLID;
     }
 
@@ -76,32 +72,6 @@ namespace hm
 			std::cout << "WARNING: Font is NULL." << std::endl;
 		return font;
 	}
-
-    void Font::setColor(Uint8 r, Uint8 g, Uint8 b)
-    {
-        color.r = r;
-        color.g = g;
-        color.b = b;
-        return;
-    }
-
-    SDL_Color Font::getColor()
-    {
-        return color;
-    }
-
-    void Font::setbColor(Uint8 r, Uint8 g, Uint8 b)
-    {
-        bcolor.r = r;
-        bcolor.g = g;
-        bcolor.b = b;
-        return;
-    }
-
-    SDL_Color Font::getbColor()
-    {
-        return bcolor;
-    }
 
 	void Font::setSize(int size)
 	{
