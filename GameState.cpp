@@ -2,7 +2,7 @@
 
 namespace hm
 {
-	GameState::GameState()
+	GameState::GameState() : initted(false), clean(false)
     {
         initted = false;
         clean = false;
