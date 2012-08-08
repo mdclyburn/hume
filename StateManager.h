@@ -23,6 +23,7 @@ namespace hm
 			void resumeState(); // Restarts the state on the top of the stack.
 			void pauseState(); // Pause the state at the top of the stack.
 
+			bool statePresent(); // Returns whether there is a state on the stack.
 			GameState* getCurrentState(); // Returns a pointer to the current state.
 
 			void pushState(GameState& gs); // Adds a state to the stack.

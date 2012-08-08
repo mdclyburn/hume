@@ -83,6 +83,7 @@ namespace hm
 
     void Game::loop()
     {
+		running = true;
         while(running)
         {
 			frameTimer.start();

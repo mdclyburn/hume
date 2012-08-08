@@ -48,6 +48,11 @@ namespace hm
 		return;
 	}
 
+	bool StateManager::statePresent()
+	{
+		 return !stack.empty();
+	}
+
 	GameState* StateManager::getCurrentState()
 	{
 		if(stack.empty())
