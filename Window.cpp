@@ -100,25 +100,25 @@ namespace hm
 	}
 
 	// Centers the given Blittable in the given Window.
-	void center(Blittable& b, Window& w)
+	void Window::center(Blittable& b)
 	{
-		b.getPosition()->x = w.screen->w / 2 - b.getSurface()->w / 2;
-		b.getPosition()->y = w.screen->h / 2 - b.getSurface()->h / 2;
+		b.getPosition()->x = screen->w / 2 - b.getSurface()->w / 2;
+		b.getPosition()->y = screen->h / 2 - b.getSurface()->h / 2;
 
 		return;
 	}
 
 	// Centers the given Blittable on the X-Axis in the given window.
-	void centerx(Blittable& b, Window& w)
+	void Window::centerx(Blittable& b)
 	{
-		b.getPosition()->x = w.screen->w / 2 - b.getSurface()->w / 2;
+		b.getPosition()->x = screen->w / 2 - b.getSurface()->w / 2;
 		return;
 	}
 
 	// Centers the given Blittable on the Y-Axis in the given window.
-	void centery(Blittable& b, Window& w)
+	void Window::centery(Blittable& b)
 	{
-		b.getPosition()->y = w.screen->h / 2 - b.getSurface()->h / 2;
+		b.getPosition()->y = screen->h / 2 - b.getSurface()->h / 2;
 		return;
 	}
 }

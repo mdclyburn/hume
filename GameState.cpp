@@ -2,10 +2,9 @@
 
 namespace hm
 {
-	GameState::GameState() : initted(false), clean(false)
-    {
-        initted = false;
-        clean = false;
+	GameState::GameState()
+	{
+
 	}
 
 	void GameState::setGame(Game* game)
