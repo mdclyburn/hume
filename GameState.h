@@ -32,8 +32,6 @@ namespace hm
 		protected:
 			Game* game; // Gives access to the game which the state belongs to.
 			Window* window; // Gives access to the drawing window.
-			bool initted; // Whether it has been initialized.
-			bool clean; // Whether cleanup() has been run.	
 	};
 }
 

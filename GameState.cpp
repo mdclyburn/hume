@@ -3,9 +3,8 @@
 namespace hm
 {
 	GameState::GameState()
-    {
-        initted = false;
-        clean = false;
+	{
+
 	}
 
 	void GameState::setGame(Game* game)

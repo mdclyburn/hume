@@ -2,18 +2,12 @@
 
 namespace hm
 {
-	StateManager::StateManager()
+	StateManager::StateManager() : game(NULL), window(NULL)
 	{
-		// Null our pointers.
-		game = NULL;
-		window = NULL;
 	}
 
-	StateManager::StateManager(Game* game, Window* window)
+	StateManager::StateManager(Game* game, Window* window) : game(game), window(window)
 	{
-		// Set our game and window.
-		this->game = game;
-		this->window = window;
 	}
 
 	StateManager::~StateManager()
@@ -52,6 +46,11 @@ namespace hm
 		if(!stack.empty())
 			stack.back()->resume();
 		return;
+	}
+
+	bool StateManager::statePresent()
+	{
+		 return !stack.empty();
 	}
 
 	GameState* StateManager::getCurrentState()

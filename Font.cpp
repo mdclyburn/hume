@@ -5,7 +5,7 @@ int hm::Font::fontsOpen = 0;
 
 namespace hm
 {
-	Font::Font()
+	Font::Font() : font(NULL), rm(SOLID)
 	{
 		// Check the status of SDL_ttf
 		if(TTF_WasInit == 0)
@@ -15,7 +15,7 @@ namespace hm
         rm = SOLID;
 	}
 
-	Font::Font(std::string file, int ptsize)
+	Font::Font(std::string file, int ptsize) : font(NULL), rm(SOLID)
 	{
 		// Check the status of SDL_ttf
 		if(TTF_WasInit == 0)

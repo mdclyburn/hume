@@ -29,17 +29,15 @@ namespace hm
 		void resetClearColor(); // Changes the clear color back to 255, 0, 255.
 		void refresh(); // Updates the screen.
 
+		void center(Blittable& b); // Centers a blittable.
+		void centerx(Blittable& b); // Centers a blittable on the X-Axis.
+		void centery(Blittable& b); // Centers a blittable on the Y-Axis.
+
 	private:
 		bool needRefresh; // If the window needs to refresh.
 		Uint32 clearColor; // The color to clear the window with.
 		SDL_Surface* screen; // The actual surface we flip.
-
-		// +++++ BLITTABLE CENTERING FUNCTIONS +++++
-		friend void center(Blittable& b, Window& w);
-		friend void centerx(Blittable& b, Window& w);
-		friend void centery(Blittable& b, Window& w);
-		// +++++++++++++++++++++++++++++++++++++++++
 	};
-};
+}
 
 #endif
