@@ -41,4 +41,4 @@ namespace hm
 		SDL_SetColorKey(surface, SDL_SRCCOLORKEY, key);
 		return;
 	}
-};
+}
