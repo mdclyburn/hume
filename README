@@ -6,3 +6,13 @@ game programming. It provides a means of lessening the time spent on
 programming in order speed up the creation of great 2D games. It is 
 written in C++ for performance using Simple DirectMedia Layer (SDL) for 
 cross-platform compatibility.
+
+Building the library requires the following packages be installed on 
+your computer:
+
+sdl
+sdl_ttf
+sdl_image
+sdl_mixer
+
+
