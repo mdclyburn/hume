@@ -7,12 +7,16 @@ programming in order speed up the creation of great 2D games. It is
 written in C++ for performance using Simple DirectMedia Layer (SDL) for 
 cross-platform compatibility.
 
-Building the library requires the following packages be installed on 
-your computer:
+Building the library requires the following development libraries to be
+installed on your system:
 
 sdl
 sdl_ttf
 sdl_image
 sdl_mixer
 
-
+If you are running Linux or Mac OS X, there is a build script included to
+automate the process of compiling the code into a static library. If the
+script fails, please double-check that you have the development libraries
+installed on your system. If you still have a problem, feel free to contact
+me by my email.
