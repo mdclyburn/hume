@@ -43,17 +43,17 @@ namespace hm
 		return;
 	}
 
-	void Window::draw(Sprite& s)
-	{
-		// Drawing for sprites is specially handled.
-		// Don't draw if transparent. Wast of resources.
-		if(s.getAlpha() == TRANSPARENT)
-			return;
-		clear();
-		SDL_BlitSurface(s.getSurface(), s.getSpriteClip(), screen, s.getPosition());
-		needRefresh = true; // Needs to be flipped.
-		return;
-	}
+	//void Window::draw(Sprite& s)
+	//{
+	//	// Drawing for sprites is specially handled.
+	//	// Don't draw if transparent. Wast of resources.
+	//	if(s.getAlpha() == TRANSPARENT)
+	//		return;
+	//	clear();
+	//	SDL_BlitSurface(s.getSurface(), s.getSpriteClip(), screen, s.getPosition());
+	//	needRefresh = true; // Needs to be flipped.
+	//	return;
+	//}
 	
 	void Window::clear()
 	{

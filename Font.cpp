@@ -8,7 +8,7 @@ namespace hm
 	Font::Font() : font(NULL), rm(SOLID)
 	{
 		// Check the status of SDL_ttf
-		if(TTF_WasInit == 0)
+		if(TTF_WasInit() == 0)
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
 		file = "";
 		font = NULL; // Safety first.
@@ -18,7 +18,7 @@ namespace hm
 	Font::Font(std::string file, int ptsize) : font(NULL), rm(SOLID)
 	{
 		// Check the status of SDL_ttf
-		if(TTF_WasInit == 0)
+		if(TTF_WasInit() == 0)
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
 		this->file = file;
         font = NULL; // Safety first.
