@@ -2,7 +2,7 @@
 
 namespace hm
 {
-	Timer::Timer() : started(false), paused(false), startTime(0), pauseTime(0)
+	Timer::Timer() : startTime(0), pauseTime(0), started(false), paused(false)
 	{
 		// Initialize values.
 	}

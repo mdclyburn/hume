@@ -2,7 +2,7 @@
 
 namespace hm
 {
-	Blittable::Blittable() : surface(NULL), alpha(255)
+	Blittable::Blittable() : alpha(255), surface(NULL)
 	{
 		setPosition(0, 0);
 	}

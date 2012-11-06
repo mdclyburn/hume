@@ -2,7 +2,7 @@
 
 namespace hm
 {
-	Text::Text() : text("Hume Library"), font(NULL)
+	Text::Text() : font(NULL), text("Hume Library")
 	{
 		// Set color without calling setColor functions.
         color.r = 255;
@@ -13,7 +13,7 @@ namespace hm
 		bcolor.b = 0;
 	}
 
-	Text::Text(std::string text, Font* font) : text(text), font(font)
+	Text::Text(std::string text, Font* font) : font(font), text(text)
 	{
 		color.r = 255;
 		color.g = 255;
