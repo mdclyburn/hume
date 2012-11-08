@@ -48,7 +48,7 @@ namespace hm
 		return;
 	}
 
-	bool StateManager::statePresent()
+	bool StateManager::hasState()
 	{
 		 return !stack.empty();
 	}
