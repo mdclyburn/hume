@@ -84,7 +84,7 @@ namespace hm
     void Game::loop()
     {
 		running = true;
-        while(running)
+        while(running && manager->getCurrentState() != NULL)
         {
 			frameTimer.start();
             processInput();
