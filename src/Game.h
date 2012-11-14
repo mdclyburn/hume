@@ -4,6 +4,7 @@
 #include <SDL/SDL.h>
 #include "Window.h"
 #include "StateManager.h"
+#include "Logger.h"
 #include "Timer.h"
 #include <string>
 #include <iostream>
@@ -48,6 +49,7 @@ namespace hm
 
 		Window* window; // The game window.
 		StateManager* manager; // Maintains the states.
+		Logger* logger; // Logs messages from the system.
 
         virtual bool init() = 0; // Initialization of the game.
         virtual void processInput() = 0; // Process input for the game.
