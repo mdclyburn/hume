@@ -35,7 +35,7 @@ namespace hm
 		return;
 	}
 
-	void Logger::log(LogLevel level, std::string msg)
+	void Logger::log(std::string msg, LogLevel level)
 	{
 		if(level > this->level)
 			return;

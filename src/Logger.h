@@ -29,7 +29,7 @@ namespace hm
 
 			LogLevel& getLogLevel();
 			void setLogLevel(LogLevel level);
-			void log(LogLevel level, std::string msg);
+			void log(std::string msg, LogLevel level = INFO);
 		private:
 			void writeOut();
 			std::ostringstream oss;

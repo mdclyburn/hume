@@ -34,6 +34,8 @@ namespace hm
 		float getFrameRate(); // Gets the frame rate, whether it's capped or uncapped.
 		// ++++++++++++++++++++++++++++++++
 
+		void log(std::string msg, LogLevel level = INFO); // Writes out a log message to the Logger object.
+
 		StateManager* getStateManager(); // Returns pointer to the StateManager object 'manager'.
 
 	protected:

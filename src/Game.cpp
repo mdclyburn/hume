@@ -81,6 +81,11 @@ namespace hm
 			return 1000 / maxFrameTime;
 	}
 
+	void Game::log(std::string msg, LogLevel level)
+	{
+		logger->log(msg, level);
+	}
+
 	StateManager* Game::getStateManager()
 	{
 		return manager;
