@@ -90,6 +90,7 @@ namespace hm
 		// Check that it's not empty
 		if(!stack.empty())
 		{
+			stack.back()->cleanup();
 			stack.pop_back();
 			pushState(gs);
 		}
