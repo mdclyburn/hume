@@ -9,7 +9,7 @@
 
 namespace hm
 {
-	Logger::Logger() : level(ERROR)
+	Logger::Logger() : level(INFO)
 	{
 
 	}
@@ -37,7 +37,7 @@ namespace hm
 
 	void Logger::log(std::string msg, LogLevel level)
 	{
-		if(level > this->level)
+		if(this->level < level)
 			return;
 
 		switch(level)
@@ -53,12 +53,6 @@ namespace hm
 				break;
 			case DEBUG:
 				oss << "DEBUG:\t";
-				break;
-			case DEBUGM:
-				oss << "DEBUGM:\t";
-				break;
-			case DEBUGH:
-				oss << "DEBUGH:\t";
 				break;
 			default:
 				oss << "UNID'd:\t";
