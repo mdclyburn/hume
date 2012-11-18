@@ -25,6 +25,8 @@ namespace hm
 			optimize(); // If it was, optimize it
 			colorKey(); // and color key it.
 		}
+		else
+			std::cout << "Could not open " << filename << std::endl;
 
 		return;
 	}
