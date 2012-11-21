@@ -86,6 +86,15 @@ namespace hm
 		logger->log(msg, level);
 	}
 
+	void Game::quit()
+	{
+		if(running)
+			running = false;
+		else
+			std::cout << "Game is not running. quit() has no effect." << std::endl;
+		return;
+	}
+
 	StateManager* Game::getStateManager()
 	{
 		return manager;

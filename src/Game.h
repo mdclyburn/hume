@@ -36,6 +36,8 @@ namespace hm
 
 		void log(std::string msg, LogLevel level = INFO); // Writes out a log message to the Logger object.
 
+		void quit(); // Initiates game cleanup procedure.
+
 		StateManager* getStateManager(); // Returns pointer to the StateManager object 'manager'.
 
 	protected:
