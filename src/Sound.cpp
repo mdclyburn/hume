@@ -16,7 +16,8 @@ namespace hm
 
 	Sound::Sound(std::string file) : sound(NULL)
 	{
-		open(file);
+		if(!open(file))
+			std::cout << "Failed to load " << file << std::endl;
 	}
 
 	Sound::~Sound()
@@ -27,6 +28,8 @@ namespace hm
 
 	void Sound::play()
 	{
+		if(sound == NULL)
+			return;
 		if(Mix_PlayChannel(-1, sound, 0) == -1)
 			std::cout << "Failed to play sound." << std::endl;
 		return;
@@ -35,7 +38,7 @@ namespace hm
 	bool Sound::open(std::string file)
 	{
 		sound = Mix_LoadWAV(file.c_str());
-		if(!sound)
+		if(sound == NULL)
 			return false;
 		return true;
 	}
