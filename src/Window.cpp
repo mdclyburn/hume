@@ -99,6 +99,16 @@ namespace hm
 		return;
 	}
 
+	int Window::getWidth()
+	{
+		return screen->w;
+	}
+
+	int Window::getHeight()
+	{
+		return screen->h;
+	}
+
 	// Centers the given Blittable in the given Window.
 	void Window::center(Blittable& b)
 	{
@@ -119,6 +129,49 @@ namespace hm
 	void Window::centery(Blittable& b)
 	{
 		b.getPosition()->y = screen->h / 2 - b.getSurface()->h / 2;
+		return;
+	}
+
+	void Window::centerxco(Blittable& b, int x)
+	{
+		b.getPosition()->x = x - b.getSurface()->w / 2;
+		return;
+	}
+
+	void Window::centeryco(Blittable& b, int y)
+	{
+		b.getPosition()->y = y - b.getSurface()->h / 2;
+		return;
+	}
+
+	void Window::centerco(Blittable& b, int x, int y)
+	{
+		centerxco(b, x);
+		centeryco(b, y);
+		return;
+	}
+
+	void Window::top(Blittable& b)
+	{
+		b.getPosition()->y = 0;
+		return;
+	}
+
+	void Window::bottom(Blittable& b)
+	{
+		b.getPosition()->y = screen->h - b.getSurface()->h;
+		return;
+	}
+
+	void Window::left(Blittable& b)
+	{
+		b.getPosition()->x = 0;
+		return;
+	}
+
+	void Window::right(Blittable& b)
+	{
+		b.getPosition()->x = screen->w - b.getSurface()->w;
 		return;
 	}
 }

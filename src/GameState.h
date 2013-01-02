@@ -32,6 +32,8 @@ namespace hm
 		protected:
 			Game* game; // Gives access to the game which the state belongs to.
 			Window* window; // Gives access to the drawing window.
+
+			void pop(); // Removes this state from the stack. Shortcut invocation.
 	};
 }
 
