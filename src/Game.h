@@ -61,6 +61,12 @@ namespace hm
         virtual void display() = 0; // Show changes.
         virtual void loop(); // Performs the above three functions in a loop.
         virtual void cleanup() = 0; // Frees resources.
+
+        // SDL Initialization Functions
+        void initSdl(); // Initializes the whole SDL subsystem.
+        void initSdlImage(); // Initializes the sdl_image library.
+        void initSdlMixer(); // Initializes the sdl_mixer library.
+        void initSdlTtf(); // Initializes the sdl_ttf library.
 	};
 }
 
