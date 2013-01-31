@@ -20,6 +20,7 @@ namespace hm
         bool getStatus(); // Returns true if the window isn't null. False otherwise.
 
 		void draw(Blittable& b); // Draws a Blittable object to the window's screen.
+		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.
 		//void draw(Sprite& s); // Draws sprite to screen.
 
 		void clear(); // Blacks out the screen.

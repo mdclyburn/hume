@@ -43,6 +43,18 @@ namespace hm
 		return;
 	}
 
+	void Window::draw(Blittable& b, int x, int y)
+	{
+		// Don't draw if transparent. Waste of resources.
+		if(b.getAlpha() == TRANSPARENT)
+			return;
+		clear();
+		SDL_Rect sdlr;
+		sdlr.x = x;
+		sdlr.y = y;
+		SDL_BlitSurface(b.getSurface(), NULL, screen, &sdlr);
+	}
+
 	//void Window::draw(Sprite& s)
 	//{
 	//	// Drawing for sprites is specially handled.
