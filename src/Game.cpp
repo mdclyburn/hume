@@ -126,4 +126,11 @@ namespace hm
         // Clean up afterwards.
         cleanup();
     }
+
+    void Game::initSdl()
+    {
+        if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
+            logger->log("SDL initialization failed.", hm::ERROR);
+        return;
+    }
 }
