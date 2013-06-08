@@ -127,10 +127,50 @@ namespace hm
         cleanup();
     }
 
-    void Game::initSdl()
-    {
-        if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
-            logger->log("SDL initialization failed.", hm::ERROR);
-        return;
-    }
+	bool Game::initSdl()
+	{
+		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
+		{
+			logger->log("SDL initialization failed.", hm::ERROR);
+			return false;
+		}
+		return true;
+	}
+	
+	bool Game::initSdlImage()
+	{
+		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+		int initted = IMG_Init(flags);
+		if(initted&flags != flags)
+		{
+			logger->log("SDL_image initialization failed.", hm::ERROR);
+			logger->log(IMG_GetError(), hm::DEBUG);
+			return false;
+		}
+		return true;
+	}
+	
+	bool Game::initSdlMixer()
+	{
+		int flags = MIX_INIT_MP3 | MIX_INIT_OGG;
+		int initted = Mix_Init(flags);
+		if(initted&flags != flags);
+		{
+			logger->log("SDL_mixer initialization failed.", hm::ERROR);
+			logger->log(Mix_GetError(), hm::DEBUG);
+			return false;
+		}
+		return true;
+	}
+	
+	bool Game::initSdlTtf()
+	{
+		if(TTF_Init() == -1)
+		{
+			logger->log("SDL_ttf initialization failed.", hm::ERROR);
+			logger->log(TTF_GetError(), hm::DEBUG);
+			return false;
+		}
+		return true;
+	}
 }

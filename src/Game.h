@@ -2,6 +2,9 @@
 #define GAME_H
 
 #include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL_mixer.h>
+#include <SDL/SDL_ttf.h>
 #include "Window.h"
 #include "StateManager.h"
 #include "Logger.h"
@@ -63,10 +66,10 @@ namespace hm
         virtual void cleanup() = 0; // Frees resources.
 
         // SDL Initialization Functions
-        void initSdl(); // Initializes the whole SDL subsystem.
-        void initSdlImage(); // Initializes the sdl_image library.
-        void initSdlMixer(); // Initializes the sdl_mixer library.
-        void initSdlTtf(); // Initializes the sdl_ttf library.
+        bool initSdl(); // Initializes the whole SDL subsystem.
+        bool initSdlImage(); // Initializes the sdl_image library.
+        bool initSdlMixer(); // Initializes the sdl_mixer library.
+        bool initSdlTtf(); // Initializes the sdl_ttf library.
 	};
 }
 
