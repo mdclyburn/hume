@@ -17,7 +17,8 @@ namespace hm
 		Window(std::string title, int w, int h, int bpp = 32); // Constructor with custom dimensions and title.
 		~Window(); // Destructor
 
-        bool getStatus(); // Returns true if the window isn't null. False otherwise.
+		void setTitle(std::string title); // Sets the title of the window.
+        	bool getStatus(); // Returns true if the window isn't null. False otherwise.
 
 		void draw(Blittable& b); // Draws a Blittable object to the window's screen.
 		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.

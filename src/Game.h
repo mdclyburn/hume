@@ -35,6 +35,7 @@ namespace hm
 		float getMaxFrameRate(); // Gets the highest possible frame rate.
 		float getCappedFrameRate(); // Gets the capped frame rate.
 		float getFrameRate(); // Gets the frame rate, whether it's capped or uncapped.
+		void frameRateView(bool b); // Whether to display the frame rate in the title.
 		// ++++++++++++++++++++++++++++++++
 
 		void log(std::string msg, LogLevel level = INFO); // Writes out a log message to the Logger object.
@@ -48,7 +49,9 @@ namespace hm
 
 		SDL_Event e; // SDL's event structure.
 
+		std::string title; // The title of the game.
 		bool capFrameRate; // Whether to cap the game's frame rate.
+		bool displayFrameRate; // Whether to show the frame rate.
 		int framerate; // Frames to show in a second.
 		Timer frameTimer; // Timer to handle frame rates.
 		float maxFrameTime; // The average highest frame time capable.

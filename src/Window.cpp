@@ -27,6 +27,12 @@ namespace hm
 		// Nothing to do here.
 	}
 
+	void Window::setTitle(std::string title)
+	{
+		SDL_WM_SetCaption(title.c_str(), NULL);
+		return;
+	}
+
     bool Window::getStatus()
     {
         return (screen != NULL);

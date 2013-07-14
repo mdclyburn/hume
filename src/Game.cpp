@@ -2,7 +2,7 @@
 
 namespace hm
 {
-	Game::Game() : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0)
+	Game::Game() : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
 		// Set up our members.
 		window = new Window("No Title", 640, 480);
@@ -10,15 +10,17 @@ namespace hm
 		logger = new Logger();
 	}
 
-	Game::Game(std::string title) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0)
+	Game::Game(std::string title) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
+		this->title = title;
 		window = new Window(title, 640, 480);
 		manager = new StateManager(this, window);
 		logger = new Logger();
 	}
 
-	Game::Game(std::string title, int width, int height, int bpp) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0)
+	Game::Game(std::string title, int width, int height, int bpp) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
+		this->title = title;
 		window = new Window(title, width, height, bpp);
 		manager = new StateManager(this, window);
 		logger = new Logger();
@@ -81,6 +83,12 @@ namespace hm
 			return 1000 / maxFrameTime;
 	}
 
+	void Game::frameRateView(bool b)
+	{
+		displayFrameRate = b;
+		return;
+	}
+
 	void Game::log(std::string msg, LogLevel level)
 	{
 		logger->log(msg, level);
@@ -103,6 +111,8 @@ namespace hm
     void Game::loop()
     {
 		running = true;
+	Timer titleDisplayTimer;
+	titleDisplayTimer.start();
         while(running && manager->getCurrentState() != NULL)
         {
 			frameTimer.start();
@@ -120,6 +130,14 @@ namespace hm
 			{
 				SDL_Delay((Uint32)(1000 / framerate - frameTimer.getTime()));
 				cappedFrameTime = (float)((cappedFrameTime * .995 + frameTimer.getTime() * .005));
+
+				if(titleDisplayTimer.getTime() >= 1000 && displayFrameRate)
+				{
+					// Show framerate in title.
+					std::string s = title + " FPS: " + std::to_string(framerate);
+					window->setTitle(s);
+					titleDisplayTimer.reset();
+				}
 			}
         }
 

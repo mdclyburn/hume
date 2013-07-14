@@ -11,7 +11,7 @@ then
 fi
 
 echo "Generating object files..."
-g++ -c *.cpp
+g++ -std=c++11 -c *.cpp
 echo "Object files generated."
 
 echo "Creating library..."
