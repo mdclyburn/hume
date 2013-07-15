@@ -11,17 +11,16 @@ namespace hm
 {
 	Logger::Logger() : level(INFO)
 	{
-
+		initSession();
 	}
 
 	Logger::Logger(LogLevel level) : level(level)
 	{
-
+		initSession();
 	}
 
 	Logger::~Logger()
 	{
-		writeOut();
 	}
 
 	LogLevel& Logger::getLogLevel()
@@ -43,34 +42,33 @@ namespace hm
 		switch(level)
 		{
 			case ERROR:
-				oss << "ERROR:\t";
+				ofs << "ERROR:\t";
 				break;
 			case WARNING:
-				oss << "WARNING:\t";
+				ofs << "WARNING:\t";
 				break;
 			case INFO:
-				oss << "INFO:\t";
+				ofs << "INFO:\t";
 				break;
 			case DEBUG:
-				oss << "DEBUG:\t";
+				ofs << "DEBUG:\t";
 				break;
 			default:
-				oss << "UNID'd:\t";
+				ofs << "UNID'd:\t";
 				break;
 		}
 
-		oss << msg << std::endl;
+		ofs << msg << std::endl;
+		ofs.flush();
 
 		return;
 	}
 
-	void Logger::writeOut()
+	void Logger::initSession()
 	{
-		std::ofstream ofs;
-		ofs.open("log.txt");
-		ofs << oss.str();
-		ofs.close();
-
+		ofs.open("log.txt", std::ios::app | std::ios::out);
+		ofs << "NEW LOGGING SESSION =============================" << std::endl;
 		return;
 	}
+		
 }
