@@ -108,17 +108,18 @@ namespace hm
 		return manager;
 	}
 
-    void Game::loop()
-    {
+    	void Game::loop()
+    	{
 		running = true;
-	Timer titleDisplayTimer;
-	titleDisplayTimer.start();
-        while(running && manager->getCurrentState() != NULL)
-        {
+
+		Timer titleDisplayTimer;
+		titleDisplayTimer.start();
+        	while(running && manager->getCurrentState() != NULL)
+        	{
 			frameTimer.start();
-            processInput();
-            update();
-            display();
+            		processInput();
+            		update();
+            		display();
 
 			// Record the faster time.
 			frameTimer.pause();
@@ -139,11 +140,11 @@ namespace hm
 					titleDisplayTimer.reset();
 				}
 			}
-        }
+        	}
 
-        // Clean up afterwards.
-        cleanup();
-    }
+        	// Clean up afterwards.
+        	cleanup();
+    	}
 
 	bool Game::initSdl()
 	{

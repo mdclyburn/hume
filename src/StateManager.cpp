@@ -68,7 +68,7 @@ namespace hm
 		//Set up the next state.
 		stack.push_back(&gs);
 		stack.back()->setGame(game);
-        stack.back()->setWindow(window);
+        	stack.back()->setWindow(window);
 		if(!stack.back()->init())
 			std::cout << "Something's up with the initialization..." << std::endl;
 		return;
@@ -95,9 +95,7 @@ namespace hm
 			pushState(gs);
 		}
 		else
-		{
 			pushState(gs);
-		}
 
 		return;
     	}

@@ -5,7 +5,7 @@ namespace hm
 	Text::Text() : font(NULL), text("Hume Library")
 	{
 		// Set color without calling setColor functions.
-        color.r = 255;
+        	color.r = 255;
 		color.g = 255;
 		color.b = 255;
 		bcolor.r = 0;
@@ -22,16 +22,16 @@ namespace hm
 		bcolor.g = 255;
 		bcolor.b = 255;
 
-        setText(text, font);
+        	setText(text, font);
 	}
 
-    Text::~Text()
-    {
+    	Text::~Text()
+    	{
         
-    }
+    	}
 
 	SDL_Surface* Text::getSurface()
-    {
+    	{
 		return surface;
 	}
 
@@ -52,19 +52,19 @@ namespace hm
 		{
 			std::cout << "Can't set text. Font is NULL." << std::endl;
 			return;
-        }
+        	}
 
 		// Free the previous surface.
 		SDL_FreeSurface(surface);
 
 		RenderMode rm = font->getRenderMode();
-        if(rm == SOLID)
-            surface = TTF_RenderText_Solid(font->getFont(), text.c_str(), color);
-        if(rm == SHADED)
-            surface = TTF_RenderText_Shaded(font->getFont(), text.c_str(), color, bcolor);
-        if(rm == BLENDED)
+        	if(rm == SOLID)
+            		surface = TTF_RenderText_Solid(font->getFont(), text.c_str(), color);
+        	if(rm == SHADED)
+            		surface = TTF_RenderText_Shaded(font->getFont(), text.c_str(), color, bcolor);
+        	if(rm == BLENDED)
 			surface = TTF_RenderText_Blended(font->getFont(), text.c_str(), color);
-        optimize();
+        	optimize();
 
 		return;
 	}
@@ -72,7 +72,7 @@ namespace hm
 	std::string Text::getText()
 	{
 		return text;
-    }
+    	}
 
 	void Text::setColor(Uint8 r, Uint8 g, Uint8 b)
 	{

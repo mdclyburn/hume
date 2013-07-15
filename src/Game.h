@@ -61,18 +61,18 @@ namespace hm
 		StateManager* manager; // Maintains the states.
 		Logger* logger; // Logs messages from the system.
 
-        virtual bool init() = 0; // Initialization of the game.
-        virtual void processInput() = 0; // Process input for the game.
-        virtual void update() = 0; // Update internals.
-        virtual void display() = 0; // Show changes.
-        virtual void loop(); // Performs the above three functions in a loop.
-        virtual void cleanup() = 0; // Frees resources.
+        	virtual bool init() = 0; // Initialization of the game.
+        	virtual void processInput() = 0; // Process input for the game.
+        	virtual void update() = 0; // Update internals.
+        	virtual void display() = 0; // Show changes.
+        	virtual void loop(); // Performs the above three functions in a loop.
+        	virtual void cleanup() = 0; // Frees resources.
 
-        // SDL Initialization Functions
-        bool initSdl(); // Initializes the whole SDL subsystem.
-        bool initSdlImage(); // Initializes the sdl_image library.
-        bool initSdlMixer(); // Initializes the sdl_mixer library.
-        bool initSdlTtf(); // Initializes the sdl_ttf library.
+        	// SDL Initialization Functions
+        	bool initSdl(); // Initializes the whole SDL subsystem.
+        	bool initSdlImage(); // Initializes the sdl_image library.
+        	bool initSdlMixer(); // Initializes the sdl_mixer library.
+        	bool initSdlTtf(); // Initializes the sdl_ttf library.
 	};
 }
 

@@ -17,7 +17,7 @@ namespace hm
 	{
 		this->window = window;
 		return;
-    }
+    	}
 
 	void GameState::pop()
 	{

@@ -15,12 +15,12 @@ namespace hm
 	   than solid, but less time than blended. And blended
 	   takes the longest to render out of the three. */
 
-    enum RenderMode
-    {
-        SOLID,
-        SHADED,
-        BLENDED
-    };
+	enum RenderMode
+	{
+        	SOLID,
+        	SHADED,
+        	BLENDED
+    	};
 
 	/* Font class defines the basic functionality of a font
 	   such as loading, coloring and rendering mode. Used in
@@ -41,14 +41,14 @@ namespace hm
 
 		void setSize(int size); // Resizes the font.
 
-        void setRenderMode(RenderMode rm); // Set the mode to render text in.
-        RenderMode getRenderMode(); // Get the mode to render text in.
+        	void setRenderMode(RenderMode rm); // Set the mode to render text in.
+        	RenderMode getRenderMode(); // Get the mode to render text in.
 
 	private:
 		static int fontsOpen; // The amount of opened fonts.
 		std::string file; // Where the last font opened is located.
 		TTF_Font* font; // The font object.
-        RenderMode rm; // The mode to render the font in.
+        	RenderMode rm; // The mode to render the font in.
 	};
 }
 

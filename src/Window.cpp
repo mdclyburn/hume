@@ -27,16 +27,16 @@ namespace hm
 		// Nothing to do here.
 	}
 
+    	bool Window::getStatus()
+    	{
+        	return (screen != NULL);
+    	}
+
 	void Window::setTitle(std::string title)
 	{
 		SDL_WM_SetCaption(title.c_str(), NULL);
 		return;
 	}
-
-    bool Window::getStatus()
-    {
-        return (screen != NULL);
-    }
 
 	void Window::draw(Blittable& b)
 	{
