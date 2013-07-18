@@ -27,8 +27,10 @@ namespace hm
 			LogLevel& getLogLevel();
 			void setLogLevel(LogLevel level);
 			void log(std::string msg, LogLevel level = INFO);
+			void initSession();
+			void endSession();
 		private:
-			void initSession(); // Gets the object ready to log.
+			bool ready; // True when stream is open.
 			std::ofstream ofs;
 			LogLevel level;
 	};

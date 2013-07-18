@@ -70,5 +70,11 @@ namespace hm
 		ofs << "NEW LOGGING SESSION =============================" << std::endl;
 		return;
 	}
-		
+
+	void Logger::endSession()
+	{
+		ofs << "END LOGGING SESSION =============================" << std::endl;
+		ofs.close();
+		return;
+	}
 }
