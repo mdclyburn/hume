@@ -86,6 +86,8 @@ namespace hm
 	void Game::frameRateView(bool b)
 	{
 		displayFrameRate = b;
+		if(!b) // Need to change back to just title.
+			window->setTitle(title);
 		return;
 	}
 
@@ -108,18 +110,18 @@ namespace hm
 		return manager;
 	}
 
-    	void Game::loop()
-    	{
+    void Game::loop()
+    {
 		running = true;
 
 		Timer titleDisplayTimer;
 		titleDisplayTimer.start();
-        	while(running && manager->getCurrentState() != NULL)
-        	{
+       	while(running && manager->getCurrentState() != NULL)
+       	{
 			frameTimer.start();
-            		processInput();
-            		update();
-            		display();
+        	processInput();
+        	update();
+        	display();
 
 			// Record the faster time.
 			frameTimer.pause();
@@ -127,24 +129,25 @@ namespace hm
 			frameTimer.unpause();
 
 			// Record the capped time.
-			if(capFrameRate && frameTimer.getTime() < 1000 / framerate)
+			if(capFrameRate)
 			{
-				SDL_Delay((Uint32)(1000 / framerate - frameTimer.getTime()));
-				cappedFrameTime = (float)((cappedFrameTime * .995 + frameTimer.getTime() * .005));
-
 				if(titleDisplayTimer.getTime() >= 1000 && displayFrameRate)
 				{
 					// Show framerate in title.
-					std::string s = title + " FPS: " + std::to_string(framerate);
+					std::string s = title + " @ " + std::to_string(framerate) + "fps";
 					window->setTitle(s);
 					titleDisplayTimer.reset();
 				}
-			}
-        	}
 
-        	// Clean up afterwards.
-        	cleanup();
-    	}
+				if(frameTimer.getTime() < 1000 / framerate)
+					SDL_Delay((Uint32)(1000 / framerate - frameTimer.getTime()));
+				cappedFrameTime = (float)((cappedFrameTime * .995 + frameTimer.getTime() * .005));
+			}
+        }
+
+        // Clean up afterwards.
+        cleanup();
+    }
 
 	bool Game::initSdl()
 	{
