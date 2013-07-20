@@ -4,10 +4,10 @@
 
 # Get rid of previous files
 echo "===== BUILDING HUME LIBRARY ====="
-if test -f libhume.a
+if test -f libHume.a
 then
 	echo "Found old archive. Deleting..."
-	rm libhume.a
+	rm libHume.a
 fi
 
 echo "Generating object files..."
@@ -15,10 +15,10 @@ g++ -std=c++11 -c *.cpp
 echo "Object files generated."
 
 echo "Creating library..."
-ar rvs libhume.a *.o > /dev/null
+ar rvs libHume.a *.o > /dev/null
 
 # Check for it.
-if test -f libhume.a
+if test -f libHume.a
 then
 	echo "Library created."
 else
