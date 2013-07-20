@@ -6,5 +6,4 @@ chassis/
 *.txt
 Debug/
 debug/
-*.xcodeproj
 .gitignore.swp
