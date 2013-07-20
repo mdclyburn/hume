@@ -2,9 +2,14 @@
 #define FONT_H
 
 #include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
-#include <string>
 #include <iostream>
+#include <string>
+
+#ifdef __APPLE__
+#include <SDL_ttf/SDL_ttf.h>
+#else
+#include <SDL/SDL_ttf.h>
+#endif
 
 namespace hm
 {

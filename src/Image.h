@@ -3,9 +3,14 @@
 
 #include "Blittable.h"
 #include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
 #include <iostream>
 #include <string>
+
+#ifdef __APPLE__
+#include <SDL_image/SDL_image.h>
+#else
+#include <SDL/SDL_image.h>
+#endif
 
 namespace hm
 {

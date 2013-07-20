@@ -15,7 +15,7 @@
 
 namespace hm
 {
-	enum LogLevel { ERROR, WARNING, INFO, DEBUG };
+	enum LogLevel { ERROR, WARNING, INFO, DEBUGMSG };
 
 	class Logger
 	{

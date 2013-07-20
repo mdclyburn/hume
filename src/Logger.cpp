@@ -50,8 +50,8 @@ namespace hm
 			case INFO:
 				ofs << "INFO:\t";
 				break;
-			case DEBUG:
-				ofs << "DEBUG:\t";
+			case DEBUGMSG:
+				ofs << "DEBUGMSG:\t";
 				break;
 			default:
 				ofs << "UNID'd:\t";

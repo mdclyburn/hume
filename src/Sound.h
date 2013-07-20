@@ -8,7 +8,12 @@
 #ifndef SOUND_H_
 #define SOUND_H_
 
+#ifdef __APPLE__
+#include <SDL_mixer/SDL_mixer.h>
+#else
 #include <SDL/SDL_mixer.h>
+#endif
+
 #include <string>
 #include <iostream>
 

@@ -2,9 +2,17 @@
 #define GAME_H
 
 #include <SDL/SDL.h>
+
+#ifdef __APPLE__
+#include <SDL_image/SDL_image.h>
+#include <SDL_mixer/SDL_mixer.h>
+#include <SDL_ttf/SDL_ttf.h>
+#else
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
+#endif
+
 #include "Window.h"
 #include "StateManager.h"
 #include "Logger.h"

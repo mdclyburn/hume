@@ -163,10 +163,10 @@ namespace hm
 	{
 		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
 		int initted = IMG_Init(flags);
-		if(initted&flags != flags)
+		if((initted&flags) != flags)
 		{
 			logger->log("SDL_image initialization failed.", hm::ERROR);
-			logger->log(IMG_GetError(), hm::DEBUG);
+			logger->log(IMG_GetError(), hm::ERROR);
 			return false;
 		}
 		return true;
@@ -176,10 +176,10 @@ namespace hm
 	{
 		int flags = MIX_INIT_MP3 | MIX_INIT_OGG;
 		int initted = Mix_Init(flags);
-		if(initted&flags != flags);
+		if((initted&flags) != flags)
 		{
 			logger->log("SDL_mixer initialization failed.", hm::ERROR);
-			logger->log(Mix_GetError(), hm::DEBUG);
+			logger->log(Mix_GetError(), hm::ERROR);
 			return false;
 		}
 		return true;
@@ -190,7 +190,7 @@ namespace hm
 		if(TTF_Init() == -1)
 		{
 			logger->log("SDL_ttf initialization failed.", hm::ERROR);
-			logger->log(TTF_GetError(), hm::DEBUG);
+			logger->log(TTF_GetError(), hm::ERROR);
 			return false;
 		}
 		return true;
