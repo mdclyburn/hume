@@ -8,15 +8,23 @@ written in C++ for performance using Simple DirectMedia Layer (SDL) for
 cross-platform compatibility.
 
 Building the library requires the following development libraries to be
-installed on your system:
+installed on your system in some form:
 
 sdl
 sdl_ttf
 sdl_image
 sdl_mixer
 
-If you are running Linux or Mac OS X, there is a build script included to
-automate the process of compiling the code into a static library. If the
-script fails, please double-check that you have the development libraries
-installed on your system. If you still have a problem, feel free to contact
-me by my email.
+If you are running Linux, these packages can almost certainly be obtained
+through your distribution's package manager.
+
+If you are running Mac OS X, the frameworks must be obtained from the SDL
+website. The .framework packages should be placed in the /Library/Frameworks
+folder. Follow the readme included with each framework and you should be fine.
+Xcode should be already configured to look for these files.
+
+If you are running Windows, I recommend using MinGW. Obtain the files from
+the SDL website and place the libs and headers in their respective places. Then,
+if using an IDE, configure it to link with these libraries.
+
+Should you have any trouble getting set up, contact me at mardev2013@gmail.com. 
