@@ -293,6 +293,7 @@
 				EXECUTABLE_PREFIX = lib;
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "";
 			};
 			name = Debug;
 		};
@@ -302,6 +303,7 @@
 				EXECUTABLE_PREFIX = lib;
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "";
 			};
 			name = Release;
 		};
@@ -324,6 +326,7 @@
 				ABF8CF0D179A542C00ADF839 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
