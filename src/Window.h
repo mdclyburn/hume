@@ -18,17 +18,19 @@ namespace hm
 		~Window(); // Destructor
 
 		void setTitle(std::string title); // Sets the title of the window.
-        	bool getStatus(); // Returns true if the window isn't null. False otherwise.
+		bool getStatus(); // Returns true if the window isn't null. False otherwise.
 
+		// Drawing Functions
 		void draw(Blittable& b); // Draws a Blittable object to the window's screen.
 		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.
-		//void draw(Sprite& s); // Draws sprite to screen.
 
+		// Clearing Functions
 		void clear(); // Blacks out the screen.
 		Uint32 getClearColor(); // Gets the currently used clear color.
 		void setClearColor(Uint32 clearColor); // Changes refresh color with unsigned 32-bit integer.
 		void setClearColor(Uint8 red, Uint8 green, Uint8 blue); // Changes refresh color with 8-bit integers.
 		void resetClearColor(); // Changes the clear color back to 255, 0, 255.
+		
 		void refresh(); // Updates the screen.
 
 		// Dimension Functions
