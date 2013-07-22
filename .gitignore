@@ -9,3 +9,4 @@ debug/
 .gitignore.swp
 UserInterfaceState.xcuserstate
 DerivedData/
+xcuserdata/
