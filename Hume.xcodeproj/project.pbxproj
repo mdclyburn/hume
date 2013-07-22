@@ -15,7 +15,6 @@
 		ABF8CF5D179A555600ADF839 /* Game.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF8CF45179A555600ADF839 /* Game.h */; };
 		ABF8CF5E179A555600ADF839 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF8CF46179A555600ADF839 /* GameState.cpp */; };
 		ABF8CF5F179A555600ADF839 /* GameState.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF8CF47179A555600ADF839 /* GameState.h */; };
-		ABF8CF60179A555600ADF839 /* Hume.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF8CF48179A555600ADF839 /* Hume.h */; };
 		ABF8CF61179A555600ADF839 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF8CF49179A555600ADF839 /* Image.cpp */; };
 		ABF8CF62179A555600ADF839 /* Image.h in Headers */ = {isa = PBXBuildFile; fileRef = ABF8CF4A179A555600ADF839 /* Image.h */; };
 		ABF8CF63179A555600ADF839 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF8CF4B179A555600ADF839 /* Logger.cpp */; };
@@ -48,7 +47,6 @@
 		ABF8CF45179A555600ADF839 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		ABF8CF46179A555600ADF839 /* GameState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameState.cpp; sourceTree = "<group>"; };
 		ABF8CF47179A555600ADF839 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
-		ABF8CF48179A555600ADF839 /* Hume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hume.h; sourceTree = "<group>"; };
 		ABF8CF49179A555600ADF839 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
 		ABF8CF4A179A555600ADF839 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		ABF8CF4B179A555600ADF839 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				ABF8CF45179A555600ADF839 /* Game.h */,
 				ABF8CF46179A555600ADF839 /* GameState.cpp */,
 				ABF8CF47179A555600ADF839 /* GameState.h */,
-				ABF8CF48179A555600ADF839 /* Hume.h */,
 				ABF8CF49179A555600ADF839 /* Image.cpp */,
 				ABF8CF4A179A555600ADF839 /* Image.h */,
 				ABF8CF4B179A555600ADF839 /* Logger.cpp */,
@@ -148,7 +145,6 @@
 				ABF8CF5B179A555600ADF839 /* Font.h in Headers */,
 				ABF8CF5D179A555600ADF839 /* Game.h in Headers */,
 				ABF8CF5F179A555600ADF839 /* GameState.h in Headers */,
-				ABF8CF60179A555600ADF839 /* Hume.h in Headers */,
 				ABF8CF62179A555600ADF839 /* Image.h in Headers */,
 				ABF8CF64179A555600ADF839 /* Logger.h in Headers */,
 				ABF8CF66179A555600ADF839 /* Sound.h in Headers */,
