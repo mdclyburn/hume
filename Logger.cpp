@@ -7,20 +7,30 @@
 
 #include "Logger.h"
 
+hm::Logger* hm::Logger::instance = NULL;
+
 namespace hm
 {
-	Logger::Logger() : level(INFO)
-	{
-		initSession();
-	}
-
-	Logger::Logger(LogLevel level) : level(level)
+	Logger::Logger() : level(DEBUGMSG)
 	{
 		initSession();
 	}
 
 	Logger::~Logger()
 	{
+		if(instance != NULL)
+		{
+			endSession();
+			delete instance;
+			instance = NULL;
+		}
+	}
+	
+	Logger* Logger::getLogger()
+	{
+		if(instance == NULL)
+			instance = new Logger();
+		return instance;
 	}
 
 	LogLevel& Logger::getLogLevel()

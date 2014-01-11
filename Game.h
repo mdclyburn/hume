@@ -67,7 +67,6 @@ namespace hm
 
 		Window* window; // The game window.
 		StateManager* manager; // Maintains the states.
-		Logger* logger; // Logs messages from the system.
 
        	virtual bool init() = 0; // Initialization of the game.
        	virtual void processInput() = 0; // Process input for the game.

@@ -16,12 +16,15 @@ sdl_image
 sdl_mixer
 
 If you are running Linux, these packages can almost certainly be obtained
-through your distribution's package manager.
+through your distribution's package manager. I have included a trivial build
+script to help archive the project into a static library. It is located in
+the 'src' folder.
 
 If you are running Mac OS X, the frameworks must be obtained from the SDL
 website. The .framework packages should be placed in the /Library/Frameworks
 folder. Follow the readme included with each framework and you should be fine.
-Xcode should be already configured to look for these files.
+To set up the project in Xcode, first create the project, initialize the Git
+repository in the project folder, add the remote and then pull the files.
 
 If you are running Windows, I recommend using MinGW. Obtain the files from
 the SDL website and place the libs and headers in their respective places. Then,
