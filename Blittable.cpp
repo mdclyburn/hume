@@ -2,31 +2,21 @@
 
 namespace hm
 {
-	Blittable::Blittable() : alpha(255), surface(NULL)
+	Blittable::Blittable() : alpha(255), texture(NULL)
 	{
 		setPosition(0, 0);
 	}
 
 	Blittable::~Blittable()
 	{
-		SDL_FreeSurface(surface);
-		surface = NULL;
+		if(texture != nullptr)
+			SDL_DestroyTexture(texture);
+		texture = nullptr;
 	}
 
-	SDL_Surface* Blittable::getSurface()
+	SDL_Texture* Blittable::getTexture()
 	{
-		return surface;
-	}
-
-	void Blittable::freeSurface()
-	{
-		if(surface != NULL)
-		{
-			SDL_FreeSurface(surface);
-			surface = NULL;
-		}
-
-		return;
+		return texture;
 	}
 
 	void Blittable::setPosition(int x, int y)
@@ -68,7 +58,7 @@ namespace hm
 		else if(alphaValue < 0)
 			alphaValue = 0;
 		alpha = alphaValue;
-		SDL_SetAlpha(surface, SDL_SRCALPHA, alpha);
+		SDL_SetTextureAlphaMod(texture, alpha);
 
 		return;
 	}
@@ -76,23 +66,5 @@ namespace hm
 	int Blittable::getAlpha()
 	{
 		return alpha;
-	}
-
-	void Blittable::optimize()
-	{
-		SDL_Surface* unoptimizedSurface = surface;
-		surface = SDL_DisplayFormat(unoptimizedSurface);
-
-		// If our optimized surface is NULL.
-		if(surface == NULL)
-		{
-			// Set us back.
-			surface = unoptimizedSurface;
-			std::cout << "Could not optimize surface." << std::endl;
-		}
-		else
-			SDL_FreeSurface(unoptimizedSurface);
-
-		return;
 	}
 }
