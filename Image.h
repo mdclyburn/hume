@@ -1,16 +1,13 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-#include "Blittable.h"
-#include <SDL/SDL.h>
 #include <iostream>
 #include <string>
 
-#ifdef __APPLE__
-#include <SDL_image/SDL_image.h>
-#else
-#include <SDL/SDL_image.h>
-#endif
+#include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
+
+#include "Blittable.h"
 
 namespace hm
 {
@@ -18,14 +15,14 @@ namespace hm
 	{
 	public:
 		Image(); // Constructor without loading image.
-		Image(std::string filename); // Constructor with image loading.
+		Image(std::string filename, SDL_Renderer* renderer); // Constructor with image loading.
 
-		void loadImage(std::string filename); // Loads an image.
+		void loadImage(std::string filename, SDL_Renderer* renderer); // Loads an image.
 
 		void setColorKey(Uint8 r, Uint8 g, Uint8 b); // Sets the color key.
 
-	protected:		
-		void colorKey(); // Sets up the color key for transparency.
+	protected:
+		SDL_Color color_key; // Color used for color keying.
 	};
 };
 

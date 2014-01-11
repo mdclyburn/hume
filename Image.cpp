@@ -7,40 +7,44 @@ namespace hm
 		
 	}
 
-	Image::Image(std::string filename)
+	Image::Image(std::string filename, SDL_Renderer* renderer)
 	{
-		loadImage(filename);
+		loadImage(filename, renderer);
 	}
 
-	void Image::loadImage(std::string filename)
+	void Image::loadImage(std::string filename, SDL_Renderer* renderer)
 	{
 		// Unload a previous image.
-		freeSurface();
+		if(texture != nullptr)
+		{
+			SDL_DestroyTexture(texture);
+			texture = nullptr;
+		}
 
-		surface = IMG_Load(filename.c_str());
+		SDL_Surface* surface = IMG_Load(filename.c_str());
 		
 		// Check if it was loaded.
-		if(surface != NULL)
+		if(surface == NULL)
 		{
-			optimize(); // If it was, optimize it
-			colorKey(); // and color key it.
-		}
-		else
 			std::cout << "Could not open " << filename << std::endl;
+			return;
+		}
+		
+		// Color key surface
+		Uint32 key = SDL_MapRGB(surface->format, 0xFF, 0x00, 0xFF);
+		SDL_SetColorKey(surface, SDL_TRUE, key);
+		
+		// Convert to texture.
+		SDL_CreateTextureFromSurface(renderer, surface);
+		SDL_FreeSurface(surface);
+		surface = nullptr;
 
 		return;
 	}
 
 	void Image::setColorKey(Uint8 r, Uint8 g, Uint8 b)
 	{
-		SDL_SetColorKey(surface, SDL_SRCCOLORKEY, SDL_MapRGB(surface->format, r, g, b));
-		return;
-	}
-
-	void Image::colorKey()
-	{
-		Uint32 key = SDL_MapRGB(surface->format, 0xFF, 0x00, 0xFF);
-		SDL_SetColorKey(surface, SDL_SRCCOLORKEY, key);
+		color_key = { r, g, b, 0 };
 		return;
 	}
 }
