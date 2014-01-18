@@ -4,22 +4,29 @@ namespace hm
 {
 	Window::Window()
 	{
-		screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
-		resetClearColor();
+		window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+		if(window == nullptr)
+			std::cout << "SDL_Window creation failed.";
+		else
+			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	}
 
-	Window::Window(int w, int h, int bpp)
+	Window::Window(int w, int h)
 	{
-		screen = SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE);
-		resetClearColor();
+		window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, 0);
+		if(window == nullptr)
+			std::cout << "SDL_Window creation failed.";
+		else
+			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	}
 
-	Window::Window(std::string title, int w, int h, int bpp)
+	Window::Window(std::string title, int w, int h)
 	{
-		screen = SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE);
-
-		SDL_WM_SetCaption(title.c_str(), NULL);
-		resetClearColor();
+		window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, 0);
+		if(window == nullptr)
+			std::cout << "SDL_Window creation failed.";
+		else
+			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	}
 
 	Window::~Window()
