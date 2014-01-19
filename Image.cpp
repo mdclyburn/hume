@@ -2,12 +2,12 @@
 
 namespace hm
 {
-	Image::Image()
+	Image::Image() : width(0), height(0)
 	{
 		
 	}
 
-	Image::Image(std::string filename, SDL_Renderer* renderer)
+	Image::Image(std::string filename, SDL_Renderer* renderer) : width(0), height(0)
 	{
 		loadImage(filename, renderer);
 	}
@@ -38,8 +38,29 @@ namespace hm
 		SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_FreeSurface(surface);
 		surface = nullptr;
+		
+		// Get dimensions.
+		SDL_QueryTexture(texture, nullptr, nullptr, &width, &height);
 
 		return;
+	}
+	
+	SDL_Rect Image::getDimensions()
+	{
+		SDL_Rect sdlr;
+		sdlr.w = width;
+		sdlr.h = height;
+		return sdlr;
+	}
+	
+	int Image::getWidth()
+	{
+		return width;
+	}
+	
+	int Image::getHeight()
+	{
+		return height;
 	}
 
 	void Image::setColorKey(Uint8 r, Uint8 g, Uint8 b)

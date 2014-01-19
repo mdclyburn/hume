@@ -19,9 +19,15 @@ namespace hm
 
 		void loadImage(std::string filename, SDL_Renderer* renderer); // Loads an image.
 
+		SDL_Rect getDimensions();
+		int getWidth();
+		int getHeight();
+		
 		void setColorKey(Uint8 r, Uint8 g, Uint8 b); // Sets the color key.
 
 	protected:
+		int width;
+		int height;
 		SDL_Color color_key; // Color used for color keying.
 	};
 };
