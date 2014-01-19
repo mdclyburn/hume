@@ -5,14 +5,14 @@ namespace hm
 	Text::Text() : font(NULL), text("Hume Library")
 	{
 		// Set color without calling setColor functions.
-        	color.r = 255;
+		color.r = 255;
 		color.g = 255;
 		color.b = 255;
 		bcolor.r = 0;
 		bcolor.g = 0;
 		bcolor.b = 0;
 	}
-
+	
 	Text::Text(std::string text, Font* font) : font(font), text(text)
 	{
 		color.r = 255;
@@ -22,57 +22,57 @@ namespace hm
 		bcolor.g = 255;
 		bcolor.b = 255;
 	}
-
-    	Text::~Text()
-    	{
+	
+	Text::~Text()
+	{
         
-    	}
-
+	}
+	
 	SDL_Texture* Text::getTexture()
-    	{
+	{
 		return texture;
 	}
-
+	
 	void Text::setFont(Font* font)
 	{
 		this->font = font;
 		return;
 	}
-
+	
 	void Text::setText(std::string text)
 	{
 		this->text = text;
 		return;
 	}
-
+	
 	std::string Text::getText()
 	{
 		return text;
-    	}
-
+	}
+	
 	void Text::setColor(Uint8 r, Uint8 g, Uint8 b)
 	{
 		color.r = r;
 		color.g = g;
 		color.b = b;
-
+		
 		return;
 	}
-
+	
 	void Text::setbColor(Uint8 r, Uint8 g, Uint8 b)
 	{
 		bcolor.r = r;
 		bcolor.g = g;
 		bcolor.b = b;
-
+		
 		return;
 	}
-
+	
 	SDL_Color Text::getColor()
 	{
 		return color;
 	}
-
+	
 	SDL_Color Text::getbColor()
 	{
 		return bcolor;
