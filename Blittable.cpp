@@ -2,7 +2,7 @@
 
 namespace hm
 {
-	Blittable::Blittable() : alpha(255), texture(NULL)
+	Blittable::Blittable() : width(0), height(0), alpha(255), texture(NULL)
 	{
 		setPosition(0, 0);
 	}
@@ -30,6 +30,24 @@ namespace hm
 	SDL_Rect* Blittable::getPosition()
 	{
 		return &position;
+	}
+	
+	SDL_Rect Blittable::getDimensions()
+	{
+		SDL_Rect sdlr;
+		sdlr.w = width;
+		sdlr.h = height;
+		return sdlr;
+	}
+	
+	int Blittable::getWidth()
+	{
+		return width;
+	}
+	
+	int Blittable::getHeight()
+	{
+		return height;
 	}
 
 	void Blittable::move(int x, int y)

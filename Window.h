@@ -32,6 +32,18 @@ namespace hm
 		// Dimension Functions
 		int getWidth(); // Returns the width of the window in pixels.
 		int getHeight(); // Returns the height of the window in pixels.
+		
+		// Quick-Align Functions
+		void center(Blittable& b); // Centers a blittable.
+		void centerx(Blittable& b); // Centers a blittable on the X-Axis.
+		void centery(Blittable& b); // Centers a blittable on the Y-Axis.
+		void centerxco(Blittable& b, int x); // Centers a blittable along a specified X-Coordinate.
+		void centeryco(Blittable& b, int y); // Centers a blittable along a specified Y-Coordinate.
+		void centerco(Blittable& b, int x, int y); // Centers a blittable at a specified point.
+		void top(Blittable& b); // Moves the blittable to the top without pushing it off-screen.
+		void bottom(Blittable& b); // Moves the blittable to the bottom without pushing it off-screen.
+		void left(Blittable& b); // Moves the blittable to the left without pushing off-screen.
+		void right(Blittable& b); // Moves the blittable to the right without pushing off-screen.
 
 	private:
 		int width;
