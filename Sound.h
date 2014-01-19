@@ -5,8 +5,8 @@
  *      Author: Marshall
  */
 
-#ifndef SOUND_H_
-#define SOUND_H_
+#ifndef SOUND_H
+#define SOUND_H
 
 #include <string>
 #include <iostream>
