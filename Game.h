@@ -1,24 +1,18 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL/SDL.h>
+#include <string>
+#include <iostream>
 
-#ifdef __APPLE__
-#include <SDL_image/SDL_image.h>
-#include <SDL_mixer/SDL_mixer.h>
-#include <SDL_ttf/SDL_ttf.h>
-#else
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-#include <SDL/SDL_ttf.h>
-#endif
+#include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
+#include <SDL2_mixer/SDL_mixer.h>
+#include <SDL2_ttf/SDL_ttf.h>
 
 #include "Window.h"
 #include "StateManager.h"
 #include "Logger.h"
 #include "Timer.h"
-#include <string>
-#include <iostream>
 
 namespace hm
 {
@@ -29,7 +23,7 @@ namespace hm
 	public:
 		Game(); // Basic ctor.
 		Game(std::string title); // Constructs window with title.
-		Game(std::string title, int width, int height, int bpp = 32); // Constructs with title and dimensions.
+		Game(std::string title, int width, int height); // Constructs with title and dimensions.
 		~Game(); // Basic dtor.
 
 		virtual void run() = 0; // Starts the game.

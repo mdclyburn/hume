@@ -16,10 +16,10 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title, int width, int height, int bpp) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
+	Game::Game(std::string title, int width, int height) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
 		this->title = title;
-		window = new Window(title, width, height, bpp);
+		window = new Window(title, width, height);
 		manager = new StateManager(this, window);
 	}
 
@@ -148,7 +148,7 @@ namespace hm
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		{
-			logger->log("SDL initialization failed.", hm::ERROR);
+			log("SDL initialization failed.", hm::ERROR);
 			return false;
 		}
 		return true;
@@ -160,8 +160,8 @@ namespace hm
 		int initted = IMG_Init(flags);
 		if((initted&flags) != flags)
 		{
-			logger->log("SDL_image initialization failed.", hm::ERROR);
-			logger->log(IMG_GetError(), hm::ERROR);
+			log("SDL_image initialization failed.", hm::ERROR);
+			log(IMG_GetError(), hm::ERROR);
 			return false;
 		}
 		return true;
@@ -173,8 +173,8 @@ namespace hm
 		int initted = Mix_Init(flags);
 		if((initted&flags) != flags)
 		{
-			logger->log("SDL_mixer initialization failed.", hm::ERROR);
-			logger->log(Mix_GetError(), hm::ERROR);
+			log("SDL_mixer initialization failed.", hm::ERROR);
+			log(Mix_GetError(), hm::ERROR);
 			return false;
 		}
 		return true;
@@ -184,8 +184,8 @@ namespace hm
 	{
 		if(TTF_Init() == -1)
 		{
-			logger->log("SDL_ttf initialization failed.", hm::ERROR);
-			logger->log(TTF_GetError(), hm::ERROR);
+			log("SDL_ttf initialization failed.", hm::ERROR);
+			log(TTF_GetError(), hm::ERROR);
 			return false;
 		}
 		return true;

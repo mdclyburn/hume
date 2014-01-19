@@ -1,12 +1,14 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <iostream>
+
+#include <SDL2/SDL.h>
+
 #include "Game.h"
 #include "Window.h"
 #include "StateManager.h"
 #include "GameState.h"
-#include <SDL/SDL.h>
-#include <iostream>
 
 namespace hm
 {
