@@ -37,7 +37,8 @@ namespace hm
 
 	Window::~Window()
 	{
-		// Nothing to do here.
+		SDL_DestroyRenderer(renderer);
+		SDL_DestroyWindow(window);
 	}
 
 	void Window::setTitle(std::string title)
