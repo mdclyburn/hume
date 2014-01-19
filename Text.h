@@ -1,11 +1,13 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include "Blittable.h"
-#include <SDL/SDL.h>
-#include "Font.h"
 #include <string>
 #include <iostream>
+
+#include <SDL2/SDL.h>
+
+#include "Blittable.h"
+#include "Font.h"
 
 namespace hm
 {
@@ -14,18 +16,20 @@ namespace hm
 	public:
 		Text(); // Basic ctor with default text.
 		Text(std::string text, Font* font);
-        	~Text();
+		~Text();
 
-		SDL_Surface* getSurface(); // Gets the SDL_Surface pointer.
+		SDL_Texture* getTexture();
 
 		void setFont(Font* font); // Sets the font to be used.
-		void setText(std::string text, Font* font); // Sets the text and surface.
+		void setText(std::string text);
 		std::string getText(); // Gets the text.
 
 		void setColor(Uint8 r, Uint8 g, Uint8 b); // Sets color.
 		void setbColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color.
 		SDL_Color getColor(); // Returns the set color.
 		SDL_Color getbColor(); // Returns the set background color.
+		
+		void render(SDL_Renderer* r); // Produce texture with current properties.
 
 	private:
 		Font* font; // The font used to render the text.

@@ -44,6 +44,8 @@ namespace hm
 		void bottom(Blittable& b); // Moves the blittable to the bottom without pushing it off-screen.
 		void left(Blittable& b); // Moves the blittable to the left without pushing off-screen.
 		void right(Blittable& b); // Moves the blittable to the right without pushing off-screen.
+		
+		SDL_Renderer* getRenderer();
 
 	private:
 		int width;

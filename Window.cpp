@@ -171,4 +171,9 @@ namespace hm
 		b.getPosition()->x = width - b.getWidth();
 		return;
 	}
+	
+	SDL_Renderer* Window::getRenderer()
+	{
+		return renderer;
+	}
 }

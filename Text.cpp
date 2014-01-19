@@ -21,8 +21,6 @@ namespace hm
 		bcolor.r = 255;
 		bcolor.g = 255;
 		bcolor.b = 255;
-
-        	setText(text, font);
 	}
 
     	Text::~Text()
@@ -30,42 +28,20 @@ namespace hm
         
     	}
 
-	SDL_Surface* Text::getSurface()
+	SDL_Texture* Text::getTexture()
     	{
-		return surface;
+		return texture;
 	}
 
 	void Text::setFont(Font* font)
 	{
 		this->font = font;
-		setText(text, font);
 		return;
 	}
 
-	void Text::setText(std::string text, Font* font)
+	void Text::setText(std::string text)
 	{
 		this->text = text;
-		this->font = font;
-
-		// Check for font.
-		if(font->getFont() == NULL)
-		{
-			std::cout << "Can't set text. Font is NULL." << std::endl;
-			return;
-        	}
-
-		// Free the previous surface.
-		SDL_FreeSurface(surface);
-
-		RenderMode rm = font->getRenderMode();
-        	if(rm == SOLID)
-            		surface = TTF_RenderText_Solid(font->getFont(), text.c_str(), color);
-        	if(rm == SHADED)
-            		surface = TTF_RenderText_Shaded(font->getFont(), text.c_str(), color, bcolor);
-        	if(rm == BLENDED)
-			surface = TTF_RenderText_Blended(font->getFont(), text.c_str(), color);
-        	optimize();
-
 		return;
 	}
 
@@ -79,7 +55,6 @@ namespace hm
 		color.r = r;
 		color.g = g;
 		color.b = b;
-		setText(text, font);
 
 		return;
 	}
@@ -89,7 +64,6 @@ namespace hm
 		bcolor.r = r;
 		bcolor.g = g;
 		bcolor.b = b;
-		setText(text, font);
 
 		return;
 	}
@@ -102,5 +76,32 @@ namespace hm
 	SDL_Color Text::getbColor()
 	{
 		return bcolor;
+	}
+	
+	void Text::render(SDL_Renderer* r)
+	{
+		// Check for font.
+		if(font->getFont() == nullptr)
+		{
+			std::cout << "Cannot render. Font is NULL." << std::endl;
+			return;
+		}
+		
+		// Free previous texture
+		if(texture != nullptr)
+			SDL_DestroyTexture(texture);
+		SDL_Surface* surface = nullptr;
+		RenderMode rm = font->getRenderMode();
+		if(rm == SOLID)
+			surface = TTF_RenderText_Solid(font->getFont(), text.c_str(), color);
+		if(rm == SHADED)
+			surface = TTF_RenderText_Shaded(font->getFont(), text.c_str(), color, bcolor);
+		if(rm == BLENDED)
+			surface = TTF_RenderText_Blended(font->getFont(), text.c_str(), color);
+		if(surface != nullptr)
+			texture = SDL_CreateTextureFromSurface(r, surface);
+		else
+			std::cout << "Texture creation failed." << std::endl;
+		return;
 	}
 }
