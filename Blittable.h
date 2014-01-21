@@ -22,11 +22,12 @@ namespace hm
 		SDL_Texture* getTexture(); // Returns the pointer to the texture.
 		
 		void setPosition(int x, int y); // Sets the position of the Blittable.
-		SDL_Rect* getPosition(); // Returns the SDL_Rect holding the position.
+		SDL_Rect getPosition(); // Returns the SDL_Rect holding the position.
 		
 		SDL_Rect getDimensions();
 		int getWidth();
 		int getHeight();
+		SDL_Rect getInfo();
 		
 		void move(int x, int y); // Moves the Blittable in the specified direction.
 		void setx(int x); // Sets the x position of the Blittable.
@@ -36,11 +37,9 @@ namespace hm
 		int getAlpha(); // Returns the alpha value of the Blittable.
 
 	protected:
-		int width;
-		int height;
 		int alpha;
 		SDL_Texture* texture;
-		SDL_Rect position;
+		SDL_Rect info;
 	};
 }
 

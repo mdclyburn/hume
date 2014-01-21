@@ -40,7 +40,7 @@ namespace hm
 		surface = nullptr;
 		
 		// Get dimensions.
-		SDL_QueryTexture(texture, nullptr, nullptr, &width, &height);
+		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
 
 		return;
 	}

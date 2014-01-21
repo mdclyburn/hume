@@ -58,7 +58,8 @@ namespace hm
 		if(b.getAlpha() == TRANSPARENT)
 			return;
 		clear();
-		SDL_RenderCopy(renderer, b.getTexture(), nullptr, b.getPosition());
+		SDL_Rect sdlr = b.getInfo();
+		SDL_RenderCopy(renderer, b.getTexture(), nullptr, &sdlr);
 		needRefresh = true;
 		return;
 	}
@@ -69,7 +70,7 @@ namespace hm
 		if(b.getAlpha() == TRANSPARENT)
 			return;
 		clear();
-		SDL_Rect sdlr;
+		SDL_Rect sdlr = b.getInfo();
 		sdlr.x = x;
 		sdlr.y = y;
 		SDL_RenderCopy(renderer, b.getTexture(), nullptr, &sdlr);
@@ -109,8 +110,8 @@ namespace hm
 	// Centers the given Blittable in the given Window.
 	void Window::center(Blittable& b)
 	{
-		b.getPosition()->x = width / 2 - b.getWidth() / 2;
-		b.getPosition()->y = height / 2 - b.getHeight() / 2;
+		b.setx(width / 2 - b.getWidth() / 2);
+		b.sety(height / 2 - b.getHeight() / 2);
 		
 		return;
 	}
@@ -118,26 +119,26 @@ namespace hm
 	// Centers the given Blittable on the X-Axis in the given window.
 	void Window::centerx(Blittable& b)
 	{
-		b.getPosition()->x = width / 2 - b.getWidth() / 2;
+		b.setx(width / 2 - b.getWidth() / 2);
 		return;
 	}
 	
 	// Centers the given Blittable on the Y-Axis in the given window.
 	void Window::centery(Blittable& b)
 	{
-		b.getPosition()->y = height / 2 - b.getHeight() / 2;
+		b.sety(height / 2 - b.getHeight() / 2);
 		return;
 	}
 	
 	void Window::centerxco(Blittable& b, int x)
 	{
-		b.getPosition()->x = x - b.getWidth() / 2;
+		b.setx(x - b.getWidth() / 2);
 		return;
 	}
 	
 	void Window::centeryco(Blittable& b, int y)
 	{
-		b.getPosition()->y = y - b.getHeight() / 2;
+		b.sety(y - b.getHeight() / 2);
 		return;
 	}
 	
@@ -150,25 +151,25 @@ namespace hm
 	
 	void Window::top(Blittable& b)
 	{
-		b.getPosition()->y = 0;
+		b.sety(0);
 		return;
 	}
 	
 	void Window::bottom(Blittable& b)
 	{
-		b.getPosition()->y = height - b.getHeight();
+		b.sety(height - b.getHeight());
 		return;
 	}
 	
 	void Window::left(Blittable& b)
 	{
-		b.getPosition()->x = 0;
+		b.setx(0);
 		return;
 	}
 	
 	void Window::right(Blittable& b)
 	{
-		b.getPosition()->x = width - b.getWidth();
+		b.setx(width - b.getWidth());
 		return;
 	}
 	
