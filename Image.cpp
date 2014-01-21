@@ -35,7 +35,7 @@ namespace hm
 		SDL_SetColorKey(surface, SDL_TRUE, key);
 		
 		// Convert to texture.
-		SDL_CreateTextureFromSurface(renderer, surface);
+		texture = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_FreeSurface(surface);
 		surface = nullptr;
 		
