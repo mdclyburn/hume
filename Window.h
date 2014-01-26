@@ -27,6 +27,7 @@ namespace hm
 		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.
 
 		void clear(); // Blacks out the screen.
+		void forceRefresh(); // Forces window to redraw.
 		void refresh(); // Updates the screen.
 
 		// Dimension Functions

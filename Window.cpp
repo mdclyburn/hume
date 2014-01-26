@@ -84,6 +84,12 @@ namespace hm
 			SDL_RenderClear(renderer);
 		return;
 	}
+	
+	void Window::forceRefresh()
+	{
+		needRefresh = true;
+		return;
+	}
 
 	void Window::refresh()
 	{
