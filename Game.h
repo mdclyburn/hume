@@ -31,6 +31,8 @@ namespace hm
 		Game(std::string title); // Constructs window with title.
 		Game(std::string title, int width, int height); // Constructs with title and dimensions.
 		~Game(); // Basic dtor.
+		
+		virtual void SDLInit(); // Initializes SDL systems used by hume.
 
 		virtual void run() = 0; // Starts the game.
 

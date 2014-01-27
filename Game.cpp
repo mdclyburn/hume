@@ -4,13 +4,14 @@ namespace hm
 {
 	Game::Game() : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
-		// Set up our members.
+		SDLInit();
 		window = new Window("No Title", 640, 480);
 		manager = new StateManager(this, window);
 	}
 
 	Game::Game(std::string title) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
+		SDLInit();
 		this->title = title;
 		window = new Window(title, 640, 480);
 		manager = new StateManager(this, window);
@@ -18,6 +19,7 @@ namespace hm
 
 	Game::Game(std::string title, int width, int height) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
+		SDLInit();
 		this->title = title;
 		window = new Window(title, width, height);
 		manager = new StateManager(this, window);
@@ -29,6 +31,16 @@ namespace hm
 		manager = NULL;
 		delete window;
 		window = NULL;
+	}
+	
+	void Game::SDLInit()
+	{
+		initSdl();
+		initSdlImage();
+		initSdlMixer();
+		initSdlTtf();
+		
+		return;
 	}
 
 	void Game::setCapFrameRate(bool b)
