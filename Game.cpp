@@ -128,7 +128,8 @@ namespace hm
 			frameTimer.start();
         	processInput();
         	update();
-        	display();
+			if(manager->hasState())	// It is possible for the state to
+        		display();			// have popped itself during update().
 
 			// Record the faster time.
 			frameTimer.pause();
