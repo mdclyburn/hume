@@ -53,4 +53,12 @@ namespace hm
 	{
 		return texture;
 	}
+	
+	SDL_Rect Tile::getDimensions()
+	{
+		assert(texture != nullptr);
+		SDL_Rect r;
+		SDL_QueryTexture(texture, nullptr, nullptr, &r.w, &r.h);
+		return r;
+	}
 }

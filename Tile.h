@@ -20,6 +20,7 @@ namespace hm
 		void setIndex(char index);
 		char getIndex();
 		SDL_Texture* getTexture();
+		SDL_Rect getDimensions();
 		
 	protected:
 		SDL_Texture* texture;
