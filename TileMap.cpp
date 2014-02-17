@@ -45,6 +45,21 @@ namespace hm
 			map[i] = new char[height];
 	}
 	
+	void TileMap::loadMap(std::string filename)
+	{
+		FILE* file = fopen(filename.c_str(), "r");
+		for(int y = 0; y < height; y++)
+		{
+			for(int x = 0; x < width; x++)
+			{
+				assert(!feof(file));
+				fscanf(file, "%i", &map[x][y]);
+			}
+		}
+		
+		return;
+	}
+	
 	SDL_Rect TileMap::getDimensions()
 	{
 		SDL_Rect r;

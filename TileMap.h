@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cassert>
 #include <vector>
+#include <string>
+#include <cstdio>
 
 #include "Tile.h"
 
@@ -18,6 +20,7 @@ namespace hm
 		void setWidth(int width);
 		void setHeight(int height);
 		void init();
+		void loadMap(std::string filename);
 		SDL_Rect getDimensions();
 		
 		void addTile(Tile* tile);
