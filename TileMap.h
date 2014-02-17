@@ -17,6 +17,7 @@ namespace hm
 		
 		void setWidth(int width);
 		void setHeight(int height);
+		void init();
 		SDL_Rect getDimensions();
 		
 		void addTile(Tile* tile);

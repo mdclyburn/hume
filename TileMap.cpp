@@ -38,6 +38,13 @@ namespace hm
 		return;
 	}
 	
+	void TileMap::init()
+	{
+		map = new char*[width];
+		for(int i = 0; i < width; i++)
+			map[i] = new char[height];
+	}
+	
 	SDL_Rect TileMap::getDimensions()
 	{
 		SDL_Rect r;
