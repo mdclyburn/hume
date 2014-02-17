@@ -53,7 +53,7 @@ namespace hm
 			for(int x = 0; x < width; x++)
 			{
 				assert(!feof(file));
-				fscanf(file, "%i", &map[x][y]);
+				fscanf(file, "%i", (int*) &map[x][y]);
 			}
 		}
 		
