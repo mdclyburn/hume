@@ -11,6 +11,7 @@ namespace hm
 			std::cout << "SDL_Window creation failed.";
 		else
 			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	}
 
 	Window::Window(int w, int h)
@@ -22,6 +23,7 @@ namespace hm
 			std::cout << "SDL_Window creation failed.";
 		else
 			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	}
 
 	Window::Window(std::string title, int w, int h)
@@ -33,6 +35,7 @@ namespace hm
 			std::cout << "SDL_Window creation failed.";
 		else
 			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	}
 
 	Window::~Window()
@@ -57,7 +60,6 @@ namespace hm
 		// Don't draw if transparent. Waste of resources.
 		if(b.getAlpha() == TRANSPARENT)
 			return;
-		clear();
 		SDL_Rect sdlr = b.getInfo();
 		SDL_RenderCopy(renderer, b.getTexture(), nullptr, &sdlr);
 		needRefresh = true;
@@ -69,7 +71,6 @@ namespace hm
 		// Don't draw if transparent. Waste of resources.
 		if(b.getAlpha() == TRANSPARENT)
 			return;
-		clear();
 		SDL_Rect sdlr = b.getInfo();
 		sdlr.x = x;
 		sdlr.y = y;
@@ -80,8 +81,7 @@ namespace hm
 	void Window::clear()
 	{
 		// Don't clear the window if there are changes pending.
-		if(!needRefresh)
-			SDL_RenderClear(renderer);
+		SDL_RenderClear(renderer);
 		return;
 	}
 	
@@ -93,12 +93,7 @@ namespace hm
 
 	void Window::refresh()
 	{
-
-		if(needRefresh)
-		{
-			SDL_RenderPresent(renderer);
-			needRefresh = false;
-		}
+		SDL_RenderPresent(renderer);
 
 		return;
 	}
