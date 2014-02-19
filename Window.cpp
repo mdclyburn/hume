@@ -78,6 +78,21 @@ namespace hm
 		return;
 	}
 	
+	void Window::draw(TileMap& m)
+	{
+		SDL_Rect info = m.getTileDimensions();
+		for(int y = 0; y < m.getTileDimensions().h * m.getDimensions().h; y += m.getTileDimensions().h)
+		{
+			for(int x = 0; x < m.getTileDimensions().w * m.getDimensions().w; x += m.getTileDimensions().w)
+			{
+				info.x = x;
+				info.y = y;
+				SDL_RenderCopy(renderer, m.getTile(x / m.getTileDimensions().w, y / m.getTileDimensions().h)->getTexture(), nullptr, &info);
+			}
+		}
+		return;
+	}
+	
 	void Window::clear()
 	{
 		// Don't clear the window if there are changes pending.
@@ -94,7 +109,6 @@ namespace hm
 	void Window::refresh()
 	{
 		SDL_RenderPresent(renderer);
-
 		return;
 	}
 

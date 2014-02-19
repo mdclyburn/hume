@@ -2,12 +2,12 @@
 
 namespace hm
 {
-	Tile::Tile() : texture(nullptr), index(0x00)
+	Tile::Tile() : index(0x00)
 	{
 		
 	}
 	
-	Tile::Tile(std::string filename, char index, SDL_Renderer* renderer) : texture(nullptr), index(0x00)
+	Tile::Tile(std::string filename, char index, SDL_Renderer* renderer) : index(0)
 	{
 		load(filename, renderer);
 		setIndex(index);
@@ -34,6 +34,7 @@ namespace hm
 		assert(texture != nullptr);
 		SDL_FreeSurface(surface);
 		surface = nullptr;
+		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
 		
 		return;
 	}
@@ -47,18 +48,5 @@ namespace hm
 	char Tile::getIndex()
 	{
 		return index;
-	}
-	
-	SDL_Texture* Tile::getTexture()
-	{
-		return texture;
-	}
-	
-	SDL_Rect Tile::getDimensions()
-	{
-		assert(texture != nullptr);
-		SDL_Rect r;
-		SDL_QueryTexture(texture, nullptr, nullptr, &r.w, &r.h);
-		return r;
 	}
 }

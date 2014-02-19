@@ -7,9 +7,11 @@
 
 #include <SDL2_image/SDL_image.h>
 
+#include "Blittable.h"
+
 namespace hm
 {
-	class Tile
+	class Tile : public Blittable
 	{
 	public:
 		Tile();
@@ -19,11 +21,8 @@ namespace hm
 		void load(std::string filename, SDL_Renderer* renderer);
 		void setIndex(char index);
 		char getIndex();
-		SDL_Texture* getTexture();
-		SDL_Rect getDimensions();
 		
 	protected:
-		SDL_Texture* texture;
 		char index;
 	};
 }

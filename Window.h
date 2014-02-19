@@ -8,6 +8,7 @@
 
 #include "Blittable.h"
 #include "Sprite.h"
+#include "TileMap.h"
 
 namespace hm
 {
@@ -25,6 +26,7 @@ namespace hm
 		// Drawing Functions
 		void draw(Blittable& b); // Draws a Blittable object to the window's screen.
 		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.
+		void draw(TileMap& m); // Draws an entire map to the screen beginning at the coordinate point (0, 0).
 
 		void clear(); // Blacks out the screen.
 		void forceRefresh(); // Forces window to redraw.

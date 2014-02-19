@@ -22,15 +22,19 @@ namespace hm
 		void init();
 		void loadMap(std::string filename);
 		SDL_Rect getDimensions();
+		SDL_Rect getTileDimensions();
 		
 		void addTile(Tile* tile);
 		Tile* getTile(char index);
+		Tile* getTile(int x, int y);
 		
 	protected:
 		int width;
 		int height;
 		std::vector<Tile*> tiles;
-		char** map;
+		Tile*** map;
+		
+		bool setTile(int x, int y, int index);
 	};
 }
 
