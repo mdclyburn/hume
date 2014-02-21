@@ -25,8 +25,8 @@ namespace hm
 		SDL_Rect getPosition(); // Returns the SDL_Rect holding the position.
 		
 		SDL_Rect getDimensions();
-		int getWidth();
-		int getHeight();
+		virtual int getWidth();
+		virtual int getHeight();
 		SDL_Rect getInfo();
 		
 		void move(int x, int y); // Moves the Blittable in the specified direction.

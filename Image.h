@@ -21,7 +21,7 @@ namespace hm
 		Image(); // Constructor without loading image.
 		Image(std::string filename, SDL_Renderer* renderer); // Constructor with image loading.
 
-		void loadImage(std::string filename, SDL_Renderer* renderer); // Loads an image.
+		virtual void loadImage(std::string filename, SDL_Renderer* renderer); // Loads an image.
 		
 		void setColorKey(Uint8 r, Uint8 g, Uint8 b); // Sets the color key.
 

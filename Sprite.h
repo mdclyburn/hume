@@ -12,19 +12,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-#include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
+#include <cassert>
 
 #include "Image.h"
-
-enum State
-{
-	IDLE,
-	RUNNING_LEFT,
-	RUNNING_RIGHT,
-	SLOWING
-};
 
 namespace hm
 {
@@ -34,41 +24,23 @@ namespace hm
 		Sprite();
 		~Sprite();
 		
-		void act();
+		void loadImage(std::string filename, SDL_Renderer* renderer);
 		
 		void setWidth(int width);
 		void setHeight(int height);
+		int getWidth();
+		int getHeight();
 		
-		virtual SDL_Rect* getInputRect() = 0;
-		virtual SDL_Rect* getOutputRect() = 0;
+		SDL_Rect* getInputRect();
+		SDL_Rect* getOutputRect();
 		
-		void setMaxVelocity(float max_velocity);
-		void setMinVelocity(float min_velocity);
-		float getVelocity();
-		void increaseVelocity();
-		void decreaseVelocity();
-		void slowVelocity(float factor);
-		void setAcceleration(float acceleration);
-		static void setFramesPerSecond(unsigned int fps);
-		
-		void setState(State state);
-		State getState();
+		void selectRow(int row);
+		void selectColumn(int column);
+		void next();
 		
 	protected:
-		int width; // Sprite dimensions
-		int height;
-		
-		float velocity; // Pixels per second.
-		float max_velocity;
-		float min_velocity;
-		float acceleration;
-		unsigned int initial_velocity;
-		static unsigned int fps;
-		
-		State state;
-		
-		int selection_x; // position (not coordinate) of selected sprite
-		int selection_y;
+		int selected_column; // position (not coordinate) of selected sprite
+		int selected_row;
 		SDL_Rect input; // Position/size from texture
 		SDL_Rect output; // Position/size to window
 		

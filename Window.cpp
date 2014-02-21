@@ -78,6 +78,19 @@ namespace hm
 		return;
 	}
 	
+	void Window::draw(Sprite& s)
+	{
+		// Don't draw if transparent. Waste of resources.
+		if(s.getAlpha() == TRANSPARENT)
+			return;
+		SDL_Rect sdlr = s.getPosition();
+		sdlr.w = s.getWidth();
+		sdlr.h = s.getHeight();
+		
+		SDL_RenderCopy(renderer, s.getTexture(), s.getInputRect(), &sdlr);
+		return;
+	}
+	
 	void Window::draw(TileMap& m)
 	{
 		SDL_Rect info = m.getTileDimensions();

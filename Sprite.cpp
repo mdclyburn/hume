@@ -10,11 +10,9 @@
 
 namespace hm
 {
-	unsigned int Sprite::fps = 30;
-	
-	Sprite::Sprite() :  velocity(0), max_velocity(150), min_velocity(-150), acceleration(1), initial_velocity(100), state(IDLE), selection_x(0), selection_y(0)
+	Sprite::Sprite() : selected_column(0), selected_row(0)
 	{
-		
+		input = output = { 0, 0, 0, 0 };
 	}
 	
 	Sprite::~Sprite()
@@ -22,114 +20,104 @@ namespace hm
 		
 	}
 	
-	void Sprite::act()
+	void Sprite::loadImage(std::string filename, SDL_Renderer* renderer)
 	{
-		switch(state)
+		// Unload a previous image.
+		if(texture != nullptr)
 		{
-			case IDLE:
-				break;
-			case RUNNING_RIGHT:
-				increaseVelocity();
-				move(velocity / fps, 0);
-				break;
-			case RUNNING_LEFT:
-				decreaseVelocity();
-				move(velocity / fps, 0);
-				break;
-			case SLOWING:
-				slowVelocity(10);
-				move(velocity / fps, 0);
-				break;
+			SDL_DestroyTexture(texture);
+			texture = nullptr;
 		}
-	}
-	
-	void Sprite::setMaxVelocity(float max_velocity)
-	{
-		this->max_velocity = max_velocity;
-		return;
-	}
-	
-	void Sprite::setMinVelocity(float min_velocity)
-	{
-		this->min_velocity = min_velocity;
-		return;
-	}
-	
-	float Sprite::getVelocity()
-	{
-		return velocity;
-	}
-	
-	void Sprite::increaseVelocity()
-	{
-		if(velocity >= 0) // If RUNNING_RIGHT or IDLE
-			velocity += acceleration / 30;
-		if(velocity < 0) // If RUNNING_LEFT
-			slowVelocity(15);
-		if(velocity > max_velocity) // Mustn't exceed max_acceleration
-			velocity = max_velocity;
-		return;
-	}
-	
-	void Sprite::decreaseVelocity()
-	{
-		if(velocity <= 0) // If RUNNING_LEFT or IDLE
-			velocity -= acceleration / 30;
-		if(velocity > 0) // If RUNNING_RIGHT
-			slowVelocity(25);
-		if(velocity < min_velocity) // Mustn't exceed min_acceleration
-			velocity = min_velocity;
-		return;
-	}
-	
-	void Sprite::slowVelocity(float decel_factor)
-	{
-		if(velocity == 0)
+		
+		SDL_Surface* surface = IMG_Load(filename.c_str());
+		
+		// Check if it was loaded.
+		if(surface == NULL)
 		{
-			state = IDLE;
+			std::cout << "Could not open " << filename << std::endl;
 			return;
 		}
 		
-		float velocity_loss = max_velocity * decel_factor / 100;
-		//std::cout << "Slowing velocity: " << velocity << " by " << velocity_loss << std::endl;
-		if(abs(int(velocity)) < abs(int(velocity_loss)))
-			velocity = 0;
-		else if(velocity > 0)
-			velocity -= velocity_loss;
-		else if(velocity < 0)
-			velocity += velocity_loss;
+		// Color key surface
+		Uint32 key = SDL_MapRGB(surface->format, 0xFF, 0x00, 0xFF);
+		SDL_SetColorKey(surface, SDL_TRUE, key);
+		
+		// Convert to texture.
+		texture = SDL_CreateTextureFromSurface(renderer, surface);
+		SDL_FreeSurface(surface);
+		surface = nullptr;
+		
+		// Get dimensions.
+		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
+		input.w = info.w;
+		input.h = info.h;
 		
 		return;
 	}
 	
-	void Sprite::setAcceleration(float acceleration)
+	void Sprite::setWidth(int width)
 	{
-		this->acceleration = acceleration;
+		input.w = width;
 		return;
 	}
 	
-	void Sprite::setFramesPerSecond(unsigned int fps)
+	void Sprite::setHeight(int height)
 	{
-		Sprite::fps = fps;
+		input.h = height;
 		return;
 	}
 	
-	void Sprite::setState(State state)
+	int Sprite::getWidth()
 	{
-		this->state = state;
+		return input.w;
+	}
+	
+	int Sprite::getHeight()
+	{
+		return input.h;
+	}
+	
+	SDL_Rect* Sprite::getInputRect()
+	{
+		return &input;
+	}
+	
+	SDL_Rect* Sprite::getOutputRect()
+	{
+		return &output;
+	}
+	
+	void Sprite::selectRow(int row)
+	{
+		assert(row * input.h < info.h);
+		selected_row = row;
+		input.y = row * input.h;
 		return;
 	}
 	
-	State Sprite::getState()
+	void Sprite::selectColumn(int column)
 	{
-		return state;
+		assert(column * input.w < info.w);
+		selected_column = column;
+		input.x = column * input.w;
+		return;
+	}
+	
+	void Sprite::next()
+	{
+		// Wrap if at last image.
+		if((selected_column + 1) * input.w == info.w)
+			selected_column = 0;
+		else
+			selectColumn(++selected_column);
+		return;
 	}
 	
 	void Sprite::selectSprite(int x, int y)
 	{
-		selection_x = x;
-		selection_y = y;
-		SDL_Rect r = { (x * width), (y * height), width, height };
+		selected_column = x;
+		selected_row = y;
+		SDL_Rect r = { (x * input.w), (y * input.h), input.w, input.h };
 		input = r;
 		return;
 	}
