@@ -81,13 +81,20 @@ namespace hm
 	void Window::draw(TileMap& m)
 	{
 		SDL_Rect info = m.getTileDimensions();
-		for(int y = 0; y < m.getTileDimensions().h * m.getDimensions().h; y += m.getTileDimensions().h)
+		int x_start = 0, y_start = 0; // Where to begin drawing the map.
+		// If map is smaller than window, center it.
+		if(info.w * m.getDimensions().w < width)
+			x_start = (width / 2) - (info.w * m.getDimensions().w / 2);
+		if(info.h * m.getDimensions().h)
+			y_start = (height / 2) - (info.h * m.getDimensions().h / 2);
+		
+		for(int y = y_start; y < m.getTileDimensions().h * m.getDimensions().h + y_start; y += m.getTileDimensions().h)
 		{
-			for(int x = 0; x < m.getTileDimensions().w * m.getDimensions().w; x += m.getTileDimensions().w)
+			for(int x = x_start; x < m.getTileDimensions().w * m.getDimensions().w + x_start; x += m.getTileDimensions().w)
 			{
 				info.x = x;
 				info.y = y;
-				SDL_RenderCopy(renderer, m.getTile(x / m.getTileDimensions().w, y / m.getTileDimensions().h)->getTexture(), nullptr, &info);
+				SDL_RenderCopy(renderer, m.getTile((x - x_start) / m.getTileDimensions().w, (y - y_start) / m.getTileDimensions().h)->getTexture(), nullptr, &info);
 			}
 		}
 		return;
@@ -95,7 +102,6 @@ namespace hm
 	
 	void Window::clear()
 	{
-		// Don't clear the window if there are changes pending.
 		SDL_RenderClear(renderer);
 		return;
 	}
