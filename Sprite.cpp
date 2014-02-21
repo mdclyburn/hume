@@ -8,6 +8,8 @@
 
 #include "Sprite.h"
 
+namespace hm
+{
 unsigned int Sprite::fps = 30;
 
 Sprite::Sprite() :  velocity(0), max_velocity(150), min_velocity(-150), acceleration(1), initial_velocity(100), state(IDLE), selection_x(0), selection_y(0)
@@ -130,4 +132,5 @@ void Sprite::selectSprite(int x, int y)
 	SDL_Rect r = { (x * width), (y * height), width, height };
 	input = r;
 	return;
+}
 }

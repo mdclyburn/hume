@@ -26,6 +26,8 @@ enum State
 	SLOWING
 };
 
+namespace hm
+{
 class Sprite : public Image
 {
 public:
@@ -72,5 +74,6 @@ protected:
 	
 	void selectSprite(int x, int y);
 };
+}
 
 #endif
