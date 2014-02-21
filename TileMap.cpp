@@ -60,7 +60,7 @@ namespace hm
 				assert(tile_index != 0);
 				
 				// Set the tile to the given index.
-				assert(setTile(x, y, tile_index));
+				assert(setTile(x, y, tile_index)); // Failed assert means tile not found.
 			}
 		}
 		
