@@ -26,11 +26,15 @@ namespace hm
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	}
 
-	Window::Window(std::string title, int w, int h)
+	Window::Window(std::string title, int w, int h, bool fs)
 	{
 		width = w;
 		height = h;
-		window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, 0);
+		if(fs)
+			window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_FULLSCREEN);
+		else
+			window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED, w, h, 0);
 		if(window == nullptr)
 			std::cout << "SDL_Window creation failed.";
 		else

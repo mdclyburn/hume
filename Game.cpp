@@ -17,11 +17,11 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title, int width, int height) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
+	Game::Game(std::string title, int width, int height, bool fs) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
 		SDLInit();
 		this->title = title;
-		window = new Window(title, width, height);
+		window = new Window(title, width, height, fs);
 		manager = new StateManager(this, window);
 	}
 
