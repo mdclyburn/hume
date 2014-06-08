@@ -102,6 +102,9 @@ namespace hm
 			texture = SDL_CreateTextureFromSurface(r, surface);
 		else
 			std::cout << "Texture creation failed." << std::endl;
+		
+		// Update info
+		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
 		return;
 	}
 }
