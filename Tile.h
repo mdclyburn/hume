@@ -5,7 +5,7 @@
 #include <string>
 #include <cassert>
 
-#include <SDL2_image/SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 #include "Blittable.h"
 
