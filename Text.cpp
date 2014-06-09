@@ -39,9 +39,10 @@ namespace hm
 		return;
 	}
 	
-	void Text::setText(std::string text)
+	void Text::setText(std::string text, SDL_Renderer* r)
 	{
 		this->text = text;
+		render(r);
 		return;
 	}
 	
@@ -80,6 +81,9 @@ namespace hm
 	
 	void Text::render(SDL_Renderer* r)
 	{
+		// No rendering if no renderer.
+		if(r == nullptr)
+			return;
 		// Check for font.
 		if(font->getFont() == nullptr)
 		{

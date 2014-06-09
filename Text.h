@@ -21,7 +21,7 @@ namespace hm
 		SDL_Texture* getTexture();
 
 		void setFont(Font* font); // Sets the font to be used.
-		void setText(std::string text);
+		void setText(std::string text, SDL_Renderer* r); // Set text and renders if handed renderer.
 		std::string getText(); // Gets the text.
 
 		void setColor(Uint8 r, Uint8 g, Uint8 b); // Sets color.
