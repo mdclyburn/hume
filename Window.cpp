@@ -82,6 +82,16 @@ namespace hm
 		return;
 	}
 	
+	void Window::draw(Blittable& b, int x, int y, int w, int h)
+	{
+		// Don't draw if transparent. Waste of resources.
+		if(b.getAlpha() == TRANSPARENT)
+			return;
+		SDL_Rect sdlr = { x, y, w, h };
+		SDL_RenderCopy(renderer, b.getTexture(), nullptr, &sdlr);
+		return;
+	}
+	
 	void Window::draw(Sprite& s)
 	{
 		// Don't draw if transparent. Waste of resources.
