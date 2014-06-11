@@ -26,7 +26,7 @@ namespace hm
 		// Check if it was loaded.
 		if(surface == NULL)
 		{
-			std::cout << "Could not open " << filename << std::endl;
+			std::cout << "Could not open image: " << filename << std::endl;
 			return;
 		}
 		
