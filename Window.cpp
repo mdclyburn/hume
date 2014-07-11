@@ -4,40 +4,14 @@ namespace hm
 {
 	Window::Window()
 	{
-		if(settings.isFullscreen())
-		{
-			window = SDL_CreateWindow(settings.getTitle().c_str(),
-									  SDL_WINDOWPOS_UNDEFINED,
-									  SDL_WINDOWPOS_UNDEFINED,
-									  settings.getResolution().width,
-									  settings.getResolution().height,
-									  SDL_WINDOW_FULLSCREEN);
-		}
-		else
-		{
-			window = SDL_CreateWindow(settings.getTitle().c_str(),
-									  SDL_WINDOWPOS_UNDEFINED,
-									  SDL_WINDOWPOS_UNDEFINED,
-									  settings.getResolution().width,
-									  settings.getResolution().height,
-									  0);
-		}
-		
-		if(window == nullptr)
-		{
-			Logger::getLogger()->log("SDL_Window creation failed.", ERROR);
-			exit(0);
-		}
-		
-		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		if(renderer == nullptr)
-		{
-			Logger::getLogger()->log("SDL_Renderer creation failed.", ERROR);
-			exit(0);
-		}
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		create();
 	}
-
+	
+	Window::Window(WindowSettings ws) : settings(ws)
+	{
+		create();
+	}
+	
 	Window::~Window()
 	{
 		SDL_DestroyRenderer(renderer);
@@ -220,5 +194,50 @@ namespace hm
 	SDL_Renderer* Window::getRenderer()
 	{
 		return renderer;
+	}
+	
+	void Window::create()
+	{
+		// Safeguard against creating another window.
+		if(window != nullptr)
+		{
+			Logger::getLogger()->log("Window creation requested, but a window already exists.", WARNING);
+			return;
+		}
+		
+		if(settings.isFullscreen())
+		{
+			window = SDL_CreateWindow(settings.getTitle().c_str(),
+									  SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED,
+									  settings.getResolution().width,
+									  settings.getResolution().height,
+									  SDL_WINDOW_FULLSCREEN);
+		}
+		else
+		{
+			window = SDL_CreateWindow(settings.getTitle().c_str(),
+									  SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED,
+									  settings.getResolution().width,
+									  settings.getResolution().height,
+									  0);
+		}
+		
+		if(window == nullptr)
+		{
+			Logger::getLogger()->log("SDL_Window creation failed.", ERROR);
+			exit(0);
+		}
+		
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		if(renderer == nullptr)
+		{
+			Logger::getLogger()->log("SDL_Renderer creation failed.", ERROR);
+			exit(0);
+		}
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		
+		return;
 	}
 }

@@ -17,6 +17,7 @@ namespace hm
 	{
 	public:
 		Window(); // Defaults to best available fullscreen resolution.
+		Window(WindowSettings ws);
 		~Window(); // Destructor
 
 		void setTitle(std::string title); // Sets the title of the window.
@@ -57,6 +58,8 @@ namespace hm
 		WindowSettings settings;
 		SDL_Window* window; // Window object
 		SDL_Renderer* renderer;
+		
+		void create(); // Create window with current settings.
 	};
 }
 
