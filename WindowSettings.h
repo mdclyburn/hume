@@ -10,6 +10,7 @@
 #define WINDOWSETTINGS_H
 
 #include <iostream>
+#include <string>
 
 #include <SDL2/SDL.h>
 
@@ -33,10 +34,25 @@ namespace hm
 		WindowSettings();
 		~WindowSettings();
 		
+		void useFullscreen(bool b)
+		{ fullscreen = b; return; }
+		void setTitle(std::string title)
+		{ this->title = title; return; }
+		void setResolution(Resolution r)
+		{ resolution = r; return; }
+		
+		bool isFullscreen()
+		{ return fullscreen; }
+		std::string getTitle()
+		{ return title; }
+		Resolution getResolution()
+		{ return resolution; }
+		
 		void setBestFullscreenMode();
 		
 	protected:
 		bool fullscreen;
+		std::string title;
 		
 		Resolution resolution;
 	};
