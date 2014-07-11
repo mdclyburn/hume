@@ -4,41 +4,37 @@ namespace hm
 {
 	Window::Window()
 	{
-		width = 640;
-		height = 480;
-		window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+		if(settings.isFullscreen())
+		{
+			window = SDL_CreateWindow(settings.getTitle().c_str(),
+									  SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED,
+									  settings.getResolution().width,
+									  settings.getResolution().height,
+									  SDL_WINDOW_FULLSCREEN);
+		}
+		else
+		{
+			window = SDL_CreateWindow(settings.getTitle().c_str(),
+									  SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED,
+									  settings.getResolution().width,
+									  settings.getResolution().height,
+									  0);
+		}
+		
 		if(window == nullptr)
-			std::cout << "SDL_Window creation failed.";
-		else
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	}
-
-	Window::Window(int w, int h)
-	{
-		width = w;
-		height = h;
-		window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, 0);
-		if(window == nullptr)
-			std::cout << "SDL_Window creation failed.";
-		else
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	}
-
-	Window::Window(std::string title, int w, int h, bool fs)
-	{
-		width = w;
-		height = h;
-		if(fs)
-			window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_FULLSCREEN);
-		else
-			window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,
-									  SDL_WINDOWPOS_UNDEFINED, w, h, 0);
-		if(window == nullptr)
-			std::cout << "SDL_Window creation failed.";
-		else
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		{
+			Logger::getLogger()->log("SDL_Window creation failed.", ERROR);
+			exit(0);
+		}
+		
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		if(renderer == nullptr)
+		{
+			Logger::getLogger()->log("SDL_Renderer creation failed.", ERROR);
+			exit(0);
+		}
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	}
 
