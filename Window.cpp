@@ -80,10 +80,10 @@ namespace hm
 		SDL_Rect info = m.getTileDimensions();
 		int x_start = 0, y_start = 0; // Where to begin drawing the map.
 		// If map is smaller than window, center it.
-		if(info.w * m.getDimensions().w < width)
-			x_start = (width / 2) - (info.w * m.getDimensions().w / 2);
+		if(info.w * m.getDimensions().w < settings.getResolution().width)
+			x_start = (settings.getResolution().width / 2) - (info.w * m.getDimensions().w / 2);
 		if(info.h * m.getDimensions().h)
-			y_start = (height / 2) - (info.h * m.getDimensions().h / 2);
+			y_start = (settings.getResolution().height / 2) - (info.h * m.getDimensions().h / 2);
 		
 		for(int y = y_start; y < m.getTileDimensions().h * m.getDimensions().h + y_start; y += m.getTileDimensions().h)
 		{
@@ -117,19 +117,19 @@ namespace hm
 
 	int Window::getWidth()
 	{
-		return width;
+		return settings.getResolution().width;
 	}
 
 	int Window::getHeight()
 	{
-		return height;
+		return settings.getResolution().height;
 	}
 	
 	// Centers the given Blittable in the given Window.
 	void Window::center(Blittable& b)
 	{
-		b.setx(width / 2 - b.getWidth() / 2);
-		b.sety(height / 2 - b.getHeight() / 2);
+		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
+		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
 		
 		return;
 	}
@@ -137,14 +137,14 @@ namespace hm
 	// Centers the given Blittable on the X-Axis in the given window.
 	void Window::centerx(Blittable& b)
 	{
-		b.setx(width / 2 - b.getWidth() / 2);
+		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
 		return;
 	}
 	
 	// Centers the given Blittable on the Y-Axis in the given window.
 	void Window::centery(Blittable& b)
 	{
-		b.sety(height / 2 - b.getHeight() / 2);
+		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
 		return;
 	}
 	
@@ -175,7 +175,7 @@ namespace hm
 	
 	void Window::bottom(Blittable& b)
 	{
-		b.sety(height - b.getHeight());
+		b.sety(settings.getResolution().height - b.getHeight());
 		return;
 	}
 	
@@ -187,7 +187,7 @@ namespace hm
 	
 	void Window::right(Blittable& b)
 	{
-		b.setx(width - b.getWidth());
+		b.setx(settings.getResolution().width - b.getWidth());
 		return;
 	}
 	
