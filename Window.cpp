@@ -2,12 +2,12 @@
 
 namespace hm
 {
-	Window::Window()
+	Window::Window() : window(nullptr), renderer(nullptr)
 	{
 		create();
 	}
 	
-	Window::Window(WindowSettings ws) : settings(ws)
+	Window::Window(WindowSettings ws) : window(nullptr), renderer(nullptr), settings(ws)
 	{
 		create();
 	}
