@@ -20,16 +20,13 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title, int width, int height, bool fs) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
+	Game::Game(std::string title, unsigned int width, unsigned int height, bool fs) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
 		SDLInit();
 		this->title = title;
 		WindowSettings ws;
 		ws.setTitle(title);
-		// Cannot narrow 'int' to 'unsigned int'. Consider change for cleaner code. (i.e.: ws.setResolution({ width, height })).
-		Resolution res;
-		res.width = width;
-		res.height = height;
+		ws.setResolution({ width, height });
 		ws.useFullscreen(fs);
 		window = new Window(ws);
 		manager = new StateManager(this, window);
