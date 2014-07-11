@@ -5,7 +5,7 @@ namespace hm
 	Game::Game() : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
 	{
 		SDLInit();
-		window = new Window("No Title", 640, 480);
+		window = new Window();
 		manager = new StateManager(this, window);
 	}
 
@@ -13,7 +13,10 @@ namespace hm
 	{
 		SDLInit();
 		this->title = title;
-		window = new Window(title, 640, 480);
+		WindowSettings ws;
+		ws.setBestFullscreenMode();
+		ws.setTitle(title);
+		window = new Window(ws);
 		manager = new StateManager(this, window);
 	}
 
@@ -21,7 +24,14 @@ namespace hm
 	{
 		SDLInit();
 		this->title = title;
-		window = new Window(title, width, height, fs);
+		WindowSettings ws;
+		ws.setTitle(title);
+		// Cannot narrow 'int' to 'unsigned int'. Consider change for cleaner code. (i.e.: ws.setResolution({ width, height })).
+		Resolution res;
+		res.width = width;
+		res.height = height;
+		ws.useFullscreen(fs);
+		window = new Window(ws);
 		manager = new StateManager(this, window);
 	}
 
