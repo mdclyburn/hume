@@ -60,7 +60,7 @@ namespace hm
 		return stack.back();
 	}
 
-	void StateManager::pushState(GameState& gs)
+	bool StateManager::pushState(GameState& gs)
 	{
 		// Send the pause command to the current state.
 		pauseState();
@@ -70,8 +70,12 @@ namespace hm
 		stack.back()->setGame(game);
         	stack.back()->setWindow(window);
 		if(!stack.back()->init())
-			std::cout << "Something's up with the initialization..." << std::endl;
-		return;
+		{
+			std::cout << "State initialization reported failure." << std::endl;
+			return false;
+		}
+		
+		return true;
 	}
 
 	void StateManager::popState()

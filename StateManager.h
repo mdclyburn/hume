@@ -26,7 +26,7 @@ namespace hm
 			bool hasState(); // Returns whether there is a state on the stack.
 			GameState* getCurrentState(); // Returns a pointer to the current state.
 
-			void pushState(GameState& gs); // Adds a state to the stack.
+			bool pushState(GameState& gs); // Adds a state to the stack.
 			void popState(); // Pops a state from the stack.
 			void replaceState(GameState& gs); // Switches out a state.
 			void popAll(); // Removes all states. Takes care of cleanup.
