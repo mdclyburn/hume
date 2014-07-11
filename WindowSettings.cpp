@@ -49,11 +49,9 @@ namespace hm
 			
 			if(Logger::getLogger()->getLogLevel() >= LogLevel::INFO)
 			{
-				std::string msg = "Using resolution of ";
-				msg += mode.w;
-				msg += "x";
-				msg += mode.h;
-				msg += ".";
+				std::string msg = "Using resolution of " +
+				std::to_string(mode.w) + "x" +
+				std::to_string(mode.h) + ".";
 				Logger::getLogger()->log(msg);
 			}
 		}
