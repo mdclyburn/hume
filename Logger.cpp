@@ -46,30 +46,31 @@ namespace hm
 
 	void Logger::log(std::string msg, LogLevel level)
 	{
-		if(this->level < level)
+		if(getLogger()->level < level)
 			return;
 
+		Logger* logger = getLogger();
 		switch(level)
 		{
 			case ERROR:
-				ofs << "ERROR:\t";
+				logger->ofs << "ERROR:\t";
 				break;
 			case WARNING:
-				ofs << "WARNING:\t";
+				logger->ofs << "WARNING:\t";
 				break;
 			case INFO:
-				ofs << "INFO:\t";
+				logger->ofs << "INFO:\t";
 				break;
 			case DEBUGMSG:
-				ofs << "DEBUGMSG:\t";
+				logger->ofs << "DEBUGMSG:\t";
 				break;
 			default:
-				ofs << "UNID'd:\t";
+				logger->ofs << "UNID'd:\t";
 				break;
 		}
 
-		ofs << msg << std::endl;
-		ofs.flush();
+		getLogger()->ofs << msg << std::endl;
+		getLogger()->ofs.flush();
 
 		return;
 	}
@@ -85,6 +86,12 @@ namespace hm
 	{
 		ofs << "END LOGGING SESSION =============================" << std::endl;
 		ofs.close();
+		return;
+	}
+	
+	void operator<<(Logger* l, Message m)
+	{
+		l->log(m.msg, m.level);
 		return;
 	}
 }

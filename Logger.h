@@ -16,7 +16,7 @@
 namespace hm
 {
 	enum LogLevel { ERROR, WARNING, INFO, DEBUGMSG };
-	struct Message { LogLevel level; std::string msg };
+	struct Message { LogLevel level; std::string msg; };
 	
 	class Logger
 	{
@@ -27,7 +27,8 @@ namespace hm
 		
 		LogLevel& getLogLevel();
 		void setLogLevel(LogLevel level);
-		void log(std::string msg, LogLevel level = INFO);
+		static void log(std::string msg, LogLevel level = INFO);
+		
 	private:
 		bool ready; // True when stream is open.
 		std::ofstream ofs;
@@ -41,6 +42,8 @@ namespace hm
 		void initSession();
 		void endSession();
 	};
+
+	void operator<<(Logger* l, Message m);
 }
 
 #endif
