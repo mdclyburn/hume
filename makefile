@@ -2,7 +2,7 @@ CC = g++
 ARGS = -std=c++11
 OUT = libhume.a
 
-$(OUT): Blittable.o Font.o Game.o GameState.o Image.o Logger.o Sound.o Sprite.o StateManager.o Text.o Tile.o TileMap.o Timer.o Window.o
+$(OUT): Blittable.o Font.o Game.o GameState.o Image.o Logger.o Sound.o Sprite.o StateManager.o Text.o Tile.o TileMap.o Timer.o Window.o WindowSettings.o
 	ar rvs $(OUT) *.o
 
 Blittable.o: Blittable.cpp
@@ -33,6 +33,8 @@ Timer.o: Timer.cpp
 	$(CC) -c Timer.cpp $(ARGS)
 Window.o: Window.cpp
 	$(CC) -c Window.cpp $(ARGS)
+WindowSettings.o:
+	$(CC) -c WindowSettings.cpp $(ARGS)
 
 clean:
 	rm -rf *.o $(OUT)
