@@ -16,6 +16,7 @@
 namespace hm
 {
 	enum LogLevel { ERROR, WARNING, INFO, DEBUGMSG };
+	struct Message { LogLevel level; std::string msg };
 	
 	class Logger
 	{
