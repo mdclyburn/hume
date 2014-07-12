@@ -78,14 +78,14 @@ namespace hm
 		return;
 	}
 
-    	void Font::setRenderMode(RenderMode rm)
-    	{
-        	this->rm = rm;
-        	return;
-    	}
-
-    	RenderMode Font::getRenderMode()
-    	{
-        	return rm;
-    	}
+	void Font::setRenderMode(RenderMode rm)
+	{
+		this->rm = rm;
+		return;
+	}
+	
+	RenderMode Font::getRenderMode()
+	{
+		return rm;
+	}
 }
