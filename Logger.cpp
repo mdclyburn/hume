@@ -33,7 +33,7 @@ namespace hm
 		return instance;
 	}
 
-	LogLevel& Logger::getLogLevel()
+	LogLevel Logger::getLogLevel()
 	{
 		return level;
 	}

@@ -25,7 +25,7 @@ namespace hm
 		
 		static Logger* getLogger();
 		
-		LogLevel& getLogLevel();
+		LogLevel getLogLevel();
 		void setLogLevel(LogLevel level);
 		static void log(std::string msg, LogLevel level = INFO);
 		
