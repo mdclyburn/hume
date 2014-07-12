@@ -1,8 +1,5 @@
 /*
- * Logger.cpp
- *
- *  Created on: Nov 9, 2012
- *      Author: Marshall
+ Hume Library Version 0.4.2
  */
 
 #include "Logger.h"

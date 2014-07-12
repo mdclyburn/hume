@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 

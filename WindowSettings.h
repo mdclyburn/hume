@@ -1,10 +1,6 @@
-//
-//  WindowSettings.h
-//  Hume
-//
-//  Created by Marshall Clyburn on 7/11/14.
-//  Copyright (c) 2014 Marshall Clyburn. All rights reserved.
-//
+/*
+ Hume Library Version 0.4.2
+ */
 
 #ifndef WINDOWSETTINGS_H
 #define WINDOWSETTINGS_H

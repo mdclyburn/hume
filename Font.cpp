@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "Font.h"
 
 int hm::Font::fontsOpen = 0;

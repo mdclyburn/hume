@@ -1,10 +1,6 @@
-//
-//  Hume.h
-//  Hume
-//
-//  Created by Marshall Clyburn on 7/11/14.
-//  Copyright (c) 2014 Marshall Clyburn. All rights reserved.
-//
+/*
+ Hume Library Version 0.4.2
+ */
 
 #ifndef HUME_H
 #define HUME_H
@@ -12,6 +8,6 @@
 // Hume library version information
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 4
-#define HOTFIX_VERSION 1
+#define REVISION_VERSION 2
 
 #endif
