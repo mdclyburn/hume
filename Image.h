@@ -12,6 +12,9 @@
 
 namespace hm
 {
+	/*
+	 A basic image that can be drawn to the screen.
+	 */
 	class Image : public Blittable
 	{
 	public:

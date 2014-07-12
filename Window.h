@@ -11,6 +11,11 @@
 
 namespace hm
 {
+	/*
+	 Window based off of SDL_Window which has its own
+	 renderer as well. Capable of normal windows as well
+	 as fullscreen windows.
+	 */
 	class Window
 	{
 	public:

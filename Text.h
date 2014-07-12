@@ -12,6 +12,10 @@
 
 namespace hm
 {
+	/*
+	 Text that can be drawn to the screen once provided
+	 a font.
+	 */
 	class Text : public Blittable
     {
 	public:

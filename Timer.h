@@ -12,8 +12,9 @@ namespace hm
 		MINUTES = 60000
 	};
 	
-	/* Defines a class to act as a stopwatch
-	   in a Hume-based application. */
+	/*
+	 Timer based off of SDL's timer.
+	 */
 	class Timer
 	{
 	public:

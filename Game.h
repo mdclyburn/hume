@@ -18,6 +18,10 @@ namespace hm
 {
 	class StateManager;
 
+	/*
+	 Provides much of the functionality needed to get
+	 started with constructing a game.
+	 */
 	class Game
 	{
 	public:

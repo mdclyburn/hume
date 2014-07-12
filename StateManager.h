@@ -11,6 +11,11 @@ namespace hm
 	class Game;
 	class GameState;
 
+	/*
+	 The manager for all GameStates that a Game uses. It
+	 is responsible for state initialization and clean up
+	 as well.
+	 */
 	class StateManager
 	{
 		public:
