@@ -28,11 +28,6 @@ namespace hm
         
 	}
 	
-	SDL_Texture* Text::getTexture()
-	{
-		return texture;
-	}
-	
 	void Text::setFont(Font* font)
 	{
 		this->font = font;
@@ -87,7 +82,7 @@ namespace hm
 		// Check for font.
 		if(font->getFont() == nullptr)
 		{
-			std::cout << "Cannot render. Font is NULL." << std::endl;
+			hm::Logger::log("Cannot render. Font is NULL.", hm::ERROR);
 			return;
 		}
 		
@@ -105,7 +100,10 @@ namespace hm
 		if(surface != nullptr)
 			texture = SDL_CreateTextureFromSurface(r, surface);
 		else
-			std::cout << "Texture creation failed." << std::endl;
+		{
+			hm::Logger::log("Texture creation failed.", hm::ERROR);
+			return;
+		}
 		
 		// Update info
 		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);

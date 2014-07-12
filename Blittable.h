@@ -6,6 +6,7 @@
 
 namespace hm
 {
+	// Defined alpha transparency values for convenience.
 	enum ALPHA
 	{
 		TRANSPARENT = 0,
@@ -18,28 +19,31 @@ namespace hm
 	public:
 		Blittable();
 		~Blittable();
-
-		SDL_Texture* getTexture(); // Returns the pointer to the texture.
 		
-		void setPosition(int x, int y); // Sets the position of the Blittable.
-		SDL_Rect getPosition(); // Returns the SDL_Rect holding the position.
+		// Alpha
+		int getAlpha();
+		void setAlpha(int alphaValue);
+		void modifyAlpha(int mod);
 		
+		// Positioning
+		void setPosition(int x, int y);
+		SDL_Rect getPosition();
+		void move(int x, int y);
+		void setx(int x);
+		void sety(int y);
+		
+		// Texture Properties
 		SDL_Rect getDimensions();
 		virtual int getWidth();
 		virtual int getHeight();
 		SDL_Rect getInfo();
-		
-		void move(int x, int y); // Moves the Blittable in the specified direction.
-		void setx(int x); // Sets the x position of the Blittable.
-		void sety(int y); // Sets the y position of the Blittable.
-
-		void setAlpha(int alphaValue); // Sets the alpha value.
-		int getAlpha(); // Returns the alpha value of the Blittable.
+		SDL_Texture* getTexture();
 
 	protected:
 		int alpha;
-		SDL_Texture* texture;
+		
 		SDL_Rect info;
+		SDL_Texture* texture;
 	};
 }
 

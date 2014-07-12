@@ -14,28 +14,28 @@ namespace hm
 {
 	class Game;
 
-	class GameState // Abstract class
+	class GameState
 	{
 	public:
-		GameState(); // Basic constructor.
+		GameState();
 
-		void setGame(Game* game); // Sets the game pointer.
-		void setWindow(Window* window); // Sets the window pointer.
+		void setGame(Game* game);
+		void setWindow(Window* window);
 
-		virtual void pause() = 0; // Suspends the current activity in the state.
-		virtual void resume() = 0; // Starts the state back up.
-
-            	virtual bool init() = 0; // Handles initialization.
-            	virtual void processInput(SDL_Event& e) = 0; // Handles user input.
-            	virtual void update() = 0; // Updates the state's internals.
-            	virtual void display() = 0; // Displays what's happening onscreen.
-            	virtual void cleanup() = 0; // Gets the state ready for dismissal.
-
+		virtual void pause() = 0;
+		virtual void resume() = 0;
+		
+		virtual bool init() = 0;
+		virtual void processInput(SDL_Event& e) = 0;
+		virtual void update() = 0;
+		virtual void display() = 0;
+		virtual void cleanup() = 0;
+		
 	protected:
-		Game* game; // Gives access to the game which the state belongs to.
-		Window* window; // Gives access to the drawing window.
+		Game* game;
+		Window* window;
 
-		void pop(); // Removes this state from the stack. Shortcut invocation.
+		void pop();
 	};
 }
 

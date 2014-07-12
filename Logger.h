@@ -30,7 +30,6 @@ namespace hm
 		static void log(std::string msg, LogLevel level = INFO);
 		
 	private:
-		bool ready; // True when stream is open.
 		std::ofstream ofs;
 		LogLevel level;
 		
