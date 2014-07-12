@@ -26,7 +26,7 @@ namespace hm
 		// Check if it was loaded.
 		if(surface == NULL)
 		{
-			std::cout << "Could not open image: " << filename << std::endl;
+			hm::Logger::log("Failed to open " + filename + ": " + IMG_GetError() + ".", hm::ERROR);
 			return;
 		}
 		
@@ -38,6 +38,11 @@ namespace hm
 		texture = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_FreeSurface(surface);
 		surface = nullptr;
+		if(texture == nullptr)
+		{
+			hm::Logger::log("Failed to convert surface of " + filename + " to texture.", hm::ERROR);
+			return;
+		}
 		
 		// Get dimensions.
 		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);

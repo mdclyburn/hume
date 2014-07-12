@@ -8,6 +8,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "Blittable.h"
+#include "Logger.h"
 
 namespace hm
 {
