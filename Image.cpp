@@ -11,6 +11,11 @@ namespace hm
 	{
 		loadImage(filename, renderer);
 	}
+	
+	Image::~Image()
+	{
+		
+	}
 
 	void Image::loadImage(std::string filename, SDL_Renderer* renderer)
 	{

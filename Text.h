@@ -15,28 +15,27 @@ namespace hm
 	class Text : public Blittable
     {
 	public:
-		Text(); // Basic ctor with default text.
+		Text();
 		Text(std::string text, Font* font);
 		~Text();
 
-		SDL_Texture* getTexture();
-
-		void setFont(Font* font); // Sets the font to be used.
-		void setText(std::string text, SDL_Renderer* r); // Set text and renders if handed renderer.
-		std::string getText(); // Gets the text.
-
-		void setColor(Uint8 r, Uint8 g, Uint8 b); // Sets color.
-		void setbColor(Uint8 r, Uint8 g, Uint8 b); // Sets the background color.
-		SDL_Color getColor(); // Returns the set color.
-		SDL_Color getbColor(); // Returns the set background color.
+		void setFont(Font* font);
 		
-		void render(SDL_Renderer* r); // Produce texture with current properties.
+		void setText(std::string text, SDL_Renderer* r);
+		std::string getText();
+
+		void setColor(Uint8 r, Uint8 g, Uint8 b);
+		void setbColor(Uint8 r, Uint8 g, Uint8 b);
+		SDL_Color getColor();
+		SDL_Color getbColor();
+		
+		void render(SDL_Renderer* r);
 
 	private:
-		Font* font; // The font used to render the text.
-		std::string text; // The text the surface contains.
-		SDL_Color color; // The color of the text.
-		SDL_Color bcolor; // The background color. Used when in shaded rendering mode.
+		Font* font;
+		std::string text;
+		SDL_Color color;
+		SDL_Color bcolor;
 	};
 }
 

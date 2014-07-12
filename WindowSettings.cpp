@@ -10,10 +10,6 @@
 
 namespace hm
 {
-	/*
-	 Default to a fullscreen window at the maximum
-	 resolution supported by the attached screen.
-	 */
 	WindowSettings::WindowSettings() : fullscreen(true), title("Hume Window")
 	{
 		setBestFullscreenMode();
@@ -24,10 +20,6 @@ namespace hm
 		
 	}
 	
-	/*
-	 Set the window to fullscreen at the best possible
-	 resolution attainable.
-	*/
 	void WindowSettings::setBestFullscreenMode()
 	{
 		fullscreen = true;

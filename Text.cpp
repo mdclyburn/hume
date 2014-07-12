@@ -28,11 +28,6 @@ namespace hm
         
 	}
 	
-	SDL_Texture* Text::getTexture()
-	{
-		return texture;
-	}
-	
 	void Text::setFont(Font* font)
 	{
 		this->font = font;
