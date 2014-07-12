@@ -58,6 +58,11 @@ namespace hm
 
 		return 0;
 	}
+	
+	float Timer::getTime(hm::TimeUnit unit)
+	{
+		return (getTime() / unit);
+	}
 
 	bool Timer::isPaused()
 	{
