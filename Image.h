@@ -14,15 +14,15 @@ namespace hm
 	class Image : public Blittable
 	{
 	public:
-		Image(); // Constructor without loading image.
-		Image(std::string filename, SDL_Renderer* renderer); // Constructor with image loading.
+		Image();
+		Image(std::string filename, SDL_Renderer* renderer);
 
-		virtual void loadImage(std::string filename, SDL_Renderer* renderer); // Loads an image.
+		virtual void loadImage(std::string filename, SDL_Renderer* renderer);
 		
-		void setColorKey(Uint8 r, Uint8 g, Uint8 b); // Sets the color key.
+		void setColorKey(Uint8 r, Uint8 g, Uint8 b);
 
 	protected:
-		SDL_Color color_key; // Color used for color keying.
+		SDL_Color color_key;
 	};
 };
 
