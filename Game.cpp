@@ -42,10 +42,33 @@ namespace hm
 	
 	void Game::SDLInit()
 	{
-		initSdl();
-		initSdlImage();
-		initSdlMixer();
-		initSdlTtf();
+		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
+		{
+			log("SDL initialization failed.", hm::ERROR);
+			log(SDL_GetError(), hm::ERROR);
+		}
+		
+		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+		int initted = IMG_Init(flags);
+		if((initted&flags) != flags)
+		{
+			log("SDL_image initialization failed.", hm::ERROR);
+			log(IMG_GetError(), hm::ERROR);
+		}
+		
+		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
+		initted = Mix_Init(flags);
+		if((initted&flags) != flags)
+		{
+			log("SDL_mixer initialization failed.", hm::ERROR);
+			log(Mix_GetError(), hm::ERROR);
+		}
+		
+		if(TTF_Init() == -1)
+		{
+			log("SDL_ttf initialization failed.", hm::ERROR);
+			log(TTF_GetError(), hm::ERROR);
+		}
 		
 		return;
 	}
@@ -163,51 +186,4 @@ namespace hm
         // Clean up afterwards.
         cleanup();
     }
-
-	bool Game::initSdl()
-	{
-		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
-		{
-			log("SDL initialization failed.", hm::ERROR);
-			return false;
-		}
-		return true;
-	}
-	
-	bool Game::initSdlImage()
-	{
-		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
-		int initted = IMG_Init(flags);
-		if((initted&flags) != flags)
-		{
-			log("SDL_image initialization failed.", hm::ERROR);
-			log(IMG_GetError(), hm::ERROR);
-			return false;
-		}
-		return true;
-	}
-	
-	bool Game::initSdlMixer()
-	{
-		int flags = MIX_INIT_MP3 | MIX_INIT_OGG;
-		int initted = Mix_Init(flags);
-		if((initted&flags) != flags)
-		{
-			log("SDL_mixer initialization failed.", hm::ERROR);
-			log(Mix_GetError(), hm::ERROR);
-			return false;
-		}
-		return true;
-	}
-	
-	bool Game::initSdlTtf()
-	{
-		if(TTF_Init() == -1)
-		{
-			log("SDL_ttf initialization failed.", hm::ERROR);
-			log(TTF_GetError(), hm::ERROR);
-			return false;
-		}
-		return true;
-	}
 }
