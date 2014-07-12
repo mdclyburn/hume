@@ -4,25 +4,17 @@ int hm::Font::fontsOpen = 0;
 
 namespace hm
 {
-	Font::Font() : font(NULL), rm(SOLID)
+	Font::Font() : file(""), font(NULL), rm(SOLID)
 	{
-		// Check the status of SDL_ttf
 		if(TTF_WasInit() == 0)
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
-		file = "";
-		font = NULL; // Safety first.
-		rm = SOLID;
 	}
 
-	Font::Font(std::string file, int ptsize) : font(NULL), rm(SOLID)
+	Font::Font(std::string file, int ptsize) : file(file), font(NULL), rm(SOLID)
 	{
-		// Check the status of SDL_ttf
 		if(TTF_WasInit() == 0)
 			std::cout << "WARNING: SDL_ttf is not initialized!" << std::endl;
-		this->file = file;
-		font = NULL; // Safety first.
 		loadFont(file, ptsize);
-		rm = SOLID;
 	}
 
 	Font::~Font()
