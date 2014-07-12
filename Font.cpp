@@ -29,19 +29,15 @@ namespace hm
 
 	void Font::loadFont(std::string file, int ptsize)
 	{
-		// Set our new font file string.
 		this->file = file;
-
-		// Unload a previous font.
+		
 		closeFont();
-
-		// Open the font.
+		
 		font = TTF_OpenFont(file.c_str(), ptsize);
-		// Check it.
 		if(font == NULL)
 			std::cout << "Could not load " << file << std::endl;
 		else
-			fontsOpen++; // Add to the amount of fonts open.
+			fontsOpen++;
 		return;
 	}
 	
