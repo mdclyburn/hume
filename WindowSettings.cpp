@@ -49,7 +49,7 @@ namespace hm
 			
 			if(Logger::getLogger()->getLogLevel() >= LogLevel::INFO)
 			{
-				std::string msg = "Using resolution of " +
+				std::string msg = "Best fullscreen resolution: " +
 				std::to_string(mode.w) + "x" +
 				std::to_string(mode.h) + ".";
 				Logger::getLogger()->log(msg);
