@@ -102,7 +102,7 @@ namespace hm
 			pushState(gs);
 
 		return;
-    	}
+	}
 
 	void StateManager::popAll()
 	{
