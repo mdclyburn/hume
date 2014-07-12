@@ -7,8 +7,6 @@
 #include <SDL2/SDL.h>
 
 #include "Blittable.h"
-#include "Sprite.h"
-#include "TileMap.h"
 #include "WindowSettings.h"
 
 namespace hm
@@ -27,8 +25,6 @@ namespace hm
 		void draw(Blittable& b); // Draws a Blittable object to the window's screen.
 		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.
 		void draw(Blittable& b, int x, int y, int w, int h); // Draws a Blittable to the screen, overriding position and size.
-		void draw(Sprite& s); // Draw a sprite to the screen.
-		void draw(TileMap& m); // Draws an entire map to the screen beginning at the coordinate point (0, 0).
 
 		void clear(); // Blacks out the screen.
 		void forceRefresh(); // Forces window to redraw.

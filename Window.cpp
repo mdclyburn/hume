@@ -62,41 +62,6 @@ namespace hm
 		return;
 	}
 	
-	void Window::draw(Sprite& s)
-	{
-		// Don't draw if transparent. Waste of resources.
-		if(s.getAlpha() == TRANSPARENT)
-			return;
-		SDL_Rect sdlr = s.getPosition();
-		sdlr.w = s.getWidth();
-		sdlr.h = s.getHeight();
-		
-		SDL_RenderCopy(renderer, s.getTexture(), s.getInputRect(), &sdlr);
-		return;
-	}
-	
-	void Window::draw(TileMap& m)
-	{
-		SDL_Rect info = m.getTileDimensions();
-		int x_start = 0, y_start = 0; // Where to begin drawing the map.
-		// If map is smaller than window, center it.
-		if(info.w * m.getDimensions().w < settings.getResolution().width)
-			x_start = (settings.getResolution().width / 2) - (info.w * m.getDimensions().w / 2);
-		if(info.h * m.getDimensions().h)
-			y_start = (settings.getResolution().height / 2) - (info.h * m.getDimensions().h / 2);
-		
-		for(int y = y_start; y < m.getTileDimensions().h * m.getDimensions().h + y_start; y += m.getTileDimensions().h)
-		{
-			for(int x = x_start; x < m.getTileDimensions().w * m.getDimensions().w + x_start; x += m.getTileDimensions().w)
-			{
-				info.x = x;
-				info.y = y;
-				SDL_RenderCopy(renderer, m.getTile((x - x_start) / m.getTileDimensions().w, (y - y_start) / m.getTileDimensions().h)->getTexture(), nullptr, &info);
-			}
-		}
-		return;
-	}
-	
 	void Window::clear()
 	{
 		SDL_RenderClear(renderer);
