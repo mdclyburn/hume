@@ -16,6 +16,7 @@ namespace hm
 	public:
 		Image();
 		Image(std::string filename, SDL_Renderer* renderer);
+		~Image();
 
 		virtual void loadImage(std::string filename, SDL_Renderer* renderer);
 		
