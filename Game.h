@@ -28,15 +28,10 @@ namespace hm
 
 		virtual void run() = 0;
 
-		void setCapFrameRate(bool b);
+		void capFrameRate(bool b);
 		bool frameRateIsCapped();
 		void setFrameRate(int i);
-		float getMaxFrameTime();
-		float getCappedFrameTime();
-		float getMaxFrameRate();
-		float getCappedFrameRate();
 		float getFrameRate();
-		void frameRateView(bool b);
 
 		void log(std::string msg, LogLevel level = INFO);
 
@@ -50,12 +45,9 @@ namespace hm
 		SDL_Event e;
 
 		std::string title;
-		bool capFrameRate;
-		bool displayFrameRate;
+		bool cap_frame_rate;
 		int framerate;
 		Timer frameTimer;
-		float maxFrameTime;
-		float cappedFrameTime;
 
 		Window* window;
 		StateManager* manager;
