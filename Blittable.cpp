@@ -30,6 +30,12 @@ namespace hm
 		
 		return;
 	}
+	
+	void Blittable::modifyAlpha(int mod)
+	{
+		setAlpha(alpha + mod);
+		return;
+	}
 
 	void Blittable::setPosition(int x, int y)
 	{

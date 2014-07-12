@@ -23,7 +23,7 @@ namespace hm
 		// Alpha
 		int getAlpha();
 		void setAlpha(int alphaValue);
-		// TODO: Create function to add/subract to current alpha value.
+		void modifyAlpha(int mod);
 		
 		// Positioning
 		void setPosition(int x, int y);
