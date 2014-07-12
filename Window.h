@@ -7,17 +7,15 @@
 #include <SDL2/SDL.h>
 
 #include "Blittable.h"
-#include "Sprite.h"
-#include "TileMap.h"
+#include "WindowSettings.h"
 
 namespace hm
 {
 	class Window
 	{
 	public:
-		Window(); // Default constructor sets dimensions to 640x480x32
-		Window(int w, int h); // Constructor with custom dimensions.
-		Window(std::string title, int w, int h, bool fs = false); // Constructor with custom dimensions and title.
+		Window(); // Defaults to best available fullscreen resolution.
+		Window(WindowSettings ws);
 		~Window(); // Destructor
 
 		void setTitle(std::string title); // Sets the title of the window.
@@ -27,8 +25,6 @@ namespace hm
 		void draw(Blittable& b); // Draws a Blittable object to the window's screen.
 		void draw(Blittable& b, int x, int y); // Draws a Blittable object to the window's screen, overriding the position set internally.
 		void draw(Blittable& b, int x, int y, int w, int h); // Draws a Blittable to the screen, overriding position and size.
-		void draw(Sprite& s); // Draw a sprite to the screen.
-		void draw(TileMap& m); // Draws an entire map to the screen beginning at the coordinate point (0, 0).
 
 		void clear(); // Blacks out the screen.
 		void forceRefresh(); // Forces window to redraw.
@@ -53,12 +49,13 @@ namespace hm
 		SDL_Renderer* getRenderer();
 
 	private:
-		int width;
-		int height;
 		bool needRefresh; // If the window needs to refresh.
 		Uint32 clearColor; // The color to clear the window with.
+		WindowSettings settings;
 		SDL_Window* window; // Window object
 		SDL_Renderer* renderer;
+		
+		void create(); // Create window with current settings.
 	};
 }
 

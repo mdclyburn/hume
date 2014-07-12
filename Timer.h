@@ -5,6 +5,13 @@
 
 namespace hm
 {
+	enum TimeUnit
+	{
+		MILLISECONDS = 1,
+		SECONDS = 1000,
+		MINUTES = 60000
+	};
+	
 	/* Defines a class to act as a stopwatch
 	   in a Hume-based application. */
 	class Timer
@@ -19,6 +26,7 @@ namespace hm
 		void reset(); // Resets the timer.
 
 		float getTime(); // Returns the amount of time passed.
+		float getTime(TimeUnit unit);
 
 		bool isPaused(); // Returns paused status.
 		bool isStarted(); // Returns started status.

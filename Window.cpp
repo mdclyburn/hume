@@ -2,46 +2,16 @@
 
 namespace hm
 {
-	Window::Window()
+	Window::Window() : window(nullptr), renderer(nullptr)
 	{
-		width = 640;
-		height = 480;
-		window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
-		if(window == nullptr)
-			std::cout << "SDL_Window creation failed.";
-		else
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		create();
 	}
-
-	Window::Window(int w, int h)
+	
+	Window::Window(WindowSettings ws) : window(nullptr), renderer(nullptr), settings(ws)
 	{
-		width = w;
-		height = h;
-		window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, 0);
-		if(window == nullptr)
-			std::cout << "SDL_Window creation failed.";
-		else
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		create();
 	}
-
-	Window::Window(std::string title, int w, int h, bool fs)
-	{
-		width = w;
-		height = h;
-		if(fs)
-			window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_FULLSCREEN);
-		else
-			window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,
-									  SDL_WINDOWPOS_UNDEFINED, w, h, 0);
-		if(window == nullptr)
-			std::cout << "SDL_Window creation failed.";
-		else
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	}
-
+	
 	Window::~Window()
 	{
 		SDL_DestroyRenderer(renderer);
@@ -92,41 +62,6 @@ namespace hm
 		return;
 	}
 	
-	void Window::draw(Sprite& s)
-	{
-		// Don't draw if transparent. Waste of resources.
-		if(s.getAlpha() == TRANSPARENT)
-			return;
-		SDL_Rect sdlr = s.getPosition();
-		sdlr.w = s.getWidth();
-		sdlr.h = s.getHeight();
-		
-		SDL_RenderCopy(renderer, s.getTexture(), s.getInputRect(), &sdlr);
-		return;
-	}
-	
-	void Window::draw(TileMap& m)
-	{
-		SDL_Rect info = m.getTileDimensions();
-		int x_start = 0, y_start = 0; // Where to begin drawing the map.
-		// If map is smaller than window, center it.
-		if(info.w * m.getDimensions().w < width)
-			x_start = (width / 2) - (info.w * m.getDimensions().w / 2);
-		if(info.h * m.getDimensions().h)
-			y_start = (height / 2) - (info.h * m.getDimensions().h / 2);
-		
-		for(int y = y_start; y < m.getTileDimensions().h * m.getDimensions().h + y_start; y += m.getTileDimensions().h)
-		{
-			for(int x = x_start; x < m.getTileDimensions().w * m.getDimensions().w + x_start; x += m.getTileDimensions().w)
-			{
-				info.x = x;
-				info.y = y;
-				SDL_RenderCopy(renderer, m.getTile((x - x_start) / m.getTileDimensions().w, (y - y_start) / m.getTileDimensions().h)->getTexture(), nullptr, &info);
-			}
-		}
-		return;
-	}
-	
 	void Window::clear()
 	{
 		SDL_RenderClear(renderer);
@@ -147,19 +82,19 @@ namespace hm
 
 	int Window::getWidth()
 	{
-		return width;
+		return settings.getResolution().width;
 	}
 
 	int Window::getHeight()
 	{
-		return height;
+		return settings.getResolution().height;
 	}
 	
 	// Centers the given Blittable in the given Window.
 	void Window::center(Blittable& b)
 	{
-		b.setx(width / 2 - b.getWidth() / 2);
-		b.sety(height / 2 - b.getHeight() / 2);
+		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
+		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
 		
 		return;
 	}
@@ -167,14 +102,14 @@ namespace hm
 	// Centers the given Blittable on the X-Axis in the given window.
 	void Window::centerx(Blittable& b)
 	{
-		b.setx(width / 2 - b.getWidth() / 2);
+		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
 		return;
 	}
 	
 	// Centers the given Blittable on the Y-Axis in the given window.
 	void Window::centery(Blittable& b)
 	{
-		b.sety(height / 2 - b.getHeight() / 2);
+		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
 		return;
 	}
 	
@@ -205,7 +140,7 @@ namespace hm
 	
 	void Window::bottom(Blittable& b)
 	{
-		b.sety(height - b.getHeight());
+		b.sety(settings.getResolution().height - b.getHeight());
 		return;
 	}
 	
@@ -217,12 +152,57 @@ namespace hm
 	
 	void Window::right(Blittable& b)
 	{
-		b.setx(width - b.getWidth());
+		b.setx(settings.getResolution().width - b.getWidth());
 		return;
 	}
 	
 	SDL_Renderer* Window::getRenderer()
 	{
 		return renderer;
+	}
+	
+	void Window::create()
+	{
+		// Safeguard against creating another window.
+		if(window != nullptr)
+		{
+			Logger::getLogger()->log("Window creation requested, but a window already exists.", WARNING);
+			return;
+		}
+		
+		if(settings.isFullscreen())
+		{
+			window = SDL_CreateWindow(settings.getTitle().c_str(),
+									  SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED,
+									  settings.getResolution().width,
+									  settings.getResolution().height,
+									  SDL_WINDOW_FULLSCREEN);
+		}
+		else
+		{
+			window = SDL_CreateWindow(settings.getTitle().c_str(),
+									  SDL_WINDOWPOS_UNDEFINED,
+									  SDL_WINDOWPOS_UNDEFINED,
+									  settings.getResolution().width,
+									  settings.getResolution().height,
+									  0);
+		}
+		
+		if(window == nullptr)
+		{
+			Logger::getLogger()->log("SDL_Window creation failed.", ERROR);
+			exit(0);
+		}
+		
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		if(renderer == nullptr)
+		{
+			Logger::getLogger()->log("SDL_Renderer creation failed.", ERROR);
+			exit(0);
+		}
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		
+		return;
 	}
 }

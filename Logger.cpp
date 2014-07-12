@@ -33,7 +33,7 @@ namespace hm
 		return instance;
 	}
 
-	LogLevel& Logger::getLogLevel()
+	LogLevel Logger::getLogLevel()
 	{
 		return level;
 	}
@@ -46,30 +46,41 @@ namespace hm
 
 	void Logger::log(std::string msg, LogLevel level)
 	{
-		if(this->level < level)
+		if(getLogger()->level < level)
 			return;
 
+		Logger* logger = getLogger();
+		
+		// Output time.
+		time_t raw_time;
+		struct tm local_time;
+		time(&raw_time);
+		local_time = *localtime(&raw_time);
+		logger->ofs << std::to_string(local_time.tm_hour) << ":"
+		<< std::to_string(local_time.tm_min) << ":"
+		<< std::to_string(local_time.tm_sec) << "\t";
+		
 		switch(level)
 		{
 			case ERROR:
-				ofs << "ERROR:\t";
+				logger->ofs << "ERROR:\t";
 				break;
 			case WARNING:
-				ofs << "WARNING:\t";
+				logger->ofs << "WARNING:\t";
 				break;
 			case INFO:
-				ofs << "INFO:\t";
+				logger->ofs << "INFO:\t";
 				break;
 			case DEBUGMSG:
-				ofs << "DEBUGMSG:\t";
+				logger->ofs << "DEBUGMSG:\t";
 				break;
 			default:
-				ofs << "UNID'd:\t";
+				logger->ofs << "UNID'd:\t";
 				break;
 		}
 
-		ofs << msg << std::endl;
-		ofs.flush();
+		getLogger()->ofs << msg << std::endl;
+		getLogger()->ofs.flush();
 
 		return;
 	}

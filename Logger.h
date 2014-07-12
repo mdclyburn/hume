@@ -10,6 +10,7 @@
 
 #include <string>
 #include <cstdio>
+#include <ctime>
 #include <iostream>
 #include <fstream>
 
@@ -24,9 +25,10 @@ namespace hm
 		
 		static Logger* getLogger();
 		
-		LogLevel& getLogLevel();
+		LogLevel getLogLevel();
 		void setLogLevel(LogLevel level);
-		void log(std::string msg, LogLevel level = INFO);
+		static void log(std::string msg, LogLevel level = INFO);
+		
 	private:
 		bool ready; // True when stream is open.
 		std::ofstream ofs;
