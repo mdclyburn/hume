@@ -71,7 +71,7 @@ namespace hm
         	stack.back()->setWindow(window);
 		if(!stack.back()->init())
 		{
-			std::cout << "State initialization reported failure." << std::endl;
+			Logger::log("State initialization reported failure.", ERROR);
 			return false;
 		}
 		

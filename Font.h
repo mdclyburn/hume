@@ -7,6 +7,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#include "Logger.h"
+
 namespace hm
 {
 	/* Defines the three rendering modes available
