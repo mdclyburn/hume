@@ -37,8 +37,8 @@ namespace hm
 		static int getFontsOpen();
 
 		void loadFont(std::string file, int ptsize = 16);
-		void closeFont();
 		TTF_Font* getFont();
+		void closeFont();
 
 		void setSize(int size);
 

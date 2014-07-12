@@ -52,6 +52,13 @@ namespace hm
 			fontsOpen++; // Add to the amount of fonts open.
 		return;
 	}
+	
+	TTF_Font* Font::getFont()
+	{
+		if(font == NULL)
+			std::cout << "WARNING: Font is NULL." << std::endl;
+		return font;
+	}
 
 	void Font::closeFont()
 	{
@@ -63,13 +70,6 @@ namespace hm
 		}
 
 		return;
-	}
-
-	TTF_Font* Font::getFont()
-	{
-		if(font == NULL)
-			std::cout << "WARNING: Font is NULL." << std::endl;
-		return font;
 	}
 
 	void Font::setSize(int size)
