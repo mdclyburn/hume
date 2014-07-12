@@ -70,6 +70,7 @@ namespace hm
        	virtual void cleanup() = 0; // Frees resources.
 		
 		void SDLInit(); // Initializes SDL systems used by hume.
+		void SDLQuit(); // Quits all SDL systems in use.
 	};
 }
 

@@ -186,4 +186,14 @@ namespace hm
 		
 		return;
 	}
+	
+	void Game::SDLQuit()
+	{
+		SDL_Quit();
+		IMG_Quit();
+		Mix_Quit();
+		TTF_Quit();
+		
+		return;
+	}
 }
