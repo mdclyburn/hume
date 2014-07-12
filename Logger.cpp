@@ -50,6 +50,16 @@ namespace hm
 			return;
 
 		Logger* logger = getLogger();
+		
+		// Output time.
+		time_t raw_time;
+		struct tm local_time;
+		time(&raw_time);
+		local_time = *localtime(&raw_time);
+		logger->ofs << std::to_string(local_time.tm_hour) << ":"
+		<< std::to_string(local_time.tm_min) << ":"
+		<< std::to_string(local_time.tm_sec) << "\t";
+		
 		switch(level)
 		{
 			case ERROR:
@@ -86,12 +96,6 @@ namespace hm
 	{
 		ofs << "END LOGGING SESSION =============================" << std::endl;
 		ofs.close();
-		return;
-	}
-	
-	void operator<<(Logger* l, Message m)
-	{
-		l->log(m.msg, m.level);
 		return;
 	}
 }

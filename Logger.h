@@ -10,13 +10,13 @@
 
 #include <string>
 #include <cstdio>
+#include <ctime>
 #include <iostream>
 #include <fstream>
 
 namespace hm
 {
 	enum LogLevel { ERROR, WARNING, INFO, DEBUGMSG };
-	struct Message { LogLevel level; std::string msg; };
 	
 	class Logger
 	{
@@ -42,8 +42,6 @@ namespace hm
 		void initSession();
 		void endSession();
 	};
-
-	void operator<<(Logger* l, Message m);
 }
 
 #endif
