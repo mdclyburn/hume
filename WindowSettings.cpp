@@ -56,4 +56,25 @@ namespace hm
 			}
 		}
 	}
+	
+	std::ostream& operator<<(std::ostream& os, const WindowSettings& ws)
+	{
+		// Window title
+		os << "Title: " << ws.title << std::endl;
+		
+		// Resolution
+		os << "Resolution: "
+		<< std::to_string(ws.resolution.width)
+		<< "x" << std::to_string(ws.resolution.height) << std::endl;
+		
+		// Fullscreen?
+		os << "Fullscreen: ";
+		if(ws.fullscreen)
+			os << "yes";
+		else
+			os << "no";
+		os << std::endl;
+		
+		return os;
+	}
 }

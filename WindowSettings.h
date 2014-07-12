@@ -30,6 +30,8 @@ namespace hm
 	 */
 	class WindowSettings
 	{
+		friend std::ostream& operator<<(std::ostream& os, const WindowSettings& ws);
+		
 	public:
 		WindowSettings();
 		~WindowSettings();
@@ -56,6 +58,8 @@ namespace hm
 		
 		Resolution resolution;
 	};
+	
+	std::ostream& operator<<(std::ostream& os, const WindowSettings& ws);
 }
 
 #endif
