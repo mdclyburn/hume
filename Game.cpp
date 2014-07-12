@@ -39,39 +39,6 @@ namespace hm
 		delete window;
 		window = NULL;
 	}
-	
-	void Game::SDLInit()
-	{
-		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
-		{
-			log("SDL initialization failed.", hm::ERROR);
-			log(SDL_GetError(), hm::ERROR);
-		}
-		
-		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
-		int initted = IMG_Init(flags);
-		if((initted&flags) != flags)
-		{
-			log("SDL_image initialization failed.", hm::ERROR);
-			log(IMG_GetError(), hm::ERROR);
-		}
-		
-		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
-		initted = Mix_Init(flags);
-		if((initted&flags) != flags)
-		{
-			log("SDL_mixer initialization failed.", hm::ERROR);
-			log(Mix_GetError(), hm::ERROR);
-		}
-		
-		if(TTF_Init() == -1)
-		{
-			log("SDL_ttf initialization failed.", hm::ERROR);
-			log(TTF_GetError(), hm::ERROR);
-		}
-		
-		return;
-	}
 
 	void Game::setCapFrameRate(bool b)
 	{
@@ -186,4 +153,37 @@ namespace hm
         // Clean up afterwards.
         cleanup();
     }
+	
+	void Game::SDLInit()
+	{
+		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
+		{
+			log("SDL initialization failed.", hm::ERROR);
+			log(SDL_GetError(), hm::ERROR);
+		}
+		
+		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+		int initted = IMG_Init(flags);
+		if((initted&flags) != flags)
+		{
+			log("SDL_image initialization failed.", hm::ERROR);
+			log(IMG_GetError(), hm::ERROR);
+		}
+		
+		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
+		initted = Mix_Init(flags);
+		if((initted&flags) != flags)
+		{
+			log("SDL_mixer initialization failed.", hm::ERROR);
+			log(Mix_GetError(), hm::ERROR);
+		}
+		
+		if(TTF_Init() == -1)
+		{
+			log("SDL_ttf initialization failed.", hm::ERROR);
+			log(TTF_GetError(), hm::ERROR);
+		}
+		
+		return;
+	}
 }
