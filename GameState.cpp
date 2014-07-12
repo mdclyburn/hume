@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "GameState.h"
 
 namespace hm
@@ -17,8 +21,8 @@ namespace hm
 	{
 		this->window = window;
 		return;
-    	}
-
+	}
+	
 	void GameState::pop()
 	{
 		game->getStateManager()->popState();

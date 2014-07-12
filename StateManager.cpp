@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "StateManager.h"
 
 namespace hm
@@ -26,9 +30,7 @@ namespace hm
 	void StateManager::stopState()
 	{
 		if(!stack.empty())
-		{
-			// Implement cleanup...
-		}
+			stack.back()->cleanup();
 		return;
 	}
 
@@ -71,7 +73,7 @@ namespace hm
         	stack.back()->setWindow(window);
 		if(!stack.back()->init())
 		{
-			std::cout << "State initialization reported failure." << std::endl;
+			Logger::log("State initialization reported failure.", ERROR);
 			return false;
 		}
 		
@@ -102,7 +104,7 @@ namespace hm
 			pushState(gs);
 
 		return;
-    	}
+	}
 
 	void StateManager::popAll()
 	{

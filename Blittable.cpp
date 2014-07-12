@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "Blittable.h"
 
 namespace hm
@@ -13,10 +17,28 @@ namespace hm
 			SDL_DestroyTexture(texture);
 		texture = nullptr;
 	}
-
-	SDL_Texture* Blittable::getTexture()
+	
+	int Blittable::getAlpha()
 	{
-		return texture;
+		return alpha;
+	}
+	
+	void Blittable::setAlpha(int alphaValue)
+	{
+		if(alphaValue > 255)
+			alphaValue = 255;
+		else if(alphaValue < 0)
+			alphaValue = 0;
+		alpha = alphaValue;
+		SDL_SetTextureAlphaMod(texture, alpha);
+		
+		return;
+	}
+	
+	void Blittable::modifyAlpha(int mod)
+	{
+		setAlpha(alpha + mod);
+		return;
 	}
 
 	void Blittable::setPosition(int x, int y)
@@ -31,6 +53,25 @@ namespace hm
 	{
 		
 		return info;
+	}
+	
+	void Blittable::move(int x, int y)
+	{
+		info.x += x;
+		info.y += y;
+		return;
+	}
+	
+	void Blittable::setx(int x)
+	{
+		info.x = x;
+		return;
+	}
+	
+	void Blittable::sety(int y)
+	{
+		info.y = y;
+		return;
 	}
 	
 	SDL_Rect Blittable::getDimensions()
@@ -55,40 +96,9 @@ namespace hm
 	{
 		return info;
 	}
-
-	void Blittable::move(int x, int y)
+	
+	SDL_Texture* Blittable::getTexture()
 	{
-		info.x += x;
-		info.y += y;
-		return;
-	}
-
-	void Blittable::setx(int x)
-	{
-		info.x = x;
-		return;
-	}
-
-	void Blittable::sety(int y)
-	{
-		info.y = y;
-		return;
-	}
-
-	void Blittable::setAlpha(int alphaValue)
-	{
-		if(alphaValue > 255)
-			alphaValue = 255;
-		else if(alphaValue < 0)
-			alphaValue = 0;
-		alpha = alphaValue;
-		SDL_SetTextureAlphaMod(texture, alpha);
-
-		return;
-	}
-
-	int Blittable::getAlpha()
-	{
-		return alpha;
+		return texture;
 	}
 }

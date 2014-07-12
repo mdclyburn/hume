@@ -1,10 +1,6 @@
-//
-//  WindowSettings.h
-//  Hume
-//
-//  Created by Marshall Clyburn on 7/11/14.
-//  Copyright (c) 2014 Marshall Clyburn. All rights reserved.
-//
+/*
+ Hume Library Version 0.4.2
+ */
 
 #ifndef WINDOWSETTINGS_H
 #define WINDOWSETTINGS_H
@@ -18,6 +14,7 @@
 
 namespace hm
 {
+	// A given resolution.
 	struct Resolution
 	{
 		unsigned int width;
@@ -30,6 +27,8 @@ namespace hm
 	 */
 	class WindowSettings
 	{
+		friend std::ostream& operator<<(std::ostream& os, const WindowSettings& ws);
+		
 	public:
 		WindowSettings();
 		~WindowSettings();
@@ -56,6 +55,8 @@ namespace hm
 		
 		Resolution resolution;
 	};
+	
+	std::ostream& operator<<(std::ostream& os, const WindowSettings& ws);
 }
 
 #endif

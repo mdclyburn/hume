@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
@@ -11,29 +15,35 @@ namespace hm
 	class Game;
 	class GameState;
 
-	class StateManager // Handles the switching of states.
+	/*
+	 The manager for all GameStates that a Game uses. It
+	 is responsible for state initialization and clean up
+	 as well.
+	 */
+	class StateManager
 	{
 		public:
-			StateManager(); // Basic constructor.
-			StateManager(Game* game, Window* window); // Constructor sets window to use.
-			~StateManager(); // Destructor
+			StateManager();
+			StateManager(Game* game, Window* window);
+			~StateManager();
 
-			void startState(); // Starts the state on the top of the stack.
-			void stopState(); // Stops the state on the top of the stack.
-			void resumeState(); // Restarts the state on the top of the stack.
-			void pauseState(); // Pause the state at the top of the stack.
+			void startState();
+			void stopState();
+			void resumeState();
+			void pauseState();
 
-			bool hasState(); // Returns whether there is a state on the stack.
-			GameState* getCurrentState(); // Returns a pointer to the current state.
+			bool hasState();
+			GameState* getCurrentState();
 
-			bool pushState(GameState& gs); // Adds a state to the stack.
-			void popState(); // Pops a state from the stack.
-			void replaceState(GameState& gs); // Switches out a state.
-			void popAll(); // Removes all states. Takes care of cleanup.
+			bool pushState(GameState& gs);
+			void popState();
+			void replaceState(GameState& gs);
+			void popAll();
+		
 		private:
-			std::vector<GameState*> stack; // Stack of states currently in use.
-			Game* game; // The game whose states the StateManager manages.
-			Window* window; // The game's window.
+			std::vector<GameState*> stack;
+			Game* game;
+			Window* window;
 	};
 };
 

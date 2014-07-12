@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "Window.h"
 
 namespace hm
@@ -159,6 +163,11 @@ namespace hm
 	SDL_Renderer* Window::getRenderer()
 	{
 		return renderer;
+	}
+	
+	WindowSettings Window::getSettings()
+	{
+		return settings;
 	}
 	
 	void Window::create()

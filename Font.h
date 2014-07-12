@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef FONT_H
 #define FONT_H
 
@@ -6,6 +10,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+
+#include "Logger.h"
 
 namespace hm
 {
@@ -25,32 +31,33 @@ namespace hm
 
 	/* Font class defines the basic functionality of a font
 	   such as loading, coloring and rendering mode. Used in
-	   conjunction with the Text class to render text. */
+	   conjunction with the Text class to render text.
+	 */
 
 	class Font
 	{
 	public:
-		Font(); // Basic ctor with no file loading.
-		Font(std::string file, int ptsize = 16); // Ctor with file loading and size setting.
+		Font();
+		Font(std::string file, int ptsize = 16);
 		~Font();
 
-		static int getFontsOpen(); // Returns the amount of open fonts.
+		static int getFontsOpen();
 
-		void loadFont(std::string file, int ptsize = 16); // Loads a font after closing a present one.
-		void closeFont(); // Closes a currently loaded font.
-		TTF_Font* getFont(); // Get the font object pointer.
+		void loadFont(std::string file, int ptsize = 16);
+		TTF_Font* getFont();
+		void closeFont();
 
-		void setSize(int size); // Resizes the font.
+		void setSize(int size);
 
-		void setRenderMode(RenderMode rm); // Set the mode to render text in.
-		RenderMode getRenderMode(); // Get the mode to render text in.
+		void setRenderMode(RenderMode rm);
+		RenderMode getRenderMode();
 
 	private:
-		static int fontsOpen; // The amount of opened fonts.
-		std::string file; // Where the last font opened is located.
-		TTF_Font* font; // The font object.
-		RenderMode rm; // The mode to render the font in.
+		static int fontsOpen;
+		std::string file;
+		TTF_Font* font;
+		RenderMode rm;
 	};
 }
 
-#endif // FONT_H
+#endif

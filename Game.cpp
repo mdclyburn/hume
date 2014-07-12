@@ -1,15 +1,19 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "Game.h"
 
 namespace hm
 {
-	Game::Game() : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
+	Game::Game() : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		window = new Window();
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
+	Game::Game(std::string title) : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		this->title = title;
@@ -20,7 +24,7 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title, unsigned int width, unsigned int height, bool fs) : capFrameRate(true), framerate(30), frameTimer(), maxFrameTime(0), cappedFrameTime(0), displayFrameRate(false)
+	Game::Game(std::string title, unsigned int width, unsigned int height, bool fs) : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		this->title = title;
@@ -39,26 +43,16 @@ namespace hm
 		delete window;
 		window = NULL;
 	}
-	
-	void Game::SDLInit()
-	{
-		initSdl();
-		initSdlImage();
-		initSdlMixer();
-		initSdlTtf();
-		
-		return;
-	}
 
-	void Game::setCapFrameRate(bool b)
+	void Game::capFrameRate(bool b)
 	{
-		capFrameRate = b;
+		cap_frame_rate = b;
 		return;
 	}
 
 	bool Game::frameRateIsCapped()
 	{
-		return capFrameRate;
+		return cap_frame_rate;
 	}
 
 	void Game::setFrameRate(int i)
@@ -67,42 +61,12 @@ namespace hm
 		return;
 	}
 
-	float Game::getMaxFrameTime()
-	{
-		return maxFrameTime;
-	}
-
-	float Game::getCappedFrameTime()
-	{
-		return cappedFrameTime;
-	}
-
-	float Game::getMaxFrameRate()
-	{
-		// Frame Rate = 1000ms / Time Spent per Frame
-		return 1000 / maxFrameTime;
-	}
-
-	float Game::getCappedFrameRate()
-	{
-		// Frame Rate = 1000ms / Time Spent per Frame
-		return 1000 / cappedFrameTime;
-	}
-
 	float Game::getFrameRate()
 	{
-		if(frameRateIsCapped())
-			return 1000 / cappedFrameTime;
+		if(cap_frame_rate)
+			return framerate;
 		else
-			return 1000 / maxFrameTime;
-	}
-
-	void Game::frameRateView(bool b)
-	{
-		displayFrameRate = b;
-		if(!b) // Need to change back to just title.
-			window->setTitle(title);
-		return;
+			return 0;
 	}
 
 	void Game::log(std::string msg, LogLevel level)
@@ -138,76 +102,58 @@ namespace hm
 			if(manager->hasState())	// It is possible for the state to
         		display();			// have popped itself during update().
 
-			// Record the faster time.
-			frameTimer.pause();
-			maxFrameTime = (float)(maxFrameTime * .995 + frameTimer.getTime() * .005);
-			frameTimer.unpause();
-
 			// Record the capped time.
-			if(capFrameRate)
+			if(cap_frame_rate)
 			{
-				if(titleDisplayTimer.getTime() >= 1000 && displayFrameRate)
-				{
-					// Show framerate in title.
-					std::string s = title + " @ " + std::to_string(framerate) + "fps";
-					window->setTitle(s);
-					titleDisplayTimer.reset();
-				}
-
-				if(frameTimer.getTime() < 1000 / framerate)
+				if(frameTimer.getTime() < (1000 / framerate))
 					SDL_Delay((Uint32)(1000 / framerate - frameTimer.getTime()));
-				cappedFrameTime = (float)((cappedFrameTime * .995 + frameTimer.getTime() * .005));
 			}
         }
 
         // Clean up afterwards.
         cleanup();
     }
-
-	bool Game::initSdl()
+	
+	void Game::SDLInit()
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		{
 			log("SDL initialization failed.", hm::ERROR);
-			return false;
+			log(SDL_GetError(), hm::ERROR);
 		}
-		return true;
-	}
-	
-	bool Game::initSdlImage()
-	{
+		
 		int flags = IMG_INIT_JPG | IMG_INIT_PNG;
 		int initted = IMG_Init(flags);
 		if((initted&flags) != flags)
 		{
 			log("SDL_image initialization failed.", hm::ERROR);
 			log(IMG_GetError(), hm::ERROR);
-			return false;
 		}
-		return true;
-	}
-	
-	bool Game::initSdlMixer()
-	{
-		int flags = MIX_INIT_MP3 | MIX_INIT_OGG;
-		int initted = Mix_Init(flags);
+		
+		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
+		initted = Mix_Init(flags);
 		if((initted&flags) != flags)
 		{
 			log("SDL_mixer initialization failed.", hm::ERROR);
 			log(Mix_GetError(), hm::ERROR);
-			return false;
 		}
-		return true;
-	}
-	
-	bool Game::initSdlTtf()
-	{
+		
 		if(TTF_Init() == -1)
 		{
 			log("SDL_ttf initialization failed.", hm::ERROR);
 			log(TTF_GetError(), hm::ERROR);
-			return false;
 		}
-		return true;
+		
+		return;
+	}
+	
+	void Game::SDLQuit()
+	{
+		SDL_Quit();
+		IMG_Quit();
+		Mix_Quit();
+		TTF_Quit();
+		
+		return;
 	}
 }
