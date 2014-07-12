@@ -28,6 +28,7 @@ namespace hm
 
 		virtual void run() = 0;
 
+		// Frame Rate Management
 		void capFrameRate(bool b);
 		bool frameRateIsCapped();
 		void setFrameRate(int i);
