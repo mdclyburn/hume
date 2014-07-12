@@ -47,6 +47,7 @@ namespace hm
 		void right(Blittable& b); // Moves the blittable to the right without pushing off-screen.
 		
 		SDL_Renderer* getRenderer();
+		WindowSettings getSettings();
 
 	private:
 		bool needRefresh; // If the window needs to refresh.

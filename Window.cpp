@@ -161,6 +161,11 @@ namespace hm
 		return renderer;
 	}
 	
+	WindowSettings Window::getSettings()
+	{
+		return settings;
+	}
+	
 	void Window::create()
 	{
 		// Safeguard against creating another window.
