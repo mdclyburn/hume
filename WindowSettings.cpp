@@ -47,6 +47,9 @@ namespace hm
 			}
 			while(success != 0);
 			
+			resolution.width = mode.w;
+			resolution.height = mode.h;
+			
 			if(Logger::getLogger()->getLogLevel() >= LogLevel::INFO)
 			{
 				std::string msg = "Using resolution of " +
