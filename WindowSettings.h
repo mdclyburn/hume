@@ -14,6 +14,7 @@
 
 namespace hm
 {
+	// A given resolution.
 	struct Resolution
 	{
 		unsigned int width;

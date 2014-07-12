@@ -13,8 +13,13 @@
 
 namespace hm
 {
+	// The severity of the message sent to the logger.
 	enum LogLevel { ERROR, WARNING, INFO, DEBUGMSG };
 	
+	/*
+	 A small, useful class used to write log messages out
+	 to a text file.
+	 */
 	class Logger
 	{
 	public:

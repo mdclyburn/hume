@@ -18,6 +18,10 @@ namespace hm
 {
 	class Game;
 
+	/*
+	 Defines the basic game state along with the necessary
+	 functions for running when added to a StateManager.
+	 */
 	class GameState
 	{
 	public:
