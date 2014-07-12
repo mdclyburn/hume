@@ -8,6 +8,7 @@
 
 #include "Blittable.h"
 #include "Font.h"
+#include "Logger.h"
 
 namespace hm
 {
