@@ -26,9 +26,7 @@ namespace hm
 	void StateManager::stopState()
 	{
 		if(!stack.empty())
-		{
-			// Implement cleanup...
-		}
+			stack.back()->cleanup();
 		return;
 	}
 
