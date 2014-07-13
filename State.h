@@ -2,8 +2,8 @@
  Hume Library Version 0.4.2
  */
 
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#ifndef STATE_H
+#define STATE_H
 
 #include <iostream>
 
@@ -12,7 +12,6 @@
 #include "Application.h"
 #include "Window.h"
 #include "StateManager.h"
-#include "GameState.h"
 
 namespace hm
 {
@@ -22,10 +21,10 @@ namespace hm
 	 Defines the basic game state along with the necessary
 	 functions for running when added to a StateManager.
 	 */
-	class GameState
+	class State
 	{
 	public:
-		GameState();
+		State();
 
 		void setApplication(Application* app);
 		void setWindow(Window* window);

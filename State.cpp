@@ -2,28 +2,28 @@
  Hume Library Version 0.4.2
  */
 
-#include "GameState.h"
+#include "State.h"
 
 namespace hm
 {
-	GameState::GameState()
+	State::State()
 	{
 
 	}
 	
-	void GameState::setApplication(hm::Application* app)
+	void State::setApplication(hm::Application* app)
 	{
 		this->app = app;
 		return;
 	}
 
-	void GameState::setWindow(Window* window)
+	void State::setWindow(Window* window)
 	{
 		this->window = window;
 		return;
 	}
 	
-	void GameState::pop()
+	void State::pop()
 	{
 		app->getStateManager()->popState();
 		return;
