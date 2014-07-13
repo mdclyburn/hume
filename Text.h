@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef TEXT_H
 #define TEXT_H
 
@@ -12,6 +16,10 @@
 
 namespace hm
 {
+	/*
+	 Text that can be drawn to the screen once provided
+	 a font.
+	 */
 	class Text : public Blittable
     {
 	public:

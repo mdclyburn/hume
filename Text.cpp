@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #include "Text.h"
 
 namespace hm

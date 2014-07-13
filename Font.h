@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef FONT_H
 #define FONT_H
 
@@ -27,7 +31,8 @@ namespace hm
 
 	/* Font class defines the basic functionality of a font
 	   such as loading, coloring and rendering mode. Used in
-	   conjunction with the Text class to render text. */
+	   conjunction with the Text class to render text.
+	 */
 
 	class Font
 	{

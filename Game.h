@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -18,6 +22,10 @@ namespace hm
 {
 	class StateManager;
 
+	/*
+	 Provides much of the functionality needed to get
+	 started with constructing a game.
+	 */
 	class Game
 	{
 	public:

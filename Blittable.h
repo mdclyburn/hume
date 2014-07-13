@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef BLITTABLE_H
 #define BLITTABLE_H	
 
@@ -14,6 +18,10 @@ namespace hm
 		OPAQUE = 255
 	};
 
+	/*
+	 Provides the basis for all objects that are able to
+	 be drawn to the screen.
+	 */
 	class Blittable
 	{
 	public:

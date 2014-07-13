@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef IMAGE_H
 #define IMAGE_H
 
@@ -12,6 +16,9 @@
 
 namespace hm
 {
+	/*
+	 A basic image that can be drawn to the screen.
+	 */
 	class Image : public Blittable
 	{
 	public:

@@ -1,3 +1,7 @@
+/*
+ Hume Library Version 0.4.2
+ */
+
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
@@ -14,6 +18,10 @@ namespace hm
 {
 	class Game;
 
+	/*
+	 Defines the basic game state along with the necessary
+	 functions for running when added to a StateManager.
+	 */
 	class GameState
 	{
 	public:

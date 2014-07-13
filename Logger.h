@@ -1,12 +1,9 @@
 /*
- * Logger.h
- *
- *  Created on: Nov 9, 2012
- *      Author: Marshall
+ Hume Library Version 0.4.2
  */
 
-#ifndef LOGGER_H_
-#define LOGGER_H_
+#ifndef LOGGER_H
+#define LOGGER_H
 
 #include <string>
 #include <cstdio>
@@ -16,8 +13,13 @@
 
 namespace hm
 {
+	// The severity of the message sent to the logger.
 	enum LogLevel { ERROR, WARNING, INFO, DEBUGMSG };
 	
+	/*
+	 A small, useful class used to write log messages out
+	 to a text file.
+	 */
 	class Logger
 	{
 	public:
