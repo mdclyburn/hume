@@ -25,10 +25,7 @@ namespace hm
 	{
 		// Unload a previous image.
 		if(texture != nullptr)
-		{
-			SDL_DestroyTexture(texture);
-			texture = nullptr;
-		}
+			close();
 
 		SDL_Surface* surface = IMG_Load(filename.c_str());
 		
