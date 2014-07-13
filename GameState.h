@@ -9,14 +9,14 @@
 
 #include <SDL2/SDL.h>
 
-#include "Game.h"
+#include "Application.h"
 #include "Window.h"
 #include "StateManager.h"
 #include "GameState.h"
 
 namespace hm
 {
-	class Game;
+	class Application;
 
 	/*
 	 Defines the basic game state along with the necessary
@@ -27,7 +27,7 @@ namespace hm
 	public:
 		GameState();
 
-		void setGame(Game* game);
+		void setApplication(Application* app);
 		void setWindow(Window* window);
 
 		virtual void pause() = 0;
@@ -40,7 +40,7 @@ namespace hm
 		virtual void cleanup() = 0;
 		
 	protected:
-		Game* game;
+		Application* app;
 		Window* window;
 
 		void pop();

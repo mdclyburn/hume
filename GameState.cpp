@@ -10,10 +10,10 @@ namespace hm
 	{
 
 	}
-
-	void GameState::setGame(Game* game)
+	
+	void GameState::setApplication(hm::Application* app)
 	{
-		this->game = game;
+		this->app = app;
 		return;
 	}
 
