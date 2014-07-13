@@ -25,7 +25,7 @@ namespace hm
 	
 	void GameState::pop()
 	{
-		game->getStateManager()->popState();
+		app->getStateManager()->popState();
 		return;
 	}
 }
