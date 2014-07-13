@@ -55,20 +55,20 @@ namespace hm
 		 return !stack.empty();
 	}
 
-	GameState* StateManager::getCurrentState()
+	State* StateManager::getCurrentState()
 	{
 		if(stack.empty())
 			return NULL;
 		return stack.back();
 	}
 
-	bool StateManager::pushState(GameState& gs)
+	bool StateManager::pushState(State& s)
 	{
 		// Send the pause command to the current state.
 		pauseState();
 
 		//Set up the next state.
-		stack.push_back(&gs);
+		stack.push_back(&s);
 		stack.back()->setApplication(app);
         	stack.back()->setWindow(window);
 		if(!stack.back()->init())
@@ -91,17 +91,17 @@ namespace hm
 		return;
 	}
 
-	void StateManager::replaceState(GameState& gs)
+	void StateManager::replaceState(State& s)
 	{
 		// Check that it's not empty
 		if(!stack.empty())
 		{
 			stack.back()->cleanup();
 			stack.pop_back();
-			pushState(gs);
+			pushState(s);
 		}
 		else
-			pushState(gs);
+			pushState(s);
 
 		return;
 	}

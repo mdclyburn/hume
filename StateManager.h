@@ -6,17 +6,17 @@
 #define STATEMANAGER_H
 
 #include "Application.h"
-#include "GameState.h"
+#include "State.h"
 #include "Window.h"
 #include <vector>
 
 namespace hm
 {
 	class Application;
-	class GameState;
+	class State;
 
 	/*
-	 The manager for all GameStates that a Game uses. It
+	 The manager for all States that an Application uses. It
 	 is responsible for state initialization and clean up
 	 as well.
 	 */
@@ -33,15 +33,15 @@ namespace hm
 			void pauseState();
 
 			bool hasState();
-			GameState* getCurrentState();
+			State* getCurrentState();
 
-			bool pushState(GameState& gs);
+			bool pushState(State& s);
 			void popState();
-			void replaceState(GameState& gs);
+			void replaceState(State& s);
 			void popAll();
 		
 		private:
-			std::vector<GameState*> stack;
+			std::vector<State*> stack;
 		Application* app;
 			Window* window;
 	};

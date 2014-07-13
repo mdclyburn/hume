@@ -18,7 +18,7 @@ namespace hm
 	class Application;
 
 	/*
-	 Defines the basic game state along with the necessary
+	 Defines the basic application state along with the necessary
 	 functions for running when added to a StateManager.
 	 */
 	class State
