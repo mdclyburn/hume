@@ -5,14 +5,14 @@
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
-#include "Game.h"
+#include "Application.h"
 #include "GameState.h"
 #include "Window.h"
 #include <vector>
 
 namespace hm
 {
-	class Game;
+	class Application;
 	class GameState;
 
 	/*
@@ -24,7 +24,7 @@ namespace hm
 	{
 		public:
 			StateManager();
-			StateManager(Game* game, Window* window);
+			StateManager(Application* app, Window* window);
 			~StateManager();
 
 			void startState();
@@ -42,7 +42,7 @@ namespace hm
 		
 		private:
 			std::vector<GameState*> stack;
-			Game* game;
+		Application* app;
 			Window* window;
 	};
 };

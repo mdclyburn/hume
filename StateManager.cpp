@@ -6,17 +6,17 @@
 
 namespace hm
 {
-	StateManager::StateManager() : game(NULL), window(NULL)
+	StateManager::StateManager() : app(NULL), window(NULL)
 	{
 	}
 
-	StateManager::StateManager(Game* game, Window* window) : game(game), window(window)
+	StateManager::StateManager(Application* app, Window* window) : app(app), window(window)
 	{
 	}
 
 	StateManager::~StateManager()
 	{
-		game = NULL;
+		app = NULL;
 		window = NULL;
 	}
 
@@ -69,7 +69,7 @@ namespace hm
 
 		//Set up the next state.
 		stack.push_back(&gs);
-		stack.back()->setGame(game);
+		stack.back()->setApplication(app);
         	stack.back()->setWindow(window);
 		if(!stack.back()->init())
 		{
