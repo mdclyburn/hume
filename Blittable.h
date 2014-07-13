@@ -46,6 +46,8 @@ namespace hm
 		virtual int getHeight();
 		SDL_Rect getInfo();
 		SDL_Texture* getTexture();
+		
+		void destroyTexture();
 
 	protected:
 		int alpha;
