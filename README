@@ -1,19 +1,17 @@
-Hume Game Library
+Hume Media Library
 ----------------------
 
-The Hume Game Library is a collection of commonly used classes seen in 
-game programming. It provides a means of lessening the time spent on 
-programming in order speed up the creation of great 2D games. It is 
-written in C++ for performance using Simple DirectMedia Layer (SDL) for 
-cross-platform compatibility.
+The Hume Media Library is a collectioni of common classes used to build
+simple media programs (largely games). It is written in C++, using SDL
+for cross-platform compatibility.
 
 Building the library requires the following development libraries to be
 installed on your system in some form:
 
-sdl
-sdl_ttf
-sdl_image
-sdl_mixer
+SDL2
+SDL2_ttf
+SDL2_image
+SDL2_mixer
 
 If you are running Linux, these packages can almost certainly be obtained
 through your distribution's package manager. I have included a trivial build
@@ -25,6 +23,9 @@ website. The .framework packages should be placed in the /Library/Frameworks
 folder. Follow the readme included with each framework and you should be fine.
 To set up the project in Xcode, first create the project, initialize the Git
 repository in the project folder, add the remote and then pull the files.
+
+Alternatively, you can use the Homebrew package manager to install the
+libraries as well.
 
 If you are running Windows, I recommend using MinGW. Obtain the files from
 the SDL website and place the libs and headers in their respective places. Then,
