@@ -2,32 +2,31 @@
  Hume Library Version 0.4.2
  */
 
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#ifndef STATE_H
+#define STATE_H
 
 #include <iostream>
 
 #include <SDL2/SDL.h>
 
-#include "Game.h"
+#include "Application.h"
 #include "Window.h"
 #include "StateManager.h"
-#include "GameState.h"
 
 namespace hm
 {
-	class Game;
+	class Application;
 
 	/*
-	 Defines the basic game state along with the necessary
+	 Defines the basic application state along with the necessary
 	 functions for running when added to a StateManager.
 	 */
-	class GameState
+	class State
 	{
 	public:
-		GameState();
+		State();
 
-		void setGame(Game* game);
+		void setApplication(Application* app);
 		void setWindow(Window* window);
 
 		virtual void pause() = 0;
@@ -40,7 +39,7 @@ namespace hm
 		virtual void cleanup() = 0;
 		
 	protected:
-		Game* game;
+		Application* app;
 		Window* window;
 
 		void pop();

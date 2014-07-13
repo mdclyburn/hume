@@ -2,8 +2,8 @@
  Hume Library Version 0.4.2
  */
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
 #include <string>
 #include <iostream>
@@ -24,15 +24,15 @@ namespace hm
 
 	/*
 	 Provides much of the functionality needed to get
-	 started with constructing a game.
+	 started with constructing an application.
 	 */
-	class Game
+	class Application
 	{
 	public:
-		Game();
-		Game(std::string title);
-		Game(std::string title, unsigned int width, unsigned int height, bool fs = false);
-		~Game();
+		Application();
+		Application(std::string title);
+		Application(std::string title, unsigned int width, unsigned int height, bool fs = false);
+		~Application();
 
 		virtual void run() = 0;
 
