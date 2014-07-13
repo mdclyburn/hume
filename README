@@ -1,7 +1,7 @@
 Hume Media Library
 ----------------------
 
-The Hume Media Library is a collectioni of common classes used to build
+The Hume Media Library is a collection of common classes used to build
 simple media programs (largely games). It is written in C++, using SDL
 for cross-platform compatibility.
 
