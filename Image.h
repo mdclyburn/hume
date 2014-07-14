@@ -26,7 +26,8 @@ namespace hm
 		Image(std::string filename, SDL_Renderer* renderer);
 		~Image();
 
-		virtual void loadImage(std::string filename, SDL_Renderer* renderer);
+		virtual void open(std::string filename, SDL_Renderer* renderer);
+		void close();
 		
 		void setColorKey(Uint8 r, Uint8 g, Uint8 b);
 
