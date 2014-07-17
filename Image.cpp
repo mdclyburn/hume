@@ -58,9 +58,7 @@ namespace hm
 	
 	void Image::close()
 	{
-		if(texture != nullptr)
-			SDL_DestroyTexture(texture);
-		texture = nullptr;
+		destroy();
 		return;
 	}
 
