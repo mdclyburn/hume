@@ -52,10 +52,10 @@ namespace hm
 
 	void Font::close()
 	{
-		if(font != NULL)
+		if(font != nullptr)
 		{
 			TTF_CloseFont(font);
-			font = NULL;
+			font = nullptr;
 			fontsOpen--;
 		}
 
