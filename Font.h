@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #ifndef FONT_H
@@ -39,13 +39,13 @@ namespace hm
 	public:
 		Font();
 		Font(std::string file, int ptsize = 16);
-		~Font();
+		virtual ~Font();
 
 		static int getFontsOpen();
 
-		void loadFont(std::string file, int ptsize = 16);
+		void open(std::string file, int ptsize = 16);
 		TTF_Font* getFont();
-		void closeFont();
+		void close();
 
 		void setSize(int size);
 

@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #include "Image.h"
@@ -13,7 +13,7 @@ namespace hm
 
 	Image::Image(std::string filename, SDL_Renderer* renderer)
 	{
-		loadImage(filename, renderer);
+		open(filename, renderer);
 	}
 	
 	Image::~Image()
@@ -21,14 +21,11 @@ namespace hm
 		
 	}
 
-	void Image::loadImage(std::string filename, SDL_Renderer* renderer)
+	void Image::open(std::string filename, SDL_Renderer* renderer)
 	{
 		// Unload a previous image.
 		if(texture != nullptr)
-		{
-			SDL_DestroyTexture(texture);
-			texture = nullptr;
-		}
+			close();
 
 		SDL_Surface* surface = IMG_Load(filename.c_str());
 		
@@ -56,6 +53,12 @@ namespace hm
 		// Get dimensions.
 		SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
 
+		return;
+	}
+	
+	void Image::close()
+	{
+		destroy();
 		return;
 	}
 

@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #ifndef BLITTABLE_H
@@ -26,7 +26,7 @@ namespace hm
 	{
 	public:
 		Blittable();
-		~Blittable();
+		virtual ~Blittable();
 		
 		// Alpha
 		int getAlpha();
@@ -46,6 +46,8 @@ namespace hm
 		virtual int getHeight();
 		SDL_Rect getInfo();
 		SDL_Texture* getTexture();
+		
+		void destroy();
 
 	protected:
 		int alpha;

@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #include "Blittable.h"
@@ -100,5 +100,13 @@ namespace hm
 	SDL_Texture* Blittable::getTexture()
 	{
 		return texture;
+	}
+	
+	void Blittable::destroy()
+	{
+		if(texture != nullptr)
+			SDL_DestroyTexture(texture);
+		texture = nullptr;
+		return;
 	}
 }

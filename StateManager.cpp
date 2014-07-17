@@ -1,22 +1,22 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #include "StateManager.h"
 
 namespace hm
 {
-	StateManager::StateManager() : game(NULL), window(NULL)
+	StateManager::StateManager() : app(NULL), window(NULL)
 	{
 	}
 
-	StateManager::StateManager(Game* game, Window* window) : game(game), window(window)
+	StateManager::StateManager(Application* app, Window* window) : app(app), window(window)
 	{
 	}
 
 	StateManager::~StateManager()
 	{
-		game = NULL;
+		app = NULL;
 		window = NULL;
 	}
 
@@ -55,21 +55,21 @@ namespace hm
 		 return !stack.empty();
 	}
 
-	GameState* StateManager::getCurrentState()
+	State* StateManager::getCurrentState()
 	{
 		if(stack.empty())
 			return NULL;
 		return stack.back();
 	}
 
-	bool StateManager::pushState(GameState& gs)
+	bool StateManager::pushState(State& s)
 	{
 		// Send the pause command to the current state.
 		pauseState();
 
 		//Set up the next state.
-		stack.push_back(&gs);
-		stack.back()->setGame(game);
+		stack.push_back(&s);
+		stack.back()->setApplication(app);
         	stack.back()->setWindow(window);
 		if(!stack.back()->init())
 		{
@@ -91,17 +91,17 @@ namespace hm
 		return;
 	}
 
-	void StateManager::replaceState(GameState& gs)
+	void StateManager::replaceState(State& s)
 	{
 		// Check that it's not empty
 		if(!stack.empty())
 		{
 			stack.back()->cleanup();
 			stack.pop_back();
-			pushState(gs);
+			pushState(s);
 		}
 		else
-			pushState(gs);
+			pushState(s);
 
 		return;
 	}

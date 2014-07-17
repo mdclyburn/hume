@@ -1,19 +1,19 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
-#include "Game.h"
+#include "Application.h"
 
 namespace hm
 {
-	Game::Game() : cap_frame_rate(true), framerate(60), frameTimer()
+	Application::Application() : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		window = new Window();
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title) : cap_frame_rate(true), framerate(60), frameTimer()
+	Application::Application(std::string title) : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		this->title = title;
@@ -24,7 +24,7 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Game::Game(std::string title, unsigned int width, unsigned int height, bool fs) : cap_frame_rate(true), framerate(60), frameTimer()
+	Application::Application(std::string title, unsigned int width, unsigned int height, bool fs) : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		this->title = title;
@@ -36,7 +36,7 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Game::~Game()
+	Application::~Application()
 	{
 		delete manager;
 		manager = NULL;
@@ -44,24 +44,24 @@ namespace hm
 		window = NULL;
 	}
 
-	void Game::capFrameRate(bool b)
+	void Application::capFrameRate(bool b)
 	{
 		cap_frame_rate = b;
 		return;
 	}
 
-	bool Game::frameRateIsCapped()
+	bool Application::frameRateIsCapped()
 	{
 		return cap_frame_rate;
 	}
 
-	void Game::setFrameRate(int i)
+	void Application::setFrameRate(int i)
 	{
 		framerate = i;
 		return;
 	}
 
-	float Game::getFrameRate()
+	float Application::getFrameRate()
 	{
 		if(cap_frame_rate)
 			return framerate;
@@ -69,26 +69,26 @@ namespace hm
 			return 0;
 	}
 
-	void Game::log(std::string msg, LogLevel level)
+	void Application::log(std::string msg, LogLevel level)
 	{
 		Logger::getLogger()->log(msg, level);
 	}
 
-	void Game::quit()
+	void Application::quit()
 	{
 		if(running)
 			running = false;
 		else
-			std::cout << "Game is not running. quit() has no effect." << std::endl;
+			std::cout << "Application is not running. quit() has no effect." << std::endl;
 		return;
 	}
 
-	StateManager* Game::getStateManager()
+	StateManager* Application::getStateManager()
 	{
 		return manager;
 	}
 
-    void Game::loop()
+    void Application::loop()
     {
 		running = true;
 
@@ -114,7 +114,7 @@ namespace hm
         cleanup();
     }
 	
-	void Game::SDLInit()
+	void Application::SDLInit()
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		{
@@ -130,13 +130,13 @@ namespace hm
 			log(IMG_GetError(), hm::ERROR);
 		}
 		
-		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
-		initted = Mix_Init(flags);
-		if((initted&flags) != flags)
-		{
-			log("SDL_mixer initialization failed.", hm::ERROR);
-			log(Mix_GetError(), hm::ERROR);
-		}
+//		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
+//		initted = Mix_Init(flags);
+//		if((initted&flags) != flags)
+//		{
+//			log("SDL_mixer initialization failed.", hm::ERROR);
+//			log(Mix_GetError(), hm::ERROR);
+//		}
 		
 		if(TTF_Init() == -1)
 		{
@@ -147,11 +147,11 @@ namespace hm
 		return;
 	}
 	
-	void Game::SDLQuit()
+	void Application::SDLQuit()
 	{
 		SDL_Quit();
 		IMG_Quit();
-		Mix_Quit();
+//		Mix_Quit();
 		TTF_Quit();
 		
 		return;

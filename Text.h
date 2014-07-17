@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #ifndef TEXT_H
@@ -25,7 +25,7 @@ namespace hm
 	public:
 		Text();
 		Text(std::string text, Font* font);
-		~Text();
+		virtual ~Text();
 
 		void setFont(Font* font);
 		
