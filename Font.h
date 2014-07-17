@@ -39,7 +39,7 @@ namespace hm
 	public:
 		Font();
 		Font(std::string file, int ptsize = 16);
-		~Font();
+		virtual ~Font();
 
 		static int getFontsOpen();
 

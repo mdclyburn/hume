@@ -32,7 +32,7 @@ namespace hm
 		Application();
 		Application(std::string title);
 		Application(std::string title, unsigned int width, unsigned int height, bool fs = false);
-		~Application();
+		virtual ~Application();
 
 		virtual void run() = 0;
 

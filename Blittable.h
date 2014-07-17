@@ -26,7 +26,7 @@ namespace hm
 	{
 	public:
 		Blittable();
-		~Blittable();
+		virtual ~Blittable();
 		
 		// Alpha
 		int getAlpha();
