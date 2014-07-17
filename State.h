@@ -25,6 +25,7 @@ namespace hm
 	{
 	public:
 		State();
+		virtual ~State();
 
 		void setApplication(Application* app);
 		void setWindow(Window* window);

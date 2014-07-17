@@ -11,6 +11,11 @@ namespace hm
 
 	}
 	
+	State::~State()
+	{
+		
+	}
+	
 	void State::setApplication(hm::Application* app)
 	{
 		this->app = app;

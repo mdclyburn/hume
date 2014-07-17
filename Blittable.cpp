@@ -102,7 +102,7 @@ namespace hm
 		return texture;
 	}
 	
-	void Blittable::destroyTexture()
+	void Blittable::destroy()
 	{
 		if(texture != nullptr)
 			SDL_DestroyTexture(texture);

@@ -25,7 +25,7 @@ namespace hm
 	public:
 		Text();
 		Text(std::string text, Font* font);
-		~Text();
+		virtual ~Text();
 
 		void setFont(Font* font);
 		
