@@ -47,7 +47,7 @@ namespace hm
 		SDL_Rect getInfo();
 		SDL_Texture* getTexture();
 		
-		void destroyTexture();
+		void destroy();
 
 	protected:
 		int alpha;
