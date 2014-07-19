@@ -41,6 +41,12 @@ namespace hm
 	
 	void Sound::play()
 	{
+		if(chunk == nullptr)
+		{
+			Logger::log("Chunk has not been loaded.", hm::ERROR);
+			return;
+		}
+		
 		Mix_PlayChannel(-1, chunk, 0);
 		return;
 	}
