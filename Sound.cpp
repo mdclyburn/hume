@@ -4,7 +4,7 @@
 
 namespace hm
 {
-	Sound::Sound() : chunk(nullptr)
+	Sound::Sound() : Audio(), chunk(nullptr)
 	{
 		
 	}

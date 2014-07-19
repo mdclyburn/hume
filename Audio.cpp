@@ -4,7 +4,7 @@
 
 namespace hm
 {
-	Audio::Audio()
+	Audio::Audio() : volume(100)
 	{
 		
 	}
