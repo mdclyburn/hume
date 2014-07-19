@@ -1,10 +1,4 @@
-//
-//  Music.cpp
-//  Hume
-//
-//  Created by Marshall Clyburn on 7/19/14.
-//  Copyright (c) 2014 Marshall Clyburn. All rights reserved.
-//
+// Hume Library Version 0.4.3
 
 #include "Music.h"
 
