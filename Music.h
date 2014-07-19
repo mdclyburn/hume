@@ -20,6 +20,8 @@ namespace hm
 		
 		void play();
 		void play(int loops);
+		void pause();
+		void resume();
 		
 		void setVolume(int v);
 		

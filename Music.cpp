@@ -63,6 +63,18 @@ namespace hm
 		return;
 	}
 	
+	void Music::pause()
+	{
+		Mix_PauseMusic();
+		return;
+	}
+	
+	void Music::resume()
+	{
+		Mix_ResumeMusic();
+		return;
+	}
+	
 	void Music::setVolume(int v)
 	{
 		// Clamp values.
