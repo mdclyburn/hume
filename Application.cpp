@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.2
+ Hume Library Version 0.4.3
  */
 
 #include "Application.h"
@@ -130,13 +130,11 @@ namespace hm
 			log(IMG_GetError(), hm::ERROR);
 		}
 		
-//		flags = MIX_INIT_MP3 | MIX_INIT_OGG;
-//		initted = Mix_Init(flags);
-//		if((initted&flags) != flags)
-//		{
-//			log("SDL_mixer initialization failed.", hm::ERROR);
-//			log(Mix_GetError(), hm::ERROR);
-//		}
+		if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+		{
+			log("SDL_mixer initialization failed.", hm::ERROR);
+			log(Mix_GetError());
+		}
 		
 		if(TTF_Init() == -1)
 		{
@@ -151,7 +149,7 @@ namespace hm
 	{
 		SDL_Quit();
 		IMG_Quit();
-//		Mix_Quit();
+		Mix_Quit();
 		TTF_Quit();
 		
 		return;
