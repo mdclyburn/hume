@@ -13,11 +13,12 @@
 
 #include "SDL2/SDL_mixer.h"
 
+#include "Audio.h"
 #include "Logger.h"
 
 namespace hm
 {
-	class Sound
+	class Sound : public Audio
 	{
 	public:
 		Sound();
@@ -29,11 +30,8 @@ namespace hm
 		void play();
 		
 		void setVolume(int v);
-		int getVolume();
 		
 	protected:
-		int volume;
-		
 		Mix_Chunk* chunk;
 	};
 }

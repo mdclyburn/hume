@@ -60,9 +60,4 @@ namespace hm
 		Mix_VolumeChunk(chunk, int(mixer_volume));
 		return;
 	}
-	
-	int Sound::getVolume()
-	{
-		return volume;
-	}
 }
