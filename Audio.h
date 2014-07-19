@@ -5,6 +5,8 @@
 
 #include <string>
 
+#include "Logger.h"
+
 namespace hm
 {
 	class Audio
