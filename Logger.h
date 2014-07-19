@@ -11,6 +11,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "Hume.h"
+
 namespace hm
 {
 	// The severity of the message sent to the logger.
