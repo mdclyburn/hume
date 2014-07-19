@@ -1,4 +1,4 @@
-// Hume Library Version 0.4.3
+// Hume Library Version 0.5
 
 #ifndef SOUND_H
 #define SOUND_H
