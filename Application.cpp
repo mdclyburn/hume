@@ -137,6 +137,21 @@ namespace hm
 			log("SDL_mixer initialization failed.", hm::ERROR);
 			log(Mix_GetError(), hm::ERROR);
 		}
+		else
+		{
+			SDL_AudioSpec want, have;
+			SDL_AudioDeviceID devId;
+			SDL_zero(want);
+			want.freq = 48000;
+			want.format = AUDIO_F32;
+			want.channels = 2;
+			want.samples = 4096;
+			
+			devId = SDL_OpenAudioDevice(nullptr, 0, &want, &have, SDL_AUDIO_ALLOW_FORMAT_CHANGE);
+			if(devId == 0)
+				hm::Logger::log("Failed to get Float32 audio format.");
+			SDL_PauseAudioDevice(devId, 0);
+		}
 		
 		if(TTF_Init() == -1)
 		{
