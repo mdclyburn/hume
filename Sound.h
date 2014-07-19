@@ -21,7 +21,7 @@ namespace hm
 	{
 	public:
 		Sound();
-		~Sound();
+		virtual ~Sound();
 		
 		void open(std::string filename);
 		void close();
