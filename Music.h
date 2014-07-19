@@ -23,9 +23,11 @@ namespace hm
 		void pause();
 		void resume();
 		
+		void setFadeIn(int ms);
 		void setVolume(int v);
 		
 	protected:
+		int fadein;
 		Mix_Music* music;
 	};
 }

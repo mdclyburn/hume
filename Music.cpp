@@ -10,7 +10,7 @@
 
 namespace hm
 {
-	Music::Music() : Audio(), music(nullptr)
+	Music::Music() : Audio(), fadein(0), music(nullptr)
 	{
 		
 	}
@@ -59,7 +59,7 @@ namespace hm
 			return;
 		}
 		
-		Mix_PlayMusic(music, loops);
+		Mix_FadeInMusic(music, loops, fadein);
 		return;
 	}
 	
@@ -72,6 +72,12 @@ namespace hm
 	void Music::resume()
 	{
 		Mix_ResumeMusic();
+		return;
+	}
+	
+	void Music::setFadeIn(int ms)
+	{
+		fadein = ms;
 		return;
 	}
 	
