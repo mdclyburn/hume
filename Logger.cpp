@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.3
+ Hume Library Version 0.5
  */
 
 #include "Logger.h"
@@ -85,7 +85,7 @@ namespace hm
 	void Logger::initSession()
 	{
 		ofs.open("log.txt", std::ios::app | std::ios::out);
-		ofs << "NEW LOGGING SESSION =============================" << std::endl;
+		ofs << "NEW LOGGING SESSION ===== " << "HUME v" << MAJOR_VERSION << "." << MINOR_VERSION << "." << PATCH_VERSION << " ===========" << std::endl;
 		return;
 	}
 

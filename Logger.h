@@ -1,5 +1,5 @@
 /*
- Hume Library Version 0.4.3
+ Hume Library Version 0.5
  */
 
 #ifndef LOGGER_H
@@ -10,6 +10,8 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+
+#include "Hume.h"
 
 namespace hm
 {
