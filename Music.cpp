@@ -46,13 +46,20 @@ namespace hm
 	
 	void Music::play()
 	{
+		play(0);
+		
+		return;
+	}
+	
+	void Music::play(int loops)
+	{
 		if(music == nullptr)
 		{
 			Logger::log("Music has not been loaded.", hm::ERROR);
 			return;
 		}
 		
-		Mix_PlayMusic(music, 0);
+		Mix_PlayMusic(music, loops);
 		return;
 	}
 	

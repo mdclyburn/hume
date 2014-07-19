@@ -7,6 +7,8 @@
 
 namespace hm
 {
+	const int LOOP_INIFINITELY = -1;
+	
 	class Music : Audio
 	{
 	public:
@@ -17,6 +19,7 @@ namespace hm
 		void close();
 		
 		void play();
+		void play(int loops);
 		
 		void setVolume(int v);
 		
