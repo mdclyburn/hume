@@ -75,6 +75,12 @@ namespace hm
 		return;
 	}
 	
+	void Music::stop()
+	{
+		Mix_HaltMusic();
+		return;
+	}
+	
 	void Music::setFadeIn(int ms)
 	{
 		fadein = ms;

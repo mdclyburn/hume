@@ -22,6 +22,7 @@ namespace hm
 		void play(int loops);
 		void pause();
 		void resume();
+		void stop();
 		
 		void setFadeIn(int ms);
 		void setVolume(int v);
