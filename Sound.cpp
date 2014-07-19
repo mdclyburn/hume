@@ -54,11 +54,12 @@ namespace hm
 	void Sound::setVolume(int v)
 	{
 		// Clamp values.
-		if(volume < 0)
+		if(v < 0)
 			volume = 0;
-		else if(volume > 100)
+		else if(v > 100)
 			volume = 100;
-		volume = v;
+		else
+			volume = v;
 		
 		// Convert volume value to scale of 1 - 128.
 		float mixer_volume = ceilf(volume * 1.28);
