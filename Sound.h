@@ -9,10 +9,6 @@
 #ifndef SOUND_H
 #define SOUND_H
 
-#include <string>
-
-#include "SDL2/SDL_mixer.h"
-
 #include "Audio.h"
 
 namespace hm
