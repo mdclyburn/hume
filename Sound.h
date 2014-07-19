@@ -28,7 +28,12 @@ namespace hm
 		
 		void play();
 		
+		void setVolume(int v);
+		int getVolume();
+		
 	protected:
+		int volume;
+		
 		Mix_Chunk* chunk;
 	};
 }

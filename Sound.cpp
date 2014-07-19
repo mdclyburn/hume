@@ -44,4 +44,25 @@ namespace hm
 		Mix_PlayChannel(-1, chunk, 0);
 		return;
 	}
+	
+	void Sound::setVolume(int v)
+	{
+		// Clamp values.
+		if(volume < 0)
+			volume = 0;
+		else if(volume > 100)
+			volume = 100;
+		volume = v;
+		
+		// Convert volume value to scale of 1 - 128.
+		float mixer_volume = ceilf(volume * 1.28);
+		hm::Logger::log("Setting chunk volume to " + std::to_string(volume) + " (" + std::to_string(int(mixer_volume)) + ")" + ".");
+		Mix_VolumeChunk(chunk, int(mixer_volume));
+		return;
+	}
+	
+	int Sound::getVolume()
+	{
+		return volume;
+	}
 }
