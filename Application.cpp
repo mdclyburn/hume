@@ -132,8 +132,8 @@ namespace hm
 		
 		if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 		{
-			hm::Logger::log("SDL_mixer initialization failed.", hm::ERROR);
-			hm::Logger::log(Mix_GetError());
+			log("SDL_mixer initialization failed.", hm::ERROR);
+			log(Mix_GetError());
 		}
 		
 		if(TTF_Init() == -1)
