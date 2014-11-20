@@ -22,6 +22,12 @@ namespace hm
 					instance = new FontManager();
 				return instance;
 			}
+
+			static void destroy()
+			{
+				delete instance;
+				return;
+			}
 			
 		private:
 			std::unordered_map<std::string, Font*> fonts;

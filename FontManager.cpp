@@ -11,9 +11,13 @@ namespace hm
 
 	FontManager::~FontManager()
 	{
-		Logger::log("Font manager is cleaning up fonts.");
-		for(std::unordered_map<std::string, Font*>::iterator it = fonts.begin();
-				it != fonts.end(); it++) { it->second->close(); }
+		if(fonts.size() > 0)
+		{
+			Logger::log("Font manager is cleaning up " + std::to_string(fonts.size()) + " " + (fonts.size() > 1 ? "fonts" : "font") + ".");
+			for(std::unordered_map<std::string, Font*>::iterator it = fonts.begin();
+					it != fonts.end(); it++) { it->second->close(); }
+				fonts.clear();
+		}
 	}
 
 	void FontManager::addFont(const std::string id, const std::string file, const int ptsize)
