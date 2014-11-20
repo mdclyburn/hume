@@ -25,7 +25,13 @@ namespace hm
 
 			static void destroy()
 			{
-				delete instance;
+				Logger::log("Deallocation of font manager requested.");
+				if(instance)
+				{
+					Logger::log("Going ahead with deletion of font manager.");
+					delete instance;
+					instance = nullptr;
+				}
 				return;
 			}
 			
