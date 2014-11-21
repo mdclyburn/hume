@@ -11,19 +11,13 @@ namespace hm
 
 	FontManager::~FontManager()
 	{
-		if(fonts.size() > 0)
-		{
-			for(std::unordered_map<std::string, Font*>::iterator it = fonts.begin();
-					it != fonts.end(); it++) { it->second->close(); }
-				fonts.clear();
-		}
+		closeAll();
 	}
 
 	void FontManager::open(const std::string id, const std::string file, const int ptsize)
 	{
 		Font* f = new Font(file, ptsize);
 		fonts[id] = f;
-		
 	
 		return;
 	}
@@ -36,7 +30,35 @@ namespace hm
 		return;
 	}
 
+	void FontManager::closeAll()
+	{
+		for(std::unordered_map<std::string, Font*>::iterator it = fonts.begin();
+				it != fonts.end(); it++) { it->second->close(); }
+		fonts.clear();
+
+		return;
+	}
+
 	Font* FontManager::getFont(const std::string id)
+	{
+		return fonts[id];
+	}
+
+	std::vector<std::string> FontManager::getOpenFontIds()
+	{
+		std::vector<std::string> ids;
+		for(std::unordered_map<std::string, Font*>::iterator it = fonts.begin();
+				it != fonts.end(); it++) { ids.push_back(it->first); }
+		
+		return ids;
+	}
+
+	unsigned int FontManager::getNumberOfOpenFonts()
+	{
+		return fonts.size();
+	}
+
+	Font* FontManager::operator[](const std::string& id)
 	{
 		return fonts[id];
 	}

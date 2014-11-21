@@ -1,8 +1,9 @@
 #ifndef FONTMANAGER_H
 #define FONTMANAGER_H
 
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 #include "Font.h"
 
@@ -18,7 +19,7 @@ namespace hm
 			void closeAll();
 
 			Font* getFont(const std::string id);
-			vector<std::string> getOpenFontIds();
+			std::vector<std::string> getOpenFontIds();
 
 			unsigned int getNumberOfOpenFonts();
 
