@@ -19,7 +19,7 @@ namespace hm
 		}
 	}
 
-	void FontManager::addFont(const std::string id, const std::string file, const int ptsize)
+	void FontManager::open(const std::string id, const std::string file, const int ptsize)
 	{
 		Font* f = new Font(file, ptsize);
 		fonts[id] = f;

@@ -13,8 +13,8 @@ namespace hm
 		public:
 			~FontManager();
 
-			void addFont(const std::string id, const std::string file, const int ptsize);
-			Font* getFont(const std::string id);
+			void open(const std::string id, const std::string file, const int ptsize);
+			Font* close(const std::string id);
 
 			static FontManager* getInstance()
 			{
