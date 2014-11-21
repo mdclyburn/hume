@@ -13,7 +13,6 @@ namespace hm
 	{
 		if(fonts.size() > 0)
 		{
-			Logger::log("Font manager is cleaning up " + std::to_string(fonts.size()) + " " + (fonts.size() > 1 ? "fonts" : "font") + ".");
 			for(std::unordered_map<std::string, Font*>::iterator it = fonts.begin();
 					it != fonts.end(); it++) { it->second->close(); }
 				fonts.clear();
@@ -25,7 +24,6 @@ namespace hm
 		Font* f = new Font(file, ptsize);
 		fonts[id] = f;
 		
-		Logger::log("Added font from file: " + file + ".");
 	
 		return;
 	}
