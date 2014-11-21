@@ -1,6 +1,4 @@
-/*
- Hume Library Version 0.5
- */
+// Hume Library Version 0.6
 
 #ifndef Window_H
 #define Window_H

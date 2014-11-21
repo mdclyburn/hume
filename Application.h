@@ -1,6 +1,4 @@
-/*
- Hume Library Version 0.5
- */
+// Hume Library Version 0.6
 
 #ifndef APPLICATION_H
 #define APPLICATION_H

@@ -1,6 +1,4 @@
-/*
- Hume Library Version 0.5
- */
+// Hume Library Version 0.6
 
 #ifndef IMAGE_H
 #define IMAGE_H
