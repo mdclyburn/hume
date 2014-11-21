@@ -13,10 +13,16 @@ namespace hm
 		public:
 			~FontManager();
 
-			void open(const std::string id, const std::string file, const int ptsize);
+			void open(const std::string id, const std::string file, const int ptsize = 16);
 			void close(const std::string id);
+			void closeAll();
 
 			Font* getFont(const std::string id);
+			vector<std::string> getOpenFontIds();
+
+			unsigned int getNumberOfOpenFonts();
+
+			Font* operator[](const std::string& id);
 
 			static FontManager* getInstance()
 			{
