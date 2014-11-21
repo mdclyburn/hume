@@ -28,6 +28,14 @@ namespace hm
 		return;
 	}
 
+	void FontManager::close(const std::string id)
+	{
+		delete fonts[id];
+		fonts[id] = nullptr;
+		fonts.erase(id);
+		return;
+	}
+
 	Font* FontManager::getFont(const std::string id)
 	{
 		return fonts[id];

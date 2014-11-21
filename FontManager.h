@@ -14,7 +14,9 @@ namespace hm
 			~FontManager();
 
 			void open(const std::string id, const std::string file, const int ptsize);
-			Font* close(const std::string id);
+			void close(const std::string id);
+
+			Font* getFont(const std::string id);
 
 			static FontManager* getInstance()
 			{
