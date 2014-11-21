@@ -1,3 +1,5 @@
+// Hume Library Version 0.6
+
 #ifndef FONTMANAGER_H
 #define FONTMANAGER_H
 

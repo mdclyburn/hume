@@ -1,3 +1,5 @@
+// Hume Library Version 0.6
+
 #include "FontManager.h"
 
 namespace hm

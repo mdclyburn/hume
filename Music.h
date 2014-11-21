@@ -1,4 +1,4 @@
-// Hume Library Version 0.5
+// Hume Library Version 0.6
 
 #ifndef MUSIC_H
 #define MUSIC_H
