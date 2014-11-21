@@ -2,8 +2,8 @@ CC = g++
 ARGS = -std=c++11
 OUT = libhume.a
 
-$(OUT): Application.o Audio.o Blittable.o Font.o Sound.o State.o Image.o Logger.o Music.o StateManager.o Text.o Timer.o Window.o WindowSettings.o
-	ar rvs $(OUT) *.o
+$(OUT): Application.o Audio.o Blittable.o Font.o FontManager.o Sound.o State.o Image.o Logger.o Music.o StateManager.o Text.o Timer.o Window.o WindowSettings.o
+	ar rvs $(OUT) $^
 
 Application.o: Application.cpp
 	$(CC) -c Application.cpp $(ARGS)
@@ -13,6 +13,8 @@ Blittable.o: Blittable.cpp
 	$(CC) -c Blittable.cpp $(ARGS)
 Font.o: Font.cpp
 	$(CC) -c Font.cpp $(ARGS)
+FontManager.o: FontManager.cpp
+	$(CC) -c FontManager.cpp $(ARGS)
 State.o: State.cpp
 	$(CC) -c State.cpp $(ARGS)
 Image.o: Image.cpp
