@@ -68,7 +68,7 @@ namespace hm
 			// Remove empty queues.
 			if(it->isComplete())
 			{
-				it = animations.erase(it);
+				it = queues.erase(it);
 				it--;
 			}
 		}
