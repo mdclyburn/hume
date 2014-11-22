@@ -50,30 +50,14 @@ namespace hm
 		return;
 	}
 
-	unsigned int Animation::getFrames()
+	void Animation::setAnimationSpeed(const int units)
 	{
-		return frames;
-	}
-
-	void Animation::setFrames(const unsigned int frames)
-	{
-		this->frames = frames;
-		return;
-	}
-
-	void Animation::setAnimationSpeed(const int units, const unsigned int frames)
-	{
-		// Not sure what setting either or both of these values
+		// Not sure what setting this value
 		// to zero will do. User, be warned...
-		if(units == 0 && frames == 0)
-			hm::Logger::log("0 units per 0 frames animation. Probably not a good idea.", hm::WARNING);
-		else if(units == 0)
+		if(units == 0)
 			hm::Logger::log("Animation does nothing.", hm::WARNING);
-		else if(frames == 0)
-			hm::Logger::log("Animation pacing is at 0 frames.", hm::WARNING);
 
 		this->units = units;
-		this->frames = frames;
 
 		return;
 	}
