@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Animation.h"
+#include "AnimationQueue.h"
 
 namespace hm
 {
@@ -13,13 +14,17 @@ namespace hm
 			Animator();
 			~Animator();
 
-			void add(Animation& a);
+			void add(Animation a);
+			void add(AnimationQueue q);
+			void clearAnimations();
+			void clearQueues();
 			void clear();
 
 			void animate();
 
 		protected:
 			std::vector<Animation> animations;
+			std::vector<AnimationQueue> queues;
 	};
 }
 
