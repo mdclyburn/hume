@@ -85,6 +85,6 @@ namespace hm
 
 	bool Animation::isComplete()
 	{
-		return true;
+		return targets.empty();
 	}
 }
