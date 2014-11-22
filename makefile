@@ -2,11 +2,13 @@ CC = g++
 ARGS = -std=c++11
 OUT = libhume.a
 
-$(OUT): Animation.o Application.o Audio.o Blittable.o Font.o FontManager.o Sound.o State.o Image.o Logger.o Music.o StateManager.o Text.o Timer.o Window.o WindowSettings.o
+$(OUT): Animation.o Animator.o Application.o Audio.o Blittable.o Font.o FontManager.o Sound.o State.o Image.o Logger.o Music.o StateManager.o Text.o Timer.o Window.o WindowSettings.o
 	ar rvs $(OUT) $^
 
 Animation.o: Animation.cpp
 	$(CC) -c Animation.cpp $(ARGS)
+Animator.o: Animator.cpp
+	$(CC) -c Animator.cpp $(ARGS)
 Application.o: Application.cpp
 	$(CC) -c Application.cpp $(ARGS)
 Audio.o: Audio.cpp
