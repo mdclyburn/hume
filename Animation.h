@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Blittable.h"
+#include "Logger.h"
 
 namespace hm
 {
@@ -13,15 +14,15 @@ namespace hm
 			Animation();
 			~Animation();
 
-			void add(const Blittable& b);
-			void remove(const Blittable& b);
+			void add(Blittable& b);
+			void remove(Blittable& b);
 			void removeAll();
 
 			virtual void animate() = 0;
 
 		protected:
 			std::vector<Blittable*> targets;
-	}
+	};
 }
 
 #endif
