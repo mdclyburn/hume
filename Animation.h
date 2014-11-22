@@ -15,6 +15,7 @@ namespace hm
 
 			void add(const Blittable& b);
 			void remove(const Blittable& b);
+			void removeAll();
 
 			virtual void animate() = 0;
 
