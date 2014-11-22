@@ -25,8 +25,8 @@ namespace hm
 
 			void setAnimationSpeed(const int units, const unsigned int frames = 1);
 
-			virtual void animate() = 0;
-			virtual bool isComplete() = 0;
+			virtual void animate();
+			virtual bool isComplete();
 
 		protected:
 			int units;

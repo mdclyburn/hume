@@ -77,4 +77,14 @@ namespace hm
 
 		return;
 	}
+
+	void Animation::animate()
+	{
+		return;
+	}
+
+	bool Animation::isComplete()
+	{
+		return true;
+	}
 }
