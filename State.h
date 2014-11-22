@@ -7,6 +7,7 @@
 
 #include <SDL2/SDL.h>
 
+#include "Animator.h"
 #include "Application.h"
 #include "Window.h"
 #include "StateManager.h"
@@ -40,6 +41,7 @@ namespace hm
 	protected:
 		Application* app;
 		Window* window;
+		Animator animator;
 
 		void pop();
 	};
