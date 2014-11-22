@@ -34,7 +34,10 @@ namespace hm
 
 			// Remove completed animations.
 			if(it->isComplete())
-				animations.erase(it);
+			{
+				it = animations.erase(it);
+				it--;
+			}
 		}
 
 		return;
