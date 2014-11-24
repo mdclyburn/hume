@@ -2,9 +2,15 @@ CC = g++
 ARGS = -std=c++11
 OUT = libhume.a
 
-$(OUT): Application.o Audio.o Blittable.o Font.o FontManager.o Sound.o State.o Image.o Logger.o Music.o StateManager.o Text.o Timer.o Window.o WindowSettings.o
+$(OUT): Animation.o AnimationQueue.o Animator.o Application.o Audio.o Blittable.o Font.o FontManager.o Sound.o State.o Image.o Logger.o Music.o StateManager.o Text.o Timer.o Window.o WindowSettings.o
 	ar rvs $(OUT) $^
 
+Animation.o: Animation.cpp
+	$(CC) -c Animation.cpp $(ARGS)
+AnimationQueue.o: AnimationQueue.cpp
+	$(CC) -c AnimationQueue.cpp $(ARGS)
+Animator.o: Animator.cpp
+	$(CC) -c Animator.cpp $(ARGS)
 Application.o: Application.cpp
 	$(CC) -c Application.cpp $(ARGS)
 Audio.o: Audio.cpp
@@ -15,8 +21,6 @@ Font.o: Font.cpp
 	$(CC) -c Font.cpp $(ARGS)
 FontManager.o: FontManager.cpp
 	$(CC) -c FontManager.cpp $(ARGS)
-State.o: State.cpp
-	$(CC) -c State.cpp $(ARGS)
 Image.o: Image.cpp
 	$(CC) -c Image.cpp $(ARGS)
 Logger.o: Logger.cpp
@@ -25,6 +29,8 @@ Music.o:
 	$(CC) -c Music.cpp $(ARGS)
 Sound.o:
 	$(CC) -c Sound.cpp $(ARGS)
+State.o: State.cpp
+	$(CC) -c State.cpp $(ARGS)
 StateManager.o: StateManager.cpp
 	$(CC) -c StateManager.cpp $(ARGS)
 Text.o: Text.cpp
