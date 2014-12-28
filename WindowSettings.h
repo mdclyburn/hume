@@ -23,35 +23,16 @@ namespace hm
 	 Used by Window object to set the user's desired
 	 options.
 	 */
-	class WindowSettings
+	struct WindowSettings
 	{
-		friend std::ostream& operator<<(std::ostream& os, const WindowSettings& ws);
-		
-	public:
-		WindowSettings();
-		~WindowSettings();
-		
-		void useFullscreen(bool b)
-		{ fullscreen = b; return; }
-		void setTitle(std::string title)
-		{ this->title = title; return; }
-		void setResolution(Resolution r)
-		{ resolution = r; return; }
-		
-		bool isFullscreen() const
-		{ return fullscreen; }
-		std::string getTitle()
-		{ return title; }
-		Resolution getResolution() const
-		{ return resolution; }
-		
-		void setBestFullscreenMode();
-		
-	protected:
 		bool fullscreen;
 		std::string title;
-		
 		Resolution resolution;
+
+		WindowSettings();
+		~WindowSettings();
+
+		void setBestFullscreenMode();
 	};
 	
 	std::ostream& operator<<(std::ostream& os, const WindowSettings& ws);
