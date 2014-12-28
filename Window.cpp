@@ -84,19 +84,19 @@ namespace hm
 
 	int Window::getWidth() const
 	{
-		return settings.getResolution().width;
+		return settings.resolution.width;
 	}
 
 	int Window::getHeight() const
 	{
-		return settings.getResolution().height;
+		return settings.resolution.height;
 	}
 	
 	// Centers the given Blittable in the given Window.
 	void Window::center(Blittable& b) const
 	{
-		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
-		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
+		b.setx(settings.resolution.width / 2 - b.getWidth() / 2);
+		b.sety(settings.resolution.height / 2 - b.getHeight() / 2);
 		
 		return;
 	}
@@ -104,14 +104,14 @@ namespace hm
 	// Centers the given Blittable on the X-Axis in the given window.
 	void Window::centerx(Blittable& b) const
 	{
-		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
+		b.setx(settings.resolution.width / 2 - b.getWidth() / 2);
 		return;
 	}
 	
 	// Centers the given Blittable on the Y-Axis in the given window.
 	void Window::centery(Blittable& b) const
 	{
-		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
+		b.sety(settings.resolution.height / 2 - b.getHeight() / 2);
 		return;
 	}
 	
@@ -142,7 +142,7 @@ namespace hm
 	
 	void Window::bottom(Blittable& b) const
 	{
-		b.sety(settings.getResolution().height - b.getHeight());
+		b.sety(settings.resolution.height - b.getHeight());
 		return;
 	}
 	
@@ -154,7 +154,7 @@ namespace hm
 	
 	void Window::right(Blittable& b) const
 	{
-		b.setx(settings.getResolution().width - b.getWidth());
+		b.setx(settings.resolution.width - b.getWidth());
 		return;
 	}
 	
@@ -177,22 +177,22 @@ namespace hm
 			return;
 		}
 		
-		if(settings.isFullscreen())
+		if(settings.fullscreen)
 		{
-			window = SDL_CreateWindow(settings.getTitle().c_str(),
+			window = SDL_CreateWindow(settings.title.c_str(),
 									  SDL_WINDOWPOS_UNDEFINED,
 									  SDL_WINDOWPOS_UNDEFINED,
-									  settings.getResolution().width,
-									  settings.getResolution().height,
+									  settings.resolution.width,
+									  settings.resolution.height,
 									  SDL_WINDOW_FULLSCREEN);
 		}
 		else
 		{
-			window = SDL_CreateWindow(settings.getTitle().c_str(),
+			window = SDL_CreateWindow(settings.title.c_str(),
 									  SDL_WINDOWPOS_UNDEFINED,
 									  SDL_WINDOWPOS_UNDEFINED,
-									  settings.getResolution().width,
-									  settings.getResolution().height,
+									  settings.resolution.width,
+									  settings.resolution.height,
 									  0);
 		}
 		

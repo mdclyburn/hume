@@ -17,7 +17,7 @@ namespace hm
 		this->title = title;
 		WindowSettings ws;
 		ws.setBestFullscreenMode();
-		ws.setTitle(title);
+		ws.title = title;
 		window = new Window(ws);
 		manager = new StateManager(this, window);
 	}
@@ -27,9 +27,10 @@ namespace hm
 		SDLInit();
 		this->title = title;
 		WindowSettings ws;
-		ws.setTitle(title);
-		ws.setResolution({ width, height });
-		ws.useFullscreen(fs);
+		ws.title = title;
+		ws.resolution.width = width;
+		ws.resolution.height = height;
+		ws.fullscreen = fs;
 		window = new Window(ws);
 		manager = new StateManager(this, window);
 	}
