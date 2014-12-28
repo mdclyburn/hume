@@ -22,11 +22,11 @@ namespace hm
 		
 		virtual void play() const = 0;
 		
-		virtual void setVolume(const int v) = 0;
-		virtual int getVolume() const;
+		virtual void setVolume(const unsigned int v) = 0;
+		virtual unsigned int getVolume() const;
 		
 	protected:
-		int volume;
+		unsigned int volume;
 	};
 }
 

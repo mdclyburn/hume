@@ -45,7 +45,7 @@ namespace hm
 		return;
 	}
 	
-	void Music::play(int loops) const
+	void Music::play(unsigned int loops) const
 	{
 		if(music == nullptr)
 		{
@@ -75,13 +75,13 @@ namespace hm
 		return;
 	}
 	
-	void Music::setFadeIn(int ms)
+	void Music::setFadeIn(unsigned int ms)
 	{
 		fadein = ms;
 		return;
 	}
 	
-	void Music::setVolume(int v)
+	void Music::setVolume(unsigned int v)
 	{
 		// Clamp values.
 		if(v < 0)

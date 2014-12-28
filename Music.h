@@ -19,16 +19,16 @@ namespace hm
 		void close();
 		
 		void play() const;
-		void play(const int loops) const;
+		void play(const unsigned int loops) const;
 		void pause() const;
 		void resume() const;
 		void stop() const;
 		
-		void setFadeIn(const int ms);
-		void setVolume(const int v);
+		void setFadeIn(const unsigned int ms);
+		void setVolume(const unsigned int v);
 		
 	protected:
-		int fadein;
+		unsigned int fadein;
 		Mix_Music* music;
 	};
 }

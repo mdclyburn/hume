@@ -27,8 +27,8 @@ namespace hm
 		virtual ~Blittable();
 		
 		// Alpha
-		int getAlpha() const;
-		void setAlpha(int alphaValue);
+		unsigned int getAlpha() const;
+		void setAlpha(unsigned int alphaValue);
 		void modifyAlpha(int mod);
 		
 		// Positioning
@@ -40,15 +40,15 @@ namespace hm
 		
 		// Texture Properties
 		SDL_Rect getDimensions() const;
-		virtual int getWidth() const;
-		virtual int getHeight() const;
+		virtual unsigned int getWidth() const;
+		virtual unsigned int getHeight() const;
 		SDL_Rect getInfo() const;
 		SDL_Texture* getTexture() const;
 		
 		void destroy();
 
 	protected:
-		int alpha;
+		unsigned int alpha;
 		
 		SDL_Rect info;
 		SDL_Texture* texture;

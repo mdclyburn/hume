@@ -54,7 +54,7 @@ namespace hm
 		return cap_frame_rate;
 	}
 
-	void Application::setFrameRate(const int i)
+	void Application::setFrameRate(const unsigned int i)
 	{
 		framerate = i;
 		return;

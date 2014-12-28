@@ -51,7 +51,7 @@ namespace hm
 		return;
 	}
 	
-	void Sound::setVolume(int v)
+	void Sound::setVolume(unsigned int v)
 	{
 		// Clamp values.
 		if(v < 0)

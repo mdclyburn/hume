@@ -14,7 +14,7 @@ namespace hm
 		
 	}
 	
-	int Audio::getVolume() const
+	unsigned int Audio::getVolume() const
 	{
 		return volume;
 	}

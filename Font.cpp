@@ -10,7 +10,7 @@ namespace hm
 			Logger::log("SDL_ttf is not initialized!", WARNING);
 	}
 
-	Font::Font(const std::string& file, const int ptsize) : file(file), font(NULL), rm(SOLID)
+	Font::Font(const std::string& file, const unsigned int ptsize) : file(file), font(NULL), rm(SOLID)
 	{
 		if(TTF_WasInit() == 0)
 			Logger::log("SDL_ttf is not initialized!", WARNING);
@@ -22,7 +22,7 @@ namespace hm
 		close();
 	}
 
-	void Font::open(const std::string& file, const int ptsize)
+	void Font::open(const std::string& file, const unsigned int ptsize)
 	{
 		this->file = file;
 		
@@ -31,8 +31,6 @@ namespace hm
 		font = TTF_OpenFont(file.c_str(), ptsize);
 		if(font == NULL)
 			Logger::log("Could not load " + file + ".", ERROR);
-		else
-			fontsOpen++;
 		return;
 	}
 	
@@ -47,13 +45,12 @@ namespace hm
 		{
 			TTF_CloseFont(font);
 			font = nullptr;
-			fontsOpen--;
 		}
 
 		return;
 	}
 
-	void Font::setSize(int size)
+	void Font::setSize(unsigned int size)
 	{
 		open(file, size);
 		return;

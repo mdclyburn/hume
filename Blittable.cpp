@@ -16,17 +16,15 @@ namespace hm
 		texture = nullptr;
 	}
 	
-	int Blittable::getAlpha() const
+	unsigned int Blittable::getAlpha() const
 	{
 		return alpha;
 	}
 	
-	void Blittable::setAlpha(int alphaValue)
+	void Blittable::setAlpha(unsigned int alphaValue)
 	{
 		if(alphaValue > 255)
 			alphaValue = 255;
-		else if(alphaValue < 0)
-			alphaValue = 0;
 		alpha = alphaValue;
 		SDL_SetTextureAlphaMod(texture, alpha);
 		
@@ -49,7 +47,6 @@ namespace hm
 
 	SDL_Rect Blittable::getPosition() const
 	{
-		
 		return info;
 	}
 	
@@ -80,12 +77,12 @@ namespace hm
 		return sdlr;
 	}
 	
-	int Blittable::getWidth() const
+	unsigned int Blittable::getWidth() const
 	{
 		return info.w;
 	}
 	
-	int Blittable::getHeight() const
+	unsigned int Blittable::getHeight() const
 	{
 		return info.h;
 	}

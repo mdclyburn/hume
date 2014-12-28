@@ -37,7 +37,7 @@ namespace hm
 		// Frame Rate Management
 		void capFrameRate(const bool b);
 		bool frameRateIsCapped() const;
-		void setFrameRate(const int i);
+		void setFrameRate(const unsigned int i);
 		float getFrameRate() const;
 
 		void log(const std::string& msg, const LogLevel level = INFO) const;
@@ -53,7 +53,7 @@ namespace hm
 
 		std::string title;
 		bool cap_frame_rate;
-		int framerate;
+		unsigned int framerate;
 		Timer frameTimer;
 
 		Window* window;

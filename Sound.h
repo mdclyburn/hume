@@ -18,7 +18,7 @@ namespace hm
 		
 		void play() const;
 		
-		void setVolume(int v);
+		void setVolume(unsigned int v);
 		
 	protected:
 		Mix_Chunk* chunk;
