@@ -2,8 +2,6 @@
 
 #include "Font.h"
 
-int hm::Font::fontsOpen = 0;
-
 namespace hm
 {
 	Font::Font() : file(""), font(NULL), rm(SOLID)
@@ -22,11 +20,6 @@ namespace hm
 	Font::~Font()
 	{
 		close();
-	}
-
-	int Font::getFontsOpen()
-	{
-		return fontsOpen;
 	}
 
 	void Font::open(const std::string& file, const int ptsize)
