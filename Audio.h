@@ -17,13 +17,13 @@ namespace hm
 		Audio();
 		virtual ~Audio();
 		
-		virtual void open(std::string filename) = 0;
+		virtual void open(const std::string& filename) = 0;
 		virtual void close() = 0;
 		
-		virtual void play() = 0;
+		virtual void play() const = 0;
 		
-		virtual void setVolume(int v) = 0;
-		virtual int getVolume();
+		virtual void setVolume(const int v) = 0;
+		virtual int getVolume() const;
 		
 	protected:
 		int volume;

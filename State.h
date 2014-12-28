@@ -26,8 +26,8 @@ namespace hm
 		State();
 		virtual ~State();
 
-		void setApplication(Application* app);
-		void setWindow(Window* window);
+		void setApplication(const Application* const app);
+		void setWindow(const Window* const window);
 
 		virtual void pause() = 0;
 		virtual void resume() = 0;
@@ -39,8 +39,8 @@ namespace hm
 		virtual void cleanup() = 0;
 		
 	protected:
-		Application* app;
-		Window* window;
+		const Application* app;
+		const Window* window;
 		Animator animator;
 
 		void pop();

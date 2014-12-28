@@ -14,7 +14,7 @@ namespace hm
 		close();
 	}
 	
-	void Music::open(std::string filename)
+	void Music::open(const std::string& filename)
 	{
 		// Close music if it's open.
 		close();
@@ -38,14 +38,14 @@ namespace hm
 		return;
 	}
 	
-	void Music::play()
+	void Music::play() const
 	{
 		play(0);
 		
 		return;
 	}
 	
-	void Music::play(int loops)
+	void Music::play(int loops) const
 	{
 		if(music == nullptr)
 		{
@@ -57,19 +57,19 @@ namespace hm
 		return;
 	}
 	
-	void Music::pause()
+	void Music::pause() const
 	{
 		Mix_PauseMusic();
 		return;
 	}
 	
-	void Music::resume()
+	void Music::resume() const
 	{
 		Mix_ResumeMusic();
 		return;
 	}
 	
-	void Music::stop()
+	void Music::stop() const
 	{
 		Mix_HaltMusic();
 		return;

@@ -36,19 +36,19 @@ namespace hm
 	{
 	public:
 		Font();
-		Font(std::string file, int ptsize = 16);
+		Font(const std::string& file, const int ptsize = 16);
 		virtual ~Font();
 
 		static int getFontsOpen();
 
-		void open(std::string file, int ptsize = 16);
-		TTF_Font* getFont();
+		void open(const std::string& file, const int ptsize = 16);
+		TTF_Font* getFont() const;
 		void close();
 
-		void setSize(int size);
+		void setSize(const int size);
 
-		void setRenderMode(RenderMode rm);
-		RenderMode getRenderMode();
+		void setRenderMode(const RenderMode rm);
+		RenderMode getRenderMode() const;
 
 	private:
 		static int fontsOpen;

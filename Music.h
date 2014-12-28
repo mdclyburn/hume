@@ -15,17 +15,17 @@ namespace hm
 		Music();
 		virtual ~Music();
 		
-		void open(std::string filename);
+		void open(const std::string& filename);
 		void close();
 		
-		void play();
-		void play(int loops);
-		void pause();
-		void resume();
-		void stop();
+		void play() const;
+		void play(const int loops) const;
+		void pause() const;
+		void resume() const;
+		void stop() const;
 		
-		void setFadeIn(int ms);
-		void setVolume(int v);
+		void setFadeIn(const int ms);
+		void setVolume(const int v);
 		
 	protected:
 		int fadein;

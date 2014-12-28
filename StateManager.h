@@ -22,16 +22,16 @@ namespace hm
 	{
 		public:
 			StateManager();
-			StateManager(Application* app, Window* window);
+			StateManager(const Application* const app, const Window* const window);
 			~StateManager();
 
-			void startState();
-			void stopState();
-			void resumeState();
-			void pauseState();
+			void startState() const;
+			void stopState() const;
+			void resumeState() const;
+			void pauseState() const;
 
-			bool hasState();
-			State* getCurrentState();
+			bool hasState() const;
+			State* getCurrentState() const;
 
 			bool pushState(State& s);
 			void popState();
@@ -40,8 +40,8 @@ namespace hm
 		
 		private:
 			std::vector<State*> stack;
-		Application* app;
-			Window* window;
+			const Application* app;
+			const Window* window;
 	};
 };
 

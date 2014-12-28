@@ -39,7 +39,7 @@ namespace hm
 		return;
 	}
 	
-	void Sound::play()
+	void Sound::play() const
 	{
 		if(chunk == nullptr)
 		{

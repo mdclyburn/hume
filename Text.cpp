@@ -15,7 +15,7 @@ namespace hm
 		bcolor.b = 0;
 	}
 	
-	Text::Text(std::string text, Font* font) : font(font), text(text)
+	Text::Text(const std::string& text, Font* const font) : font(font), text(text)
 	{
 		color.r = 255;
 		color.g = 255;
@@ -30,25 +30,25 @@ namespace hm
         
 	}
 	
-	void Text::setFont(Font* font)
+	void Text::setFont(Font* const font)
 	{
 		this->font = font;
 		return;
 	}
 	
-	void Text::setText(std::string text, SDL_Renderer* r)
+	void Text::setText(const std::string& text, SDL_Renderer* const r)
 	{
 		this->text = text;
 		render(r);
 		return;
 	}
 	
-	std::string Text::getText()
+	std::string Text::getText() const
 	{
 		return text;
 	}
 	
-	void Text::setColor(Uint8 r, Uint8 g, Uint8 b)
+	void Text::setColor(const Uint8 r, const Uint8 g, const Uint8 b)
 	{
 		color.r = r;
 		color.g = g;
@@ -57,7 +57,7 @@ namespace hm
 		return;
 	}
 	
-	void Text::setbColor(Uint8 r, Uint8 g, Uint8 b)
+	void Text::setbColor(const Uint8 r, const Uint8 g, const Uint8 b)
 	{
 		bcolor.r = r;
 		bcolor.g = g;
@@ -66,17 +66,17 @@ namespace hm
 		return;
 	}
 	
-	SDL_Color Text::getColor()
+	SDL_Color Text::getColor() const
 	{
 		return color;
 	}
 	
-	SDL_Color Text::getbColor()
+	SDL_Color Text::getbColor() const
 	{
 		return bcolor;
 	}
 	
-	void Text::render(SDL_Renderer* r)
+	void Text::render(SDL_Renderer* const r)
 	{
 		// No rendering if no renderer.
 		if(r == nullptr)

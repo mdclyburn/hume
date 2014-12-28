@@ -38,11 +38,11 @@ namespace hm
 		void setResolution(Resolution r)
 		{ resolution = r; return; }
 		
-		bool isFullscreen()
+		bool isFullscreen() const
 		{ return fullscreen; }
 		std::string getTitle()
 		{ return title; }
-		Resolution getResolution()
+		Resolution getResolution() const
 		{ return resolution; }
 		
 		void setBestFullscreenMode();

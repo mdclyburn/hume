@@ -16,7 +16,7 @@ namespace hm
 		closeAll();
 	}
 
-	void FontManager::open(const std::string id, const std::string file, const int ptsize)
+	void FontManager::open(const std::string& id, const std::string& file, const int ptsize)
 	{
 		Font* f = new Font(file, ptsize);
 		fonts[id] = f;
@@ -24,7 +24,7 @@ namespace hm
 		return;
 	}
 
-	void FontManager::close(const std::string id)
+	void FontManager::close(const std::string& id)
 	{
 		delete fonts[id];
 		fonts[id] = nullptr;
@@ -41,7 +41,7 @@ namespace hm
 		return;
 	}
 
-	Font* FontManager::getFont(const std::string id)
+	Font* FontManager::getFont(const std::string& id)
 	{
 		return fonts[id];
 	}
@@ -55,7 +55,7 @@ namespace hm
 		return ids;
 	}
 
-	unsigned int FontManager::getNumberOfOpenFonts()
+	unsigned int FontManager::getNumberOfOpenFonts() const
 	{
 		return fonts.size();
 	}

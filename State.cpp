@@ -4,7 +4,7 @@
 
 namespace hm
 {
-	State::State()
+	State::State() : app(nullptr), window(nullptr)
 	{
 
 	}
@@ -14,13 +14,13 @@ namespace hm
 		
 	}
 	
-	void State::setApplication(hm::Application* app)
+	void State::setApplication(const Application* const app)
 	{
 		this->app = app;
 		return;
 	}
 
-	void State::setWindow(Window* window)
+	void State::setWindow(const Window* const window)
 	{
 		this->window = window;
 		return;

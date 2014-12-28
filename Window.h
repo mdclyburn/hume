@@ -22,36 +22,36 @@ namespace hm
 	{
 	public:
 		Window();
-		Window(WindowSettings ws);
+		Window(const WindowSettings& ws);
 		~Window();
 
-		void setTitle(std::string title);
-		bool getStatus();
+		void setTitle(const std::string& title);
+		bool getStatus() const;
 
-		void draw(Blittable& b);
-		void draw(Blittable& b, int x, int y);
-		void draw(Blittable& b, int x, int y, int w, int h);
+		void draw(const Blittable& b);
+		void draw(const Blittable& b, const int x, const int y);
+		void draw(const Blittable& b, const int x, const int y, const int w, const int h);
 
 		void clear();
 		void forceRefresh();
 		void refresh();
 
-		int getWidth();
-		int getHeight();
+		int getWidth() const;
+		int getHeight() const;
 		
-		void center(Blittable& b);
-		void centerx(Blittable& b);
-		void centery(Blittable& b);
-		void centerxco(Blittable& b, int x);
-		void centeryco(Blittable& b, int y);
-		void centerco(Blittable& b, int x, int y);
-		void top(Blittable& b);
-		void bottom(Blittable& b);
-		void left(Blittable& b);
-		void right(Blittable& b);
+		void center(Blittable& b) const;
+		void centerx(Blittable& b) const;
+		void centery(Blittable& b) const;
+		void centerxco(Blittable& b, int x) const;
+		void centeryco(Blittable& b, int y) const;
+		void centerco(Blittable& b, int x, int y) const;
+		void top(Blittable& b) const;
+		void bottom(Blittable& b) const;
+		void left(Blittable& b) const;
+		void right(Blittable& b) const;
 		
-		SDL_Renderer* getRenderer();
-		WindowSettings getSettings();
+		SDL_Renderer* getRenderer() const;
+		WindowSettings getSettings() const;
 
 	private:
 		bool needRefresh;

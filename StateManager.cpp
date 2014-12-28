@@ -8,7 +8,7 @@ namespace hm
 	{
 	}
 
-	StateManager::StateManager(Application* app, Window* window) : app(app), window(window)
+	StateManager::StateManager(const Application* const app, const Window* const window) : app(app), window(window)
 	{
 	}
 
@@ -18,21 +18,21 @@ namespace hm
 		window = NULL;
 	}
 
-	void StateManager::startState()
+	void StateManager::startState() const
 	{
 		if(!stack.empty())
 			stack.back()->init();
 		return;
 	}
 
-	void StateManager::stopState()
+	void StateManager::stopState() const
 	{
 		if(!stack.empty())
 			stack.back()->cleanup();
 		return;
 	}
 
-	void StateManager::pauseState()
+	void StateManager::pauseState() const
 	{
 		// If state present, pause it.
 		if(!stack.empty())
@@ -40,7 +40,7 @@ namespace hm
 		return;
 	}
 
-	void StateManager::resumeState()
+	void StateManager::resumeState() const
 	{
 		// If state present, resume it.
 		if(!stack.empty())
@@ -48,12 +48,12 @@ namespace hm
 		return;
 	}
 
-	bool StateManager::hasState()
+	bool StateManager::hasState() const
 	{
 		 return !stack.empty();
 	}
 
-	State* StateManager::getCurrentState()
+	State* StateManager::getCurrentState() const
 	{
 		if(stack.empty())
 			return NULL;

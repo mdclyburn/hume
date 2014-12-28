@@ -22,20 +22,20 @@ namespace hm
     {
 	public:
 		Text();
-		Text(std::string text, Font* font);
+		Text(const std::string& text, Font* const font);
 		virtual ~Text();
 
-		void setFont(Font* font);
+		void setFont(Font* const font);
 		
-		void setText(std::string text, SDL_Renderer* r);
-		std::string getText();
+		void setText(const std::string& text, SDL_Renderer* const r);
+		std::string getText() const;
 
-		void setColor(Uint8 r, Uint8 g, Uint8 b);
-		void setbColor(Uint8 r, Uint8 g, Uint8 b);
-		SDL_Color getColor();
-		SDL_Color getbColor();
+		void setColor(const Uint8 r, const Uint8 g, const Uint8 b);
+		void setbColor(const Uint8 r, const Uint8 g, const Uint8 b);
+		SDL_Color getColor() const;
+		SDL_Color getbColor() const;
 		
-		void render(SDL_Renderer* r);
+		void render(SDL_Renderer* const r);
 
 	private:
 		Font* font;

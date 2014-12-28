@@ -9,7 +9,7 @@ namespace hm
 		create();
 	}
 	
-	Window::Window(WindowSettings ws) : window(nullptr), renderer(nullptr), settings(ws)
+	Window::Window(const WindowSettings& ws) : window(nullptr), renderer(nullptr), settings(ws)
 	{
 		create();
 	}
@@ -20,18 +20,18 @@ namespace hm
 		SDL_DestroyWindow(window);
 	}
 
-	void Window::setTitle(std::string title)
+	void Window::setTitle(const std::string& title)
 	{
 		SDL_SetWindowTitle(window, title.c_str());
 		return;
 	}
 	
-	bool Window::getStatus()
+	bool Window::getStatus() const
 	{
 		return (window != nullptr);
 	}
 
-	void Window::draw(Blittable& b)
+	void Window::draw(const Blittable& b)
 	{
 		// Don't draw if transparent. Waste of resources.
 		if(b.getAlpha() == TRANSPARENT)
@@ -42,7 +42,7 @@ namespace hm
 		return;
 	}
 
-	void Window::draw(Blittable& b, int x, int y)
+	void Window::draw(const Blittable& b, int x, int y)
 	{
 		// Don't draw if transparent. Waste of resources.
 		if(b.getAlpha() == TRANSPARENT)
@@ -54,7 +54,7 @@ namespace hm
 		return;
 	}
 	
-	void Window::draw(Blittable& b, int x, int y, int w, int h)
+	void Window::draw(const Blittable& b, int x, int y, int w, int h)
 	{
 		// Don't draw if transparent. Waste of resources.
 		if(b.getAlpha() == TRANSPARENT)
@@ -82,18 +82,18 @@ namespace hm
 		return;
 	}
 
-	int Window::getWidth()
+	int Window::getWidth() const
 	{
 		return settings.getResolution().width;
 	}
 
-	int Window::getHeight()
+	int Window::getHeight() const
 	{
 		return settings.getResolution().height;
 	}
 	
 	// Centers the given Blittable in the given Window.
-	void Window::center(Blittable& b)
+	void Window::center(Blittable& b) const
 	{
 		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
 		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
@@ -102,68 +102,68 @@ namespace hm
 	}
 	
 	// Centers the given Blittable on the X-Axis in the given window.
-	void Window::centerx(Blittable& b)
+	void Window::centerx(Blittable& b) const
 	{
 		b.setx(settings.getResolution().width / 2 - b.getWidth() / 2);
 		return;
 	}
 	
 	// Centers the given Blittable on the Y-Axis in the given window.
-	void Window::centery(Blittable& b)
+	void Window::centery(Blittable& b) const
 	{
 		b.sety(settings.getResolution().height / 2 - b.getHeight() / 2);
 		return;
 	}
 	
-	void Window::centerxco(Blittable& b, int x)
+	void Window::centerxco(Blittable& b, int x) const
 	{
 		b.setx(x - b.getWidth() / 2);
 		return;
 	}
 	
-	void Window::centeryco(Blittable& b, int y)
+	void Window::centeryco(Blittable& b, int y) const
 	{
 		b.sety(y - b.getHeight() / 2);
 		return;
 	}
 	
-	void Window::centerco(Blittable& b, int x, int y)
+	void Window::centerco(Blittable& b, int x, int y) const
 	{
 		centerxco(b, x);
 		centeryco(b, y);
 		return;
 	}
 	
-	void Window::top(Blittable& b)
+	void Window::top(Blittable& b) const
 	{
 		b.sety(0);
 		return;
 	}
 	
-	void Window::bottom(Blittable& b)
+	void Window::bottom(Blittable& b) const
 	{
 		b.sety(settings.getResolution().height - b.getHeight());
 		return;
 	}
 	
-	void Window::left(Blittable& b)
+	void Window::left(Blittable& b) const
 	{
 		b.setx(0);
 		return;
 	}
 	
-	void Window::right(Blittable& b)
+	void Window::right(Blittable& b) const
 	{
 		b.setx(settings.getResolution().width - b.getWidth());
 		return;
 	}
 	
-	SDL_Renderer* Window::getRenderer()
+	SDL_Renderer* Window::getRenderer() const
 	{
 		return renderer;
 	}
 	
-	WindowSettings Window::getSettings()
+	WindowSettings Window::getSettings() const
 	{
 		return settings;
 	}

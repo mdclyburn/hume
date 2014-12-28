@@ -28,23 +28,23 @@ namespace hm
 	{
 	public:
 		Application();
-		Application(std::string title);
-		Application(std::string title, unsigned int width, unsigned int height, bool fs = false);
+		Application(const std::string& title);
+		Application(const std::string& title, const unsigned int width, const unsigned int height, const bool fs = false);
 		virtual ~Application();
 
 		virtual void run() = 0;
 
 		// Frame Rate Management
-		void capFrameRate(bool b);
-		bool frameRateIsCapped();
-		void setFrameRate(int i);
-		float getFrameRate();
+		void capFrameRate(const bool b);
+		bool frameRateIsCapped() const;
+		void setFrameRate(const int i);
+		float getFrameRate() const;
 
-		void log(std::string msg, LogLevel level = INFO);
+		void log(const std::string& msg, const LogLevel level = INFO) const;
 
 		void quit();
 
-		StateManager* getStateManager();
+		StateManager* getStateManager() const;
 
 	protected:
         bool running;
@@ -66,8 +66,8 @@ namespace hm
        	virtual void loop();
        	virtual void cleanup() = 0;
 		
-		void SDLInit();
-		void SDLQuit();
+		void SDLInit() const;
+		void SDLQuit() const;
 	};
 }
 

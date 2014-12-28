@@ -16,7 +16,7 @@ namespace hm
 		void open(std::string filename);
 		void close();
 		
-		void play();
+		void play() const;
 		
 		void setVolume(int v);
 		

@@ -27,23 +27,23 @@ namespace hm
 		virtual ~Blittable();
 		
 		// Alpha
-		int getAlpha();
+		int getAlpha() const;
 		void setAlpha(int alphaValue);
 		void modifyAlpha(int mod);
 		
 		// Positioning
 		void setPosition(int x, int y);
-		SDL_Rect getPosition();
+		SDL_Rect getPosition() const;
 		void move(int x, int y);
 		void setx(int x);
 		void sety(int y);
 		
 		// Texture Properties
-		SDL_Rect getDimensions();
-		virtual int getWidth();
-		virtual int getHeight();
-		SDL_Rect getInfo();
-		SDL_Texture* getTexture();
+		SDL_Rect getDimensions() const;
+		virtual int getWidth() const;
+		virtual int getHeight() const;
+		SDL_Rect getInfo() const;
+		SDL_Texture* getTexture() const;
 		
 		void destroy();
 

@@ -16,7 +16,7 @@ namespace hm
 		texture = nullptr;
 	}
 	
-	int Blittable::getAlpha()
+	int Blittable::getAlpha() const
 	{
 		return alpha;
 	}
@@ -47,7 +47,7 @@ namespace hm
 		return;
 	}
 
-	SDL_Rect Blittable::getPosition()
+	SDL_Rect Blittable::getPosition() const
 	{
 		
 		return info;
@@ -72,7 +72,7 @@ namespace hm
 		return;
 	}
 	
-	SDL_Rect Blittable::getDimensions()
+	SDL_Rect Blittable::getDimensions() const
 	{
 		SDL_Rect sdlr;
 		sdlr.w = info.w;
@@ -80,22 +80,22 @@ namespace hm
 		return sdlr;
 	}
 	
-	int Blittable::getWidth()
+	int Blittable::getWidth() const
 	{
 		return info.w;
 	}
 	
-	int Blittable::getHeight()
+	int Blittable::getHeight() const
 	{
 		return info.h;
 	}
 	
-	SDL_Rect Blittable::getInfo()
+	SDL_Rect Blittable::getInfo() const
 	{
 		return info;
 	}
 	
-	SDL_Texture* Blittable::getTexture()
+	SDL_Texture* Blittable::getTexture() const
 	{
 		return texture;
 	}

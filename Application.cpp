@@ -11,7 +11,7 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Application::Application(std::string title) : cap_frame_rate(true), framerate(60), frameTimer()
+	Application::Application(const std::string& title) : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		this->title = title;
@@ -22,7 +22,7 @@ namespace hm
 		manager = new StateManager(this, window);
 	}
 
-	Application::Application(std::string title, unsigned int width, unsigned int height, bool fs) : cap_frame_rate(true), framerate(60), frameTimer()
+	Application::Application(const std::string& title, const unsigned int width, const unsigned int height, const bool fs) : cap_frame_rate(true), framerate(60), frameTimer()
 	{
 		SDLInit();
 		this->title = title;
@@ -42,24 +42,24 @@ namespace hm
 		window = NULL;
 	}
 
-	void Application::capFrameRate(bool b)
+	void Application::capFrameRate(const bool b)
 	{
 		cap_frame_rate = b;
 		return;
 	}
 
-	bool Application::frameRateIsCapped()
+	bool Application::frameRateIsCapped() const
 	{
 		return cap_frame_rate;
 	}
 
-	void Application::setFrameRate(int i)
+	void Application::setFrameRate(const int i)
 	{
 		framerate = i;
 		return;
 	}
 
-	float Application::getFrameRate()
+	float Application::getFrameRate() const
 	{
 		if(cap_frame_rate)
 			return framerate;
@@ -67,7 +67,7 @@ namespace hm
 			return 0;
 	}
 
-	void Application::log(std::string msg, LogLevel level)
+	void Application::log(const std::string& msg, const LogLevel level) const
 	{
 		Logger::getLogger()->log(msg, level);
 	}
@@ -81,7 +81,7 @@ namespace hm
 		return;
 	}
 
-	StateManager* Application::getStateManager()
+	StateManager* Application::getStateManager() const
 	{
 		return manager;
 	}
@@ -112,7 +112,7 @@ namespace hm
         cleanup();
     }
 	
-	void Application::SDLInit()
+	void Application::SDLInit() const
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
 		{
@@ -143,7 +143,7 @@ namespace hm
 		return;
 	}
 	
-	void Application::SDLQuit()
+	void Application::SDLQuit() const
 	{
 		SDL_Quit();
 		IMG_Quit();
