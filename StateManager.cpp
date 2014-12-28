@@ -32,19 +32,19 @@ namespace hm
 		return;
 	}
 
-	void StateManager::pauseState() const
-	{
-		// If state present, pause it.
-		if(!stack.empty())
-			stack.back()->pause();
-		return;
-	}
-
 	void StateManager::resumeState() const
 	{
 		// If state present, resume it.
 		if(!stack.empty())
 			stack.back()->resume();
+		return;
+	}
+
+	void StateManager::pauseState() const
+	{
+		// If state present, pause it.
+		if(!stack.empty())
+			stack.back()->pause();
 		return;
 	}
 
