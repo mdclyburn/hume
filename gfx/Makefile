@@ -1,8 +1,5 @@
-all: Blittable.o WindowSettings.o
+all: Blittable.o Image.o WindowSettings.o
 
-Blittable.o:
-WindowSettings.o:
-
-.PHONY: clean
-clean:
-	rm -f *.o gfx.a
+Blittable.o: Blittable.h
+Image.o: Blittable.h
+WindowSettings.o: WindowSettings.h
