@@ -1,5 +1,6 @@
-all: WindowSettings.o
+all: Blittable.o WindowSettings.o
 
+Blittable.o:
 WindowSettings.o:
 
 .PHONY: clean

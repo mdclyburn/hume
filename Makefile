@@ -1,6 +1,8 @@
 CXX = g++
 CXXFLAGS = -std=c++11
 
+export CXXFLAGS
+
 all: libhume.a
 
 libhume.a: gfx/*.o
