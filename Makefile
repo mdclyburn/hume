@@ -1,15 +1,18 @@
 CXX = g++
 CXXFLAGS = -std=c++11
+VPATH = gfx
 
 export CXXFLAGS
 
 all: libhume.a
 
-libhume.a: gfx/*.o
-	$(AR) rvs $@ $^
+libhume.a: Blittable.o Image.o Window.o WindowSettings.o
+	$(AR) rvs $@ *.o
 
-gfx/*.o: gfx/*.cpp
-	cd gfx && $(MAKE)
+Blittable.o: Blittable.h
+Image.o: Image.h
+Window.o: Window.h
+WindowSettings.o: WindowSettings.h
 
 .PHONY: clean
 clean:
