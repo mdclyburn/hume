@@ -20,6 +20,7 @@ public:
     Image* load_image(const std::string& filename, const Uint8 r, const Uint8 g, const Uint8 b);
 
     void draw(const Blittable* const b, const Properties& p);
+    void refresh();
 
 protected:
     Window* window;

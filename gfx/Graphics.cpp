@@ -44,3 +44,15 @@ Image* Graphics::load_image(const std::string& filename, const Uint8 r, const Ui
 
     return image;
 }
+
+void Graphics::draw(const Blittable* const b, const Properties& p)
+{
+    window->draw(b, p);
+    return;
+}
+
+void Graphics::refresh()
+{
+    window->present();
+    return;
+}
