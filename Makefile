@@ -6,13 +6,16 @@ export CXXFLAGS
 
 all: libhume.a
 
-libhume.a: Blittable.o Graphics.o Image.o Log.o Window.o WindowSettings.o
+libhume.a: Application.o Blittable.o Graphics.o Image.o Log.o State.o StateManager.o Window.o WindowSettings.o
 	$(AR) rvs $@ *.o
 
+Application.o: Application.h
 Blittable.o: Blittable.h
 Graphics.o: Graphics.h
 Image.o: Image.h
 Log.o: Log.h LogMode.h
+State.o: State.h
+StateManager.o: StateManager.h
 Window.o: Window.h
 WindowSettings.o: WindowSettings.h
 
