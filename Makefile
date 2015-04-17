@@ -6,7 +6,7 @@ export CXXFLAGS
 
 all: libhume.a
 
-libhume.a: Audio.o Blittable.o Font.o Graphics.o Image.o Log.o State.o StateManager.o Sound.o Text.o Timer.o Window.o WindowSettings.o
+libhume.a: Audio.o Blittable.o Font.o Graphics.o Image.o Log.o Music.o State.o StateManager.o Sound.o Text.o Timer.o Window.o WindowSettings.o
 	$(AR) rvs $@ *.o
 
 Audio.o: Audio.h
@@ -14,7 +14,8 @@ Blittable.o: Blittable.h
 Font.o: Font.h
 Graphics.o: Graphics.h
 Image.o: Image.h
-Log.o: Log.h LogMode.h
+Log.o: Log.h
+Music.o: Music.h
 Sound.o: Sound.h
 Text.o: Font.h
 Timer.o: Timer.h
