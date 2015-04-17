@@ -1,6 +1,6 @@
 #include "Sound.h"
 
-Sound::Sound() : chunk(nullptr)
+Sound::Sound() : Audio(), chunk(nullptr)
 {
 }
 
