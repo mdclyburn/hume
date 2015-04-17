@@ -9,11 +9,11 @@ TEST_CASE("Initial value(s)", "[Timer]")
 {
     Timer timer;
 
-    SECTION("immediate value")
+    SECTION("after creation")
     {
 	REQUIRE(timer.get_elapsed_time() == 0);
     }
-    SECTION("new object after some time")
+    SECTION("after some time")
     {
 	SDL_Delay(delay);
 	REQUIRE(timer.get_elapsed_time() == 0);
@@ -24,12 +24,20 @@ TEST_CASE("Reset", "[Timer]")
 {
     Timer timer;
  
-    SECTION("after reset")
+    SECTION("when not running")
     {
 	timer.reset();
 	REQUIRE(timer.get_elapsed_time() == 0);
     }
-    SECTION("after use")
+    SECTION("when running")
+    {
+	timer.start();
+	SDL_Delay(delay);
+	REQUIRE(timer.get_elapsed_time() > 0);
+	timer.reset();
+	REQUIRE(timer.get_elapsed_time() < delay);
+    }
+    SECTION("when paused")
     {
 
 	timer.start();
@@ -46,5 +54,20 @@ TEST_CASE("Reset", "[Timer]")
 	REQUIRE(timer.get_elapsed_time() > 0);
 	timer.reset();
 	REQUIRE(timer.get_elapsed_time() < (delay * 5));
+    }
+}
+
+TEST_CASE("Pause", "[Timer]")
+{
+    Timer timer;
+
+    SECTION("after starting")
+    {
+	timer.start();
+	SDL_Delay(delay);
+	timer.pause();
+	const unsigned int elapsed = timer.get_elapsed_time();
+	SDL_Delay(delay);
+	REQUIRE(timer.get_elapsed_time() == elapsed);
     }
 }

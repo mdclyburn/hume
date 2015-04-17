@@ -49,6 +49,8 @@ uint32_t Timer::get_elapsed_time() const
 {
     if(running && paused)
 	return pause_time;
+    else if(!running && !paused)
+	return 0;
     else
 	return SDL_GetTicks() - start_time;
 }
