@@ -43,3 +43,8 @@ RenderMode Font::get_render_mode()
 {
     return render_mode;
 }
+
+TTF_Font* Font::get_font()
+{
+    return font;
+}

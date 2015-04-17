@@ -23,6 +23,8 @@ public:
     void set_render_mode(const RenderMode& render_mode);
     RenderMode get_render_mode();
 
+    TTF_Font* get_font();
+
 protected:
     TTF_Font* font;
     std::string file_name;
