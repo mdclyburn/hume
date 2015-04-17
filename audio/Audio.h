@@ -1,6 +1,7 @@
 #ifndef AUDIO_H
 #define AUDIO_H
 
+#include <cassert>
 #include <string>
 
 #include <SDL2/SDL_mixer.h>
