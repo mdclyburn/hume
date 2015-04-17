@@ -1,9 +1,5 @@
-*.[ao]
 *~*
-chassis/
-*autosave
-*vcxproj*
-*.txt
-Debug/
-debug/
-*.xcodeproj
+*.[ao]
+test
+cppcheck.xml
+
