@@ -4,7 +4,10 @@ VPATH = audio gfx core
 
 export CXXFLAGS
 
-all: libhume.a
+all: libhume.a cppcheck.xml
+
+cppcheck.xml: libhume.a
+	cppcheck --xml --xml-version=2 --enable={warning,style,performance,portability,information,missingInclude} --inconclusive --language=c++ . &> cppcheck.xml
 
 libhume.a: Audio.o Blittable.o Component.o Font.o Graphics.o Image.o Log.o Music.o Sound.o Text.o Timer.o Window.o WindowSettings.o
 	$(AR) rvs $@ *.o
