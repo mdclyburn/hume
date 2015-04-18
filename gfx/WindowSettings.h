@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef WINDOWSETTINGS_H
 #define WINDOWSETTINGS_H
 

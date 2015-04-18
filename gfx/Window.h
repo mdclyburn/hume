@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef WINDOW_H
 #define WINDOW_H
 

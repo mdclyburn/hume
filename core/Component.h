@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef COMPONENT_H
 #define COMPONENT_H
 

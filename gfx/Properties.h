@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef properties_h
 #define properties_h
 
