@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef logmode_h
 #define logmode_h
 

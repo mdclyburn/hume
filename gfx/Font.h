@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef FONT_H
 #define FONT_H
 

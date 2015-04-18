@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef timer_h
 #define timer_h
 

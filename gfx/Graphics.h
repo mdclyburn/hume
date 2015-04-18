@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 

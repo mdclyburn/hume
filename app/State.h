@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef STATE_H
 #define STATE_H
 

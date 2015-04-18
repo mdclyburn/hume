@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef BLITTABLE_H
 #define BLITTABLE_H
 

@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef TEXT_H
 #define TEXT_H
 
