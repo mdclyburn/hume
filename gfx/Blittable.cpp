@@ -43,6 +43,11 @@ unsigned int Blittable::get_height() const
     return info.h;
 }
 
+SDL_Texture* Blittable::get_texture() const
+{
+    return texture;
+}
+
 void Blittable::destroy()
 {
     SDL_DestroyTexture(texture);
