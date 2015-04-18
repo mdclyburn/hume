@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <SDL2/SDL.h>
+
 #include "../core/Timer.h"
 #include "State.h"
 

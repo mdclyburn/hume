@@ -24,7 +24,7 @@ void Application::set_frame_limit(const unsigned int frame_rate)
 void Application::loop()
 {
     running = true;
-    while(running)
+    while(running && !state_stack.empty())
     {
 	// interact directly with SDL for frame timing to reduce
 	// overhead incurred by function calls
