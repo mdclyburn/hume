@@ -21,6 +21,18 @@ void Application::set_frame_limit(const unsigned int frame_rate)
     return;
 }
 
+void Application::initialize()
+{
+    SDL_Init(SDL_INIT_EVERYTHING);
+    return;
+}
+
+void Application::shutdown()
+{
+    SDL_Quit();
+    return;
+}
+
 void Application::loop()
 {
     running = true;
