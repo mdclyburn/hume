@@ -34,7 +34,10 @@ WindowSettings.o: WindowSettings.h
 
 Timer_test.o: Timer.h
 
-.PHONY: clean
+.PHONY: clean unittest
 clean:
 	find . -name "*.o" -delete
 	rm -f libhume.a
+
+unittest: test
+	./test
