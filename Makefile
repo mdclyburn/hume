@@ -7,7 +7,7 @@ export CXXFLAGS
 
 all: libhume.a test cppcheck.xml
 
-cppcheck.xml: libhume.a
+cppcheck.xml:
 	cppcheck --xml --xml-version=2 --enable={warning,style,performance,portability,information,missingInclude} --inconclusive --language=c++ -i unit-tests . &> cppcheck.xml
 
 libhume.a: Application.o Audio.o Blittable.o Component.o Font.o Graphics.o Image.o Log.o Music.o Sound.o State.o Text.o Timer.o Window.o WindowSettings.o
@@ -37,7 +37,7 @@ Timer_test.o: Timer.h
 .PHONY: clean unittest
 clean:
 	find . -name "*.o" -delete
-	rm -f libhume.a
+	rm -f libhume.a cppcheck.xml
 
 unittest: test
 	./test
