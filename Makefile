@@ -11,9 +11,9 @@ cppcheck.xml: libhume.a
 	cppcheck --xml --xml-version=2 --enable={warning,style,performance,portability,information,missingInclude} --inconclusive --language=c++ -i unit-tests . &> cppcheck.xml
 
 libhume.a: Application.o Audio.o Blittable.o Component.o Font.o Graphics.o Image.o Log.o Music.o Sound.o State.o Text.o Timer.o Window.o WindowSettings.o
-	$(AR) rvs $@ *.o
+	$(AR) rcvs $@ *.o
 
-test: libhume.a Timer_test.o
+test: Timer_test.o libhume.a
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
 Application.o: Application.h
