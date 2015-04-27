@@ -3,7 +3,7 @@
 Image::Image() : Blittable()
 {
     color_key.r = 255;
-    color_key.g = 255;
+    color_key.g = 0;
     color_key.b = 255;
 }
 
