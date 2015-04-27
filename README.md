@@ -1,6 +1,8 @@
 Project Hume
 ============
 
+[![Build Status](http://ci.mardev.net/buildStatus/icon?job=Hume)](http://ci.mardev.net/job/Hume/)
+
 This project is an endeavor into creating a useful C++ interface for SDL2.
 This includes the mixer, image, and TTF extensions as well.
 
