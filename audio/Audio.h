@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef AUDIO_H
 #define AUDIO_H
 

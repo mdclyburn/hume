@@ -21,6 +21,18 @@ void Application::set_frame_limit(const unsigned int frame_rate)
     return;
 }
 
+void Application::initialize()
+{
+    SDL_Init(SDL_INIT_EVERYTHING);
+    return;
+}
+
+void Application::shutdown()
+{
+    SDL_Quit();
+    return;
+}
+
 void Application::loop()
 {
     running = true;
@@ -35,7 +47,7 @@ void Application::loop()
 	display();
 
 	const unsigned int frame_duration = SDL_GetTicks() - frame_start;
-	if(frame_duration > frame_time)
+	if(frame_duration < frame_time)
 	    SDL_Delay(frame_time - frame_duration);
     }
 }

@@ -51,6 +51,12 @@ void Graphics::draw(const Blittable* const b, const Properties& p)
     return;
 }
 
+void Graphics::clear()
+{
+	window->clear();
+	return;
+}
+
 void Graphics::refresh()
 {
     window->present();

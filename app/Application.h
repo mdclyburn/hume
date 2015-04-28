@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
@@ -20,6 +22,9 @@ public:
     void set_frame_limit(const unsigned int frame_rate);
 
 protected:
+    virtual void initialize();
+    virtual void shutdown();
+ 
     virtual void loop();
     virtual void process_input() = 0;
     virtual void update() = 0;

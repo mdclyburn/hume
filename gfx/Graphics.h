@@ -1,3 +1,5 @@
+// Hume Library Version 0.7
+
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
@@ -20,6 +22,7 @@ public:
     Image* load_image(const std::string& filename, const Uint8 r, const Uint8 g, const Uint8 b);
 
     void draw(const Blittable* const b, const Properties& p);
+	void clear();
     void refresh();
 
 protected:
