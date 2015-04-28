@@ -47,7 +47,7 @@ void Application::loop()
 	display();
 
 	const unsigned int frame_duration = SDL_GetTicks() - frame_start;
-	if(frame_duration > frame_time)
+	if(frame_duration < frame_time)
 	    SDL_Delay(frame_time - frame_duration);
     }
 }
