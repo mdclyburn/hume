@@ -12,7 +12,11 @@ Graphics::~Graphics()
 void Graphics::initialize()
 {
     const int types = IMG_INIT_JPG | IMG_INIT_PNG;
-    const int result = IMG_Init(types);
+    int result = IMG_Init(types);
+    assert(result == types);
+    
+    result = TTF_Init();
+    assert(result == 0);
 
     return;
 }
@@ -20,6 +24,8 @@ void Graphics::initialize()
 void Graphics::shutdown()
 {
     IMG_Quit();
+    TTF_Quit();
+
     return;
 }
 
@@ -27,6 +33,11 @@ void Graphics::set_window(Window* const w)
 {
     window = w;
     return;
+}
+
+Window* Graphics::get_window() const
+{
+    return window;
 }
 
 Image* Graphics::load_image(const std::string& filename)
