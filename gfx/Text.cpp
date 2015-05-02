@@ -34,7 +34,7 @@ void Text::set_text(const std::string& text, SDL_Renderer* r)
 
     texture = SDL_CreateTextureFromSurface(r, surface);
     assert(texture);
-    SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.w);
+    SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
 
     return;
 }
