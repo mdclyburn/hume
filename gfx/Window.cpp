@@ -83,18 +83,29 @@ void Window::draw(const Blittable* const b, const Properties& p)
     r.x = p.x;
     r.y = p.y;
 
+    // use the provided width and height if specified
     if(p.w == 0 || p.h == 0)
     {
 	r.w = b->get_width();
 	r.h = b->get_height();
     }
-    else
+    else // default width and height
     {
 	r.w = p.w;
 	r.h = p.h;
     }
 
-    SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
+    if(p.sw == 0 || p.sh == 0)
+	SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
+    else
+    {
+	SDL_Rect s;
+	s.x = p.sx;
+	s.y = p.sy;
+	s.w = p.sw;
+	s.h = p.sh;
+	SDL_RenderCopy(renderer, b->get_texture(), &s, &r);
+    }
 
     return;
 }
