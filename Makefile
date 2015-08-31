@@ -14,7 +14,7 @@ libhume.a: Application.o Audio.o Blittable.o Component.o Font.o Graphics.o Image
 	$(AR) rcvs $@ *.o
 
 test: Timer_test.o libhume.a
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $@
 
 Application.o: Application.h
 Audio.o: Audio.h
