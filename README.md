@@ -4,17 +4,26 @@ Project Hume
 [![Build Status](http://ci.mardev.net/buildStatus/icon?job=Hume)](http://ci.mardev.net/job/Hume/)
 
 This project is an endeavor into creating a useful C++ interface for SDL2.
-This includes the mixer, image, and TTF extensions as well.
+This includes the mixer, image, and TTF libraries as well.
 
-Building
---------
-You should have no problem building the project.
-A successful make should result in a static library dubbed `libhume.a` in the top level of the repository.
+Building the Library
+--------------------
+There is a makefile included for the project.
+A successful make should result in an archive dubbed `libhume.a` in the top level of the repository.
 Some things you might want to consider:
 
-* you'll need to use the C++11 standard
-* getting SDL2 if you don't already (you'll need to link with it at link-time)
+Building With the Library
+-------------------------
+It will still be necessary to link with the SDL libraries:
+* libSDL2
+* libSDL2_image
+* libSDL2_mixer
+* libSDL2_ttf
+
+Beside that, ensure that the `libhume.a` archive is being compiled in as well.
 
 License
 -------
-This project is closed-source for the time being.
+The source code for this project is licensed under the LGPL v2.1.
+See the license file, entitled 'LICENSE', for the full text.
+
