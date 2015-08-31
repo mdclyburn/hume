@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -I ./
-LDFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+LDLIBS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 VPATH = audio gfx app core unit-tests
 
 export CXXFLAGS
@@ -37,7 +37,7 @@ Timer_test.o: Timer.h
 .PHONY: clean unittest
 clean:
 	find . -name "*.o" -delete
-	rm -f libhume.a cppcheck.xml
+	$(RM) libhume.a cppcheck.xml
 
 unittest: test
 	./test
