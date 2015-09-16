@@ -37,7 +37,7 @@ Timer_test.o: Timer.h
 .PHONY: clean unittest
 clean:
 	find . -name "*.o" -delete
-	$(RM) libhume.a cppcheck.xml
+	$(RM) libhume.a cppcheck.xml test
 
 unittest: test
 	./test
