@@ -35,10 +35,18 @@ WindowSettings.o: WindowSettings.h
 
 Timer_test.o: Timer.h
 
+documentation.pdf: doc/latex/refman.tex
+	cd doc/latex && pdflatex refman.tex && pdflatex refman.tex
+	mv doc/latex/refman.pdf documentation.pdf
+
+doc/latex/refman.tex: Doxyfile app/* audio/* core/* gfx/*
+	doxygen Doxyfile
+
 .PHONY: clean unittest
 clean:
 	find . -name "*.o" -delete
-	$(RM) libhume.a cppcheck.xml test
+	$(RM) libhume.a cppcheck.xml test documentation.pdf
+	$(RM) -r doc
 
 unittest: test
 	./test
