@@ -45,8 +45,8 @@ entire Blittable to be drawn.
 
 struct Properties
 {
-    unsigned int x;
-    unsigned int y;
+    int x;
+    int y;
     unsigned int w;
     unsigned int h;
 
@@ -55,9 +55,9 @@ struct Properties
     unsigned int sw;
     unsigned int sh;
 
-    Properties() : x(0), y(0), w(0), h(0) {}
-    Properties(const unsigned int x,
-	       const unsigned int y,
+    Properties() : x(0), y(0), w(0), h(0), sx(0), sy(0), sw(0), sh(0) {}
+    Properties(const int x,
+	       const int y,
 	       const unsigned int w,
 	       const unsigned int h,
 	       const unsigned int sx,
