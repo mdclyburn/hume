@@ -8,8 +8,7 @@ export CXXFLAGS
 # By default:
 # * build Hume
 # * build unit tests
-# * run cppcheck
-all: libhume.a test cppcheck.xml
+all: libhume.a test
 
 # Static code analysis
 cppcheck.xml:
