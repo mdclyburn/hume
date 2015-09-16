@@ -22,6 +22,10 @@ It will still be necessary to link with the SDL libraries:
 
 Beside that, ensure that the `libhume.a` archive is being compiled in as well.
 
+If one were to compile a program using Hume, one would execute the following command:
+
+`g++ myHumeApplication.cpp libhume.a -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer`
+
 License
 -------
 The source code for this project is licensed under the LGPL v2.1.
