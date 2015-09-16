@@ -103,21 +103,21 @@ void Window::draw(const Blittable* const b, const Properties& p)
     r.x = p.x;
     r.y = p.y;
 
-    // use the provided width and height if specified
+    // use the default width and height if not specified
     if(p.w == 0 || p.h == 0)
     {
 		r.w = b->get_width();
 		r.h = b->get_height();
     }
-    else // default width and height
+    else // provided width and height
     {
 		r.w = p.w;
 		r.h = p.h;
     }
 
-    if(p.sw == 0 || p.sh == 0)
+    if(p.sw == 0 || p.sh == 0) // use entire blittable
 		SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
-    else
+    else // use specified portion
     {
 		SDL_Rect s;
 		s.x = p.sx;
