@@ -5,17 +5,25 @@ VPATH = audio gfx app core unit-tests
 
 export CXXFLAGS
 
+# By default:
+# * build Hume
+# * build unit tests
+# * run cppcheck
 all: libhume.a test cppcheck.xml
 
+# Static code analysis
 cppcheck.xml:
 	cppcheck --xml --xml-version=2 --enable={warning,style,performance,portability,information,missingInclude} --inconclusive --language=c++ -i unit-tests . &> cppcheck.xml
 
+# The Hume SDL2 wrapper library
 libhume.a: Application.o Audio.o Blittable.o Component.o Font.o Graphics.o Image.o Log.o Music.o Properties.o Sound.o State.o Text.o Timer.o Window.o WindowSettings.o
 	$(AR) rcvs $@ *.o
 
+# Unit testing, facilitated by Catch
 test: Timer_test.o libhume.a
 	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $@
 
+### Hume Source ###
 Application.o: Application.h
 Audio.o: Audio.h
 Blittable.o: Blittable.h
@@ -33,8 +41,10 @@ Timer.o: Timer.h
 Window.o: Window.h
 WindowSettings.o: WindowSettings.h
 
+### Unit Testing Source ###
 Timer_test.o: Timer.h
 
+### Documentation ###
 documentation.pdf: doc/latex/refman.tex
 	cd doc/latex && pdflatex refman.tex && pdflatex refman.tex
 	mv doc/latex/refman.pdf documentation.pdf
@@ -43,10 +53,13 @@ doc/latex/refman.tex: Doxyfile app/* audio/* core/* gfx/*
 	doxygen Doxyfile
 
 .PHONY: clean unittest
+
+### Cleanup ###
 clean:
 	find . -name "*.o" -delete
 	$(RM) libhume.a cppcheck.xml test documentation.pdf
 	$(RM) -r doc
 
+### Run Unit Testing ###
 unittest: test
 	./test
