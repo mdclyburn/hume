@@ -21,31 +21,11 @@ USA
 #ifndef properties_h
 #define properties_h
 
-/*
-Provides options for Blittable that are to be drawn to
-the screen.
-
-x: x coordinate
-y: y coordinate
-w: width
-h: height
-
-sx: x coordinate of source in Blittable
-sy: y coordinate of source in Blittable
-sw: width of source in Blittable
-sh: height of source in Blittable
-
-A width or height of zero will cause the Blittable to be drawn
-using its native size.
-
-The s- variables allow for a specific portion of the Blittable to be
-drawn. A value of zero in the 'sw' OR 'sh' fields will cause the
-entire Blittable to be drawn.
-*/
-
 /** Drawing parameters for Blittables.
  *
- * Provides options for Blittables that are to be drawn to the screen.
+ * Provides options for Blittables that are to be drawn to the screen. The 'x', 'y',
+ * 'w', and 'h' fields correspond to positioning and size. The 's*' properties specify
+ * a specific portion of the Blittable.
  */
 struct Properties
 {
@@ -79,12 +59,49 @@ struct Properties
 	 */
     unsigned int h;
 
+	/** The source x-coordinate.
+	 *
+	 * The x-coordinate of the portion of the Blittable texture to be drawn.
+	 */
     unsigned int sx;
+
+	/** The source y-coordinate.
+	 *
+	 * The y-coordinate of the portion of the Blittable texture to be drawn.
+	 */
     unsigned int sy;
+
+	/** The source width.
+	 *
+	 * The width of the portion of the Blittable texture to be drawn.
+	 */
     unsigned int sw;
+
+	/** The source height.
+	 *
+	 * The height of the portion of the Blittable texture to be drawn.
+	 */
     unsigned int sh;
 
+	/** The default constructor.
+	 *
+	 * Constructs a Properties struct.
+	 */
 	Properties();
+
+	/** The constructor allowing specification.
+	 *
+	 * Constructs a Properties struct with the desired fields.
+	 *
+	 * \param x the x-coordinate
+	 * \param y the y-coordinate
+	 * \param w the width
+	 * \param h the height
+	 * \param sx the source x-coordinate
+	 * \param sy the source y-coordinate
+	 * \param sw the source width
+	 * \param sh the source height
+	 */
 	Properties(const int x,
 			   const int y,
 			   const unsigned int w,
