@@ -28,6 +28,20 @@ USA
 // FLUSHED - all log entries are immediately written out
 // =====
 
-enum class LogMode { SILENT, DEFAULT, FLUSHED };
+/** Possible modes a Log can run in.
+ *
+ * A LogMode is designed to impose a specific behavior on the Log
+ * it is assigned to. Those behaviors are defined below. It is worth noting
+ * that since the Log class can only be subclassed, and not directly used,
+ * any derived implementations may not follow the described behaviors if
+ * they are not designed to do so. The handling of the value of LogMode is
+ * at the user's discretion.
+ */
+enum class LogMode
+{
+	SILENT,  /**< The Log should not generate output. */
+	DEFAULT, /**< The Log should behave as is expected during normal runs. */
+	FLUSHED  /**< The Log should ensure every message sent to it makes it to output (screen, file, etc...). */
+};
 
 #endif
