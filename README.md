@@ -30,7 +30,7 @@ Documentation
 -------------
 
 Documentation for Hume is maintained within the repository. Up-to-date documentation
-may be found in the `doc` branch. To generate the documentation, you will need:
+may be found in the `docs` branch. To generate the documentation, you will need:
 * `doxygen`
 * `pdflatex`
 
