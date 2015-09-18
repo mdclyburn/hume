@@ -43,11 +43,40 @@ drawn. A value of zero in the 'sw' OR 'sh' fields will cause the
 entire Blittable to be drawn.
 */
 
+/** Drawing parameters for Blittables.
+ *
+ * Provides options for Blittables that are to be drawn to the screen.
+ */
 struct Properties
 {
+	/** The x-coordinate.
+	 *
+	 * The x-coordinate that will be used as the starting point when drawing the
+	 * Blittable to the screen.
+	 */
     int x;
+
+	/** The y-coordinate.
+	 *
+	 * The y-coordinate that will be used as the starting point when drawing the
+	 * Blittable to the screen.
+	 */
     int y;
+
+	/** The width.
+	 *
+	 * The width that the Blittable will be drawn with. Any width specified greater
+	 * than the Blittable's native width will result in the stretching of the
+	 * appearance.
+	 */
     unsigned int w;
+
+	/** The height.
+	 *
+	 * The height that the Blittable will be drawn with. Any height specified greater
+	 * than the Blittable's native height will result in the stretching of the
+	 * appearance.
+	 */
     unsigned int h;
 
     unsigned int sx;
