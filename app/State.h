@@ -23,20 +23,74 @@ USA
 
 #include "SDL2/SDL.h"
 
+/** An applications state.
+ *
+ * A State represents a single 'mode' of execution, whether it be some sort
+ * of menu, 'Now Playing' screen, title screen, etc... They are to be used in
+ * conjunction with the Application state stack. Most of the functions will
+ * need a derived implementation.
+ */ 
 class State
 {
 public:
+
+	/** The default constructor.
+	 *
+	 * Constructs a State.
+	 */
     State();
+
+	/** The destructor.
+	 *
+	 */
     virtual ~State();
 
+	/** Suspends the State.
+	 *
+	 * Releases resource and possibly performs some temporary cleanup. This function
+	 * is called on a running state before it is paused to allow a new State to run.
+	 */
     virtual void pause() = 0;
+
+	/** Reinitializes the State from a paused state.
+	 *
+	 * Reacquires resources and initializes the state to prepare it to run again
+	 * as it was before the call to State::pause() was made.
+	 */
     virtual void resume() = 0;
 
+	/** Performs initialization.
+	 *
+	 * Initializes a state so that it may process input, update, and display. This function
+	 * should perform more initialization than a typical call to State::resume();
+	 */
     virtual void initialize() = 0;
+
+	/** Performs cleanup.
+	 *
+	 * Prepares the State to be completely stopped. This function should perform more
+	 * cleanup than a typical call to State::pause();
+	 */
     virtual void shutdown() = 0;
- 
+
+	/** Process input.
+	 *
+	 * Handle input from the user.
+	 *
+	 * \param e SDL_Event struct containing input information
+	 */
     virtual void process_input(const SDL_Event& e) = 0;
+
+	/** Update internals.
+	 *
+	 * Update State internals.
+	 */
     virtual void update() = 0;
+
+	/** Update Window content.
+	 *
+	 * Draws entities to be displayed with a call to Window::refresh().
+	 */
     virtual void display() = 0;
 };
 
