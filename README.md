@@ -26,6 +26,18 @@ If one were to compile a program using Hume, one would execute the following com
 
 `g++ myHumeApplication.cpp libhume.a -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer`
 
+Documentation
+-------------
+
+Documentation for Hume is maintained within the repository. Up-to-date documentation
+may be found in the `docs` branch. To generate the documentation, you will need:
+* `doxygen`
+* `pdflatex`
+
+Doxygen is needed to extract documentation from the source, and `pdflatex` is needed
+to output the LaTeX that Doxygen generates into a PDF file. Of course, Doxygen can
+also be directed to output different formats as well.
+
 License
 -------
 The source code for this project is licensed under the LGPL v2.1.
