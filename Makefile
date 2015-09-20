@@ -59,7 +59,10 @@ clean:
 	find . -name "*.o" -delete
 	$(RM) libhume.a cppcheck.xml test documentation.pdf
 	$(RM) -r doc
+	$(RM) *.ttf *.zip
 
 ### Run Unit Testing ###
 unittest: test
+	./unit-tests/check-resources.sh
 	./test
+
