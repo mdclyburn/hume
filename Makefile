@@ -19,7 +19,7 @@ libhume.a: Application.o Audio.o Blittable.o Component.o Font.o Graphics.o Image
 	$(AR) rcvs $@ *.o
 
 # Unit testing, facilitated by Catch
-test: Timer_test.o libhume.a
+test: Font_test.o Timer_test.o libhume.a
 	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $@
 
 ### Hume Source ###
@@ -41,6 +41,7 @@ Window.o: Window.h
 WindowSettings.o: WindowSettings.h
 
 ### Unit Testing Source ###
+Font_test.o: Font.h
 Timer_test.o: Timer.h
 
 ### Documentation ###
@@ -58,7 +59,10 @@ clean:
 	find . -name "*.o" -delete
 	$(RM) libhume.a cppcheck.xml test documentation.pdf
 	$(RM) -r doc
+	$(RM) *.ttf *.zip
 
 ### Run Unit Testing ###
 unittest: test
+	./unit-tests/check-resources.sh
 	./test
+
