@@ -5,7 +5,7 @@
 const unsigned int delay = 50;
 const unsigned int tolerance = 7;
 
-TEST_CASE("Initial value(s)", "[Timer]")
+TEST_CASE("Initial value(s) in Timer", "[Timer]")
 {
     Timer timer;
 
@@ -20,7 +20,7 @@ TEST_CASE("Initial value(s)", "[Timer]")
     }
 }
 
-TEST_CASE("Reset", "[Timer]")
+TEST_CASE("Reset Timer", "[Timer]")
 {
     Timer timer;
  
@@ -57,7 +57,7 @@ TEST_CASE("Reset", "[Timer]")
     }
 }
 
-TEST_CASE("Pause", "[Timer]")
+TEST_CASE("Pause Timer", "[Timer]")
 {
     Timer timer;
 
