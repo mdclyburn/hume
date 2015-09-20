@@ -26,6 +26,7 @@ Music::Music() : Audio(), fade_in(0), music(nullptr)
 
 Music::~Music()
 {
+	if(music) close();
 }
 
 void Music::open(const std::string& file_name)
