@@ -21,7 +21,7 @@ TEST_CASE("Initial value(s) in Font", "[Font]")
 
 TEST_CASE("Opening and closing fonts", "[Font]")
 {
-	TTF_Init();
+	REQUIRE(TTF_Init() != -1);
 	Font* font = new Font();
 	REQUIRE(font != nullptr);
 
@@ -53,10 +53,13 @@ TEST_CASE("Opening and closing fonts", "[Font]")
 		font->close();
 		CHECK(font->get_font() == nullptr);
 	}
+
+	TTF_Quit();
 }
 
 TEST_CASE("Resizing font", "[Font]")
 {
+	REQUIRE(TTF_Init() != -1);
 	Font* font = new Font();
 	font->open("font.ttf", SmallFontSize);
 	REQUIRE(font != nullptr);
@@ -85,10 +88,13 @@ TEST_CASE("Resizing font", "[Font]")
 		font->set_size(SmallFontSize);
 		CHECK(TTF_FontHeight(font->get_font()) < MediumFontSize);
 	}
+
+	TTF_Quit();
 }
 
 TEST_CASE("Setting RenderMode", "[Font]")
 {
+	REQUIRE(TTF_Init() != -1);
 	Font* font = new Font();
 	font->open("font.ttf", SmallFontSize);
 
@@ -120,4 +126,5 @@ TEST_CASE("Setting RenderMode", "[Font]")
 	}
 
 	font->close();
+	TTF_Quit();
 }
