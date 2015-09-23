@@ -45,9 +45,8 @@ public:
 
 	/** Open an audio chunk.
 	 *
-	 * Loads audio from file. If this function fails to load the audio file, the program will
-	 * crash. Calling this function when an audio chunk is already loaded will likely result
-	 * in a memory leak.
+	 * Loads audio from file. Calling this function when an audio chunk is already loaded
+	 * will likely result in a memory leak.
 	 *
 	 * \param file_name the path to the audio chunk file
 	 */
@@ -78,6 +77,12 @@ public:
 	 * \param v the new volume level, a value from 0 to 100
 	 */
     void set_volume(const unsigned int v);
+
+	/** Returns the underlying Mix_Chunk.
+	 *
+	 * Returns a pointer to the underlying SDL2 Mix_Chunk.
+	 */
+	Mix_Chunk* get_sound() const;
 
 protected:
 
