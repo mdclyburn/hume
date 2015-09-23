@@ -18,7 +18,8 @@ TEST_CASE("Initial value(s) in Sound", "[Sound]")
 
 TEST_CASE("Opening sound chunk", "[Sound]")
 {
-	REQUIRE(SDL_Init(SDL_INIT_EVERYTHING) == 0);
+	const int SDL_Init_result = SDL_Init(SDL_INIT_EVERYTHING);
+	REQUIRE(SDL_Init_result == 0);
 	Sound* sound = new Sound();
 	REQUIRE(sound != nullptr);
 	
