@@ -32,7 +32,7 @@ Sound::~Sound()
 void Sound::open(const std::string& file_name)
 {
     chunk = Mix_LoadWAV(file_name.c_str());
-    assert(chunk);
+
     return;
 }
 
@@ -61,4 +61,9 @@ void Sound::set_volume(const unsigned int v)
     Mix_VolumeChunk(chunk, int(mixer_volume));
 
     return;
+}
+
+Mix_Chunk* Sound::get_sound() const
+{
+	return chunk;
 }

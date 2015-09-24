@@ -12,4 +12,15 @@ then
 	result=1
 fi
 
+if [ -z "$(ls | grep '.wav')" ]
+then
+	printf "* No usable WAV fount.\n"
+	result=1
+fi
+
+if [ result != 1 ]
+then
+	printf "Unit testing is ready to be run.\n"
+fi
+
 exit $result
