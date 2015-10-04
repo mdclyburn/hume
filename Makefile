@@ -19,7 +19,7 @@ libhume.a: Application.o Audio.o Blittable.o Component.o Font.o Graphics.o Image
 	$(AR) rcvs $@ *.o
 
 # Unit testing, facilitated by Catch
-test: Font_test.o Sound_test.o Timer_test.o libhume.a
+test: Font_test.o Timer_test.o libhume.a
 	$(CXX) $(CXXFLAGS) $(LDLIBS) $^ -o $@
 
 ### Hume Source ###
