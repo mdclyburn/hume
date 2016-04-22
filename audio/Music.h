@@ -48,8 +48,10 @@ public:
 
 	/** Open a music file.
 	 *
-	 * Loads a music file into memory given its path. This function will not close an audio file
-	 * if it is already loaded, resulting in a memory leak if it is called in such a situation.
+	 * Loads a music file into memory given its path. Before this function will work properly, the
+	 * SDL audio subsystem must be initialized, and the SDL_mixer must be initialized with support
+	 * for the appropriate formats. This function will not close an audio file if it is already
+	 * loaded, resulting in a memory leak if it is called in such a situation.
 	 *
 	 * \param file_name the path to the file.
 	 */
@@ -112,17 +114,6 @@ public:
 	 * \param ms the amount of time in milliseconds
 	 */
     void set_fade_in(const unsigned int ms);
-
-	/** Sets the volume of the music.
-	 *
-	 * Sets auditory level the music plays at. This value is translated from a scale from 0 to 100 to
-	 * a scale from 0 to 128. While some specificity of volume levels is lost in the process, it is
-	 * much simpler to remember the maximum value. This changes the volume for all music, not just
-	 * a single instance. Setting this value above 100 will result in undefined behavior.
-	 *
-	 * \param v the new volume level, a value from 0 to 100
-	 */
-    void set_volume(const unsigned int v);
 
 protected:
 

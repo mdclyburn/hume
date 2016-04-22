@@ -78,11 +78,3 @@ void Music::set_fade_in(const unsigned int ms)
     this->fade_in = ms;
     return;
 }
-
-void Music::set_volume(const unsigned int volume)
-{
-    // convert volume value to scale of 1 - 128
-    float mixer_volume = ceilf(volume * 1.28);
-    Mix_VolumeMusic(int(mixer_volume));
-    return;
-}

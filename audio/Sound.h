@@ -66,18 +66,6 @@ public:
 	 */
     void play();
 
-	/** Sets the volume of the audio chunk.
-	 *
-	 * Sets the auditory level the audio chunk plays at. This value is translated from a scale of 0
-	 * to 100 to to a scale of 0 to 128. While some specificity of volume level is lost in the
-	 * process, it is much simpler to remember the maximum value. This changes the volume only
-	 * for the associated audio chunk. Calling this function when no audio chunk is loaded will
-	 * result in undefined behavior.
-	 *
-	 * \param v the new volume level, a value from 0 to 100
-	 */
-    void set_volume(const unsigned int v);
-
 	/** Returns the underlying Mix_Chunk.
 	 *
 	 * Returns a pointer to the underlying SDL2 Mix_Chunk.
