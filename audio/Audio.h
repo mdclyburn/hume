@@ -66,29 +66,7 @@ public:
 	 */
     virtual void play() = 0;
 
-	/** Set the volume level.
-	 *
-	 * Sets the auditory level of the audio to be played. The lowest possible value is 0, with
-	 * the highest possible value being 100.
-	 *
-	 * \param v the new volume level
-	 */
-    virtual void set_volume(const unsigned int v) = 0;
-
-	/** Retrieve volume level.
-	 *
-	 * Returns the current auditory level of the audio.
-	 */
-    virtual unsigned int get_volume() const;
-
 protected:
-
-	/** The volume level.
-	 *
-	 * This is a value representing the loudness of the audio. It is a value that ranges from 0
-	 * (inaudible) to 100 (maximum volume).
-	 */
-    unsigned int volume;
 };
 
 #endif

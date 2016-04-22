@@ -52,17 +52,6 @@ void Sound::play()
     return;
 }
 
-void Sound::set_volume(const unsigned int v)
-{
-    volume = v;
-
-    // convert volume value to scale of 1 - 128.
-    float mixer_volume = ceilf(volume * 1.28);
-    Mix_VolumeChunk(chunk, int(mixer_volume));
-
-    return;
-}
-
 Mix_Chunk* Sound::get_sound() const
 {
 	return chunk;

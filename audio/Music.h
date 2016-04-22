@@ -115,17 +115,6 @@ public:
 	 */
     void set_fade_in(const unsigned int ms);
 
-	/** Sets the volume of the music.
-	 *
-	 * Sets auditory level the music plays at. This value is translated from a scale from 0 to 100 to
-	 * a scale from 0 to 128. While some specificity of volume levels is lost in the process, it is
-	 * much simpler to remember the maximum value. This changes the volume for all music, not just
-	 * a single instance. Setting this value above 100 will result in undefined behavior.
-	 *
-	 * \param v the new volume level, a value from 0 to 100
-	 */
-    void set_volume(const unsigned int v);
-
 protected:
 
 	/** The time in ms to spend fading in the music. */
