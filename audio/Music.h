@@ -48,8 +48,10 @@ public:
 
 	/** Open a music file.
 	 *
-	 * Loads a music file into memory given its path. This function will not close an audio file
-	 * if it is already loaded, resulting in a memory leak if it is called in such a situation.
+	 * Loads a music file into memory given its path. Before this function will work properly, the
+	 * SDL audio subsystem must be initialized, and the SDL_mixer must be initialized with support
+	 * for the appropriate formats. This function will not close an audio file if it is already
+	 * loaded, resulting in a memory leak if it is called in such a situation.
 	 *
 	 * \param file_name the path to the file.
 	 */
