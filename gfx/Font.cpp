@@ -42,6 +42,7 @@ void Font::open(const std::string& file_name, const unsigned int pt_size)
 void Font::close()
 {
     TTF_CloseFont(font);
+	font = nullptr;
     return;
 }
 

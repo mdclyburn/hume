@@ -42,6 +42,7 @@ WindowSettings.o: WindowSettings.h
 
 ### Unit Testing Source ###
 Font_test.o: Font.h
+Sound_test.o: Sound.h
 Timer_test.o: Timer.h
 
 ### Documentation ###
@@ -59,7 +60,7 @@ clean:
 	find . -name "*.o" -delete
 	$(RM) libhume.a cppcheck.xml test documentation.pdf
 	$(RM) -r doc
-	$(RM) *.ttf *.zip
+	$(RM) *.ttf *.wav *.zip
 
 ### Run Unit Testing ###
 unittest: test
