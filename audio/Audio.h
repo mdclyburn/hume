@@ -66,6 +66,11 @@ public:
 	 */
     virtual void play() = 0;
 
+	/** Returns true if audio is currently loaded.
+	 *
+	 */
+	virtual bool is_open() const = 0;
+
 protected:
 };
 

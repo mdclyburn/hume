@@ -115,6 +115,11 @@ public:
 	 */
     void set_fade_in(const unsigned int ms);
 
+	/** Returns true if music is currently loaded.
+	 *
+	 */
+	bool is_open() const;
+
 protected:
 
 	/** The time in ms to spend fading in the music. */

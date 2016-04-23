@@ -78,3 +78,13 @@ void Music::set_fade_in(const unsigned int ms)
     this->fade_in = ms;
     return;
 }
+
+bool Music::is_open() const
+{
+	if(music)
+	{
+		return true;
+	}
+
+	return false;
+}
