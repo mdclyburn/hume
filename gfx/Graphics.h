@@ -131,6 +131,21 @@ public:
 	 */
     void draw(const Blittable* const b, const Properties& p);
 
+	/** Draw a filled rectangle.
+	 *
+	 * Draws a filled rectangle with the specified size, position, and color.
+	 *
+	 * \param x the x position to draw the rectangle's upper left corner at
+	 * \param y the y position to draw the rectangle's upper right corner at
+	 * \param w the width of the rectangle
+	 * \param h the height of the rectangle
+	 * \param r the red value for the color
+	 * \param g the green value for the color
+	 * \param b the blue value for the color
+	 * \param a the alpha value for the color
+	 */
+	void draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+
 	/** Clear the Window.
 	 *
 	 * Clears the window. This function is actually a convenience wrapper around the
