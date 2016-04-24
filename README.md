@@ -1,32 +1,37 @@
-# Project Hume
-
-[![Build Status](http://ci.mardev.net/buildStatus/icon?job=Hume)](http://ci.mardev.net/job/Hume/)
-
-This project is an endeavor into creating a useful C++ interface for SDL2.
-This includes the mixer, image, and TTF libraries as well.
+# Hume
+Hume is an object-oriented wrapper for a lot of facilities that SDL2 provides.
+It is designed to be easy to learn and simple to use.
 
 # Building the Library
+
+## Requirements
+You'll need the following:
+
+* SDL2
+* SDL2_image
+* SDL2_mixer
+* SDL2_ttf
+
+There are currently two methods to build the project.
+
+## CMake (recommended)
+This method requires CMake to be installed.
+Run the following commands:
+
+1. `mkdir build`
+2. `cd build`
+3. `cmake ..`
+4. `make`
+
+## Makefile
 There is a makefile included for the project.
-A successful make should result in an archive dubbed `libhume.a` in the top level of the repository.
-Some things you might want to consider:
-
-# Building With the Library
-It will still be necessary to link with the SDL libraries:
-* libSDL2
-* libSDL2_image
-* libSDL2_mixer
-* libSDL2_ttf
-
-Beside that, ensure that the `libhume.a` archive is being compiled in as well.
-
-If one were to compile a program using Hume, one would execute the following command:
-
-`g++ myHumeApplication.cpp libhume.a -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer`
+A successful `make` should result in an archive named `libhume.a` in the top level of the repository.
 
 # Documentation
 
 Documentation for Hume is maintained within the repository. Up-to-date documentation
 may be found in the `docs` branch. To generate the documentation, you will need:
+
 * `doxygen`
 * `pdflatex`
 
