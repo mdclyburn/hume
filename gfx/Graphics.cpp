@@ -86,9 +86,11 @@ void Graphics::draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t
 {
 	SDL_Renderer* const renderer = window->get_renderer();
 
-	// We'll be restoring the blend mode back to what it was.
+	// We'll be restoring the blend mode and colors back to what they were.
 	SDL_BlendMode previous;
+	uint8_t rgba[4];
 	SDL_GetRenderDrawBlendMode(renderer, &previous);
+	SDL_GetRenderDrawColor(renderer, &rgba[0], &rgba[1], &rgba[2], &rgba[3]);
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 
@@ -101,6 +103,7 @@ void Graphics::draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t
 
 	// Restore blend mode.
 	SDL_SetRenderDrawBlendMode(renderer, previous);
+	SDL_SetRenderDrawColor(renderer, rgba[0], rgba[1], rgba[2], rgba[3]);
 
 	return;
 }
