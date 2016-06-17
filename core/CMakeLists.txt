@@ -1,6 +1,10 @@
 include_directories(${HUME_SOURCE_DIR})
 
-list(APPEND HUME_SRC
-core/Component.cpp
-core/Log.cpp
-core/Timer.cpp)
+set(SOURCES
+  Component.cpp
+  Log.cpp
+  Timer.cpp)
+
+add_sources("${SOURCES}")
+
+set(HUME_SOURCES ${HUME_SOURCES} PARENT_SCOPE)

@@ -1,6 +1,10 @@
 include_directories(${HUME_SOURCE_DIR})
 
-list(APPEND HUME_SRC
-audio/Audio.cpp
-audio/Music.cpp
-audio/Sound.cpp)
+set(SOURCES
+  Audio.cpp
+  Music.cpp
+  Sound.cpp)
+
+add_sources("${SOURCES}")
+
+set(HUME_SOURCES ${HUME_SOURCES} PARENT_SCOPE)

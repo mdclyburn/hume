@@ -1,5 +1,9 @@
 include_directories(${HUME_SOURCE_DIR})
 
-list(APPEND HUME_SRC
-app/Application.cpp
-app/State.cpp)
+set(SOURCES
+  Application.cpp
+  State.cpp)
+
+add_sources("${SOURCES}")
+
+set(HUME_SOURCES ${HUME_SOURCES} PARENT_SCOPE)

@@ -1,11 +1,15 @@
 include_directories(${HUME_SOURCE_DIR})
 
-list(APPEND HUME_SRC
-gfx/Blittable.cpp
-gfx/Font.cpp
-gfx/Graphics.cpp
-gfx/Image.cpp
-gfx/Properties.cpp
-gfx/Text.cpp
-gfx/Window.cpp
-gfx/WindowSettings.cpp)
+set(SOURCES
+Blittable.cpp
+Font.cpp
+Graphics.cpp
+Image.cpp
+Properties.cpp
+Text.cpp
+Window.cpp
+WindowSettings.cpp)
+
+add_sources("${SOURCES}")
+
+set(HUME_SOURCES ${HUME_SOURCES} PARENT_SCOPE)
