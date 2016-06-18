@@ -5,12 +5,15 @@
 
 #include "Exception.h"
 
-class SDLMixerException : public Exception
+namespace hume
 {
-public:
-	SDLMixerException();
-	SDLMixerException(const std::string& message);
-	virtual ~SDLMixerException();
-};
+	class SDLMixerException : public Exception
+	{
+	public:
+		SDLMixerException();
+		SDLMixerException(const std::string& message);
+		virtual ~SDLMixerException();
+	};
+}
 
 #endif

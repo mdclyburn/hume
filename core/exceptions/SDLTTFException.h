@@ -5,12 +5,15 @@
 
 #include "Exception.h"
 
-class SDLTTFException : public Exception
+namespace hume
 {
-public:
-	SDLTTFException();
-	SDLTTFException(const std::string& message);
-	virtual ~SDLTTFException();
-};
+	class SDLTTFException : public Exception
+	{
+	public:
+		SDLTTFException();
+		SDLTTFException(const std::string& message);
+		virtual ~SDLTTFException();
+	};
+}
 
 #endif

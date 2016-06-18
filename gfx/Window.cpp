@@ -20,123 +20,126 @@
 
 #include "Window.h"
 
-Window::Window() : window(nullptr), renderer(nullptr)
+namespace hume
 {
-}
+	Window::Window() : window(nullptr), renderer(nullptr)
+	{
+	}
 
-Window::~Window()
-{
-    if(window) destroy();
-}
+	Window::~Window()
+	{
+		if(window) destroy();
+	}
 
-void Window::create()
-{
-    window = SDL_CreateWindow(settings.title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, settings.width, settings.height, 0);
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if(!window) throw SDLException();
-    if(!renderer) throw SDLException();
+	void Window::create()
+	{
+		window = SDL_CreateWindow(settings.title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, settings.width, settings.height, 0);
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		if(!window) throw SDLException();
+		if(!renderer) throw SDLException();
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-    return;
-}
+		return;
+	}
 
-void Window::destroy()
-{
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
-    window = nullptr;
-    renderer = nullptr;
+	void Window::destroy()
+	{
+		SDL_DestroyWindow(window);
+		SDL_DestroyRenderer(renderer);
+		window = nullptr;
+		renderer = nullptr;
 
-    return;
-}
+		return;
+	}
 
-void Window::apply(WindowSettings& w)
-{
-    // update the window based on what's changed
-    if(settings.fullscreen != w.fullscreen)
-    {
-		settings.fullscreen = w.fullscreen;
-		if(window)
+	void Window::apply(WindowSettings& w)
+	{
+		// update the window based on what's changed
+		if(settings.fullscreen != w.fullscreen)
 		{
-			if(settings.fullscreen)
-				SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
-			else
-				SDL_SetWindowFullscreen(window, 0);
+			settings.fullscreen = w.fullscreen;
+			if(window)
+			{
+				if(settings.fullscreen)
+					SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+				else
+					SDL_SetWindowFullscreen(window, 0);
+			}
 		}
-    }
-    if(settings.title.compare(w.title) != 0)
-    {
-		settings.title = w.title;
-		if(window) SDL_SetWindowTitle(window, settings.title.c_str());
-    }
-    if(settings.width != w.width ||
-       settings.height != w.height)
-    {
-		// go ahead and assign the resolution, followed by a resize
-		settings.width = w.width;
-		settings.height = w.height;
-		if(window) SDL_SetWindowSize(window, settings.width, settings.height);
-    }
+		if(settings.title.compare(w.title) != 0)
+		{
+			settings.title = w.title;
+			if(window) SDL_SetWindowTitle(window, settings.title.c_str());
+		}
+		if(settings.width != w.width ||
+		   settings.height != w.height)
+		{
+			// go ahead and assign the resolution, followed by a resize
+			settings.width = w.width;
+			settings.height = w.height;
+			if(window) SDL_SetWindowSize(window, settings.width, settings.height);
+		}
 
-    return;
-}
+		return;
+	}
 
-WindowSettings Window::get_settings() const
-{
-    return settings;
-}
+	WindowSettings Window::get_settings() const
+	{
+		return settings;
+	}
 
-SDL_Window* Window::get_window()
-{
-    return window;
-}
+	SDL_Window* Window::get_window()
+	{
+		return window;
+	}
 
-SDL_Renderer* Window::get_renderer()
-{
-    return renderer;
-}
+	SDL_Renderer* Window::get_renderer()
+	{
+		return renderer;
+	}
 
-void Window::draw(const Blittable* const b, const Properties& p)
-{
-    SDL_Rect r;
-    r.x = p.x;
-    r.y = p.y;
+	void Window::draw(const Blittable* const b, const Properties& p)
+	{
+		SDL_Rect r;
+		r.x = p.x;
+		r.y = p.y;
 
-    // use the default width and height if not specified
-    if(p.w == 0 || p.h == 0)
-    {
-		r.w = b->get_width();
-		r.h = b->get_height();
-    }
-    else // provided width and height
-    {
-		r.w = p.w;
-		r.h = p.h;
-    }
+		// use the default width and height if not specified
+		if(p.w == 0 || p.h == 0)
+		{
+			r.w = b->get_width();
+			r.h = b->get_height();
+		}
+		else // provided width and height
+		{
+			r.w = p.w;
+			r.h = p.h;
+		}
 
-    if(p.sw == 0 || p.sh == 0) // use entire blittable
-		SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
-    else // use specified portion
-    {
-		SDL_Rect s;
-		s.x = p.sx;
-		s.y = p.sy;
-		s.w = p.sw;
-		s.h = p.sh;
-		SDL_RenderCopy(renderer, b->get_texture(), &s, &r);
-    }
+		if(p.sw == 0 || p.sh == 0) // use entire blittable
+			SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
+		else // use specified portion
+		{
+			SDL_Rect s;
+			s.x = p.sx;
+			s.y = p.sy;
+			s.w = p.sw;
+			s.h = p.sh;
+			SDL_RenderCopy(renderer, b->get_texture(), &s, &r);
+		}
 
-    return;
-}
+		return;
+	}
 
-void Window::present()
-{
-    SDL_RenderPresent(renderer);
-}
+	void Window::present()
+	{
+		SDL_RenderPresent(renderer);
+	}
 
-void Window::clear()
-{
-    SDL_RenderClear(renderer);
-    return;
+	void Window::clear()
+	{
+		SDL_RenderClear(renderer);
+		return;
+	}
 }

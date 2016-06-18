@@ -3,12 +3,15 @@
 
 #include "Exception.h"
 
-class BadFileException : public Exception
+namespace hume
 {
-public:
-	BadFileException();
-	BadFileException(const std::string& file_name);
-	virtual ~BadFileException();
-};
+	class BadFileException : public Exception
+	{
+	public:
+		BadFileException();
+		BadFileException(const std::string& file_name);
+		virtual ~BadFileException();
+	};
+}
 
 #endif
