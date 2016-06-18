@@ -32,9 +32,8 @@ Font::~Font()
 void Font::open(const std::string& file_name, const unsigned int pt_size)
 {
     this->file_name = file_name;
-
     font = TTF_OpenFont(file_name.c_str(), pt_size);
-    assert(font);
+	if(!font) throw SDLTTFException();
 
     return;
 }

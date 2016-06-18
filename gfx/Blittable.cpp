@@ -31,7 +31,9 @@ Blittable::~Blittable()
 
 void Blittable::set_alpha(const Uint8 a)
 {
-    SDL_SetTextureAlphaMod(texture, a);
+    const int res = SDL_SetTextureAlphaMod(texture, a);
+	if(res) throw SDLException();
+
     return;
 }
 
@@ -39,6 +41,7 @@ void Blittable::modify_alpha(const short m)
 {
     Uint8 current;
     const int res = SDL_GetTextureAlphaMod(texture, &current);
+	if(res) throw SDLException();
     SDL_SetTextureAlphaMod(texture, current + m);
 
     return;
@@ -48,7 +51,7 @@ Uint8 Blittable::get_alpha() const
 {
     Uint8 current;
     const int res = SDL_GetTextureAlphaMod(texture, &current);
-    assert(res);
+    if(res) throw SDLException();
 
     return current;
 }

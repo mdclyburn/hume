@@ -23,7 +23,9 @@ USA
 
 #include <SDL2/SDL_ttf.h>
 
-#include "../core/Component.h"
+#include "core/Component.h"
+#include "core/exceptions/SDLException.h"
+#include "core/exceptions/SDLTTFException.h"
 #include "Image.h"
 #include "Window.h"
 

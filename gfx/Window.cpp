@@ -1,21 +1,21 @@
 /*
-Hume Library
-Copyright (C) 2015 Marshall Clyburn
+  Hume Library
+  Copyright (C) 2015 Marshall Clyburn
 
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
-USA
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+  USA
 */
 
 #include "Window.h"
@@ -33,8 +33,8 @@ void Window::create()
 {
     window = SDL_CreateWindow(settings.title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, settings.width, settings.height, 0);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    assert(window);
-    assert(renderer);
+    if(!window) throw SDLException();
+    if(!renderer) throw SDLException();
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
@@ -56,27 +56,27 @@ void Window::apply(WindowSettings& w)
     // update the window based on what's changed
     if(settings.fullscreen != w.fullscreen)
     {
-	settings.fullscreen = w.fullscreen;
-	if(window)
-	{
-	    if(settings.fullscreen)
-		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
-	    else
-		SDL_SetWindowFullscreen(window, 0);
-	}
+		settings.fullscreen = w.fullscreen;
+		if(window)
+		{
+			if(settings.fullscreen)
+				SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+			else
+				SDL_SetWindowFullscreen(window, 0);
+		}
     }
     if(settings.title.compare(w.title) != 0)
     {
-	settings.title = w.title;
-	if(window) SDL_SetWindowTitle(window, settings.title.c_str());
+		settings.title = w.title;
+		if(window) SDL_SetWindowTitle(window, settings.title.c_str());
     }
     if(settings.width != w.width ||
        settings.height != w.height)
     {
-	// go ahead and assign the resolution, followed by a resize
-	settings.width = w.width;
-	settings.height = w.height;
-	if(window) SDL_SetWindowSize(window, settings.width, settings.height);
+		// go ahead and assign the resolution, followed by a resize
+		settings.width = w.width;
+		settings.height = w.height;
+		if(window) SDL_SetWindowSize(window, settings.width, settings.height);
     }
 
     return;

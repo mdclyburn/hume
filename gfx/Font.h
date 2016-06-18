@@ -27,6 +27,7 @@ USA
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#include "core/exceptions/SDLTTFException.h"
 #include "RenderMode.h"
 
 /** A font that has been loaded into memory.

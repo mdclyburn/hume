@@ -41,7 +41,7 @@ Image::~Image()
 void Image::open(const std::string& filename, SDL_Renderer* const renderer)
 {
     SDL_Surface* surface = IMG_Load(filename.c_str());
-    assert(surface);
+    if(!surface) throw SDLException();
 
     // apply color keying
     const Uint32 key = SDL_MapRGB(surface->format, color_key.r, color_key.g, color_key.b);
@@ -49,7 +49,7 @@ void Image::open(const std::string& filename, SDL_Renderer* const renderer)
 
     // convert to texture
     texture = SDL_CreateTextureFromSurface(renderer, surface);
-    assert(texture);
+    if(!texture) throw SDLException();
     SDL_FreeSurface(surface);
 
     // get dimensions

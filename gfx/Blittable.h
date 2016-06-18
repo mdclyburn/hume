@@ -25,6 +25,8 @@ USA
 
 #include "SDL2/SDL.h"
 
+#include "core/exceptions/SDLException.h"
+
 /** A drawable graphic.
  *
  * Anything that can be drawn to the screen is considered a

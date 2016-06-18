@@ -9,6 +9,7 @@ class SDLException : public Exception
 {
 public:
 	SDLException();
+	SDLException(const std::string& message);
 	virtual ~SDLException();
 };
 

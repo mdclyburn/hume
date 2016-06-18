@@ -32,6 +32,7 @@ Sound::~Sound()
 void Sound::open(const std::string& file_name)
 {
     chunk = Mix_LoadWAV(file_name.c_str());
+	if(!chunk) throw SDLMixerException();
 
     return;
 }
@@ -46,7 +47,7 @@ void Sound::close()
 
 void Sound::play()
 {
-    assert(chunk);
+    if(!chunk) throw SDLMixerException("No chunk loaded. Cannot play anything.");
     Mix_PlayChannel(-1, chunk, 0);
 
     return;

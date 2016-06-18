@@ -38,22 +38,23 @@ void Text::set_font(Font* const font)
 
 void Text::set_text(const std::string& text, SDL_Renderer* r)
 {
-    assert(r);
+    if(!r) throw SDLException("Text::set_text requires a renderer.");
 
     destroy();
 
     SDL_Surface* surface = nullptr;
     RenderMode rm = font->get_render_mode();
     if(rm == RenderMode::Solid)
-	surface = TTF_RenderText_Solid(font->get_font(), text.c_str(), color);
+		surface = TTF_RenderText_Solid(font->get_font(), text.c_str(), color);
     else if(rm == RenderMode::Shaded)
-	surface = TTF_RenderText_Shaded(font->get_font(), text.c_str(), color, bg_color);
+		surface = TTF_RenderText_Shaded(font->get_font(), text.c_str(), color, bg_color);
     else
-	surface = TTF_RenderText_Blended(font->get_font(), text.c_str(), color);
-    assert(surface);
+		surface = TTF_RenderText_Blended(font->get_font(), text.c_str(), color);
+
+    if(!surface) throw SDLException();
 
     texture = SDL_CreateTextureFromSurface(r, surface);
-    assert(texture);
+    if(!texture) throw SDLException();
     SDL_QueryTexture(texture, nullptr, nullptr, &info.w, &info.h);
 
     return;

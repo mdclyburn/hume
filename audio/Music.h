@@ -22,6 +22,7 @@ USA
 #define MUSIC_H
 
 #include "Audio.h"
+#include "core/exceptions/SDLMixerException.h"
 
 /** Sound to be played over a longer length of time.
  *

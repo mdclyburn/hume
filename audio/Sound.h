@@ -22,6 +22,7 @@ USA
 #define SOUND_H
 
 #include "Audio.h"
+#include "core/exceptions/SDLMixerException.h"
 
 /** Sound to be played that is short in length.
  *

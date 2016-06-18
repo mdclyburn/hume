@@ -7,4 +7,6 @@ set(SOURCES
 
 add_sources("${SOURCES}")
 
+add_subdirectory(exceptions)
+
 set(HUME_SOURCES ${HUME_SOURCES} PARENT_SCOPE)

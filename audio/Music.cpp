@@ -32,7 +32,8 @@ Music::~Music()
 void Music::open(const std::string& file_name)
 {
     music = Mix_LoadMUS(file_name.c_str());
-    assert(music);
+    if(!music) throw SDLMixerException("No music loaded. Cannot play anything.");
+
     return;
 }
 
@@ -51,7 +52,8 @@ void Music::play()
 
 void Music::play(const unsigned int loops)
 {
-    Mix_FadeInMusic(music, loops, fade_in);
+    const int res = Mix_FadeInMusic(music, loops, fade_in);
+	if(res) throw SDLMixerException();
     return;
 }
 

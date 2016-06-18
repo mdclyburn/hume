@@ -33,10 +33,10 @@ void Graphics::initialize()
 {
     const int types = IMG_INIT_JPG | IMG_INIT_PNG;
     int result = IMG_Init(types);
-    assert(result == types);
+    if(result != types) throw SDLException();
     
     result = TTF_Init();
-    assert(result == 0);
+    if(result != 0) throw SDLTTFException();
 
     return;
 }
