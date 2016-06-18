@@ -1,6 +1,6 @@
 #include "SDLMixerException.h"
 
-SDLMixerException::SDLMixerException() : Exception("SDL2_mixer has encountered an error:\n")
+SDLMixerException::SDLMixerException() : Exception("SDL2_mixer has encountered an error: ")
 {
 	message.append(Mix_GetError());
 }

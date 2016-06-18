@@ -1,6 +1,6 @@
 #include "SDLTTFException.h"
 
-SDLTTFException::SDLTTFException() : Exception("SDL_ttf has encountered an error:\n")
+SDLTTFException::SDLTTFException() : Exception("SDL_ttf has encountered an error: ")
 {
 	message.append(TTF_GetError());
 }
