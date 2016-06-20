@@ -139,16 +139,13 @@ namespace hume
 		 *
 		 * Draws a filled rectangle with the specified size, position, and color.
 		 *
-		 * \param x the x position to draw the rectangle's upper left corner at
-		 * \param y the y position to draw the rectangle's upper right corner at
-		 * \param w the width of the rectangle
-		 * \param h the height of the rectangle
+		 * \param p a Properties struct containing the x-position, y-position, width, and height parameters
 		 * \param r the red value for the color
 		 * \param g the green value for the color
 		 * \param b the blue value for the color
 		 * \param a the alpha value for the color
 		 */
-		void draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+		void draw_rect(const Properties& p, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
 		/** Clear the Window.
 		 *
