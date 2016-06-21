@@ -3,7 +3,7 @@ project(HUME)
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -g")
 
-include_directories(./)
+include_directories(./ /usr/local/include)
 
 # === add_sources
 # Add a list of source files to the final executable build.
