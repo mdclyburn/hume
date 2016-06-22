@@ -147,6 +147,21 @@ namespace hume
 		 */
 		void draw_rect(const Properties& p, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
+				/** Draw a filled rectangle.
+		 *
+		 * Draws a filled rectangle with the specified size, position, and color.
+		 *
+		 * \param x the x coordinate of the top-left corner of the rect
+		 * \param y the y coordinate of the top-left corner of the rect
+		 * \param w the width of the rect
+		 * \param h the height of the rect
+		 * \param r the red value for the color
+		 * \param g the green value for the color
+		 * \param b the blue value for the color
+		 * \param a the alpha value for the color
+		 */
+		void draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+
 		/** Clear the Window.
 		 *
 		 * Clears the window. This function is actually a convenience wrapper around the
