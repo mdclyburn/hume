@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL_mixer.h>
 
-#include "Exception.h"
+#include "core/exceptions/Exception.h"
 
 namespace hume
 {

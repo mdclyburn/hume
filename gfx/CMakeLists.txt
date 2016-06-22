@@ -1,14 +1,15 @@
 include_directories(${HUME_SOURCE_DIR})
 
 set(SOURCES
-Blittable.cpp
-Font.cpp
-Graphics.cpp
-Image.cpp
-Properties.cpp
-Text.cpp
-Window.cpp
-WindowSettings.cpp)
+  Blittable.cpp
+  Font.cpp
+  Graphics.cpp
+  Image.cpp
+  Properties.cpp
+  SDLTTFException.cpp
+  Text.cpp
+  Window.cpp
+  WindowSettings.cpp)
 
 add_sources("${SOURCES}")
 

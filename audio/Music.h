@@ -22,7 +22,7 @@
 #define MUSIC_H
 
 #include "Audio.h"
-#include "core/exceptions/SDLMixerException.h"
+#include "SDLMixerException.h"
 
 namespace hume
 {

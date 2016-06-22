@@ -3,9 +3,7 @@ include_directories(${HUME_SOURCE_DIR})
 set(SOURCES
   BadFileException.cpp
   Exception.cpp
-  SDLException.cpp
-  SDLMixerException.cpp
-  SDLTTFException.cpp)
+  SDLException.cpp)
 
 add_sources("${SOURCES}")
 

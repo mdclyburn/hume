@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL_ttf.h>
 
-#include "Exception.h"
+#include "core/exceptions/Exception.h"
 
 namespace hume
 {

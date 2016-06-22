@@ -27,7 +27,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "core/exceptions/SDLTTFException.h"
+#include "SDLTTFException.h"
 #include "RenderMode.h"
 
 namespace hume
