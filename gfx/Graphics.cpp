@@ -86,27 +86,7 @@ namespace hume
 
 	void Graphics::draw_rect(const Properties& p, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 	{
-		SDL_Renderer* const renderer = window->get_renderer();
-
-		// We'll be restoring the blend mode and colors back to what they were.
-		SDL_BlendMode previous;
-		uint8_t rgba[4];
-		SDL_GetRenderDrawBlendMode(renderer, &previous);
-		SDL_GetRenderDrawColor(renderer, &rgba[0], &rgba[1], &rgba[2], &rgba[3]);
-		SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-		SDL_SetRenderDrawColor(renderer, r, g, b, a);
-
-		SDL_Rect rect;
-		rect.x = p.x;
-		rect.y = p.y;
-		rect.w = p.w;
-		rect.h = p.h;
-		SDL_RenderFillRect(renderer, &rect);
-
-		// Restore blend mode.
-		SDL_SetRenderDrawBlendMode(renderer, previous);
-		SDL_SetRenderDrawColor(renderer, rgba[0], rgba[1], rgba[2], rgba[3]);
-
+		draw_rect(p.x, p.y, p.w, p.h, r, g, b, a);
 		return;
 	}
 
