@@ -97,21 +97,21 @@ namespace hume
 		// We'll be restoring the blend mode and colors back to what they were.
 		SDL_BlendMode previous;
 		uint8_t rgba[4];
-		SDL_GetRenderDrawBlendMode(renderer, &previous);
-		SDL_GetRenderDrawColor(renderer, &rgba[0], &rgba[1], &rgba[2], &rgba[3]);
-		SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-		SDL_SetRenderDrawColor(renderer, r, g, b, a);
+		if(SDL_GetRenderDrawBlendMode(renderer, &previous) != 0) throw SDLException();
+		if(SDL_GetRenderDrawColor(renderer, &rgba[0], &rgba[1], &rgba[2], &rgba[3]) != 0) throw SDLException();
+		if(SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND) != 0) throw SDLException();
+		if(SDL_SetRenderDrawColor(renderer, r, g, b, a) != 0) throw SDLException();
 
 		SDL_Rect rect;
 		rect.x = x;
 		rect.y = y;
 		rect.w = w;
 		rect.h = h;
-		SDL_RenderFillRect(renderer, &rect);
+		if(SDL_RenderFillRect(renderer, &rect) != 0) throw SDLException();
 
 		// Restore blend mode.
-		SDL_SetRenderDrawBlendMode(renderer, previous);
-		SDL_SetRenderDrawColor(renderer, rgba[0], rgba[1], rgba[2], rgba[3]);
+		if(SDL_SetRenderDrawBlendMode(renderer, previous) != 0) throw SDLException();
+		if(SDL_SetRenderDrawColor(renderer, rgba[0], rgba[1], rgba[2], rgba[3]) != 0) throw SDLException();
 
 		return;
 	}
