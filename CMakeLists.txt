@@ -3,7 +3,12 @@ project(HUME)
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -g")
 
-include_directories(./ /usr/local/include)
+include_directories(./)
+
+if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+  include_directories(SYSTEM /usr/local/include)
+  link_directories(/usr/local/lib)
+endif()
 
 # === add_sources
 # Add a list of source files to the final executable build.
