@@ -61,10 +61,14 @@ namespace hume
 			settings.fullscreen = w.fullscreen;
 			if(window)
 			{
+				int sdl_result;
 				if(settings.fullscreen)
-					SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+					sdl_result = SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 				else
-					SDL_SetWindowFullscreen(window, 0);
+					sdl_result = SDL_SetWindowFullscreen(window, 0);
+
+				if(sdl_result != 0)
+					throw SDLException();
 			}
 		}
 		if(settings.title.compare(w.title) != 0)
@@ -117,8 +121,9 @@ namespace hume
 			r.h = p.h;
 		}
 
+		int sdl_result;
 		if(p.sw == 0 || p.sh == 0) // use entire blittable
-			SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
+			sdl_result = SDL_RenderCopy(renderer, b->get_texture(), nullptr, &r);
 		else // use specified portion
 		{
 			SDL_Rect s;
@@ -126,8 +131,11 @@ namespace hume
 			s.y = p.sy;
 			s.w = p.sw;
 			s.h = p.sh;
-			SDL_RenderCopy(renderer, b->get_texture(), &s, &r);
+			sdl_result = SDL_RenderCopy(renderer, b->get_texture(), &s, &r);
 		}
+
+		if(sdl_result != 0)
+			throw SDLException();
 
 		return;
 	}
@@ -139,7 +147,7 @@ namespace hume
 
 	void Window::clear()
 	{
-		SDL_RenderClear(renderer);
+		if(SDL_RenderClear(renderer) != 0) throw SDLException();
 		return;
 	}
 }
