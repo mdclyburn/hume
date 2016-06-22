@@ -2,6 +2,8 @@
 Hume is an object-oriented wrapper for a lot of facilities that SDL2 provides.
 It is designed to be easy to learn and simple to use.
 
+[![Build Status](https://grandmaster.mardev.net/jenkins/buildStatus/icon?job=Hume)](https://grandmaster.mardev.net/jenkins/job/Hume/)
+
 # Building the Library
 
 ## Requirements
