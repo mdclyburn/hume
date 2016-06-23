@@ -111,23 +111,15 @@ namespace hume
 		return;
 	}
 
-	void Graphics::draw_rect(const Properties& p, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+	void Graphics::draw_rect(const Properties& p)
 	{
-		draw_rect(p.x, p.y, p.w, p.h, r, g, b, a);
+		draw_rect(p.x, p.y, p.w, p.h);
 		return;
 	}
 
-	void Graphics::draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+	void Graphics::draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
 	{
 		SDL_Renderer* const renderer = window->get_renderer();
-
-		// We'll be restoring the blend mode and colors back to what they were.
-		SDL_BlendMode previous;
-		uint8_t rgba[4];
-		if(SDL_GetRenderDrawBlendMode(renderer, &previous) != 0) throw SDLException();
-		if(SDL_GetRenderDrawColor(renderer, &rgba[0], &rgba[1], &rgba[2], &rgba[3]) != 0) throw SDLException();
-		if(SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND) != 0) throw SDLException();
-		if(SDL_SetRenderDrawColor(renderer, r, g, b, a) != 0) throw SDLException();
 
 		SDL_Rect rect;
 		rect.x = x;
@@ -135,10 +127,6 @@ namespace hume
 		rect.w = w;
 		rect.h = h;
 		if(SDL_RenderFillRect(renderer, &rect) != 0) throw SDLException();
-
-		// Restore blend mode.
-		if(SDL_SetRenderDrawBlendMode(renderer, previous) != 0) throw SDLException();
-		if(SDL_SetRenderDrawColor(renderer, rgba[0], rgba[1], rgba[2], rgba[3]) != 0) throw SDLException();
 
 		return;
 	}
