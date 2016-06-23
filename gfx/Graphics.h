@@ -30,6 +30,8 @@
 
 namespace hume
 {
+	typedef SDL_Color Color;
+
     /** Component for handling graphics.
 	 *
 	 * The Graphics class is a derivation of the Component. Its main purpose is
@@ -94,6 +96,34 @@ namespace hume
 		 */
 		Window* get_window() const;
 
+		/** Sets the color for drawing operations.
+		 *
+		 * Sets the color to be used when drawing (e.g. draw_rect). The color is specified
+		 * through R, G, B, and alpha values.
+		 *
+		 * \param r the red value
+		 * \param g the green value
+		 * \param b the blue value
+		 * \param a the alpha value
+		 */
+		void set_color(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a);
+
+		/** Sets the color for drawing operations.
+		 *
+		 * Sets the color to be used when drawing (e.g. draw_rect). The color is specified
+		 * with a Color struct (really just an SDL_Color struct) with members r, g, b, and a.
+		 * \param color struct containing the r, g, b, and a values
+		 */
+		void set_color(const Color& color);
+
+		/** Returns the color used for drawing operations.
+		 *
+		 * Returns a Color struct (really just an SDL_Color struct) with members r, g, b, and a
+		 * representing the red, green, blue, and alpha values currently used in drawing
+		 * operations.
+		 */
+		Color get_color() const;
+
 		/** Load an image.
 		 *
 		 * Loads the specified file into an Image and returns the Image. A Window must be
@@ -146,7 +176,7 @@ namespace hume
 		 */
 		void draw_rect(const Properties& p, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
-				/** Draw a filled rectangle.
+		/** Draw a filled rectangle.
 		 *
 		 * Draws a filled rectangle with the specified size, position, and color.
 		 *
@@ -184,6 +214,12 @@ namespace hume
 		 * possession of a Window object. This is said Window.
 		 */
 		Window* window;
+
+		/** The color for drawing operations.
+		 *
+		 * A typedef'ed SDL_Color struct for storing the currently used color to draw.
+		 */
+		Color draw_color;
 	};
 }
 

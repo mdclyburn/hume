@@ -24,6 +24,8 @@ namespace hume
 {
 	Graphics::Graphics() : window(nullptr)
 	{
+		draw_color.r = draw_color.g = draw_color.b = 0;
+		draw_color.a = SDL_ALPHA_OPAQUE;
 	}
 
 	Graphics::~Graphics()
@@ -60,6 +62,27 @@ namespace hume
 	Window* Graphics::get_window() const
 	{
 		return window;
+	}
+
+	void Graphics::set_color(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a)
+	{
+		draw_color.r = r;
+		draw_color.g = g;
+		draw_color.b = b;
+		draw_color.a = a;
+
+		return;
+	}
+
+	void Graphics::set_color(const Color& color)
+	{
+		this->draw_color = color;
+		return;
+	}
+
+	Color Graphics::get_color() const
+	{
+		return draw_color;
 	}
 
 	Image* Graphics::load_image(const std::string& filename)
