@@ -71,12 +71,16 @@ namespace hume
 		draw_color.b = b;
 		draw_color.a = a;
 
+		if(SDL_SetRenderDrawColor(window->get_renderer(), r, g, b, a) != 0) throw SDLException();
+
 		return;
 	}
 
 	void Graphics::set_color(const Color& color)
 	{
 		this->draw_color = color;
+		if(SDL_SetRenderDrawColor(window->get_renderer(), color.r, color.g, color.b, color.a) != 0) throw SDLException();
+
 		return;
 	}
 
