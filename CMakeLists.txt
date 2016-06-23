@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(HUME)
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -g")
+set(CMAKE_CXX_FLAGS "-Wall -std=c++11 -g")
 
 include_directories(./)
 
