@@ -89,6 +89,29 @@ namespace hume
 		return draw_color;
 	}
 
+	void Graphics::set_use_alpha_blending(const bool b)
+	{
+		if(!window) throw Exception("No window or renderer available.");
+
+		SDL_BlendMode blend_mode;
+		if(b) blend_mode = SDL_BLENDMODE_BLEND;
+		else blend_mode = SDL_BLENDMODE_NONE;
+
+		if(SDL_SetRenderDrawBlendMode(window->get_renderer(), blend_mode) != 0) throw SDLException();
+
+		return;
+	}
+
+	bool Graphics::get_use_alpha_blending() const
+	{
+		if(!window) throw Exception("No window or renderer available.");
+
+		SDL_BlendMode blend_mode;
+		if(SDL_GetRenderDrawBlendMode(window->get_renderer(), &blend_mode) != 0) throw SDLException();
+
+		return (blend_mode == SDL_BLENDMODE_BLEND);
+	}
+
 	Image* Graphics::load_image(const std::string& filename)
 	{
 		Image* image = new Image();

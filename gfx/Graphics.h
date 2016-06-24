@@ -124,6 +124,19 @@ namespace hume
 		 */
 		Color get_color() const;
 
+		/** Enables or disables the use of transparency (alpha).
+		 *
+		 * If set to true, drawing operations will use alpha blending. If set to false, alpha
+		 * blending will not be applied.
+		 */
+		void set_use_alpha_blending(const bool b);
+
+		/** Returns the current status of alpha blending.
+		 *
+		 * Returns true if alpha blending is being used. Returns false if not.
+		 */
+		bool get_use_alpha_blending() const;
+
 		/** Load an image.
 		 *
 		 * Loads the specified file into an Image and returns the Image. A Window must be
