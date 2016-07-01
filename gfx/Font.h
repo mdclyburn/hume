@@ -98,7 +98,7 @@ namespace hume
 		 *
 		 * Returns the current RenderMode the Font uses.
 		 */
-		RenderMode get_render_mode();
+		RenderMode get_render_mode() const;
 
 		/** Returns the loaded font.
 		 *

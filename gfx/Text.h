@@ -79,7 +79,7 @@ namespace hume
 		 *
 		 * Returns the currently set text.
 		 */
-		std::string get_text();
+		std::string get_text() const;
 
 		/** Set the text color.
 		 *

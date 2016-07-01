@@ -62,7 +62,7 @@ namespace hume
 		return;
 	}
 
-	std::string Text::get_text()
+	std::string Text::get_text() const
 	{
 		return text;
 	}

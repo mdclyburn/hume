@@ -61,7 +61,7 @@ namespace hume
 		return;
 	}
 
-	RenderMode Font::get_render_mode()
+	RenderMode Font::get_render_mode() const
 	{
 		return render_mode;
 	}
