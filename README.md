@@ -14,9 +14,7 @@ You'll need the following:
 * SDL2_mixer
 * SDL2_ttf
 
-There are currently two methods to build the project.
-
-## CMake (recommended)
+## CMake
 This method requires CMake to be installed.
 Run the following commands:
 
@@ -24,10 +22,6 @@ Run the following commands:
 2. `cd build`
 3. `cmake ..`
 4. `make`
-
-## Makefile
-There is a makefile included for the project.
-A successful `make` should result in an archive named `libhume.a` in the top level of the repository.
 
 # Documentation
 
