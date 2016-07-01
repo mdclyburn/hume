@@ -36,7 +36,7 @@ namespace hume
 		return;
 	}
 
-	LogMode Log::get_mode()
+	LogMode Log::get_mode() const
 	{
 		return mode;
 	}

@@ -71,7 +71,7 @@ namespace hume
 		 *
 		 * Returns the logging mode that is currently in use.
 		 */
-		LogMode get_mode();
+		LogMode get_mode() const;
 
 	protected:
 
