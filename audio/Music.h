@@ -93,7 +93,7 @@ namespace hume
 		 * audio to play from where it was paused. Calling this function when no music is loaded or when
 		 * the music is already paused will result in undefined behavior.
 		 */
-		void pause();
+		static void pause();
 
 		/** Resume playing music.
 		 *
@@ -101,13 +101,13 @@ namespace hume
 		 * when no music is loaded, or when the music is already playing will result in undefined
 		 * behavior.
 		 */
-		void resume();
+		static void resume();
 
 		/** Stop playing music.
 		 *
 		 * The functional opposite of Music::play(). Stops the music.
 		 */
-		void stop();
+		static void stop();
 
 		/** Set the fade-in time.
 		 *
