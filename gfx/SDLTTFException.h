@@ -11,7 +11,7 @@ namespace hume
 	{
 	public:
 		SDLTTFException();
-		SDLTTFException(const std::string& message);
+		explicit SDLTTFException(const std::string& message);
 		virtual ~SDLTTFException();
 	};
 }

@@ -11,7 +11,7 @@ namespace hume
 	{
 	public:
 		SDLMixerException();
-		SDLMixerException(const std::string& message);
+		explicit SDLMixerException(const std::string& message);
 		virtual ~SDLMixerException();
 	};
 }

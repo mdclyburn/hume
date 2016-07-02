@@ -9,7 +9,7 @@ namespace hume
 	{
 	public:
 		BadFileException();
-		BadFileException(const std::string& file_name);
+		explicit BadFileException(const std::string& file_name);
 		virtual ~BadFileException();
 	};
 }

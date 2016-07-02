@@ -10,7 +10,7 @@ namespace hume
 	{
 	public:
 		Exception();
-		Exception(const std::string& message);
+		explicit Exception(const std::string& message);
 		virtual ~Exception();
 
 		const std::string& get_message() const;
