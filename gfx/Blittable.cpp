@@ -22,8 +22,10 @@
 
 namespace hume
 {
-	Blittable::Blittable() : texture(nullptr)
+	Blittable::Blittable()
 	{
+		texture = nullptr;
+		alpha = 255;
 	}
 
 	Blittable::~Blittable()
@@ -31,31 +33,27 @@ namespace hume
 		if(texture) destroy();
 	}
 
-	void Blittable::set_alpha(const Uint8 a)
+	void Blittable::set_alpha(const uint8_t a)
 	{
-		const int res = SDL_SetTextureAlphaMod(texture, a);
-		if(res) throw SDLException();
+		alpha = a;
+		const int result = SDL_SetTextureAlphaMod(texture, alpha);
+		if(result) throw SDLException();
 
 		return;
 	}
 
-	void Blittable::modify_alpha(const short m)
+	void Blittable::modify_alpha(const int16_t m)
 	{
-		Uint8 current;
-		const int res = SDL_GetTextureAlphaMod(texture, &current);
-		if(res) throw SDLException();
-		SDL_SetTextureAlphaMod(texture, current + m);
+		alpha += m;
+		const int result = SDL_SetTextureAlphaMod(texture, alpha);
+		if(result) throw SDLException();
 
 		return;
 	}
 
 	Uint8 Blittable::get_alpha() const
 	{
-		Uint8 current;
-		const int res = SDL_GetTextureAlphaMod(texture, &current);
-		if(res) throw SDLException();
-
-		return current;
+		return alpha;
 	}
 
 	unsigned int Blittable::get_width() const

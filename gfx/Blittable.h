@@ -63,7 +63,7 @@ namespace hume
 		 *
 		 * \param a the new alpha value
 		 */
-		void set_alpha(const Uint8 a);
+		void set_alpha(const uint8_t a);
 
 		/** Change the alpha value.
 		 *
@@ -126,6 +126,11 @@ namespace hume
 		 * drawn to the screen or window.
 		 */
 		SDL_Rect info;
+
+		/** Alpha blending value.
+		 *
+		 */
+		uint8_t alpha;
 
 		/** The underlying texture.
 		 *
