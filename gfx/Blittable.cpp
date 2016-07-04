@@ -42,15 +42,6 @@ namespace hume
 		return;
 	}
 
-	void Blittable::modify_alpha(const int16_t m)
-	{
-		alpha += m;
-		const int result = SDL_SetTextureAlphaMod(texture, alpha);
-		if(result) throw SDLException();
-
-		return;
-	}
-
 	Uint8 Blittable::get_alpha() const
 	{
 		return alpha;

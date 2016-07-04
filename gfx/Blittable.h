@@ -65,19 +65,6 @@ namespace hume
 		 */
 		void set_alpha(const uint8_t a);
 
-		/** Change the alpha value.
-		 *
-		 * Changes the alpha value by some amount relative to
-		 * its current value. If the current alpha value for a texture is
-		 * set to 234, and the value of the parameter passed to this function
-		 * is 4, then the texture's alpha value will be set to 238. This also
-		 * works the same way for negative values. Calling this function when
-		 * a texture is not loaded will result in undefined behavior.
-		 *
-		 * \param m the amount to modify the alpha value by
-		 */
-		void modify_alpha(const short m);
-
 		/** Returns the current alpha value.
 		 *
 		 * Retrieves the alpha value from the texture and returns the value.
