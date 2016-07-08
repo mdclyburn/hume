@@ -23,7 +23,7 @@
 
 #include <SDL2/SDL_ttf.h>
 
-#include "core/Component.h"
+#include "Core/Component.h"
 #include "Image.h"
 #include "SDLTTFException.h"
 #include "Window.h"

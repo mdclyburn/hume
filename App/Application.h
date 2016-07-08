@@ -25,7 +25,7 @@
 
 #include <SDL2/SDL.h>
 
-#include "../core/Timer.h"
+#include "Core/Timer.h"
 #include "State.h"
 
 namespace hume

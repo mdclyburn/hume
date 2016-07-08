@@ -26,7 +26,7 @@
 #include <SDL2/SDL.h>
 
 #include "Blittable.h"
-#include "core/exceptions/SDLException.h"
+#include "Core/Exceptions/SDLException.h"
 #include "Font.h"
 
 namespace hume

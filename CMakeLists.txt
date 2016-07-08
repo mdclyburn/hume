@@ -26,9 +26,9 @@ macro(add_sources ${SOURCES})
   endforeach()
 endmacro()
 
-add_subdirectory(audio)
-add_subdirectory(app)
-add_subdirectory(core)
-add_subdirectory(gfx)
+add_subdirectory(Audio)
+add_subdirectory(App)
+add_subdirectory(Core)
+add_subdirectory(Gfx)
 
 add_library(hume STATIC ${HUME_SOURCES})

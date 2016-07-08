@@ -25,7 +25,7 @@
 
 #include "SDL2/SDL.h"
 
-#include "core/exceptions/SDLException.h"
+#include "Core/Exceptions/SDLException.h"
 
 namespace hume
 {

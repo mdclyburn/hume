@@ -22,7 +22,7 @@
 #define WINDOW_H
 
 #include "Blittable.h"
-#include "core/exceptions/SDLException.h"
+#include "Core/Exceptions/SDLException.h"
 #include "Properties.h"
 #include "WindowSettings.h"
 
