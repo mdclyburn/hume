@@ -29,6 +29,6 @@ endmacro()
 add_subdirectory(Audio)
 add_subdirectory(App)
 add_subdirectory(Core)
-add_subdirectory(Gfx)
+add_subdirectory(GFX)
 
 add_library(hume STATIC ${HUME_SOURCES})
