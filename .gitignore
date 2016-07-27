@@ -2,4 +2,4 @@
 *.[ao]
 test
 cppcheck.xml
-
+build/*
