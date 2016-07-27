@@ -166,7 +166,7 @@ namespace hume
 		 * \param g the green value for the color key
 		 * \param b the blue value for the color key
 		 */
-		Image* load_image(const std::string& filename, const Uint8 r, const Uint8 g, const Uint8 b);
+		Image* load_image(const std::string& filename, const uint8_t r, const uint8_t g, const uint8_t b);
 
 		/** Draw a Blittable to the managed Window.
 		 *

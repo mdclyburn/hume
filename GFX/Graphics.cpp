@@ -120,7 +120,7 @@ namespace hume
 		return image;
 	}
 
-	Image* Graphics::load_image(const std::string& filename, const Uint8 r, const Uint8 g, const Uint8 b)
+	Image* Graphics::load_image(const std::string& filename, const uint8_t r, const uint8_t g, const uint8_t b)
 	{
 		Image* image = new Image(r, g, b);
 		image->open(filename, window->get_renderer());
