@@ -134,6 +134,12 @@ namespace hume
 		return;
 	}
 
+	void Graphics::draw_line(const int32_t x1, const int32_t y1, const int32_t x2, const int32_t y2)
+	{
+		if(SDL_RenderDrawLine(window->get_renderer(), x1, y1, x2, y2) != 0) throw SDLException();
+		return;
+	}
+
 	void Graphics::draw_rect(const Properties& p)
 	{
 		draw_rect(p.x, p.y, p.w, p.h);

@@ -177,6 +177,16 @@ namespace hume
 		 */
 		void draw(const Blittable* const b, const Properties& p);
 
+		/** Draw a line.
+		 *
+		 * Draws a line with two points specified with coordinates.
+		 * \param x1 the x coordinate of the first point
+		 * \param y1 the y coordinate of the first point
+		 * \param x2 the x coordinate of the second point
+		 * \param y2 the y coordinate of the second point
+		 */
+		void draw_line(const int32_t x1, const int32_t y1, const int32_t x2, const int32_t y2);
+
 		/** Draw a filled rectangle.
 		 *
 		 * Draws a filled rectangle with the specified size and position.
