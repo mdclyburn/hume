@@ -194,7 +194,7 @@ namespace hume
 		 * \param w the width of the rect
 		 * \param h the height of the rect
 		 */
-		void draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
+		void draw_rect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h);
 
 		/** Clear the Window.
 		 *

@@ -140,7 +140,7 @@ namespace hume
 		return;
 	}
 
-	void Graphics::draw_rect(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
+	void Graphics::draw_rect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h)
 	{
 		SDL_Renderer* const renderer = window->get_renderer();
 
