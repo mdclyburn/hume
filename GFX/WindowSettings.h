@@ -29,38 +29,38 @@
 namespace hume
 {
     /** Parameters for Window.
-	 *
-	 * Settings that can be applied to a Window.
-	 */
-	struct WindowSettings
-	{
-		/** Whether or not to use a full screen mode. */
-		bool fullscreen;
+     *
+     * Settings that can be applied to a Window.
+     */
+    struct WindowSettings
+    {
+        /** Whether or not to use a full screen mode. */
+        bool fullscreen;
 
-		/** The text to be displayed in the title bar of the window. */
-		std::string title;
+        /** The text to be displayed in the title bar of the window. */
+        std::string title;
 
-		/** The width of the window. */
-		unsigned int width;
+        /** The width of the window. */
+        unsigned int width;
 
-		/** The height of the window */
-		unsigned int height;
+        /** The height of the window */
+        unsigned int height;
 
-		/** The default constructor.
-		 *
-		 * Defaults to a non-full screen window of size 800x450 with the title 'Hume Window'.
-		 */
-		WindowSettings();
-	};
+        /** The default constructor.
+         *
+         * Defaults to a non-full screen window of size 800x450 with the title 'Hume Window'.
+         */
+        WindowSettings();
+    };
 
-/** Set the best possible full screen mode.
- *
- * Will set the parameters to the highest possible full screen
- * mode.
- *
- * \param settings the WindowSettings struct to fill
- */
-	void set_best_fullscreen_mode(WindowSettings& settings);
+    /** Set the best possible full screen mode.
+     *
+     * Will set the parameters to the highest possible full screen
+     * mode.
+     *
+     * \param settings the WindowSettings struct to fill
+     */
+    void set_best_fullscreen_mode(WindowSettings& settings);
 }
 
 #endif

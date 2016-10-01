@@ -22,22 +22,22 @@
 
 namespace hume
 {
-	Log::Log() : mode(LogMode::DEFAULT)
-	{
-	}
+    Log::Log() : mode(LogMode::DEFAULT)
+    {
+    }
 
-	Log::~Log()
-	{
-	}
+    Log::~Log()
+    {
+    }
 
-	void Log::set_mode(const LogMode l)
-	{
-		mode = l;
-		return;
-	}
+    void Log::set_mode(const LogMode l)
+    {
+        mode = l;
+        return;
+    }
 
-	LogMode Log::get_mode() const
-	{
-		return mode;
-	}
+    LogMode Log::get_mode() const
+    {
+        return mode;
+    }
 }

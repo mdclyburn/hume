@@ -22,51 +22,51 @@
 
 namespace hume
 {
-	Blittable::Blittable()
-	{
-		texture = nullptr;
-		alpha = 255;
-	}
+    Blittable::Blittable()
+    {
+        texture = nullptr;
+        alpha = 255;
+    }
 
-	Blittable::~Blittable()
-	{
-		if(texture) destroy();
-	}
+    Blittable::~Blittable()
+    {
+        if(texture) destroy();
+    }
 
-	void Blittable::set_alpha(const uint8_t a)
-	{
-		alpha = a;
-		const int result = SDL_SetTextureAlphaMod(texture, alpha);
-		if(result) throw SDLException();
+    void Blittable::set_alpha(const uint8_t a)
+    {
+        alpha = a;
+        const int result = SDL_SetTextureAlphaMod(texture, alpha);
+        if(result) throw SDLException();
 
-		return;
-	}
+        return;
+    }
 
-	Uint8 Blittable::get_alpha() const
-	{
-		return alpha;
-	}
+    Uint8 Blittable::get_alpha() const
+    {
+        return alpha;
+    }
 
-	unsigned int Blittable::get_width() const
-	{
-		return info.w;
-	}
+    unsigned int Blittable::get_width() const
+    {
+        return info.w;
+    }
 
-	unsigned int Blittable::get_height() const
-	{
-		return info.h;
-	}
+    unsigned int Blittable::get_height() const
+    {
+        return info.h;
+    }
 
-	SDL_Texture* Blittable::get_texture() const
-	{
-		return texture;
-	}
+    SDL_Texture* Blittable::get_texture() const
+    {
+        return texture;
+    }
 
-	void Blittable::destroy()
-	{
-		SDL_DestroyTexture(texture);
-		texture = nullptr;
+    void Blittable::destroy()
+    {
+        SDL_DestroyTexture(texture);
+        texture = nullptr;
 
-		return;
-	}
+        return;
+    }
 }

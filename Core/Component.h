@@ -24,30 +24,30 @@
 namespace hume
 {
     /** Abstract class for subsystems.
-	 *
-	 * The Component is the building block for other classes
-	 * in the Hume library. It represents a major (for lack
-	 * of a better word) component that can be initialized
-	 * and shutdown, its only two member functions, ignoring
-	 * the constructor and destructor.
-	 */
-	class Component
-	{
-	public:
-		Component();
-		virtual ~Component();
+     *
+     * The Component is the building block for other classes
+     * in the Hume library. It represents a major (for lack
+     * of a better word) component that can be initialized
+     * and shutdown, its only two member functions, ignoring
+     * the constructor and destructor.
+     */
+    class Component
+    {
+    public:
+        Component();
+        virtual ~Component();
 
-		/** Perform initialization.
-		 *
-		 * Depending on the derived class, the behavior of this
-		 * function differs. The purpose of the initialize function
-		 * is to get the Component into a usable state. Because this
-		 * function does not return anything, the derived object must
-		 * have another method of indicating success, failure, etc.
-		 */
-		virtual void initialize() = 0;
-		virtual void shutdown() = 0;
-	};
+        /** Perform initialization.
+         *
+         * Depending on the derived class, the behavior of this
+         * function differs. The purpose of the initialize function
+         * is to get the Component into a usable state. Because this
+         * function does not return anything, the derived object must
+         * have another method of indicating success, failure, etc.
+         */
+        virtual void initialize() = 0;
+        virtual void shutdown() = 0;
+    };
 }
 
 #endif

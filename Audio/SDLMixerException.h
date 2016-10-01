@@ -7,13 +7,13 @@
 
 namespace hume
 {
-	class SDLMixerException : public Exception
-	{
-	public:
-		SDLMixerException();
-		explicit SDLMixerException(const std::string& message);
-		virtual ~SDLMixerException();
-	};
+    class SDLMixerException : public Exception
+    {
+    public:
+        SDLMixerException();
+        explicit SDLMixerException(const std::string& message);
+        virtual ~SDLMixerException();
+    };
 }
 
 #endif

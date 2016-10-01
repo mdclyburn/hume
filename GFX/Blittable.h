@@ -30,102 +30,102 @@
 namespace hume
 {
     /** A drawable graphic.
-	 *
-	 * Anything that can be drawn to the screen is considered a
-	 * Blittable. This includes images and text. The Blittable
-	 * class is an abstract class defining properties such as
-	 * transparency, width, height, and the loaded texture itself.
-	 * Subclasses should define a method with which one can load the
-	 * texture into memory. See the Text and Image classes for examples.
-	 */
-	class Blittable
-	{
-	public:
+     *
+     * Anything that can be drawn to the screen is considered a
+     * Blittable. This includes images and text. The Blittable
+     * class is an abstract class defining properties such as
+     * transparency, width, height, and the loaded texture itself.
+     * Subclasses should define a method with which one can load the
+     * texture into memory. See the Text and Image classes for examples.
+     */
+    class Blittable
+    {
+    public:
 
-		/** The default constructor.
-		 *
-		 * Initializes a Blittable.
-		 */
-		Blittable();
+        /** The default constructor.
+         *
+         * Initializes a Blittable.
+         */
+        Blittable();
 
-		/** The destructor.
-		 *
-		 * Invokes Blittable::destroy() if a texture is currently loaded.
-		 */
-		virtual ~Blittable();
+        /** The destructor.
+         *
+         * Invokes Blittable::destroy() if a texture is currently loaded.
+         */
+        virtual ~Blittable();
 
-		/** Set the transparency of a Blittable.
-		 *
-		 * Directly set the alpha (transparency) value of texture. Valid
-		 * values range from 0 (not visible) to 255 (completely opaque). Calling
-		 * this function when a texture is not loaded will result in undefined
-		 * behavior.
-		 *
-		 * \param a the new alpha value
-		 */
-		void set_alpha(const uint8_t a);
+        /** Set the transparency of a Blittable.
+         *
+         * Directly set the alpha (transparency) value of texture. Valid
+         * values range from 0 (not visible) to 255 (completely opaque). Calling
+         * this function when a texture is not loaded will result in undefined
+         * behavior.
+         *
+         * \param a the new alpha value
+         */
+        void set_alpha(const uint8_t a);
 
-		/** Returns the current alpha value.
-		 *
-		 * Retrieves the alpha value from the texture and returns the value.
-		 * Calling this function when a texture is not loaded will result in
-		 * undefined behavior.
-		 */
-		Uint8 get_alpha() const;
+        /** Returns the current alpha value.
+         *
+         * Retrieves the alpha value from the texture and returns the value.
+         * Calling this function when a texture is not loaded will result in
+         * undefined behavior.
+         */
+        Uint8 get_alpha() const;
 
-		/** Returns the width of the loaded texture.
-		 *
-		 * Returns the width of the loaded texture. Calling this function when a texture
-		 * is not loaded will result in undefined values.
-		 */
-		unsigned int get_width() const;
+        /** Returns the width of the loaded texture.
+         *
+         * Returns the width of the loaded texture. Calling this function when a texture
+         * is not loaded will result in undefined values.
+         */
+        unsigned int get_width() const;
 
-		/** Returns the height of the loaded texture.
-		 *
-		 * Returns the height of the loaded texture. Calling this function when a texture
-		 * is not loaded will result in undefined values.
-		 */
-		unsigned int get_height() const;
+        /** Returns the height of the loaded texture.
+         *
+         * Returns the height of the loaded texture. Calling this function when a texture
+         * is not loaded will result in undefined values.
+         */
+        unsigned int get_height() const;
 
-		/** Returns a pointer to the texture.
-		 *
-		 * Returns a pointer to the texture the Blittable is associated with. This function
-		 * will return nullptr if no texture is loaded.
-		 */
-		SDL_Texture* get_texture() const;
+        /** Returns a pointer to the texture.
+         *
+         * Returns a pointer to the texture the Blittable is associated with. This function
+         * will return nullptr if no texture is loaded.
+         */
+        SDL_Texture* get_texture() const;
 
-		/** Removes a texture from memory.
-		 *
-		 * Explicitly removes a texture. The texture this Blittable is associated
-		 * with becomes a nullptr. Calling this function when a texture is not
-		 * loaded will result in undefined behavior.
-		 */
-		void destroy();
+        /** Removes a texture from memory.
+         *
+         * Explicitly removes a texture. The texture this Blittable is associated
+         * with becomes a nullptr. Calling this function when a texture is not
+         * loaded will result in undefined behavior.
+         */
+        void destroy();
 
-	protected:
+    protected:
 
-		/** A texture's imensional information.
-		 *
-		 * Contains four important values: 'length', 'width', 'x', and 'y'. 'length' is
-		 * the length of the current texture. The 'width' is the width of the current
-		 * texture. 'x' is the x coordinate to draw the texture at when being drawn to
-		 * the screen or window. 'y' is the y coordinate to draw the texture at when being
-		 * drawn to the screen or window.
-		 */
-		SDL_Rect info;
+        /** A texture's imensional information.
+         *
+         * Contains four important values: 'length', 'width', 'x', and 'y'. 'length' is
+         * the length of the current texture. The 'width' is the width of the current
+         * texture. 'x' is the x coordinate to draw the texture at when being drawn to
+         * the screen or window. 'y' is the y coordinate to draw the texture at when being
+         * drawn to the screen or window.
+         */
+        SDL_Rect info;
 
-		/** Alpha blending value.
-		 *
-		 */
-		uint8_t alpha;
+        /** Alpha blending value.
+         *
+         */
+        uint8_t alpha;
 
-		/** The underlying texture.
-		 *
-		 * The texture that the Blittable represents. There is no way to load the texture
-		 * from the Blittable class. This is a derivative-specific feature.
-		 */
-		SDL_Texture* texture;
-	};
+        /** The underlying texture.
+         *
+         * The texture that the Blittable represents. There is no way to load the texture
+         * from the Blittable class. This is a derivative-specific feature.
+         */
+        SDL_Texture* texture;
+    };
 }
 
 #endif

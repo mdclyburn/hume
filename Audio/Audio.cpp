@@ -22,11 +22,11 @@
 
 namespace hume
 {
-	Audio::Audio()
-	{
-	}
+    Audio::Audio()
+    {
+    }
 
-	Audio::~Audio()
-	{
-	}
+    Audio::~Audio()
+    {
+    }
 }

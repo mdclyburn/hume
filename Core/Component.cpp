@@ -22,11 +22,11 @@
 
 namespace hume
 {
-	Component::Component()
-	{
-	}
+    Component::Component()
+    {
+    }
 
-	Component::~Component()
-	{
-	}
+    Component::~Component()
+    {
+    }
 }

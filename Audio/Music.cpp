@@ -22,74 +22,74 @@
 
 namespace hume
 {
-	Music::Music() : Audio(), fade_in(0), music(nullptr)
-	{
-	}
+    Music::Music() : Audio(), fade_in(0), music(nullptr)
+    {
+    }
 
-	Music::~Music()
-	{
-		if(music) close();
-	}
+    Music::~Music()
+    {
+        if(music) close();
+    }
 
-	void Music::open(const std::string& file_name)
-	{
-		music = Mix_LoadMUS(file_name.c_str());
-		if(!music) throw SDLMixerException("No music loaded. Cannot play anything.");
+    void Music::open(const std::string& file_name)
+    {
+        music = Mix_LoadMUS(file_name.c_str());
+        if(!music) throw SDLMixerException("No music loaded. Cannot play anything.");
 
-		return;
-	}
+        return;
+    }
 
-	void Music::close()
-	{
-		Mix_FreeMusic(music);
-		music = nullptr;
-		return;
-	}
+    void Music::close()
+    {
+        Mix_FreeMusic(music);
+        music = nullptr;
+        return;
+    }
 
-	void Music::play()
-	{
-		play(0);
-		return;
-	}
+    void Music::play()
+    {
+        play(0);
+        return;
+    }
 
-	void Music::play(const unsigned int loops)
-	{
-		const int res = Mix_FadeInMusic(music, loops, fade_in);
-		if(res) throw SDLMixerException();
-		return;
-	}
+    void Music::play(const unsigned int loops)
+    {
+        const int res = Mix_FadeInMusic(music, loops, fade_in);
+        if(res) throw SDLMixerException();
+        return;
+    }
 
-	void Music::pause()
-	{
-		Mix_PauseMusic();
-		return;
-	}
+    void Music::pause()
+    {
+        Mix_PauseMusic();
+        return;
+    }
 
-	void Music::resume()
-	{
-		Mix_ResumeMusic();
-		return;
-	}
+    void Music::resume()
+    {
+        Mix_ResumeMusic();
+        return;
+    }
 
-	void Music::stop()
-	{
-		Mix_HaltMusic();
-		return;
-	}
+    void Music::stop()
+    {
+        Mix_HaltMusic();
+        return;
+    }
 
-	void Music::set_fade_in(const unsigned int ms)
-	{
-		this->fade_in = ms;
-		return;
-	}
+    void Music::set_fade_in(const unsigned int ms)
+    {
+        this->fade_in = ms;
+        return;
+    }
 
-	bool Music::is_open() const
-	{
-		if(music)
-		{
-			return true;
-		}
+    bool Music::is_open() const
+    {
+        if(music)
+        {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

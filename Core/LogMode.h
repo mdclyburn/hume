@@ -39,9 +39,9 @@ USA
  */
 enum class LogMode
 {
-	SILENT,  /**< The Log should not generate output. */
-	DEFAULT, /**< The Log should behave as is expected during normal runs. */
-	FLUSHED  /**< The Log should ensure every message sent to it makes it to output (screen, file, etc...). */
+    SILENT,  /**< The Log should not generate output. */
+    DEFAULT, /**< The Log should behave as is expected during normal runs. */
+    FLUSHED  /**< The Log should ensure every message sent to it makes it to output (screen, file, etc...). */
 };
 
 #endif

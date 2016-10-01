@@ -30,58 +30,58 @@
 namespace hume
 {
     /** Component for creating a logging system.
-	 *
-	 * An abstract logging class providing a number
-	 * of 'modes' in which to run it. This class is abstract
-	 * and will need to be inherited from to use.
-	 */
-	class Log : public Component
-	{
-	public:
+     *
+     * An abstract logging class providing a number
+     * of 'modes' in which to run it. This class is abstract
+     * and will need to be inherited from to use.
+     */
+    class Log : public Component
+    {
+    public:
 
-		/** Default constructor.
-		 *
-		 * The logging mode is set to default.
-		 */
-		Log();
+        /** Default constructor.
+         *
+         * The logging mode is set to default.
+         */
+        Log();
 
-		/** Destructor.
-		 *
-		 */
-		virtual ~Log();
+        /** Destructor.
+         *
+         */
+        virtual ~Log();
 
-		/** Write a message to the log.
-		 *
-		 * Write out a message to whatever medium the derived
-		 * class dictates.
-		 *
-		 * \param msg the message to be logged
-		 */
-		virtual void log(const std::string& msg) = 0;
+        /** Write a message to the log.
+         *
+         * Write out a message to whatever medium the derived
+         * class dictates.
+         *
+         * \param msg the message to be logged
+         */
+        virtual void log(const std::string& msg) = 0;
 
-		/** Change the logging mode.
-		 *
-		 * Set the logging mode for the logger.
-		 *
-		 * \param l the logging mode to use
-		 */
-		void set_mode(const LogMode l);
+        /** Change the logging mode.
+         *
+         * Set the logging mode for the logger.
+         *
+         * \param l the logging mode to use
+         */
+        void set_mode(const LogMode l);
 
-		/** Retrieve the current logging mode.
-		 *
-		 * Returns the logging mode that is currently in use.
-		 */
-		LogMode get_mode() const;
+        /** Retrieve the current logging mode.
+         *
+         * Returns the logging mode that is currently in use.
+         */
+        LogMode get_mode() const;
 
-	protected:
+    protected:
 
-		/** Defines the behavior of logging.
-		 *
-		 * Depending on the value, the logger can use different
-		 * methods to log.
-		 */
-		LogMode mode;
-	};
+        /** Defines the behavior of logging.
+         *
+         * Depending on the value, the logger can use different
+         * methods to log.
+         */
+        LogMode mode;
+    };
 }
 
 #endif

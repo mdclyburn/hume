@@ -22,11 +22,11 @@
 
 namespace hume
 {
-	State::State()
-	{
-	}
+    State::State()
+    {
+    }
 
-	State::~State()
-	{
-	}
+    State::~State()
+    {
+    }
 }

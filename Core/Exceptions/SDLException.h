@@ -7,13 +7,13 @@
 
 namespace hume
 {
-	class SDLException : public Exception
-	{
-	public:
-		SDLException();
-		explicit SDLException(const std::string& message);
-		virtual ~SDLException();
-	};
+    class SDLException : public Exception
+    {
+    public:
+        SDLException();
+        explicit SDLException(const std::string& message);
+        virtual ~SDLException();
+    };
 }
 
 #endif

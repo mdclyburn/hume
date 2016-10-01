@@ -5,13 +5,13 @@
 
 namespace hume
 {
-	class BadFileException : public Exception
-	{
-	public:
-		BadFileException();
-		explicit BadFileException(const std::string& file_name);
-		virtual ~BadFileException();
-	};
+    class BadFileException : public Exception
+    {
+    public:
+        BadFileException();
+        explicit BadFileException(const std::string& file_name);
+        virtual ~BadFileException();
+    };
 }
 
 #endif

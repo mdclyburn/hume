@@ -33,66 +33,66 @@
 namespace hume
 {
     /** A image resource.
-	 *
-	 * An Image is the Blittable representation of an image resource. An Image may be
-	 * color keyed with a single color if specified before loading an image.
-	 */
-	class Image : public Blittable
-	{
-	public:
+     *
+     * An Image is the Blittable representation of an image resource. An Image may be
+     * color keyed with a single color if specified before loading an image.
+     */
+    class Image : public Blittable
+    {
+    public:
 
-		/** The default constructor.
-		 *
-		 * Constructs an Image. The color key defaults to (255, 0, 255), a hot pink
-		 * color.
-		 */
-		Image();
+        /** The default constructor.
+         *
+         * Constructs an Image. The color key defaults to (255, 0, 255), a hot pink
+         * color.
+         */
+        Image();
 
-		/** The constructor allowing a color key to be set.
-		 *
-		 * Constructs and Image. The color key is set to the specified values.
-		 *
-		 * \param r the red value of the color key
-		 * \param g the green value of the color key
-		 * \param b the blue value of the color key
-		 */
-		Image(const Uint8 r, const Uint8 g, const Uint8 b);
+        /** The constructor allowing a color key to be set.
+         *
+         * Constructs and Image. The color key is set to the specified values.
+         *
+         * \param r the red value of the color key
+         * \param g the green value of the color key
+         * \param b the blue value of the color key
+         */
+        Image(const Uint8 r, const Uint8 g, const Uint8 b);
 
-		/** The destructor.
-		 *
-		 */
-		virtual ~Image();
+        /** The destructor.
+         *
+         */
+        virtual ~Image();
 
-		/** Load an image.
-		 *
-		 * Opens an image resource from a file. This function requires the use of the
-		 * SDL_Renderer associated with the Window that the Image may be drawn to. As
-		 * such, this function is intended to called by a Graphics object managing a Window
-		 * unless one chooses to not use the Graphics object. Calling this function when
-		 * an image has already been loaded will result in undefined behavior, but will
-		 * likely cause a memory leak. If the image fails to load, or convert to texture
-		 * format, the program will exit by way of an assert statement.
-		 *
-		 * \param filename the path to the image file
-		 * \param renderer the renderer of the SDL_Window the image may be drawn to
-		 */
-		virtual void open(const std::string& filename, SDL_Renderer* const renderer);
+        /** Load an image.
+         *
+         * Opens an image resource from a file. This function requires the use of the
+         * SDL_Renderer associated with the Window that the Image may be drawn to. As
+         * such, this function is intended to called by a Graphics object managing a Window
+         * unless one chooses to not use the Graphics object. Calling this function when
+         * an image has already been loaded will result in undefined behavior, but will
+         * likely cause a memory leak. If the image fails to load, or convert to texture
+         * format, the program will exit by way of an assert statement.
+         *
+         * \param filename the path to the image file
+         * \param renderer the renderer of the SDL_Window the image may be drawn to
+         */
+        virtual void open(const std::string& filename, SDL_Renderer* const renderer);
 
-		/** Unload an image.
-		 *
-		 * Removes the image resource from memory. This function has the same effect as
-		 * calling Image::destroy(), which has the same functionality of Blittable::destroy().
-		 */
-		virtual void close();
+        /** Unload an image.
+         *
+         * Removes the image resource from memory. This function has the same effect as
+         * calling Image::destroy(), which has the same functionality of Blittable::destroy().
+         */
+        virtual void close();
 
-	protected:
+    protected:
 
-		/** The color key.
-		 *
-		 * This is the color that is used to color key the image when it is loaded.
-		 */
-		SDL_Color color_key;
-	};
+        /** The color key.
+         *
+         * This is the color that is used to color key the image when it is loaded.
+         */
+        SDL_Color color_key;
+    };
 }
 
 #endif

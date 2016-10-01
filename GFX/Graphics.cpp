@@ -22,153 +22,153 @@
 
 namespace hume
 {
-	Graphics::Graphics() : window(nullptr)
-	{
-		draw_color.r = draw_color.g = draw_color.b = 0;
-		draw_color.a = SDL_ALPHA_OPAQUE;
-	}
+    Graphics::Graphics() : window(nullptr)
+    {
+        draw_color.r = draw_color.g = draw_color.b = 0;
+        draw_color.a = SDL_ALPHA_OPAQUE;
+    }
 
-	Graphics::~Graphics()
-	{
-		if(window) delete window;
-	}
+    Graphics::~Graphics()
+    {
+        if(window) delete window;
+    }
 
-	void Graphics::initialize()
-	{
-		const int types = IMG_INIT_JPG | IMG_INIT_PNG;
-		int result = IMG_Init(types);
-		if(result != types) throw SDLException();
-    
-		result = TTF_Init();
-		if(result != 0) throw SDLTTFException();
+    void Graphics::initialize()
+    {
+        const int types = IMG_INIT_JPG | IMG_INIT_PNG;
+        int result = IMG_Init(types);
+        if(result != types) throw SDLException();
 
-		return;
-	}
+        result = TTF_Init();
+        if(result != 0) throw SDLTTFException();
 
-	void Graphics::shutdown()
-	{
-		IMG_Quit();
-		TTF_Quit();
+        return;
+    }
 
-		return;
-	}
+    void Graphics::shutdown()
+    {
+        IMG_Quit();
+        TTF_Quit();
 
-	void Graphics::set_window(Window* const w)
-	{
-		window = w;
-		return;
-	}
+        return;
+    }
 
-	Window* Graphics::get_window() const
-	{
-		return window;
-	}
+    void Graphics::set_window(Window* const w)
+    {
+        window = w;
+        return;
+    }
 
-	void Graphics::set_color(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a)
-	{
-		draw_color.r = r;
-		draw_color.g = g;
-		draw_color.b = b;
-		draw_color.a = a;
+    Window* Graphics::get_window() const
+    {
+        return window;
+    }
 
-		if(SDL_SetRenderDrawColor(window->get_renderer(), r, g, b, a) != 0) throw SDLException();
+    void Graphics::set_color(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a)
+    {
+        draw_color.r = r;
+        draw_color.g = g;
+        draw_color.b = b;
+        draw_color.a = a;
 
-		return;
-	}
+        if(SDL_SetRenderDrawColor(window->get_renderer(), r, g, b, a) != 0) throw SDLException();
 
-	void Graphics::set_color(const Color& color)
-	{
-		this->draw_color = color;
-		if(SDL_SetRenderDrawColor(window->get_renderer(), color.r, color.g, color.b, color.a) != 0) throw SDLException();
+        return;
+    }
 
-		return;
-	}
+    void Graphics::set_color(const Color& color)
+    {
+        this->draw_color = color;
+        if(SDL_SetRenderDrawColor(window->get_renderer(), color.r, color.g, color.b, color.a) != 0) throw SDLException();
 
-	Color Graphics::get_color() const
-	{
-		return draw_color;
-	}
+        return;
+    }
 
-	void Graphics::set_use_alpha_blending(const bool b)
-	{
-		if(!window) throw Exception("No window or renderer available.");
+    Color Graphics::get_color() const
+    {
+        return draw_color;
+    }
 
-		SDL_BlendMode blend_mode;
-		if(b) blend_mode = SDL_BLENDMODE_BLEND;
-		else blend_mode = SDL_BLENDMODE_NONE;
+    void Graphics::set_use_alpha_blending(const bool b)
+    {
+        if(!window) throw Exception("No window or renderer available.");
 
-		if(SDL_SetRenderDrawBlendMode(window->get_renderer(), blend_mode) != 0) throw SDLException();
+        SDL_BlendMode blend_mode;
+        if(b) blend_mode = SDL_BLENDMODE_BLEND;
+        else blend_mode = SDL_BLENDMODE_NONE;
 
-		return;
-	}
+        if(SDL_SetRenderDrawBlendMode(window->get_renderer(), blend_mode) != 0) throw SDLException();
 
-	bool Graphics::get_use_alpha_blending() const
-	{
-		if(!window) throw Exception("No window or renderer available.");
+        return;
+    }
 
-		SDL_BlendMode blend_mode;
-		if(SDL_GetRenderDrawBlendMode(window->get_renderer(), &blend_mode) != 0) throw SDLException();
+    bool Graphics::get_use_alpha_blending() const
+    {
+        if(!window) throw Exception("No window or renderer available.");
 
-		return (blend_mode == SDL_BLENDMODE_BLEND);
-	}
+        SDL_BlendMode blend_mode;
+        if(SDL_GetRenderDrawBlendMode(window->get_renderer(), &blend_mode) != 0) throw SDLException();
 
-	Image* Graphics::load_image(const std::string& filename)
-	{
-		Image* image = new Image();
-		image->open(filename, window->get_renderer());
+        return (blend_mode == SDL_BLENDMODE_BLEND);
+    }
 
-		return image;
-	}
+    Image* Graphics::load_image(const std::string& filename)
+    {
+        Image* image = new Image();
+        image->open(filename, window->get_renderer());
 
-	Image* Graphics::load_image(const std::string& filename, const uint8_t r, const uint8_t g, const uint8_t b)
-	{
-		Image* image = new Image(r, g, b);
-		image->open(filename, window->get_renderer());
+        return image;
+    }
 
-		return image;
-	}
+    Image* Graphics::load_image(const std::string& filename, const uint8_t r, const uint8_t g, const uint8_t b)
+    {
+        Image* image = new Image(r, g, b);
+        image->open(filename, window->get_renderer());
 
-	void Graphics::draw(const Blittable* const b, const Properties& p)
-	{
-		window->draw(b, p);
-		return;
-	}
+        return image;
+    }
 
-	void Graphics::draw_line(const int32_t x1, const int32_t y1, const int32_t x2, const int32_t y2)
-	{
-		if(SDL_RenderDrawLine(window->get_renderer(), x1, y1, x2, y2) != 0) throw SDLException();
-		return;
-	}
+    void Graphics::draw(const Blittable* const b, const Properties& p)
+    {
+        window->draw(b, p);
+        return;
+    }
 
-	void Graphics::draw_rect(const Properties& p)
-	{
-		draw_rect(p.x, p.y, p.w, p.h);
-		return;
-	}
+    void Graphics::draw_line(const int32_t x1, const int32_t y1, const int32_t x2, const int32_t y2)
+    {
+        if(SDL_RenderDrawLine(window->get_renderer(), x1, y1, x2, y2) != 0) throw SDLException();
+        return;
+    }
 
-	void Graphics::draw_rect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h)
-	{
-		SDL_Renderer* const renderer = window->get_renderer();
+    void Graphics::draw_rect(const Properties& p)
+    {
+        draw_rect(p.x, p.y, p.w, p.h);
+        return;
+    }
 
-		SDL_Rect rect;
-		rect.x = x;
-		rect.y = y;
-		rect.w = w;
-		rect.h = h;
-		if(SDL_RenderFillRect(renderer, &rect) != 0) throw SDLException();
+    void Graphics::draw_rect(const uint16_t x, const uint16_t y, const uint16_t w, const uint16_t h)
+    {
+        SDL_Renderer* const renderer = window->get_renderer();
 
-		return;
-	}
+        SDL_Rect rect;
+        rect.x = x;
+        rect.y = y;
+        rect.w = w;
+        rect.h = h;
+        if(SDL_RenderFillRect(renderer, &rect) != 0) throw SDLException();
 
-	void Graphics::clear()
-	{
-		window->clear();
-		return;
-	}
+        return;
+    }
 
-	void Graphics::refresh()
-	{
-		window->present();
-		return;
-	}
+    void Graphics::clear()
+    {
+        window->clear();
+        return;
+    }
+
+    void Graphics::refresh()
+    {
+        window->present();
+        return;
+    }
 }

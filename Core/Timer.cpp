@@ -22,68 +22,68 @@
 
 namespace hume
 {
-	Timer::Timer() : running(false), paused(false), start_time(0), pause_time(0)
-	{
-	}
+    Timer::Timer() : running(false), paused(false), start_time(0), pause_time(0)
+    {
+    }
 
-	Timer::~Timer()
-	{
-	}
+    Timer::~Timer()
+    {
+    }
 
-	void Timer::start()
-	{
-		running = true;
-		paused = false;
-		start_time = SDL_GetTicks();
+    void Timer::start()
+    {
+        running = true;
+        paused = false;
+        start_time = SDL_GetTicks();
 
-		return;
-	}
+        return;
+    }
 
-	void Timer::pause()
-	{
-		paused = true;
-		pause_time = SDL_GetTicks() - start_time;
+    void Timer::pause()
+    {
+        paused = true;
+        pause_time = SDL_GetTicks() - start_time;
 
-		return;
-	}
+        return;
+    }
 
-	void Timer::unpause()
-	{
-		if(paused)
-		{
-			paused = false;
-			start_time = SDL_GetTicks() - pause_time;
-			pause_time = 0;
-		}
+    void Timer::unpause()
+    {
+        if(paused)
+        {
+            paused = false;
+            start_time = SDL_GetTicks() - pause_time;
+            pause_time = 0;
+        }
 
-		return;
-	}
+        return;
+    }
 
-	void Timer::reset()
-	{
-		running = false;
-		paused = false;
+    void Timer::reset()
+    {
+        running = false;
+        paused = false;
 
-		return;
-	}
+        return;
+    }
 
-	uint32_t Timer::get_elapsed_time() const
-	{
-		if(running && paused)
-			return pause_time;
-		else if(!running && !paused)
-			return 0;
-		else
-			return SDL_GetTicks() - start_time;
-	}
+    uint32_t Timer::get_elapsed_time() const
+    {
+        if(running && paused)
+            return pause_time;
+        else if(!running && !paused)
+            return 0;
+        else
+            return SDL_GetTicks() - start_time;
+    }
 
-	bool Timer::is_running() const
-	{
-		return running;
-	}
+    bool Timer::is_running() const
+    {
+        return running;
+    }
 
-	bool Timer::is_paused() const
-	{
-		return paused;
-	}
+    bool Timer::is_paused() const
+    {
+        return paused;
+    }
 }

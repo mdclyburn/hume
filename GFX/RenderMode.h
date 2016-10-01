@@ -24,40 +24,40 @@
 namespace hume
 {
     /** Text rendering mode.
-	 *
-	 * RenderMode has a one-to-one correspondence to the different ways SDL2_ttf can
-	 * render text.
-	 */
-	enum class RenderMode
-	{
-		/** 'Quick and Dirty'
-		 *
-		 * From SDL2_ttf documentation: 'Creates an 8-bit palettized surface and renders
-		 * the given text at fast quality with the given font and color'. Solid
-		 * takes the least amount of time to render and blit, but the text does not come
-		 * out smooth.
-		 */
-		Solid,
+     *
+     * RenderMode has a one-to-one correspondence to the different ways SDL2_ttf can
+     * render text.
+     */
+    enum class RenderMode
+    {
+        /** 'Quick and Dirty'
+         *
+         * From SDL2_ttf documentation: 'Creates an 8-bit palettized surface and renders
+         * the given text at fast quality with the given font and color'. Solid
+         * takes the least amount of time to render and blit, but the text does not come
+         * out smooth.
+         */
+        Solid,
 
-			/** 'Slow and Nice, but with a Solid Box'
-			 *
-			 * From SDL2_ttf documentation: 'Creates an 8-bit palettized surface and renders
-			 * the given text at high quality with the given font and colors'. Shaded
-			 * renders faster than Blended, but slower than Solid. Blitting a Shaded texture
-			 * is as fast as blitting a Solid once it is rendered. The resulting text will
-			 * have a box around it, though.
-			 */
-			Shaded,
+        /** 'Slow and Nice, but with a Solid Box'
+         *
+         * From SDL2_ttf documentation: 'Creates an 8-bit palettized surface and renders
+         * the given text at high quality with the given font and colors'. Shaded
+         * renders faster than Blended, but slower than Solid. Blitting a Shaded texture
+         * is as fast as blitting a Solid once it is rendered. The resulting text will
+         * have a box around it, though.
+         */
+        Shaded,
 
-			/** 'Slow Slow Slow, but Ultra Nice over another image'
-			 *
-			 * From SDL2_ttf documentation: 'Creates a 32-bit ARGB surface and renders the
-			 * given text at high quality with the given font and colors'. Blended text renders
-			 * slower than Solid, but is about as fast as Shaded. The texture will blit slower
-			 * than the other two rendering modes though.
-			 */
-			Blended
-			};
+        /** 'Slow Slow Slow, but Ultra Nice over another image'
+         *
+         * From SDL2_ttf documentation: 'Creates a 32-bit ARGB surface and renders the
+         * given text at high quality with the given font and colors'. Blended text renders
+         * slower than Solid, but is about as fast as Shaded. The texture will blit slower
+         * than the other two rendering modes though.
+         */
+        Blended
+    };
 }
 
 #endif

@@ -30,51 +30,51 @@
 namespace hume
 {
     /** Abstract class for audio files.
-	 *
-	 * Defines some common properties of sound files.
-	 */
-	class Audio
-	{
-	public:
+     *
+     * Defines some common properties of sound files.
+     */
+    class Audio
+    {
+    public:
 
-		/** The default constructor.
-		 *
-		 * Sets the volume the audio is to played at to max (100%)
-		 */
-		Audio();
+        /** The default constructor.
+         *
+         * Sets the volume the audio is to played at to max (100%)
+         */
+        Audio();
 
-		/** The destructor.
-		 *
-		 */
-		virtual ~Audio();
+        /** The destructor.
+         *
+         */
+        virtual ~Audio();
 
-		/** Open a file.
-		 *
-		 * Derived classes should use this function to load a file.
-		 *
-		 * \param file_name the path to the file
-		 */
-		virtual void open(const std::string& file_name) = 0;
+        /** Open a file.
+         *
+         * Derived classes should use this function to load a file.
+         *
+         * \param file_name the path to the file
+         */
+        virtual void open(const std::string& file_name) = 0;
 
-		/** Close a file.
-		 *
-		 * Derived classes should use this function to close a file, releasing resources.
-		 */
-		virtual void close() = 0;
+        /** Close a file.
+         *
+         * Derived classes should use this function to close a file, releasing resources.
+         */
+        virtual void close() = 0;
 
-		/** Play loaded audio.
-		 *
-		 * Derived classes should use this function to play audio.
-		 */
-		virtual void play() = 0;
+        /** Play loaded audio.
+         *
+         * Derived classes should use this function to play audio.
+         */
+        virtual void play() = 0;
 
-		/** Returns true if audio is currently loaded.
-		 *
-		 */
-		virtual bool is_open() const = 0;
+        /** Returns true if audio is currently loaded.
+         *
+         */
+        virtual bool is_open() const = 0;
 
-	protected:
-	};
+    protected:
+    };
 }
 
 #endif

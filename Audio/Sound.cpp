@@ -22,41 +22,41 @@
 
 namespace hume
 {
-	Sound::Sound() : Audio(), chunk(nullptr)
-	{
-	}
+    Sound::Sound() : Audio(), chunk(nullptr)
+    {
+    }
 
-	Sound::~Sound()
-	{
-		if(chunk) close();
-	}
+    Sound::~Sound()
+    {
+        if(chunk) close();
+    }
 
-	void Sound::open(const std::string& file_name)
-	{
-		chunk = Mix_LoadWAV(file_name.c_str());
-		if(!chunk) throw SDLMixerException();
+    void Sound::open(const std::string& file_name)
+    {
+        chunk = Mix_LoadWAV(file_name.c_str());
+        if(!chunk) throw SDLMixerException();
 
-		return;
-	}
+        return;
+    }
 
-	void Sound::close()
-	{
-		Mix_FreeChunk(chunk);
-		chunk = nullptr;
+    void Sound::close()
+    {
+        Mix_FreeChunk(chunk);
+        chunk = nullptr;
 
-		return;
-	}
+        return;
+    }
 
-	void Sound::play()
-	{
-		if(!chunk) throw SDLMixerException("No chunk loaded. Cannot play anything.");
-		Mix_PlayChannel(-1, chunk, 0);
+    void Sound::play()
+    {
+        if(!chunk) throw SDLMixerException("No chunk loaded. Cannot play anything.");
+        Mix_PlayChannel(-1, chunk, 0);
 
-		return;
-	}
+        return;
+    }
 
-	Mix_Chunk* Sound::get_sound() const
-	{
-		return chunk;
-	}
+    Mix_Chunk* Sound::get_sound() const
+    {
+        return chunk;
+    }
 }
