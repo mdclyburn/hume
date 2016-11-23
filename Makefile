@@ -3,7 +3,7 @@ ASTYLE_OPTIONS = --style=allman --indent=spaces=4 --indent-namespaces --align-po
 all: documentation.pdf
 
 documentation.pdf: doc/latex/refman.tex
-	cd doc/latex && pdflatex refman.tex &> /dev/null && pdflatex refman.tex &> /dev/null
+	cd doc/latex && pdflatex refman.tex && pdflatex refman.tex
 	mv doc/latex/refman.pdf documentation.pdf
 
 doc/latex/refman.tex: Doxyfile app/* audio/* core/* gfx/*
