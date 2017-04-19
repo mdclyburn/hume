@@ -48,11 +48,11 @@ namespace hume
 
     void Music::play()
     {
-        play(0);
+        play(-1);
         return;
     }
 
-    void Music::play(const unsigned int loops)
+    void Music::play(const int16_t loops)
     {
         const int res = Mix_FadeInMusic(music, loops, fade_in);
         if(res) throw SDLMixerException();

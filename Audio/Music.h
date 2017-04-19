@@ -85,7 +85,7 @@ namespace hume
          *
          * \param loops the number of times to play the music after it finishes (play count = 1 + loops)
          */
-        void play(const unsigned int loops);
+        void play(const int16_t loops);
 
         /** Pause the music.
          *
