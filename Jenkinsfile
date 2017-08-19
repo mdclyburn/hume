@@ -1,29 +1,36 @@
-def builders = [:]
-def results = [:]
-
-stage('Analysis') {
-    node('master') {
-	    checkout scm
-    }
-}
-
-def platforms = [ 'freebsd', 'linux', 'mingw' ]
-for (p in platforms) {
-    def os = "Unknown (${p})"
-	if (p == 'freebsd') {
-	    os = 'FreeBSD'
-    } else if (p == 'linux') {
-	    os = 'Linux'
-	} else if (p == 'mingw') {
-	    os = 'Windows'
-	}
-
-    builders[platform] = {
-	    node('master') {
-            stage('Build') {
-		    }
+pipeline {
+	agent { node { label 'master' } }
+	stages {
+		stage('Analysis') {
+			steps {
+				sh 'uname -a'
+				sh 'echo ha > a_file'
+				sh 'ls'
+			}
 		}
-    }
-}
 
-parallel builders
+		stage('Build (FreeBSD)') {
+			agent { node { label 'freebsd' } }
+			steps {
+				sh 'rm -rf build; mkdir build; cd build; cmake ..; make clean; make; mv libhume.a ../libhume-freebsd.a'
+				archiveArtifacts(artifacts: 'libhume-freebsd.a', fingerprint: true)
+			}
+		}
+
+		stage('Build (Linux)') {
+			agent { node { label 'linux' } }
+			steps {
+				sh 'rm -rf build; mkdir build; cd build; cmake ..; make; mv libhume.a ../libhume-linux.a'
+				archiveArtifacts(artifacts: 'libhume-linux.a', fingerprint: true)
+			}
+		}
+
+		stage('Build (MinGW)') {
+			agent { node { label 'mingw' } }
+			steps {
+				sh 'rm -rf build; mkdir build; cd build; cmake -DCMAKE_TOOLCHAIN_FILE=../MinGW_toolchain.cmake ..; make; mv libhume.a ../libhume-mingw.a'
+				archiveArtifacts(artifacts: 'libhume-mingw.a', fingerprint: true)
+			}
+		}
+	}
+}
