@@ -12,9 +12,9 @@ for (p in platforms) {
     def os = "Unknown (${p})"
 	if (p == 'freebsd') {
 	    os = 'FreeBSD'
-    } else if (platform == 'linux') {
+    } else if (p == 'linux') {
 	    os = 'Linux'
-	} else if (platform == 'mingw') {
+	} else if (p == 'mingw') {
 	    os = 'Windows'
 	}
 
