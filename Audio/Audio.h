@@ -75,6 +75,8 @@ namespace hume
 
     protected:
     };
+
+	void set_volume(const uint8_t volume);
 }
 
 #endif
