@@ -3,9 +3,10 @@ pipeline {
 	stages {
 		stage('Analysis') {
 			steps {
-				sh 'uname -a'
-				sh 'echo ha > a_file'
-				sh 'ls'
+                sh 'doxygen && cd doc/latex && make'
+                sh 'rm -rf /usr/local/jenkins/exports/hume/docs/*'
+                sh 'cp doc/latex/refman.pdf /usr/local/jenkins/exports/hume/docs/'
+                sh 'cp -r doc/html /usr/local/jenkins/exports/hume/docs/web'
 			}
 		}
 
