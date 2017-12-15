@@ -1,7 +1,7 @@
 pipeline {
 	agent { node { label 'master' } }
 	stages {
-		stage('Analysis') {
+		stage('Documentation') {
 			steps {
                 sh 'doxygen && cd doc/latex && make'
                 sh 'rm -rf /usr/local/jenkins/exports/hume/docs/*'
