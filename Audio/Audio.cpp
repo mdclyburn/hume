@@ -32,7 +32,7 @@ namespace hume
 
     void set_volume(const uint8_t volume)
 	{
-		Mix_Volume(-1, ((float) volume / 100) * 128);
+		Mix_VolumeMusic(((float) volume / 100) * 128);
 		return;
 	}
 }
